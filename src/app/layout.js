@@ -10,13 +10,13 @@ const poppins = Poppins({
 });
 
 export const metadata = {
-  title: 'Gud',
+  title: 'GÜD',
   description: 'Get Fit & Feel Good',
 };
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en" className={`${poppins.className} `}>
+    <html lang="en">
       <body>{children}</body>
     </html>
   );
