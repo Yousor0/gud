@@ -25,16 +25,22 @@ export default function Header() {
 
   return (
     <header>
-      <div className="flex content-center items-center justify-between gap-10 px-10 pt-2">
+      <div className="mb-5 flex content-center items-center justify-between gap-10 border-b border-black/20 bg-white/10 px-20 py-2 shadow-2xs">
         {/* Logo */}
         <Link href="/">
-          <Image src={logo} alt="Website Logo" width={90} height={30} />
+          <Image
+            src={logo}
+            alt="Website Logo"
+            width={60}
+            height={20}
+            className="min-w-20"
+          />
         </Link>
 
         {/* Search bar */}
         <form
           onSubmit={handleSubmit}
-          className="mx-auto flex w-full max-w-full items-center gap-2 rounded-md border px-3 py-2 sm:max-w-md md:max-w-xl lg:max-w-2xl"
+          className="mx-auto flex w-full max-w-full min-w-60 items-center gap-2 rounded-md border px-3 py-2 sm:max-w-md md:max-w-xl lg:max-w-2xl"
         >
           <button type="submit" className="flex items-center justify-center">
             <FontAwesomeIcon icon={faMagnifyingGlass} />
@@ -50,8 +56,8 @@ export default function Header() {
         </form>
 
         {/* Navigation Bar */}
-        <nav className="flex gap-15">
-          <Link href="/about ">About</Link>
+        <nav className="flex gap-15 whitespace-nowrap">
+          <Link href="/about">About</Link>
           <Link href="/faq">FAQ</Link>
           <Link href="/register">Sign Up</Link>
           <Link href="login">Login</Link>
