@@ -38,15 +38,11 @@ export default function Header() {
           />
         </Link>
 
-        {/* Search bar */}
+        {/* Search Bar */}
         <form
           onSubmit={handleSubmit}
-          className="mx-auto flex w-full max-w-full min-w-60 items-center gap-2 rounded-md border px-3 py-2 sm:max-w-md md:max-w-xl lg:max-w-2xl"
+          className="justify-self-start mx-auto flex w-full max-w-full min-w-60 items-center gap-2 rounded-md border pl-3 sm:max-w-md md:max-w-xl lg:max-w-2xl"
         >
-          <button type="submit" className="flex items-center justify-center">
-            <FontAwesomeIcon icon={faMagnifyingGlass} />
-          </button>
-
           <input
             type="text"
             placeholder="Search..."
@@ -54,14 +50,22 @@ export default function Header() {
             onChange={(e) => setQuery(e.target.value)}
             className="w-full text-sm focus:outline-none sm:text-base"
           />
+          {/* Search Button */}
+          <button
+            type="submit"
+            className=" text-[#FAF7F3] flex items-center justify-center rounded-tr-sm rounded-br-sm gap-2 px-5 py-2 bg-[#9D4431] hover:bg-[#D07A64]"
+          >
+            <FontAwesomeIcon icon={faMagnifyingGlass}/>Search
+          </button>
         </form>
 
         {/* Navigation Bar */}
         <nav className="flex gap-15 whitespace-nowrap">
+          <Link href="feed/fitness">Explore</Link>
           <Link href="/about">About</Link>
           <Link href="/faq">FAQ</Link>
-          <Link href="/register">Sign Up</Link>
           <Link href="login">Login</Link>
+          <Link href="/register">Sign Up</Link>
         </nav>
       </div>
     </header>
