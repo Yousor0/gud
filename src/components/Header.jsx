@@ -3,6 +3,7 @@
 // Website Header
 // Andrew Jiang
 // 1/27/2026 @Yousor0
+
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import Image from 'next/image';
@@ -25,7 +26,7 @@ export default function Header() {
 
   return (
     <header>
-      <div className="mb-5 flex content-center items-center justify-between gap-10 border-b border-black/20 bg-white/10 px-20 py-2 shadow-2xs">
+      <div className="sticky top-0 z-50 flex items-center justify-between gap-10 mb-5 px-20 py-2 border-b border-black/20 bg-white/10 shadow-sm">
         {/* Logo */}
         <Link href="/">
           <Image
