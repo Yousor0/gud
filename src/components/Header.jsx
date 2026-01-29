@@ -26,7 +26,7 @@ export default function Header() {
 
   return (
     <header>
-      <div className="sticky top-0 z-50 flex items-center justify-between gap-10 mb-5 px-20 py-2 border-b border-black/20 bg-white/10 shadow-sm">
+      <div className="sticky top-0 z-50 mb-5 flex items-center justify-between gap-10 border-b border-black/20 bg-white/10 px-20 py-2 shadow-sm">
         {/* Logo */}
         <Link href="/">
           <Image
@@ -41,7 +41,7 @@ export default function Header() {
         {/* Search Bar */}
         <form
           onSubmit={handleSubmit}
-          className="justify-self-start mx-auto flex w-full max-w-full min-w-60 items-center gap-2 rounded-md border pl-3 sm:max-w-md md:max-w-xl lg:max-w-2xl"
+          className="mx-auto flex w-full max-w-full min-w-60 items-center gap-2 justify-self-start rounded-md border pl-3 sm:max-w-md md:max-w-xl lg:max-w-2xl"
         >
           <input
             type="text"
@@ -53,9 +53,10 @@ export default function Header() {
           {/* Search Button */}
           <button
             type="submit"
-            className=" text-[#FAF7F3] flex items-center justify-center rounded-tr-sm rounded-br-sm gap-2 px-5 py-2 bg-[#9D4431] hover:bg-[#D07A64]"
+            className="flex items-center justify-center gap-2 rounded-tr-sm rounded-br-sm bg-[#9D4431] px-5 py-2 text-[#FAF7F3] hover:bg-[#D07A64]"
           >
-            <FontAwesomeIcon icon={faMagnifyingGlass}/>Search
+            <FontAwesomeIcon icon={faMagnifyingGlass} />
+            Search
           </button>
         </form>
 
