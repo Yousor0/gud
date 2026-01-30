@@ -6,7 +6,6 @@ import {
   faInstagram,
   faXTwitter,
   faGithub,
-  faGit,
 } from '@fortawesome/free-brands-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
@@ -21,8 +20,9 @@ export default function Footer() {
         backgroundSize: '400px',
       }}
     >
-      <div className="grid grid-cols-4 gap-20">
+      <div className="grid grid-cols-1 gap-5 text-center sm:grid-cols-4 sm:gap-20 sm:text-left">
         <div className="flex flex-col">
+          {/* GUD Section */}
           <h4 className="font-black">GÜD</h4>
           <span>
             <Link href="/about">About</Link>
@@ -40,6 +40,8 @@ export default function Footer() {
             <Link href="/#">Privacy Policy</Link>
           </span>
         </div>
+
+        {/* Developer */}
         <div className="flex flex-col">
           <h4 className="font-black">Developers </h4>
           <span>
@@ -48,7 +50,7 @@ export default function Footer() {
               target="_blank"
               rel="noopener noreferrer"
             >
-              Andrew Jiang{' '}
+              Andrew Jiang
             </Link>
           </span>
           <span>
@@ -80,7 +82,7 @@ export default function Footer() {
           </span>
           <span>
             <Link href="#" target="_blank" rel="noopener noreferrer">
-              Nikolai Cooperider{' '}
+              Nikolai Cooperider
             </Link>
           </span>
           <span>
@@ -89,6 +91,8 @@ export default function Footer() {
             </Link>
           </span>
         </div>
+
+        {/* Menu */}
         <div className="flex flex-col">
           <h4 className="font-black">Menu </h4>
           <span>
@@ -107,7 +111,7 @@ export default function Footer() {
       </div>
 
       <div>
-        <div className="flex flex-col gap-2">
+        <div className="flex flex-col items-center gap-2 sm:items-start">
           <div className="flex gap-5">
             <span>
               <Link href="https://github.com/Yousor0/gud">

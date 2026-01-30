@@ -1,5 +1,7 @@
 import { Poppins } from 'next/font/google'; // Import the Poppins font from Next.js Google Fonts integration
 import './globals.css'; // Import global css for app
+import Header from '../components/Header';
+import Footer from '../components/Footer';
 
 // Poppins Font Config
 const poppins = Poppins({
@@ -17,7 +19,11 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body>{children}</body>
+      <body>
+        <Header />
+        {children}
+        <Footer />
+      </body>
     </html>
   );
 }

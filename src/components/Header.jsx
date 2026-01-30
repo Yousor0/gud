@@ -26,7 +26,7 @@ export default function Header() {
 
   return (
     <header>
-      <div className="sticky top-0 z-50 mb-5 flex items-center justify-between gap-10 border-b border-black/20 bg-white/10 px-20 py-2 shadow-sm">
+      <div className="sticky top-0 z-50 mb-5 flex items-center justify-between gap-10 border-b border-black/20 bg-[#f5f0e7] px-20 py-2 shadow-sm">
         {/* Logo */}
         <Link href="/">
           <Image
@@ -62,7 +62,7 @@ export default function Header() {
 
         {/* Navigation Bar */}
         <nav className="flex gap-15 whitespace-nowrap">
-          <Link href="feed/fitness">Explore</Link>
+          <Link href="/explore">Explore</Link>
           <Link href="/about">About</Link>
           <Link href="/faq">FAQ</Link>
           <Link href="login">Login</Link>
