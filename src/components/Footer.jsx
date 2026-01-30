@@ -99,9 +99,6 @@ export default function Footer() {
             <Link href="/about">About</Link>
           </span>
           <span>
-            <Link href="/faq">FAQ</Link>
-          </span>
-          <span>
             <Link href="/register">Sign Up</Link>
           </span>
           <span>

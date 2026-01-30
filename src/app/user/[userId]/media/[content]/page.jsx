@@ -6,22 +6,38 @@ import playstation from '../../../../../../public/playstation.png';
 
 export default async function media({ params }) {
   return (
-    <div className='flex justify-center m-24'>
-      <div style={{width:'1280px', justifyContent:'center'}}>
-        <div className='grid grid-cols-1'>
-          <Image src={noVideo} width='1280' height='720' alt="placeholder video image"/>
+    <div className="m-24 flex justify-center">
+      <div style={{ width: '1280px', justifyContent: 'center' }}>
+        <div className="grid grid-cols-1">
+          <Image
+            src={noVideo}
+            width="1280"
+            height="720"
+            alt="placeholder video image"
+          />
           <div>
-            <h1 className='text-2xl font-semibold flex justify-start'>mediaName</h1>
+            <h1 className="flex justify-start text-2xl font-semibold">
+              mediaName
+            </h1>
           </div>
-          <div className='flex grid grid-cols-2'>
-            <div className='flex'>
-              <Image src={playstation} width='50' height='50' alt="playstation default avatar placeholder image profile picture"/>
+          <div className="flex grid grid-cols-2">
+            <div className="flex">
+              <Image
+                src={playstation}
+                width="50"
+                height="50"
+                alt="playstation default avatar placeholder image profile picture"
+              />
               <div>
-                <h2 className='text-xs font-normal flex justify-start'>professionalName</h2>
-                <h3 className='text-sm font-normal flex justify-start'>specialty</h3>
+                <h2 className="flex justify-start text-xs font-normal">
+                  professionalName
+                </h2>
+                <h3 className="flex justify-start text-sm font-normal">
+                  specialty
+                </h3>
               </div>
             </div>
-            <div className='flex justify-end gap-4'>
+            <div className="flex justify-end gap-4">
               <button>subscribe</button>
               <button>bell-icon</button>
               <button>heart-icon</button>
@@ -30,5 +46,5 @@ export default async function media({ params }) {
         </div>
       </div>
     </div>
-  )
+  );
 }

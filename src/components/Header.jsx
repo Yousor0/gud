@@ -64,7 +64,6 @@ export default function Header() {
         <nav className="flex gap-15 whitespace-nowrap">
           <Link href="/explore">Explore</Link>
           <Link href="/about">About</Link>
-          <Link href="/faq">FAQ</Link>
           <Link href="login">Login</Link>
           <Link href="/register">Sign Up</Link>
         </nav>
