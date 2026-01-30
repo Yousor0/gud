@@ -23,8 +23,8 @@ export default async function media({ params }) {
             </div>
             <div className='flex justify-end gap-4'>
               <button>subscribe</button>
-              <button>bell</button>
-              <button>heart</button>
+              <button>bell-icon</button>
+              <button>heart-icon</button>
             </div>
           </div>
         </div>
