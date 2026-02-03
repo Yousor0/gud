@@ -2,17 +2,229 @@ import { videos } from './videos';
 
 export const users = [
   {
+    id: '1',
+    username: 'sophiaalvarez',
+    name: {
+      firstName: 'Sophia',
+      lastName: 'Alvarez',
+    },
+    specialty: [
+      'Yoga Instructor',
+      'Yoga Stretch & Strength',
+      'Mobility & Flexibility',
+      'Beginner Yoga Flow',
+    ],
+    // fitness? or nutrition?
+    state: 'Fitness',
+    about: {
+      header: 'Get a personalized fitness plan',
+      description:
+        'Achieve your fitness goals with a custom workout plan tailored to your needs and goals',
+      email: '',
+      avatarUrl: '',
+      bio: '',
+      createdAt: '',
+    },
+  },
+  {
+    id: '2',
+    username: 'jordanlee',
+    name: {
+      firstName: 'Jordan',
+      lastName: 'Lee',
+    },
+    specialty: [
+      'Cardio & HIIT',
+      'HIIT Cardio',
+      'Full-Body Conditioning',
+      'Endurance & Agility',
+    ],
+    // fitness? or nutrition?
+    state: 'Fitness',
+    about: {
+      header: 'Get a personalized fitness plan',
+      description:
+        'Achieve your fitness goals with a custom workout plan tailored to your needs and goals',
+      email: '',
+      avatarUrl: '',
+      bio: '',
+      createdAt: '',
+    },
+  },
+  {
+    id: '3',
+    username: 'thethompson',
+    name: {
+      firstName: 'The',
+      lastName: 'Thompson',
+    },
+    specialty: [
+      'Strength Training',
+      'Functional Strength Training',
+      'High-Intensity Cardio',
+      'Core Stability Work',
+    ],
+    // fitness? or nutrition?
+    state: 'Fitness',
+    about: {
+      header: 'Get a personalized fitness plan',
+      description:
+        'Achieve your fitness goals with a custom workout plan tailored to your needs and goals',
+      email: '',
+      avatarUrl: '',
+      bio: '',
+      createdAt: '',
+    },
+  },
+  {
+    id: '4',
+    username: 'noahwilliams',
+    name: {
+      firstName: 'Noah',
+      lastName: 'Williams',
+    },
+    specialty: [
+      'Mobility & Cardio',
+      'Functional Movement Training',
+      'Low-Impact Cardio',
+      'Strength and Flexibility',
+    ],
+    // fitness? or nutrition?
+    state: 'Fitness',
+    about: {
+      header: 'Get a personalized fitness plan',
+      description:
+        'Achieve your fitness goals with a custom workout plan tailored to your needs and goals',
+      email: '',
+      avatarUrl: '',
+      bio: '',
+      createdAt: '',
+    },
+  },
+  {
+    id: '5',
+    username: 'emilynguyen',
+    name: {
+      firstName: 'Emily',
+      lastName: 'Nguyen',
+    },
+    specialty: [
+      'Nutritionist',
+      'Meal Planning',
+      'Therapeutic Nutrition Plans',
+      '',
+    ],
+    // fitness? or nutrition?
+    state: 'Nutrition',
+    about: {
+      header: 'Get a personalized nutrition plan',
+      description:
+        'Achieve your fitness goals with a custom nutritional plan tailored to your needs and goals',
+      email: '',
+      avatarUrl: '',
+      bio: '',
+      createdAt: '',
+    },
+  },
+  {
+    id: '6',
+    username: 'malikrobinson',
+    name: {
+      firstName: 'Malik',
+      lastName: 'Robinson',
+    },
+    specialty: [
+      'Nutritionist',
+      'Clinical Nutrition Science',
+      'Metabolic Health Research',
+      'Nutritional Biochemistry',
+    ],
+    // fitness? or nutrition?
+    state: 'Nutrition',
+    about: {
+      header: 'Get a personalized nutrition plan',
+      description:
+        'Achieve your fitness goals with a custom nutritional plan tailored to your needs and goals',
+      email: '',
+      avatarUrl: '',
+      bio: '',
+      createdAt: '',
+    },
+  },
+  {
+    id: '7',
+    username: 'paulsilva',
+    name: {
+      firstName: 'Paul',
+      lastName: 'Silva',
+    },
+    specialty: [
+      'Nutrition Specialist',
+      'Clinical Nutrition Science',
+      'Metabolic Health Research',
+      'Nutritional Biochemistry',
+    ],
+    // fitness? or nutrition?
+    state: 'Nutrition',
+    about: {
+      header: 'Get a personalized nutrition plan',
+      description:
+        'Achieve your fitness goals with a custom nutritional plan tailored to your needs and goals',
+      email: '',
+      avatarUrl: '',
+      bio: '',
+      createdAt: '',
+    },
+  },
+  {
+    id: '8',
+    username: 'lenabrooks',
+    name: {
+      firstName: 'Lena',
+      lastName: 'Brooks',
+    },
+    specialty: [
+      'Nutritionist',
+      'Meal Planning',
+      'Therapeutic Nutrition Plans',
+      '',
+    ],
+    // fitness? or nutrition?
+    state: 'Nutrition',
+    about: {
+      header: 'Get a personalized nutrition plan',
+      description:
+        'Achieve your fitness goals with a custom nutritional plan tailored to your needs and goals',
+      email: '',
+      avatarUrl: '',
+      bio: '',
+      createdAt: '',
+    },
+  },
+  {
     id: 'user_123',
     username: 'andrewjiang',
     name: {
       firstName: 'Andrew',
       lastName: 'Jiang',
     },
-    type: 'Fitness',
-    email: 'andrew@email.com',
-    avatarUrl: 'https://cdn.site.com/avatars/andrew.png',
-    bio: 'UI Engineer | Web Dev @ UCF',
-    createdAt: '2026-01-30T12:00:00Z',
+    specialty: [
+      'Developer',
+      'Coding',
+      'UI',
+      'Design',
+    ],
+    // fitness? or nutrition?
+    state: 'Dev',
+    about: {
+      header: 'Front-end Head Developer',
+      description:
+        'UI Engineer | Web Dev @ UCF',
+      email: 'andrew@email.com',
+      avatarUrl: 'https://cdn.site.com/avatars/andrew.png',
+      bio: 'UI Engineer | Web Dev @ UCF',
+      createdAt: '2026-01-30T12:00:00Z',
+    },
   },
   {
     id: 'user_456',
@@ -21,11 +233,23 @@ export const users = [
       firstName: 'Fit',
       lastName: 'Queen',
     },
-    type: 'Fitness',
-    email: 'fitqueen@email.com',
-    avatarUrl: 'https://cdn.site.com/avatars/fitqueen.png',
-    bio: 'Fitness Enthusiast | Cardio & Strength Trainer',
-    createdAt: '2025-11-15T09:30:00Z',
+    specialty: [
+      'title',
+      'specialty1',
+      'specialty2',
+      'specialty3',
+    ],
+    // fitness? or nutrition?
+    state: 'Fitness',
+    about: {
+      header: 'Get a personalized fitness plan',
+      description:
+        'Achieve your fitness goals with a custom workout plan tailored to your needs and goals',
+      email: 'fitqueen@email.com',
+      avatarUrl: 'https://cdn.site.com/avatars/fitqueen.png',
+      bio: 'Fitness Enthusiast | Cardio & Strength Trainer',
+      createdAt: '2025-11-15T09:30:00Z',
+    },
   },
   {
     id: 'user_789',
@@ -34,11 +258,23 @@ export const users = [
       firstName: 'WorkoutPro',
       lastName: '',
     },
-    type: 'Nutrition',
-    email: 'workoutpro@email.com',
-    avatarUrl: 'https://cdn.site.com/avatars/workoutpro.png',
-    bio: 'Certified Personal Trainer | Home & Gym Workouts',
-    createdAt: '2024-08-22T16:45:00Z',
+    specialty: [
+      'title',
+      'specialty1',
+      'specialty2',
+      'specialty3',
+    ],
+    // fitness? or nutrition?
+    state: 'Nutrition',
+    about: {
+      header: 'Get a personalized nutrition plan',
+      description:
+        'Achieve your fitness goals with a custom nutrition plan tailored to your needs and goals',
+      email: 'workoutpro@email.com',
+      avatarUrl: 'https://cdn.site.com/avatars/workoutpro.png',
+      bio: 'Certified Personal Trainer | Home & Gym Workouts',
+      createdAt: '2024-08-22T16:45:00Z',
+    },
   },
 ];
 

@@ -1,8 +1,8 @@
 import React from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-import noVideo from '../../../../../../public/noVideo.png';
-import playstation from '../../../../../../public/playstation.png';
+import noVideo from '../../../../../../public/default-thumbnail.png';
+import defaultAvatar from '../../../public/default-avatar.jpg';
 
 export default async function media({ params }) {
   return (
@@ -23,10 +23,10 @@ export default async function media({ params }) {
           <div className="flex grid grid-cols-2">
             <div className="flex">
               <Image
-                src={playstation}
+                src={defaultAvatar}
                 width="50"
                 height="50"
-                alt="playstation default avatar placeholder image profile picture"
+                alt="default avatar placeholder image profile picture"
               />
               <div>
                 <h2 className="flex justify-start text-xs font-normal">

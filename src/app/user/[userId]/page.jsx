@@ -1,8 +1,8 @@
 import React from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-import playstation from '../../../../public/playstation.png';
-import { users } from '../../userData/profileData/profiles.js'
+import defaultAvatar from '../../../../public/default-avatar.jpg';
+import { users } from '../../../data/users.js'
 import { notFound } from 'next/navigation';
 
 // function Navigation() {
@@ -29,11 +29,11 @@ export default async function professionalProfile({ params }) {
         <div className='m-24 grid grid-cols-2 gap-20 flex justify-center'>
             <div>
                 <div className='flex justify-center'>
-                    <Image src={playstation} width='220' height='220' alt="playstation default avatar placeholder image profile picture"/>
+                    <Image src={defaultAvatar} width='220' height='220' alt="default avatar placeholder image profile picture"/>
                 </div>
                 <div>
-                    <h1 className='text-xl font-semibold flex justify-center'>{ profile.name }</h1>
-                    <h3 className='text-sm font-normal flex justify-center'>{ profile.specialty }</h3>
+                    <h1 className='text-xl font-semibold flex justify-center'>{ profile.name.firstName } { profile.name.lastName } </h1>
+                    <h3 className='text-sm font-normal flex justify-center'>{ profile.specialty[0] }</h3>
                 </div>
                 <div className='grid grid-cols-2 flex justify-center gap-5'>
                     <button className='flex justify-end'>{ profile.state } Professional</button>
@@ -50,9 +50,9 @@ export default async function professionalProfile({ params }) {
                 <div>
                     <h2 className='text-lg font-semibold'>Specialties:</h2>
                     <ul className='text-sm font-normal'>
-                        <li>{ profile.specialty1 }</li>
-                        <li>{ profile.specialty2 }</li>
-                        <li>{ profile.specialty3 }</li>
+                        <li>{ profile.specialty[1] }</li>
+                        <li>{ profile.specialty[2] }</li>
+                        <li>{ profile.specialty[3] }</li>
                     </ul>
                 </div>
             </div>
@@ -60,13 +60,13 @@ export default async function professionalProfile({ params }) {
 
         <div className='m-24 flex justify-center grid grid-cols-1'>
             <div>
-                <h4 className='text-lg font-semibold'>Content By { profile.name }</h4>
+                <h4 className='text-lg font-semibold'>Content By { profile.name.firstName } { profile.name.lastName }</h4>
             </div>
             <div className='justify-center'>
                 <ul className='flex grid grid-cols-3 gap-35 justify-center'>
-                    <li className='flex justify-center'>{ profile.content1.title }</li>
-                    <li className='flex justify-center'>{ profile.content2.title }</li>
-                    <li className='flex justify-center'>{ profile.content3.title }</li>
+                    <li className='flex justify-center'>{ profile.content1 }</li>
+                    <li className='flex justify-center'>{ profile.content2 }</li>
+                    <li className='flex justify-center'>{ profile.content3 }</li>
                 </ul>
             </div>
         </div>
