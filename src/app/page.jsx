@@ -15,11 +15,11 @@ function LandingWelcome() {
           <Image src="" alt="Welcome illustration" width={400} height={400} />
         </div>
         {/* text and buttons going to the right side of the image on the left */}
-        <div>
-          <h1 className="mb-4 text-2xl font-bold">
+        <div className="flex flex-col gap-5">
+          <h1 className="page-title">
             Get a GÜD start on your wellness journey
           </h1>
-          <p className="mb-6 text-base">
+          <p className="body-primary">
             At-home workouts and nutritional guidance tailored to you
           </p>
           <div className="flex gap-4">
@@ -233,7 +233,7 @@ function FaqSection() {
 
 export default function landingPage() {
   return (
-    <main>
+    <main className="bg-primary">
       <LandingWelcome />
       <InfoCards />
       <AboutGud />

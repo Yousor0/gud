@@ -1,26 +1,65 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
 @import 'tailwindcss';
 
-:root {
-  --background: #f5f0e7;
-  --foreground: #171717;
-}
+@theme {
+  --brand-primary: #9d4431; /* Primary Buttons, Active Nav states, Links */
+  --brand-primary-hover: #d07a64;
+  --brand-secondary: #c3583e;
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-poppins);
-  --font-mono: var(--font-poppins);
-}
+  --bg-primary: #faf7f3; /* Main Page Bg */
+  --bg-secondary: #f5f0e7; /* Alternate section backgrounds , Cards, Suble Layout Seperation */
+  --bg-accent: #d0c5b6; /* Borders, Dividers, Inactive UI states, Background for non-text-heavy components */
 
-@media (prefers-color-scheme: light) {
-  :root {
-    --background: #f5f0e7;
-    --foreground: #0a0a0a;
-  }
+  --text-primary: #000000; /* Heading, Logos, Icons */
+  --text-secondary: #222222; /* Primary body text, Headlines, Navigation Labels */
+  --text-accent: #444444; /* Secondary text, Metadata, Footer text */
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: var(--font-poppins), Arial, Helvetica, sans-serif;
+  background: var(--bg-primary);
+  font-family: 'Poppins', sans-serif;
+}
+
+footer {
+  background-color: var(--bg-secondary);
+}
+
+.page-title {
+  font-size: 30px;
+  font-weight: 700;
+}
+
+.section-title {
+  font-size: 20px;
+  font-weight: 600;
+}
+
+.sub-header {
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.body-primary {
+  font-size: 16px;
+  font-weight: 400;
+}
+
+.body-emphasis {
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.body-small {
+  font-size: 14px;
+  font-weight: 400;
+}
+
+.body-small-emphasis {
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.label {
+  font-size: 12px;
+  font-weight: 500;
 }

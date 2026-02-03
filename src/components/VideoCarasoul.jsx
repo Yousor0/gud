@@ -3,6 +3,7 @@ import { useState, useEffect } from 'react';
 import VideoCard from './VideoCard';
 import { faAngleLeft, faAngleRight } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { motion, AnimatePresence } from 'motion/react';
 
 // Title of Carasoul if there is one
 // Video API Link
@@ -51,10 +52,13 @@ export default function carasoul({
 
   const visibleVideos = videoAPI.slice(startIndex, startIndex + cardsToShow);
 
+  // Framer Motion Offset
+  const offset = -(startIndex * (100 / cardsToShow)) + '%';
+
   return (
     <div className="flex flex-col gap-2 px-5">
       {/* Title of Carasoul */}
-      <h1 className="col-span-full text-xl font-medium">{sectionTitle}</h1>
+      <h1 className="sub-header col-span-full">{sectionTitle}</h1>
 
       <div className="relative">
         <div className="grid-row-2 grid">
@@ -67,6 +71,8 @@ export default function carasoul({
                   ? `repeat(${cardsToShow}, minmax(0, 1fr))`
                   : 'repeat(1, minmax(0, 1fr))',
             }}
+            animate={{ x: -(startIndex * (100 / cardsToShow)) + '%' }}
+            transition={{ type: 'tween', ease: 'easeInOut', duration: 0.5 }}
           >
             {visibleVideos.map((video) => (
               <div key={video.id} className="w-full">

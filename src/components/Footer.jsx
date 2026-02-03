@@ -8,6 +8,7 @@ import {
   faGithub,
 } from '@fortawesome/free-brands-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import NavigationLink from './ui/NavigationLink';
 
 export default function Footer() {
   return (
@@ -20,108 +21,106 @@ export default function Footer() {
         backgroundSize: '400px',
       }}
     >
-      <div className="grid grid-cols-1 gap-5 text-center sm:grid-cols-4 sm:gap-20 sm:text-left">
+      <div className="grid grid-cols-1 gap-5 text-center text-[#444444] sm:grid-cols-4 sm:gap-20 sm:text-left">
         <div className="flex flex-col">
           {/* GUD Section */}
           <h4 className="font-black">GÜD</h4>
-          <span>
-            <Link href="/about">About</Link>
-          </span>
-          <span>
-            <Link href="/faq">FAQ</Link>
-          </span>
-          <span>
-            <Link href="/faq">Contact</Link>
-          </span>
-          <span>
-            <Link href="/#">Term & Conditions</Link>
-          </span>
-          <span>
-            <Link href="/#">Privacy Policy</Link>
-          </span>
+          <NavigationLink href="/about" text="About" variant="footerLink" />
+          <NavigationLink href="/faq" text="FAQ" variant="footerLink" />
+          <NavigationLink href="#" text="Contact" variant="footerLink" />
+          <NavigationLink
+            href="#"
+            text="Term & Conditions"
+            variant="footerLink"
+          />
+          <NavigationLink href="#" text="Privacy Policy" variant="footerLink" />
         </div>
 
         {/* Developer */}
         <div className="flex flex-col">
           <h4 className="font-black">Developers </h4>
-          <span>
-            <Link
-              href="https://github.com/Yousor0"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Andrew Jiang
-            </Link>
-          </span>
-          <span>
-            <Link
-              href="https://github.com/jeremyauguste"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Jeremy Auguste
-            </Link>
-          </span>
-          <span>
-            <Link
-              href="https://github.com/bianalambis"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Biana Lambis-Puryear
-            </Link>
-          </span>
-          <span>
-            <Link
-              href="https://github.com/FrancescaLorthe"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Francesca Lorthe
-            </Link>
-          </span>
-          <span>
-            <Link href="#" target="_blank" rel="noopener noreferrer">
-              Nikolai Cooperider
-            </Link>
-          </span>
-          <span>
-            <Link href="#" target="_blank" rel="noopener noreferrer">
-              Jacob Gomez
-            </Link>
-          </span>
+          <NavigationLink
+            href="https://github.com/Yousor0"
+            text="Andrew Jiang"
+            variant="footerLink"
+            target="_blank"
+            rel="noopener noreferrer"
+          />
+          <NavigationLink
+            href="https://github.com/jeremyauguste"
+            text="Jeremy Auguste"
+            variant="footerLink"
+            target="_blank"
+            rel="noopener noreferrer"
+          />
+          <NavigationLink
+            href="https://github.com/bianalambis"
+            text="Biana Lambis-Puryear"
+            variant="footerLink"
+            target="_blank"
+            rel="noopener noreferrer"
+          />
+          <NavigationLink
+            href="https://github.com/FrancescaLorthe"
+            text="Francesca Lorthe"
+            variant="footerLink"
+            target="_blank"
+            rel="noopener noreferrer"
+          />
+          <NavigationLink
+            href="#"
+            text="Nikolai Cooperider"
+            variant="footerLink"
+            target="_blank"
+            rel="noopener noreferrer"
+          />
+          <NavigationLink
+            href="#"
+            text="Jacob Gomez"
+            variant="footerLink"
+            target="_blank"
+            rel="noopener noreferrer"
+          />
         </div>
 
         {/* Menu */}
         <div className="flex flex-col">
-          <h4 className="font-black">Menu </h4>
-          <span>
-            <Link href="/about">About</Link>
-          </span>
-          <span>
-            <Link href="/register">Sign Up</Link>
-          </span>
-          <span>
-            <Link href="login">Login</Link>
-          </span>
+          <h4 className="font-black">Menu</h4>
+          <NavigationLink href="/explore" text="Explore" variant="footerLink" />
+          <NavigationLink href="/about" text="About" variant="footerLink" />
+          <NavigationLink
+            href="/register"
+            text="Sign up"
+            variant="footerLink"
+          />
+          <NavigationLink href="/login" text="Login" variant="footerLink" />
         </div>
       </div>
 
       <div>
-        <div className="flex flex-col items-center gap-2 sm:items-start">
+        <div className="flex flex-col items-center gap-2 text-[#444444] sm:items-start">
           <div className="flex gap-5">
             <span>
-              <Link href="https://github.com/Yousor0/gud">
+              <Link
+                href="https://github.com/Yousor0/gud"
+                className="text-primary transition-colors duration-100 hover:text-[#D07A64]"
+              >
                 <FontAwesomeIcon size="2x" icon={faGithub} />
               </Link>
             </span>
             <span>
-              <Link href="#">
+              <Link
+                href="#"
+                className="text-primary transition-colors duration-100 hover:text-[#D07A64]"
+              >
                 <FontAwesomeIcon size="2x" icon={faXTwitter} />
               </Link>
             </span>
             <span>
-              <Link href="https://github.com/Yousor0/gud">
+              <Link
+                href="https://github.com/Yousor0/gud"
+                className="text-primary transition-colors duration-100 hover:text-[#D07A64]"
+              >
                 <FontAwesomeIcon size="2x" icon={faInstagram} />
               </Link>
             </span>

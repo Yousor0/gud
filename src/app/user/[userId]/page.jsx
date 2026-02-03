@@ -5,25 +5,15 @@ import defaultAvatar from '../../../../public/default-avatar.jpg';
 import { users } from '../../../data/users.js'
 import { notFound } from 'next/navigation';
 
-// function Navigation() {
-//   return (
-//     <nav>
-//       <Link href="/">Home</Link>
-//       <Link href="/about">About Us</Link>
-//     </nav>
-//   );
-// }
-
-
 export default async function professionalProfile({ params }) {
-    const { userId } = await params;
-    const profile = users.find(user => user.id === userId)
-    if (!profile) {
-        notFound();
-    }
+  const { userId } = await params;
+  const profile = users.find((user) => user.id === userId);
+  if (!profile) {
+    notFound();
+  }
 
-    return (
-        // add boiler plates for headers and footers
+  return (
+    // add boiler plates for headers and footers
     <div>
         <div>User ID: { userId }</div>
         <div className='m-24 grid grid-cols-2 gap-20 flex justify-center'>
@@ -57,6 +47,7 @@ export default async function professionalProfile({ params }) {
                 </div>
             </div>
         </div>
+      </div>
 
         <div className='m-24 flex justify-center grid grid-cols-1'>
             <div>
@@ -70,8 +61,9 @@ export default async function professionalProfile({ params }) {
                 </ul>
             </div>
         </div>
+      </div>
     </div>
-  )
+  );
 }
 
 // export default async function professionalProfile({ params }){
