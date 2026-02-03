@@ -1,6 +1,6 @@
 import React from 'react'
 import Image from 'next/image'
-import playstation from '../../../public/playstation.png';
+import defaultAvatar from '../../../public/default-avatar.jpg';
 
 function profile() {
   return (
@@ -12,7 +12,7 @@ function profile() {
             <div>
                 <div>
                     <div className='flex justify-center'>
-                        <Image src={playstation} width='220' height='220' alt="playstation default avatar placeholder image profile picture"/>
+                        <Image src={defaultAvatar} width='220' height='220' alt="default avatar placeholder image profile picture"/>
                     </div>
                     <h2 className='text-lg font-semibold flex justify-center'>profileName</h2>
                     <h3 className='text-sm font-normal flex justify-center'>profileEmail</h3>
@@ -33,7 +33,7 @@ function profile() {
                             <div className='flex'>
                                 <div>
                                     <h4>Profile Photo</h4>
-                                    <Image src={playstation} width='110' height='110' alt="playstation default avatar placeholder image profile picture"/>
+                                    <Image src={defaultAvatar} width='110' height='110' alt="default avatar placeholder image profile picture"/>
                                 </div>
                                 <div className='flex grid grid-cols-1'>
                                     <p>download-icon</p>

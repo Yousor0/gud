@@ -22,7 +22,7 @@ export default function VideoCard({ video }) {
       {/* Thumbnail Information Wrapper */}
       <div className="flex items-center gap-3">
         {/* Profile Picture */}
-        <Link href={`/${user?.id}`}>
+        <Link href={`user/${user?.id}`}>
           <Image
             src={'/default-avatar.jpg'}
             // src={user?.avatarUrl || '/default-avatar.jpg'}
@@ -35,7 +35,7 @@ export default function VideoCard({ video }) {
         <div className="flex flex-col">
           {/* Text Information */}
           <h2 className="font-semibold">{video.title}</h2>
-          <Link className="text-sm text-gray-500" href={`/${user?.id}`}>
+          <Link className="text-sm text-gray-500" href={`user/${user?.id}`}>
             {user.name.firstName + ' ' + user.name.lastName || 'Unknown User'}
           </Link>
         </div>
