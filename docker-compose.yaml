@@ -2,7 +2,7 @@ services:
   app:
     image: gud-site-app
     build:
-      context: ./gud
+      context: ./
       dockerfile: Dockerfile
     volumes:
         - .:/app

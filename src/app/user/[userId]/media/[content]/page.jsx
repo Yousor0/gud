@@ -4,7 +4,7 @@ import Image from 'next/image';
 import noVideo from '../../../../../../public/default-thumbnail.png';
 import defaultAvatar from '../../../public/default-avatar.jpg';
 
-export default async function media({ params }) {
+export default function media({ params }) {
   return (
     <div className="m-24 flex justify-center">
       <div style={{ width: '1280px', justifyContent: 'center' }}>
@@ -20,7 +20,7 @@ export default async function media({ params }) {
               mediaName
             </h1>
           </div>
-          <div className="flex grid grid-cols-2">
+          <div className="grid grid-cols-2">
             <div className="flex">
               <Image
                 src={defaultAvatar}
