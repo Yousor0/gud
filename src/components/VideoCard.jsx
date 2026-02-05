@@ -8,7 +8,7 @@ export default function VideoCard({ video }) {
   console.log(user.username);
   return (
     <section
-      className={`mx-1 flex flex-col gap-1 rounded-md p-2 ${user.type === 'Fitness' ? 'hover:bg-cyan-800/40' : 'hover:bg-emerald-800/40'} duration-150 hover:scale-103`}
+      className={`mx-1 rounded-md ${user.type === 'Fitness' ? 'hover:bg-cyan-800/40' : 'hover:bg-emerald-800/40'} duration-150 hover:scale-103`}
     >
       <Link href={`/media/${video.id}`}>
         {/* Thumbnail Image */}
@@ -39,6 +39,14 @@ export default function VideoCard({ video }) {
             <Link className="text-sm text-gray-500" href={`/user/${user?.id}`}>
               {user.name.firstName + ' ' + user.name.lastName || 'Unknown User'}
             </Link>
+            <div className="flex flex-col">
+              {/* Text Information */}
+              <h2 className="font-semibold">{video.title}</h2>
+              <Link className="text-sm text-gray-500" href={`user/${user?.id}`}>
+                {user.name.firstName + ' ' + user.name.lastName ||
+                  'Unknown User'}
+              </Link>
+            </div>
           </div>
         </div>
       </Link>

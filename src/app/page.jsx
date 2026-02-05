@@ -3,32 +3,38 @@ import { Cardo } from 'next/font/google';
 import { useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
+import Button from '../components/ui/Button';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import {
+  faDumbbell,
+  faAppleWhole,
+  faCertificate,
+} from '@fortawesome/free-solid-svg-icons';
+import { easeOut, motion } from 'motion/react';
 
 // first real section of landing page. the name of this can be changed as needed.
 function LandingWelcome() {
   return (
-    <section className="px-6 py-16">
+    <section>
       <div className="grid grid-cols-1 items-center gap-10 md:grid-cols-2">
-        {/* image that's going to the left of the text in the top section of landing page*/}
         <div className="flex justify-center">
-          {/*don't forget tp add image path when you figure out what image is going here*/}
-          <Image src="" alt="Welcome illustration" width={400} height={400} />
+          <Image
+            src="/landing01.png"
+            alt="Welcome illustration"
+            width={800}
+            height={400}
+          />
         </div>
-        {/* text and buttons going to the right side of the image on the left */}
         <div className="flex flex-col gap-5">
-          <h1 className="page-title">
-            Get a GÜD start on your wellness journey
+          <h1 className="page-title text-center sm:text-left">
+            Get a GÜD start on your wellness journey!
           </h1>
-          <p className="body-primary">
-            At-home workouts and nutritional guidance tailored to you
+          <p className="body-primary text-center sm:text-left">
+            At home workouts and nutritional guidance tailored to you
           </p>
-          <div className="flex gap-4">
-            <Link href="/register" className="rounded-lg border px-4 py-2">
-              Start you plan
-            </Link>
-            <Link href="/learnmore" className="rounded-lg border px-4 py-2">
-              Learn more
-            </Link>
+          <div className="flex justify-center gap-5 sm:justify-start">
+            <Button href="/register" text="Start you plan" />
+            <Button href="/learnmore" text="Learn more" variant="border" />
           </div>
         </div>
       </div>
@@ -39,39 +45,72 @@ function LandingWelcome() {
 // three informational cards
 function InfoCards() {
   return (
-    <section className="px-6 py-16">
+    <section>
       <div className="grid grid-cols-1 gap-8 md:grid-cols-3">
         {/* first card. effective workouts at home */}
-        <div className="rounded-lg border p-6">
-          <h3 className="mb-2 text-lg font-semibold">
-            Effective Workouts At Home
-          </h3>
-          <p className="text-sm">
-            Exercise from the comfort of your home with guided workouts for all
-            levels
-          </p>
-        </div>
+        <motion.div
+          className="flex flex-row items-center gap-7 rounded-lg border border-[#d0c5b6] bg-[#f5f0e7] p-6 pl-8 shadow-sm md:flex-col md:gap-4 md:pl-6 md:text-center"
+          whileHover={{ scale: 1.03 }}
+          transition={{ duration: 0.2, ease: easeOut }}
+        >
+          <FontAwesomeIcon
+            icon={faDumbbell}
+            size="3x"
+            className="text-[#c3583e]"
+          />
+          <div>
+            <h3 className="mb-2 text-lg font-semibold">
+              Effective Workouts At Home
+            </h3>
+            <p className="text-sm">
+              Exercise from the comfort of your home with guided workouts for
+              all levels
+            </p>
+          </div>
+        </motion.div>
         {/* second card. Expert Nutrition */}
-        <div className="rounded-lg border p-6">
-          <h3 className="mb-2 text-lg font-semibold">
-            Expert Nutrition Just For You
-          </h3>
-          <p className="text-sm">
-            Personalized meal plans healthy and easy recipes to fuel your
-            workouts
-          </p>
-        </div>
+        <motion.div
+          className="flex flex-row items-center gap-7 rounded-lg border border-[#d0c5b6] bg-[#f5f0e7] p-6 pl-8 shadow-sm md:flex-col md:gap-4 md:pl-6 md:text-center"
+          whileHover={{ scale: 1.03 }}
+          transition={{ duration: 0.2, ease: easeOut }}
+        >
+          <FontAwesomeIcon
+            icon={faAppleWhole}
+            size="3x"
+            className="text-[#c3583e]"
+          />
+          <div>
+            <h3 className="mb-2 text-lg font-semibold">
+              Expert Nutrition Just For You
+            </h3>
+            <p className="text-sm">
+              Personalized meal plans healthy and easy recipes to fuel your
+              workouts
+            </p>
+          </div>
+        </motion.div>
 
         {/* third card. Expert Advice */}
-        <div className="rounded-lg border p-6">
-          <h3 className="mb-2 text-lg font-semibold">
-            Expert Advice From Certified Pros
-          </h3>
-          <p className="text-sm">
-            Learn from certified trainers and nutritionists with professional
-            advices
-          </p>
-        </div>
+        <motion.div
+          className="flex flex-row items-center gap-7 rounded-lg border border-[#d0c5b6] bg-[#f5f0e7] p-6 pl-8 shadow-sm md:flex-col md:gap-4 md:pl-6 md:text-center"
+          whileHover={{ scale: 1.03 }}
+          transition={{ duration: 0.2, ease: easeOut }}
+        >
+          <FontAwesomeIcon
+            icon={faCertificate}
+            size="3x"
+            className="text-[#c3583e]"
+          />
+          <div>
+            <h3 className="mb-2 text-lg font-semibold">
+              Expert Advice From Certified Pros
+            </h3>
+            <p className="text-sm">
+              Learn from certified trainers and nutritionists with professional
+              advices
+            </p>
+          </div>
+        </motion.div>
       </div>
     </section>
   );
@@ -80,29 +119,28 @@ function InfoCards() {
 // About GUD section
 function AboutGud() {
   return (
-    <section className="px-6 py-16">
+    <section>
       <div className="grid grid-cols-1 items-center gap-10 md:grid-cols-2">
-        {/* dont forget to add image path below */}
-        <div className="flex justify-center">
-          <Image
-            src=""
-            alt="About GÜD welcome image of woman in yoga pose"
-            width={400}
-            height={300}
-          />
-        </div>
-        <div>
-          <h2 className="mb-4 text-xl font-semibold">About GÜD</h2>
-          <p className="mb-4 text-base">
+        <div className="flex flex-col gap-4 text-center sm:text-left">
+          <h2 className="text-xl font-semibold">About GÜD</h2>
+          <p className="text-base">
             GÜD is a wellness platform designed to help you build healthy habits
             from home. We offer effective at-home workouts, practical nutrition
             guidance, and expert advice tailored to your needs.
           </p>
-          <p className="mb-4 text-base">
+          <p className="text-base">
             All content is created by certified professionals, making it easy to
             follow workouts, learn how to fuel your body, and stay consistent on
             your own schedule.
           </p>
+        </div>
+        <div className="flex justify-center">
+          <Image
+            src="/landing02.png"
+            alt="About GÜD welcome image of woman in yoga pose"
+            width={800}
+            height={400}
+          />
         </div>
       </div>
     </section>
@@ -114,7 +152,7 @@ function FaqSection() {
   const [openIndex, setOpenIndex] = useState(null);
 
   return (
-    <section className="px-6 py-16">
+    <section>
       <h2 className="mb-8 text-xl font-semibold">Frequently Asked Questions</h2>
       {/* first faq question */}
       <div className="border-b py-4">
@@ -233,7 +271,7 @@ function FaqSection() {
 
 export default function landingPage() {
   return (
-    <main className="bg-primary">
+    <main className="mx-auto flex w-auto max-w-7xl flex-col gap-10 px-5">
       <LandingWelcome />
       <InfoCards />
       <AboutGud />

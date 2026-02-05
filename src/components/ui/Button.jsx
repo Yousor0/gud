@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import { motion } from 'motion/react';
 
 export default function Button({
   text,
@@ -7,21 +8,25 @@ export default function Button({
   href = '#',
 }) {
   const defaultStyles = {
-    primary: 'bg-[#9D4431] text-[#FAF7F3] hover:bg-[#D07A64] ',
-    secondary: 'bg-[#C3583E] text-[#FAF7F3] hover:bg-[#D07A64] ',
+    primary:
+      'bg-[#9D4431] text-[#FAF7F3] hover:bg-[#D07A64] font-semibold shadow-sm ',
+    secondary:
+      'bg-[#C3583E] text-[#FAF7F3] hover:bg-[#D07A64] font-semibold shadow-sm ',
     border:
-      'text-[#9D4431] border border-[#9D4431] hover:bg-[#9D4431] hover:text-[#FAF7F3] ',
+      'text-[#9D4431] border border-[#9D4431] hover:bg-[#D07A64] hover:text-[#FAF7F3] hover:border-[#D07A64] font-medium',
   };
 
   // Use the styles from defaultStyles based on the variant
   const variantStyles = defaultStyles[variant] || defaultStyles.primary;
 
   return (
-    <Link
-      href={href.startsWith('/') ? href : `/${href}`}
-      className={`${variantStyles} ${className} rounded-md px-5 py-2 font-semibold shadow-sm duration-150`}
-    >
-      {text}
-    </Link>
+    <motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.99 }}>
+      <Link
+        href={href.startsWith('/') ? href : `/${href}`}
+        className={`${variantStyles} ${className} rounded-md px-5 py-2 duration-150`}
+      >
+        {text}
+      </Link>
+    </motion.div>
   );
 }

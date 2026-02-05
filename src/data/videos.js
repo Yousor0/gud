@@ -70,7 +70,7 @@ export const videos = [
       'core',
       'legs',
       'glutes',
-      'arms'
+      'arms',
     ],
     type: 'Fitness',
     level: 'intermediate',
@@ -196,7 +196,7 @@ export const videos = [
       'strength',
       'upper body',
       'arms',
-      'core'
+      'core',
     ],
     type: 'Fitness',
     level: 'intermediate',
@@ -215,7 +215,7 @@ export const videos = [
       'arms',
       'legs',
       'isometric',
-      'posture'
+      'posture',
     ],
     type: 'Fitness',
     level: 'advanced',

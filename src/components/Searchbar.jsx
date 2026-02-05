@@ -1,12 +1,16 @@
+'use client';
+
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
 
 export default function Searchbar() {
+  // Search Function ---------------
   const [query, setQuery] = useState('');
   const router = useRouter();
 
+  // Prevents search function if no text in searchbar
   function handleSubmit(e) {
     e.preventDefault();
 
@@ -14,6 +18,7 @@ export default function Searchbar() {
 
     router.push(`/search?q=${encodeURIComponent(query)}`);
   }
+
   return (
     <form
       onSubmit={handleSubmit}
@@ -21,7 +26,7 @@ export default function Searchbar() {
     >
       <input
         type="text"
-        placeholder="Search..."
+        placeholder="Search for a journey..."
         value={query}
         onChange={(e) => setQuery(e.target.value)}
         className="w-full text-sm focus:outline-none sm:text-base"
@@ -30,10 +35,10 @@ export default function Searchbar() {
       <button
         transition={{ duration: 0.3 }}
         type="submit"
-        className="flex items-center justify-center gap-2 rounded-tr-sm rounded-br-sm bg-[#9D4431] px-5 py-2 text-[#FAF7F3] duration-300 hover:bg-[#D07A64]"
+        className="flex h-auto min-h-10 items-center justify-center gap-2 rounded-tr-sm rounded-br-sm bg-[#9D4431] px-5 py-2 text-[#FAF7F3] duration-300 hover:bg-[#D07A64]"
       >
         <FontAwesomeIcon icon={faMagnifyingGlass} />
-        Search
+        <span className="hidden md:inline">Search</span>
       </button>
     </form>
   );

@@ -1,50 +1,81 @@
 import React from 'react';
 import Link from 'next/link';
-
+import Image from 'next/image';
 
 function RegisterForm() {
   return (
-    <div>
-      <h1 className='text-2xl font-bold mb-4'>
-        Begin to get GÜD
-      </h1>
-      <p className='text-base mb-6'>
-        Join the GÜD Community
-      </p>
-      <form>
+    <div className="mx-auto flex w-full max-w-md flex-col justify-center">
+      <h1 className="mb-4 text-2xl font-bold">Begin to get GÜD!</h1>
+      <p className="mb-6 text-base">Join the GÜD Community</p>
+      <form className="space-y-4">
         {/* First name field */}
-        <div className='grid grid-cols-1 md:grid-cols-2 gap-4'>
+        <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
           <div>
-            <label htmlFor='firstName'>First Name</label>
-            <input id='firstName' type='text' placeholder='Capstone'/>
+            <label htmlFor="firstName">First Name</label>
+            <input
+              id="firstName"
+              className="w-full rounded-md border border-gray-300 px-3 py-2"
+              type="text"
+              placeholder="Capstone"
+            />
           </div>
           {/* Last name field */}
           <div>
-            <label htmlFor='lastName'>Last Name</label>
-            <input id='lastName' type='text' placeholder='DIG4172C'/>
+            <label htmlFor="lastName" className="mb-1 block">
+              Last Name
+            </label>
+            <input
+              id="lastName"
+              className="w-full rounded-md border border-gray-300 px-3 py-2"
+              type="text"
+              placeholder="DIG4172C"
+            />
           </div>
         </div>
         {/* Email field */}
         <div>
-          <label htmlFor='email'>Email</label>
-          <input id='email' type='email' placeholder='capstone2026@dig4172C.com'/>
+          <label htmlFor="email" className="mb-1 block">
+            Email
+          </label>
+          <input
+            id="email"
+            className="w-full rounded-md border border-gray-300 px-3 py-2"
+            type="email"
+            placeholder="capstone2026@dig4172C.com"
+          />
         </div>
         {/* Password field */}
         <div>
-          <label htmlFor='password'>Password</label>
-          <input id='password' type='password' placeholder='**********'/>
+          <label htmlFor="password" className="mb-1 block">
+            Password
+          </label>
+          <input
+            id="password"
+            className="w-full rounded-md border border-gray-300 px-3 py-2"
+            type="password"
+            placeholder="**********"
+          />
         </div>
         {/* sign up button */}
-        <button type='button'>Sign Up</button>
+        <button
+          type="submit"
+          className="mt-2 w-full rounded-md bg-[#9C4A2F] py-2 text-white hover:opacity-90"
+        >
+          Sign Up
+        </button>
       </form>
-      <div>
-        <span>or</span>
-      </div>
-      {/* same thing here, are we leaving it as a BUTTON or should it be changed to SUBMIT */}
-      <button type='button'>Sign up with Google</button>
-      <p className='text-base mb-6'>
+      <div className="my-4 text-center text-sm text-gray-500">or</div>
+      <button
+        type="button"
+        className="w-full rounded-md border border-gray-300 py-2 hover:bg-gray-50"
+      >
+        Sign up with Google
+      </button>
+      <p className="mt-6 text-center text-base">
         Already have an account?{' '}
-        <Link href='/login'>Log In</Link>
+        <Link href="/login" className="font-medium underline">
+          Log In
+        </Link>
       </p>
     </div>
   );
@@ -52,26 +83,31 @@ function RegisterForm() {
 function RegisterGraphic() {
   return (
     <div>
-      {/* register graphic needs to be added here */}
+      <Image
+        src="/register01.png"
+        alt="About GÜD welcome image of woman in yoga pose"
+        width={650}
+        height={400}
+      />
     </div>
-  )
+  );
 }
 
 function RegisterSection() {
   return (
-    <section className='px-6 py-16'>
-      <div className='grid grid-cols-1 md:grid-cols-2 gap-10 items-center'>
-        <RegisterForm/>
-        <RegisterGraphic/>
+    <section className="px-6 py-16">
+      <div className="grid grid-cols-1 items-center gap-10 md:grid-cols-2">
+        <RegisterForm />
+        <RegisterGraphic />
       </div>
     </section>
-  )
+  );
 }
 
 export default function Register() {
   return (
     <main>
-      <RegisterSection/>
+      <RegisterSection />
     </main>
   );
 }
