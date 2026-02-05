@@ -1,11 +1,20 @@
+'use client';
 import React from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
+import Button from '../../../components/ui/Button';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import {
+  faDumbbell,
+  faAppleWhole,
+  faCertificate,
+} from '@fortawesome/free-solid-svg-icons';
+import { easeOut, motion } from 'motion/react';
 
 function RegisterForm() {
   return (
     <div className="mx-auto flex w-full max-w-md flex-col justify-center">
-      <h1 className="mb-4 text-2xl font-bold">Begin to get GÜD!</h1>
+      <h1 className="page-title">Begin to get GÜD!</h1>
       <p className="mb-6 text-base">Join the GÜD Community</p>
       <form className="space-y-4">
         {/* First name field */}
@@ -57,20 +66,14 @@ function RegisterForm() {
           />
         </div>
         {/* sign up button */}
-        <button
-          type="submit"
-          className="mt-2 w-full rounded-md bg-[#9C4A2F] py-2 text-white hover:opacity-90"
-        >
-          Sign Up
-        </button>
+        <div className='w-full [&>div>a]:block [&>div>a]:w-full [&>div>a]:text-center'>
+          <Button href="/" text="Sign Up" />
+          </div>
       </form>
       <div className="my-4 text-center text-sm text-gray-500">or</div>
-      <button
-        type="button"
-        className="w-full rounded-md border border-gray-300 py-2 hover:bg-gray-50"
-      >
-        Sign up with Google
-      </button>
+      <div className='w-full [&>div>a]:block [&>div>a]:w-full [&>div>a]:text-center'>
+        <Button text='Sign up with Google' variant='border'/>
+      </div>
       <p className="mt-6 text-center text-base">
         Already have an account?{' '}
         <Link href="/login" className="font-medium underline">
@@ -96,7 +99,7 @@ function RegisterGraphic() {
 function RegisterSection() {
   return (
     <section className="px-6 py-16">
-      <div className="grid grid-cols-1 items-center gap-10 md:grid-cols-2">
+      <div className="mx-auto grid max-w-5xl grid-cols-1 items-center gap-8 md:grid-cols-2">
         <RegisterForm />
         <RegisterGraphic />
       </div>
