@@ -17,6 +17,8 @@ export default async function ProfessionalProfile({ params }) {
 
   console.log(userId);
 
+  const profileVideos =  videos.filter(video => video.userId === profile.id);
+
   return (
     <div>
       <div className="m-24 flex flex-col gap-24">
@@ -26,10 +28,10 @@ export default async function ProfessionalProfile({ params }) {
           <div>
             <div className="flex justify-center">
               <Image
-                src={defaultAvatar}
+                src={profile.about.avatarUrl == '' ? '/default-avatar.jpg' : profile.about.avatarUrl}
                 width={220}
                 height={220}
-                alt="Default avatar"
+                alt="profile avatar"
                 className="rounded-full"
               />
             </div>
@@ -43,7 +45,7 @@ export default async function ProfessionalProfile({ params }) {
 
             <div className="mt-6 grid grid-cols-2 gap-5">
               <button className="text-right">
-                {profile.state} Professional
+                {profile.type} Professional
               </button>
               <button className="text-left">❤️</button>
             </div>
@@ -71,7 +73,7 @@ export default async function ProfessionalProfile({ params }) {
 
       {/* Content Below */}
 
-      <Carasoul videoAPI={videos} sectionTitle={'Fitness'} />
+      <Carasoul videoAPI={profileVideos} sectionTitle={'Content'} />
     </div>
   );
 }

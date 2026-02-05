@@ -15,13 +15,13 @@ export const users = [
       'Beginner Yoga Flow',
     ],
     // fitness? or nutrition?
-    state: 'Fitness',
+    type: 'Fitness',
     about: {
       header: 'Get a personalized fitness plan',
       description:
         'Achieve your fitness goals with a custom workout plan tailored to your needs and goals',
       email: '',
-      avatarUrl: '',
+      avatarUrl: '/profileAvatars/sophiaAlvarez.jpg',
       bio: '',
       createdAt: '',
     },
@@ -40,13 +40,13 @@ export const users = [
       'Endurance & Agility',
     ],
     // fitness? or nutrition?
-    state: 'Fitness',
+    type: 'Fitness',
     about: {
       header: 'Get a personalized fitness plan',
       description:
         'Achieve your fitness goals with a custom workout plan tailored to your needs and goals',
       email: '',
-      avatarUrl: '',
+      avatarUrl: '/profileAvatars/jordanLee.jpg',
       bio: '',
       createdAt: '',
     },
@@ -65,13 +65,13 @@ export const users = [
       'Core Stability Work',
     ],
     // fitness? or nutrition?
-    state: 'Fitness',
+    type: 'Fitness',
     about: {
       header: 'Get a personalized fitness plan',
       description:
         'Achieve your fitness goals with a custom workout plan tailored to your needs and goals',
       email: '',
-      avatarUrl: '',
+      avatarUrl: '/profileAvatars/theThompson.jpg',
       bio: '',
       createdAt: '',
     },
@@ -90,13 +90,13 @@ export const users = [
       'Strength and Flexibility',
     ],
     // fitness? or nutrition?
-    state: 'Fitness',
+    type: 'Fitness',
     about: {
       header: 'Get a personalized fitness plan',
       description:
         'Achieve your fitness goals with a custom workout plan tailored to your needs and goals',
       email: '',
-      avatarUrl: '',
+      avatarUrl: '/profileAvatars/noahWilliams.jpg',
       bio: '',
       createdAt: '',
     },
@@ -115,13 +115,13 @@ export const users = [
       '',
     ],
     // fitness? or nutrition?
-    state: 'Nutrition',
+    type: 'Nutrition',
     about: {
       header: 'Get a personalized nutrition plan',
       description:
         'Achieve your fitness goals with a custom nutritional plan tailored to your needs and goals',
       email: '',
-      avatarUrl: '',
+      avatarUrl: '/profileAvatars/emilyNguyen.jpg',
       bio: '',
       createdAt: '',
     },
@@ -140,13 +140,13 @@ export const users = [
       'Nutritional Biochemistry',
     ],
     // fitness? or nutrition?
-    state: 'Nutrition',
+    type: 'Nutrition',
     about: {
       header: 'Get a personalized nutrition plan',
       description:
         'Achieve your fitness goals with a custom nutritional plan tailored to your needs and goals',
       email: '',
-      avatarUrl: '',
+      avatarUrl: '/profileAvatars/malikRobinson.jpg',
       bio: '',
       createdAt: '',
     },
@@ -165,13 +165,13 @@ export const users = [
       'Nutritional Biochemistry',
     ],
     // fitness? or nutrition?
-    state: 'Nutrition',
+    type: 'Nutrition',
     about: {
       header: 'Get a personalized nutrition plan',
       description:
         'Achieve your fitness goals with a custom nutritional plan tailored to your needs and goals',
       email: '',
-      avatarUrl: '',
+      avatarUrl: '/profileAvatars/paulSilva.webp',
       bio: '',
       createdAt: '',
     },
@@ -190,13 +190,13 @@ export const users = [
       '',
     ],
     // fitness? or nutrition?
-    state: 'Nutrition',
+    type: 'Nutrition',
     about: {
       header: 'Get a personalized nutrition plan',
       description:
         'Achieve your fitness goals with a custom nutritional plan tailored to your needs and goals',
       email: '',
-      avatarUrl: '',
+      avatarUrl: '/profileAvatars/lenaBrooks.jpg',
       bio: '',
       createdAt: '',
     },
@@ -215,13 +215,13 @@ export const users = [
       'Design',
     ],
     // fitness? or nutrition?
-    state: 'Dev',
+    type: 'Dev',
     about: {
       header: 'Front-end Head Developer',
       description:
         'UI Engineer | Web Dev @ UCF',
       email: 'andrew@email.com',
-      avatarUrl: 'https://cdn.site.com/avatars/andrew.png',
+      avatarUrl: '',
       bio: 'UI Engineer | Web Dev @ UCF',
       createdAt: '2026-01-30T12:00:00Z',
     },
@@ -240,13 +240,13 @@ export const users = [
       'specialty3',
     ],
     // fitness? or nutrition?
-    state: 'Fitness',
+    type: 'Fitness',
     about: {
       header: 'Get a personalized fitness plan',
       description:
         'Achieve your fitness goals with a custom workout plan tailored to your needs and goals',
       email: 'fitqueen@email.com',
-      avatarUrl: 'https://cdn.site.com/avatars/fitqueen.png',
+      avatarUrl: '',
       bio: 'Fitness Enthusiast | Cardio & Strength Trainer',
       createdAt: '2025-11-15T09:30:00Z',
     },
@@ -265,13 +265,13 @@ export const users = [
       'specialty3',
     ],
     // fitness? or nutrition?
-    state: 'Nutrition',
+    type: 'Nutrition',
     about: {
       header: 'Get a personalized nutrition plan',
       description:
         'Achieve your fitness goals with a custom nutrition plan tailored to your needs and goals',
       email: 'workoutpro@email.com',
-      avatarUrl: 'https://cdn.site.com/avatars/workoutpro.png',
+      avatarUrl: '',
       bio: 'Certified Personal Trainer | Home & Gym Workouts',
       createdAt: '2024-08-22T16:45:00Z',
     },
