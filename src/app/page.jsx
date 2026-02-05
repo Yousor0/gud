@@ -4,6 +4,13 @@ import { useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import Button from '../components/ui/Button';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import {
+  faDumbbell,
+  faAppleWhole,
+  faCertificate,
+} from '@fortawesome/free-solid-svg-icons';
+import { easeOut, motion } from 'motion/react';
 
 // first real section of landing page. the name of this can be changed as needed.
 function LandingWelcome() {
@@ -41,36 +48,69 @@ function InfoCards() {
     <section>
       <div className="grid grid-cols-1 gap-8 md:grid-cols-3">
         {/* first card. effective workouts at home */}
-        <div className="rounded-lg border p-6">
-          <h3 className="mb-2 text-lg font-semibold">
-            Effective Workouts At Home
-          </h3>
-          <p className="text-sm">
-            Exercise from the comfort of your home with guided workouts for all
-            levels
-          </p>
-        </div>
+        <motion.div
+          className="flex flex-row items-center gap-7 rounded-lg border border-[#d0c5b6] bg-[#f5f0e7] p-6 pl-8 shadow-sm md:flex-col md:gap-4 md:pl-6 md:text-center"
+          whileHover={{ scale: 1.03 }}
+          transition={{ duration: 0.2, ease: easeOut }}
+        >
+          <FontAwesomeIcon
+            icon={faDumbbell}
+            size="3x"
+            className="text-[#c3583e]"
+          />
+          <div>
+            <h3 className="mb-2 text-lg font-semibold">
+              Effective Workouts At Home
+            </h3>
+            <p className="text-sm">
+              Exercise from the comfort of your home with guided workouts for
+              all levels
+            </p>
+          </div>
+        </motion.div>
         {/* second card. Expert Nutrition */}
-        <div className="rounded-lg border p-6">
-          <h3 className="mb-2 text-lg font-semibold">
-            Expert Nutrition Just For You
-          </h3>
-          <p className="text-sm">
-            Personalized meal plans healthy and easy recipes to fuel your
-            workouts
-          </p>
-        </div>
+        <motion.div
+          className="flex flex-row items-center gap-7 rounded-lg border border-[#d0c5b6] bg-[#f5f0e7] p-6 pl-8 shadow-sm md:flex-col md:gap-4 md:pl-6 md:text-center"
+          whileHover={{ scale: 1.03 }}
+          transition={{ duration: 0.2, ease: easeOut }}
+        >
+          <FontAwesomeIcon
+            icon={faAppleWhole}
+            size="3x"
+            className="text-[#c3583e]"
+          />
+          <div>
+            <h3 className="mb-2 text-lg font-semibold">
+              Expert Nutrition Just For You
+            </h3>
+            <p className="text-sm">
+              Personalized meal plans healthy and easy recipes to fuel your
+              workouts
+            </p>
+          </div>
+        </motion.div>
 
         {/* third card. Expert Advice */}
-        <div className="rounded-lg border p-6">
-          <h3 className="mb-2 text-lg font-semibold">
-            Expert Advice From Certified Pros
-          </h3>
-          <p className="text-sm">
-            Learn from certified trainers and nutritionists with professional
-            advices
-          </p>
-        </div>
+        <motion.div
+          className="flex flex-row items-center gap-7 rounded-lg border border-[#d0c5b6] bg-[#f5f0e7] p-6 pl-8 shadow-sm md:flex-col md:gap-4 md:pl-6 md:text-center"
+          whileHover={{ scale: 1.03 }}
+          transition={{ duration: 0.2, ease: easeOut }}
+        >
+          <FontAwesomeIcon
+            icon={faCertificate}
+            size="3x"
+            className="text-[#c3583e]"
+          />
+          <div>
+            <h3 className="mb-2 text-lg font-semibold">
+              Expert Advice From Certified Pros
+            </h3>
+            <p className="text-sm">
+              Learn from certified trainers and nutritionists with professional
+              advices
+            </p>
+          </div>
+        </motion.div>
       </div>
     </section>
   );
