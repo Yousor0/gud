@@ -5,12 +5,7 @@ export const videos = [
     thumbnailUrl: '/public/default-thumbnail.png',
     views: 1300,
     userId: 'user_123',
-    tags: [
-      'calisthenics',
-      'arms',
-      'core',
-      'strength'
-    ],
+    tags: ['calisthenics', 'arms', 'core', 'strength'],
     level: 'beginner',
   },
   {
@@ -19,12 +14,7 @@ export const videos = [
     thumbnailUrl: '/thumbs/2.jpg',
     views: 2450,
     userId: 'user_456',
-    tags: [
-      'legs',
-      'strength',
-      'squats',
-      'bodyweight'
-    ],
+    tags: ['legs', 'strength', 'squats', 'bodyweight'],
     level: 'intermediate',
   },
   {
@@ -33,10 +23,7 @@ export const videos = [
     thumbnailUrl: '/thumbs/3.jpg',
     views: 980,
     userId: 'user_789',
-    tags: [
-      'endurance',
-      'core'
-    ],
+    tags: ['endurance', 'core'],
     level: 'intermediate',
   },
   {
@@ -45,11 +32,7 @@ export const videos = [
     thumbnailUrl: '/thumbs/4.jpg',
     views: 3120,
     userId: 'user_123',
-    tags: [
-      'full body',
-      'legs',
-      'arms'
-    ],
+    tags: ['full body', 'legs', 'arms'],
     level: 'beginner',
   },
   {
@@ -66,7 +49,7 @@ export const videos = [
       'core',
       'legs',
       'glutes',
-      'arms'
+      'arms',
     ],
     level: 'intermediate',
   },
@@ -76,14 +59,7 @@ export const videos = [
     thumbnailUrl: '/thumbs/6.jpg',
     views: 4890,
     userId: 'user_789',
-    tags: [
-      'burpees',
-      'full body',
-      'legs',
-      'arms',
-      'abs',
-      'core'
-    ],
+    tags: ['burpees', 'full body', 'legs', 'arms', 'abs', 'core'],
     level: 'intermediate',
   },
   {
@@ -92,11 +68,7 @@ export const videos = [
     thumbnailUrl: '/thumbs/7.jpg',
     views: 2100,
     userId: 'user_123',
-    tags: [
-      'legs',
-      'lunges',
-      'knees'
-    ],
+    tags: ['legs', 'lunges', 'knees'],
     level: 'beginner',
   },
   {
@@ -105,12 +77,7 @@ export const videos = [
     thumbnailUrl: '/thumbs/8.jpg',
     views: 1580,
     userId: 'user_456',
-    tags: [
-      'knees',
-      'legs',
-      'core',
-      'strength'
-    ],
+    tags: ['knees', 'legs', 'core', 'strength'],
     level: 'intermediate',
   },
   {
@@ -119,12 +86,7 @@ export const videos = [
     thumbnailUrl: '/thumbs/9.jpg',
     views: 1340,
     userId: 'user_789',
-    tags: [
-      'workout',
-      'endurance',
-      'core',
-      'abs'
-    ],
+    tags: ['workout', 'endurance', 'core', 'abs'],
     level: 'beginner',
   },
   {
@@ -133,13 +95,7 @@ export const videos = [
     thumbnailUrl: '/thumbs/10.jpg',
     views: 920,
     userId: 'user_123',
-    tags: [
-      'endurance',
-      'legs',
-      'isometric',
-      'strength',
-      'knees'
-    ],
+    tags: ['endurance', 'legs', 'isometric', 'strength', 'knees'],
     level: 'beginner',
   },
   {
@@ -148,13 +104,7 @@ export const videos = [
     thumbnailUrl: '/thumbs/11.jpg',
     views: 1680,
     userId: 'user_456',
-    tags: [
-      'glutes',
-      'bridges',
-      'core',
-      'strength',
-      'yoga'
-    ],
+    tags: ['glutes', 'bridges', 'core', 'strength', 'yoga'],
     level: 'beginner',
   },
   {
@@ -163,12 +113,7 @@ export const videos = [
     thumbnailUrl: '/thumbs/12.jpg',
     views: 2550,
     userId: 'user_789',
-    tags: [
-      'crunches',
-      'bodyweight',
-      'legs',
-      'core'
-    ],
+    tags: ['crunches', 'bodyweight', 'legs', 'core'],
     level: 'intermediate',
   },
   {
@@ -184,7 +129,7 @@ export const videos = [
       'strength',
       'upper body',
       'arms',
-      'core'
+      'core',
     ],
     level: 'intermediate',
   },
@@ -202,7 +147,7 @@ export const videos = [
       'arms',
       'legs',
       'isometric',
-      'posture'
+      'posture',
     ],
     level: 'advanced',
   },
@@ -212,11 +157,7 @@ export const videos = [
     thumbnailUrl: '/thumbs/15.jpg',
     views: 1995,
     userId: 'user_789',
-    tags: [
-      'twists',
-      'core',
-      'strength'
-    ],
+    tags: ['twists', 'core', 'strength'],
     level: 'beginner',
   },
   {
@@ -225,13 +166,7 @@ export const videos = [
     thumbnailUrl: '/thumbs/16.jpg',
     views: 1225,
     userId: '1',
-    tags: [
-      'yoga',
-      'stretch',
-      'flexibility',
-      'sophia',
-      'alvarez'
-    ],
+    tags: ['yoga', 'stretch', 'flexibility', 'sophia', 'alvarez'],
     level: 'beginner',
   },
   {
@@ -240,14 +175,7 @@ export const videos = [
     thumbnailUrl: '/thumbs/17.jpg',
     views: 0,
     userId: '1',
-    tags: [
-      'yoga',
-      'stretch',
-      'flexibility',
-      'strength',
-      'sophia',
-      'alvarez'
-    ],
+    tags: ['yoga', 'stretch', 'flexibility', 'strength', 'sophia', 'alvarez'],
     level: 'beginner',
   },
   {
@@ -256,14 +184,7 @@ export const videos = [
     thumbnailUrl: '/thumbs/18.jpg',
     views: 0,
     userId: '1',
-    tags: [
-      'yoga',
-      'stretch',
-      'flexibility',
-      'full body',
-      'sophia',
-      'alvarez'
-    ],
+    tags: ['yoga', 'stretch', 'flexibility', 'full body', 'sophia', 'alvarez'],
     level: 'beginner',
   },
   {
@@ -272,11 +193,7 @@ export const videos = [
     thumbnailUrl: '/thumbs/19.jpg',
     views: 0,
     userId: '2',
-    tags: [
-      'cardio',
-      'jordan',
-      'lee'
-    ],
+    tags: ['cardio', 'jordan', 'lee'],
     level: 'beginner',
   },
   {
@@ -285,13 +202,7 @@ export const videos = [
     thumbnailUrl: '/thumbs/20.jpg',
     views: 0,
     userId: '2',
-    tags: [
-      'cardio',
-      'full body',
-      'workout',
-      'jordan',
-      'lee'
-    ],
+    tags: ['cardio', 'full body', 'workout', 'jordan', 'lee'],
     level: 'advanced',
   },
   {
@@ -300,12 +211,7 @@ export const videos = [
     thumbnailUrl: '/thumbs/21.jpg',
     views: 0,
     userId: '2',
-    tags: [
-      'hiit',
-      'cardio',
-      'jordan',
-      'lee'
-    ],
+    tags: ['hiit', 'cardio', 'jordan', 'lee'],
     level: 'beginner',
   },
   {
@@ -314,11 +220,7 @@ export const videos = [
     thumbnailUrl: '/thumbs/22.jpg',
     views: 0,
     userId: '3',
-    tags: [
-      'full body',
-      'cardio',
-      'thompson'
-    ],
+    tags: ['full body', 'cardio', 'thompson'],
     level: 'advanced',
   },
   {
@@ -327,11 +229,7 @@ export const videos = [
     thumbnailUrl: '/thumbs/23.jpg',
     views: 0,
     userId: '3',
-    tags: [
-      'hiit',
-      'cardio',
-      'thompson'
-    ],
+    tags: ['hiit', 'cardio', 'thompson'],
     level: 'intermediate',
   },
   {
@@ -340,12 +238,7 @@ export const videos = [
     thumbnailUrl: '/thumbs/24.jpg',
     views: 0,
     userId: '3',
-    tags: [
-      'workout',
-      'arms',
-      'abs',
-      'thompson'
-    ],
+    tags: ['workout', 'arms', 'abs', 'thompson'],
     level: 'advanced',
   },
   {
@@ -354,13 +247,7 @@ export const videos = [
     thumbnailUrl: '/thumbs/25.jpg',
     views: 0,
     userId: '4',
-    tags: [
-      'band',
-      'beginner',
-      'workout',
-      'noah',
-      'williams'
-    ],
+    tags: ['band', 'beginner', 'workout', 'noah', 'williams'],
     level: 'beginner',
   },
   {
@@ -369,13 +256,7 @@ export const videos = [
     thumbnailUrl: '/thumbs/26.jpg',
     views: 0,
     userId: '4',
-    tags: [
-      'burn',
-      'fat',
-      'cardio',
-      'noah',
-      'williams'
-    ],
+    tags: ['burn', 'fat', 'cardio', 'noah', 'williams'],
     level: 'intermediate',
   },
   {
@@ -384,12 +265,7 @@ export const videos = [
     thumbnailUrl: '/thumbs/27.jpg',
     views: 0,
     userId: '4',
-    tags: [
-      'lower body',
-      'strength',
-      'noah',
-      'williams'
-    ],
+    tags: ['lower body', 'strength', 'noah', 'williams'],
     level: 'intermediate',
   },
   // {

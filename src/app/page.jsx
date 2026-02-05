@@ -3,29 +3,31 @@ import { Cardo } from 'next/font/google';
 import { useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
+import Button from '../components/ui/Button';
 
 // first real section of landing page. the name of this can be changed as needed.
 function LandingWelcome() {
   return (
-    <section className="px-6 py-16">
+    <section>
       <div className="grid grid-cols-1 items-center gap-10 md:grid-cols-2">
         <div className="flex justify-center">
-          <Image src="/landing01.png" alt="Welcome illustration" width={800} height={400} />
+          <Image
+            src="/landing01.png"
+            alt="Welcome illustration"
+            width={800}
+            height={400}
+          />
         </div>
         <div className="flex flex-col gap-5">
-          <h1 className="page-title">
-            Get a GÜD start on your wellness journey
+          <h1 className="page-title text-center sm:text-left">
+            Get a GÜD start on your wellness journey!
           </h1>
-          <p className="body-primary">
-            At-home workouts and nutritional guidance tailored to you
+          <p className="body-primary text-center sm:text-left">
+            At home workouts and nutritional guidance tailored to you
           </p>
-          <div className="flex gap-4">
-            <Link href="/register" className="rounded-lg border px-4 py-2">
-              Start you plan
-            </Link>
-            <Link href="/learnmore" className="rounded-lg border px-4 py-2">
-              Learn more
-            </Link>
+          <div className="flex justify-center gap-5 sm:justify-start">
+            <Button href="/register" text="Start you plan" />
+            <Button href="/learnmore" text="Learn more" variant="border" />
           </div>
         </div>
       </div>
@@ -36,7 +38,7 @@ function LandingWelcome() {
 // three informational cards
 function InfoCards() {
   return (
-    <section className="px-6 py-16">
+    <section>
       <div className="grid grid-cols-1 gap-8 md:grid-cols-3">
         {/* first card. effective workouts at home */}
         <div className="rounded-lg border p-6">
@@ -77,16 +79,16 @@ function InfoCards() {
 // About GUD section
 function AboutGud() {
   return (
-    <section className="px-6 py-16">
+    <section>
       <div className="grid grid-cols-1 items-center gap-10 md:grid-cols-2">
-        <div>
-          <h2 className="mb-4 text-xl font-semibold">About GÜD</h2>
-          <p className="mb-4 text-base">
+        <div className="flex flex-col gap-4 text-center sm:text-left">
+          <h2 className="text-xl font-semibold">About GÜD</h2>
+          <p className="text-base">
             GÜD is a wellness platform designed to help you build healthy habits
             from home. We offer effective at-home workouts, practical nutrition
             guidance, and expert advice tailored to your needs.
           </p>
-          <p className="mb-4 text-base">
+          <p className="text-base">
             All content is created by certified professionals, making it easy to
             follow workouts, learn how to fuel your body, and stay consistent on
             your own schedule.
@@ -110,7 +112,7 @@ function FaqSection() {
   const [openIndex, setOpenIndex] = useState(null);
 
   return (
-    <section className="px-6 py-16">
+    <section>
       <h2 className="mb-8 text-xl font-semibold">Frequently Asked Questions</h2>
       {/* first faq question */}
       <div className="border-b py-4">
@@ -229,7 +231,7 @@ function FaqSection() {
 
 export default function landingPage() {
   return (
-    <main className="bg-primary">
+    <main className="mx-auto flex w-auto max-w-7xl flex-col gap-10 px-5">
       <LandingWelcome />
       <InfoCards />
       <AboutGud />

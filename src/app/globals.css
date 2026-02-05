@@ -15,6 +15,10 @@
   --text-accent: #444444; /* Secondary text, Metadata, Footer text */
 }
 
+/* * {
+  border: #000 1px solid;
+} */
+
 body {
   background: var(--bg-primary);
   font-family: 'Poppins', sans-serif;

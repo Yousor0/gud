@@ -7,10 +7,12 @@ export default function Button({
   href = '#',
 }) {
   const defaultStyles = {
-    primary: 'bg-[#9D4431] text-[#FAF7F3] hover:bg-[#D07A64] ',
-    secondary: 'bg-[#C3583E] text-[#FAF7F3] hover:bg-[#D07A64] ',
+    primary:
+      'bg-[#9D4431] text-[#FAF7F3] hover:bg-[#D07A64] font-semibold shadow-sm ',
+    secondary:
+      'bg-[#C3583E] text-[#FAF7F3] hover:bg-[#D07A64] font-semibold shadow-sm ',
     border:
-      'text-[#9D4431] border border-[#9D4431] hover:bg-[#9D4431] hover:text-[#FAF7F3] ',
+      'text-[#9D4431] border border-[#9D4431] hover:bg-[#9D4431] hover:text-[#FAF7F3] font-medium',
   };
 
   // Use the styles from defaultStyles based on the variant
@@ -19,7 +21,7 @@ export default function Button({
   return (
     <Link
       href={href.startsWith('/') ? href : `/${href}`}
-      className={`${variantStyles} ${className} rounded-md px-5 py-2 font-semibold shadow-sm duration-150`}
+      className={`${variantStyles} ${className} rounded-md px-5 py-2 duration-150`}
     >
       {text}
     </Link>
