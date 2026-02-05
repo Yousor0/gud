@@ -9,12 +9,9 @@ function LandingWelcome() {
   return (
     <section className="px-6 py-16">
       <div className="grid grid-cols-1 items-center gap-10 md:grid-cols-2">
-        {/* image that's going to the left of the text in the top section of landing page*/}
         <div className="flex justify-center">
-          {/*don't forget tp add image path when you figure out what image is going here*/}
-          <Image src="" alt="Welcome illustration" width={400} height={400} />
+          <Image src="/landing01.png" alt="Welcome illustration" width={800} height={400} />
         </div>
-        {/* text and buttons going to the right side of the image on the left */}
         <div className="flex flex-col gap-5">
           <h1 className="page-title">
             Get a GÜD start on your wellness journey
@@ -82,15 +79,6 @@ function AboutGud() {
   return (
     <section className="px-6 py-16">
       <div className="grid grid-cols-1 items-center gap-10 md:grid-cols-2">
-        {/* dont forget to add image path below */}
-        <div className="flex justify-center">
-          <Image
-            src=""
-            alt="About GÜD welcome image of woman in yoga pose"
-            width={400}
-            height={300}
-          />
-        </div>
         <div>
           <h2 className="mb-4 text-xl font-semibold">About GÜD</h2>
           <p className="mb-4 text-base">
@@ -103,6 +91,14 @@ function AboutGud() {
             follow workouts, learn how to fuel your body, and stay consistent on
             your own schedule.
           </p>
+        </div>
+        <div className="flex justify-center">
+          <Image
+            src="/landing02.png"
+            alt="About GÜD welcome image of woman in yoga pose"
+            width={800}
+            height={400}
+          />
         </div>
       </div>
     </section>
