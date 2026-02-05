@@ -1,252 +1,11 @@
 export const videos = [
   {
-    id: 'video_1',
-    title: 'Push Ups',
-    thumbnailUrl: '/default-thumbnail.png',
-    views: 1300,
-    userId: 'user_123',
-    tags: [
-      'calisthenics',
-      'arms',
-      'core',
-      'strength'
-    ],
-    type: 'Fitness',
-    level: 'beginner',
-  },
-  {
-    id: 'video_2',
-    title: 'Bodyweight Squats',
-    thumbnailUrl: '/default-thumbnail.png',
-    views: 2450,
-    userId: 'user_456',
-    tags: [
-      'legs',
-      'strength',
-      'squats',
-      'bodyweight'
-    ],
-    type: 'Fitness',
-    level: 'intermediate',
-  },
-  {
-    id: 'video_3',
-    title: 'Plank Hold',
-    thumbnailUrl: '/default-thumbnail.png',
-    views: 980,
-    userId: 'user_789',
-    tags: [
-      'endurance',
-      'core'
-    ],
-    type: 'Fitness',
-    level: 'intermediate',
-  },
-  {
-    id: 'video_4',
-    title: 'Jumping Jacks',
-    thumbnailUrl: '/default-thumbnail.png',
-    views: 3120,
-    userId: 'user_123',
-    tags: [
-      'full body',
-      'legs',
-      'arms'
-    ],
-    type: 'Fitness',
-    level: 'beginner',
-  },
-  {
-    id: 'video_5',
-    title: 'Mountain Climbers',
-    thumbnailUrl: '/default-thumbnail.png',
-    views: 1765,
-    userId: 'user_456',
-    tags: [
-      'cardio',
-      'full body',
-      'strength',
-      'endurance',
-      'core',
-      'legs',
-      'glutes',
-      'arms',
-    ],
-    type: 'Fitness',
-    level: 'intermediate',
-  },
-  {
-    id: 'video_6',
-    title: 'Burpees',
-    thumbnailUrl: '/default-thumbnail.png',
-    views: 4890,
-    userId: 'user_789',
-    tags: [
-      'burpees',
-      'full body',
-      'legs',
-      'arms',
-      'abs',
-      'core'
-    ],
-    type: 'Fitness',
-    level: 'intermediate',
-  },
-  {
-    id: 'video_7',
-    title: 'Lunges',
-    thumbnailUrl: '/default-thumbnail.png',
-    views: 2100,
-    userId: 'user_123',
-    tags: [
-      'legs',
-      'lunges',
-      'knees'
-    ],
-    type: 'Fitness',
-    level: 'beginner',
-  },
-  {
-    id: 'video_8',
-    title: 'High Knees',
-    thumbnailUrl: '/default-thumbnail.png',
-    views: 1580,
-    userId: 'user_456',
-    tags: [
-      'knees',
-      'legs',
-      'core',
-      'strength'
-    ],
-    type: 'Fitness',
-    level: 'intermediate',
-  },
-  {
-    id: 'video_9',
-    title: 'Sit Ups',
-    thumbnailUrl: '/default-thumbnail.png',
-    views: 1340,
-    userId: 'user_789',
-    tags: [
-      'workout',
-      'endurance',
-      'core',
-      'abs'
-    ],
-    type: 'Fitness',
-    level: 'beginner',
-  },
-  {
-    id: 'video_10',
-    title: 'Wall Sit',
-    thumbnailUrl: '/default-thumbnail.png',
-    views: 920,
-    userId: 'user_123',
-    tags: [
-      'endurance',
-      'legs',
-      'isometric',
-      'strength',
-      'knees'
-    ],
-    type: 'Fitness',
-    level: 'beginner',
-  },
-  {
-    id: 'video_11',
-    title: 'Glute Bridges',
-    thumbnailUrl: '/default-thumbnail.png',
-    views: 1680,
-    userId: 'user_456',
-    tags: [
-      'glutes',
-      'bridges',
-      'core',
-      'strength',
-      'yoga'
-    ],
-    type: 'Fitness',
-    level: 'beginner',
-  },
-  {
-    id: 'video_12',
-    title: 'Bicycle Crunches',
-    thumbnailUrl: '/default-thumbnail.png',
-    views: 2550,
-    userId: 'user_789',
-    tags: [
-      'crunches',
-      'bodyweight',
-      'legs',
-      'core'
-    ],
-    type: 'Fitness',
-    level: 'intermediate',
-  },
-  {
-    id: 'video_13',
-    title: 'Tricep Dips',
-    thumbnailUrl: '/default-thumbnail.png',
-    views: 1420,
-    userId: 'user_123',
-    tags: [
-      'tricep',
-      'triceps',
-      'dips',
-      'strength',
-      'upper body',
-      'arms',
-      'core',
-    ],
-    type: 'Fitness',
-    level: 'intermediate',
-  },
-  {
-    id: 'video_14',
-    title: 'Superman Hold',
-    thumbnailUrl: '/default-thumbnail.png',
-    views: 870,
-    userId: 'user_456',
-    tags: [
-      'hold',
-      'holds',
-      'strength',
-      'posterior',
-      'arms',
-      'legs',
-      'isometric',
-      'posture',
-    ],
-    type: 'Fitness',
-    level: 'advanced',
-  },
-  {
-    id: 'video_15',
-    title: 'Russian Twists',
-    thumbnailUrl: '/default-thumbnail.png',
-    views: 1995,
-    userId: 'user_789',
-    tags: [
-      'twists',
-      'core',
-      'strength'
-    ],
-    type: 'Fitness',
-    level: 'beginner',
-  },
-  {
     id: 'video_16',
     title: 'Bedtime Yoga',
     thumbnailUrl: '/videoThumbnails/bedtimeYoga.jpg',
     views: 1225,
     userId: '1',
-    tags: [
-      'yoga',
-      'stretch',
-      'flexibility',
-      'sophia',
-      'alvarez'
-    ],
+    tags: ['yoga', 'stretch', 'flexibility', 'sophia', 'alvarez'],
     type: 'Fitness',
     level: 'beginner',
   },
@@ -256,14 +15,7 @@ export const videos = [
     thumbnailUrl: '/videoThumbnails/stretchStrengthenYogaFlow.jpg',
     views: 0,
     userId: '1',
-    tags: [
-      'yoga',
-      'stretch',
-      'flexibility',
-      'strength',
-      'sophia',
-      'alvarez'
-    ],
+    tags: ['yoga', 'stretch', 'flexibility', 'strength', 'sophia', 'alvarez'],
     type: 'Fitness',
     level: 'beginner',
   },
@@ -273,14 +25,7 @@ export const videos = [
     thumbnailUrl: '/videoThumbnails/fullBodyStretch.jpg',
     views: 0,
     userId: '1',
-    tags: [
-      'yoga',
-      'stretch',
-      'flexibility',
-      'full body',
-      'sophia',
-      'alvarez'
-    ],
+    tags: ['yoga', 'stretch', 'flexibility', 'full body', 'sophia', 'alvarez'],
     type: 'Fitness',
     level: 'beginner',
   },
@@ -290,11 +35,7 @@ export const videos = [
     thumbnailUrl: '/videoThumbnails/cardio.jpg',
     views: 0,
     userId: '2',
-    tags: [
-      'cardio',
-      'jordan',
-      'lee'
-    ],
+    tags: ['cardio', 'jordan', 'lee'],
     type: 'Fitness',
     level: 'beginner',
   },
@@ -304,13 +45,7 @@ export const videos = [
     thumbnailUrl: '/videoThumbnails/fullBodyWorkout.png',
     views: 0,
     userId: '2',
-    tags: [
-      'cardio',
-      'full body',
-      'workout',
-      'jordan',
-      'lee'
-    ],
+    tags: ['cardio', 'full body', 'workout', 'jordan', 'lee'],
     type: 'Fitness',
     level: 'advanced',
   },
@@ -320,12 +55,7 @@ export const videos = [
     thumbnailUrl: '/videoThumbnails/hiitCardioJordan.png',
     views: 0,
     userId: '2',
-    tags: [
-      'hiit',
-      'cardio',
-      'jordan',
-      'lee'
-    ],
+    tags: ['hiit', 'cardio', 'jordan', 'lee'],
     type: 'Fitness',
     level: 'beginner',
   },
@@ -335,11 +65,7 @@ export const videos = [
     thumbnailUrl: '/videoThumbnails/fullBodyCardio.jpg',
     views: 0,
     userId: '3',
-    tags: [
-      'full body',
-      'cardio',
-      'thompson'
-    ],
+    tags: ['full body', 'cardio', 'thompson'],
     type: 'Fitness',
     level: 'advanced',
   },
@@ -349,11 +75,7 @@ export const videos = [
     thumbnailUrl: '/videoThumbnails/hiitCardio.jpg',
     views: 0,
     userId: '3',
-    tags: [
-      'hiit',
-      'cardio',
-      'thompson'
-    ],
+    tags: ['hiit', 'cardio', 'thompson'],
     type: 'Fitness',
     level: 'intermediate',
   },
@@ -363,12 +85,7 @@ export const videos = [
     thumbnailUrl: '/videoThumbnails/arms&AbsWorkout.png',
     views: 0,
     userId: '3',
-    tags: [
-      'workout',
-      'arms',
-      'abs',
-      'thompson'
-    ],
+    tags: ['workout', 'arms', 'abs', 'thompson'],
     type: 'Fitness',
     level: 'advanced',
   },
@@ -378,13 +95,7 @@ export const videos = [
     thumbnailUrl: '/videoThumbnails/beginnerBandWorkout.jpg',
     views: 0,
     userId: '4',
-    tags: [
-      'band',
-      'beginner',
-      'workout',
-      'noah',
-      'williams'
-    ],
+    tags: ['band', 'beginner', 'workout', 'noah', 'williams'],
     type: 'Fitness',
     level: 'beginner',
   },
@@ -394,13 +105,7 @@ export const videos = [
     thumbnailUrl: '/videoThumbnails/fatBurningCardio.jpg',
     views: 0,
     userId: '4',
-    tags: [
-      'burn',
-      'fat',
-      'cardio',
-      'noah',
-      'williams'
-    ],
+    tags: ['burn', 'fat', 'cardio', 'noah', 'williams'],
     type: 'Fitness',
     level: 'intermediate',
   },
@@ -410,12 +115,7 @@ export const videos = [
     thumbnailUrl: '/videoThumbnails/lowerBodyStrength.jpg',
     views: 0,
     userId: '4',
-    tags: [
-      'lower body',
-      'strength',
-      'noah',
-      'williams'
-    ],
+    tags: ['lower body', 'strength', 'noah', 'williams'],
     type: 'Fitness',
     level: 'intermediate',
   },
@@ -425,12 +125,7 @@ export const videos = [
     thumbnailUrl: '/videoThumbnails/3dayMealPlan.avif',
     views: 0,
     userId: '5',
-    tags: [
-      'nutrition',
-      'meal plan',
-      'emily',
-      'nguyen'
-    ],
+    tags: ['nutrition', 'meal plan', 'emily', 'nguyen'],
     type: 'Nutrition',
   },
   {
@@ -439,14 +134,7 @@ export const videos = [
     thumbnailUrl: '/videoThumbnails/mediterraneanDiet.avif',
     views: 0,
     userId: '5',
-    tags: [
-      'diet',
-      'nutrition',
-      'snacks',
-      'mediterranean',
-      'emily',
-      'nguyen'
-    ],
+    tags: ['diet', 'nutrition', 'snacks', 'mediterranean', 'emily', 'nguyen'],
     type: 'Nutrition',
   },
   {
@@ -455,13 +143,7 @@ export const videos = [
     thumbnailUrl: '/videoThumbnails/proteinMistakes.avif',
     views: 0,
     userId: '5',
-    tags: [
-      'protein',
-      'mistakes',
-      'nutrition',
-      'emily',
-      'nguyen'
-    ],
+    tags: ['protein', 'mistakes', 'nutrition', 'emily', 'nguyen'],
     type: 'Nutrition',
   },
   {
@@ -470,12 +152,7 @@ export const videos = [
     thumbnailUrl: '/videoThumbnails/losingMuscle.avif',
     views: 0,
     userId: '6',
-    tags: [
-      'nutrition',
-      'muscle',
-      'malik',
-      'robinson'
-    ],
+    tags: ['nutrition', 'muscle', 'malik', 'robinson'],
     type: 'Nutrition',
   },
   {
@@ -484,13 +161,7 @@ export const videos = [
     thumbnailUrl: '/videoThumbnails/eatHealthy.avif',
     views: 0,
     userId: '6',
-    tags: [
-      'eat',
-      'healthy',
-      'beginners',
-      'malik',
-      'robinson'
-    ],
+    tags: ['eat', 'healthy', 'beginners', 'malik', 'robinson'],
     type: 'Nutrition',
   },
   {
@@ -499,14 +170,7 @@ export const videos = [
     thumbnailUrl: '/videoThumbnails/mostNutrientDenseFoods.avif',
     views: 0,
     userId: '6',
-    tags: [
-      'nutrient',
-      'dense',
-      'foods',
-      'nutrition',
-      'malik',
-      'robinson'
-    ],
+    tags: ['nutrient', 'dense', 'foods', 'nutrition', 'malik', 'robinson'],
     type: 'Nutrition',
   },
   {
@@ -515,13 +179,7 @@ export const videos = [
     thumbnailUrl: '/videoThumbnails/olive.avif',
     views: 0,
     userId: '7',
-    tags: [
-      'olive',
-      'oil',
-      'nutrition',
-      'paul',
-      'silva'
-    ],
+    tags: ['olive', 'oil', 'nutrition', 'paul', 'silva'],
     type: 'Nutrition',
   },
   {
@@ -530,14 +188,7 @@ export const videos = [
     thumbnailUrl: '/videoThumbnails/mealPrepIn1Hour.jpg',
     views: 0,
     userId: '7',
-    tags: [
-      'meal',
-      'prep',
-      'hour',
-      'nutrition',
-      'paul',
-      'silva'
-    ],
+    tags: ['meal', 'prep', 'hour', 'nutrition', 'paul', 'silva'],
     type: 'Nutrition',
   },
   {
@@ -546,13 +197,7 @@ export const videos = [
     thumbnailUrl: '/videoThumbnails/honeyBenefit.jpg',
     views: 0,
     userId: '7',
-    tags: [
-      'honey',
-      'benefit',
-      'nutrition',
-      'paul',
-      'silva'
-    ],
+    tags: ['honey', 'benefit', 'nutrition', 'paul', 'silva'],
     type: 'Nutrition',
   },
   {
@@ -561,13 +206,7 @@ export const videos = [
     thumbnailUrl: '/videoThumbnails/edamame.avif',
     views: 0,
     userId: '8',
-    tags: [
-      'edamame',
-      'salad',
-      'nutrition',
-      'lena',
-      'brooks'
-    ],
+    tags: ['edamame', 'salad', 'nutrition', 'lena', 'brooks'],
     type: 'Nutrition',
   },
   {
@@ -576,14 +215,7 @@ export const videos = [
     thumbnailUrl: '/videoThumbnails/strawberryWellnessShots.avif',
     views: 0,
     userId: '8',
-    tags: [
-      'strawberry',
-      'drink',
-      'wellness',
-      'nutrition',
-      'lena',
-      'brooks'
-    ],
+    tags: ['strawberry', 'drink', 'wellness', 'nutrition', 'lena', 'brooks'],
     type: 'Nutrition',
   },
   {
@@ -592,14 +224,7 @@ export const videos = [
     thumbnailUrl: '/videoThumbnails/artificialSweeteners.avif',
     views: 0,
     userId: '8',
-    tags: [
-      'sweeteners',
-      'artificial',
-      'drink',
-      'nutrition',
-      'lena',
-      'brooks'
-    ],
+    tags: ['sweeteners', 'artificial', 'drink', 'nutrition', 'lena', 'brooks'],
     type: 'Nutrition',
   },
 ];

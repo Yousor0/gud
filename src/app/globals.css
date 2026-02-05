@@ -14,9 +14,9 @@
   --text-secondary: #222222; /* Primary body text, Headlines, Navigation Labels */
   --text-accent: #444444; /* Secondary text, Metadata, Footer text */
 }
-/* * {
-  border: #000 1px solid;
-} */
+* {
+  line-height: 1.5;
+}
 
 body {
   background: var(--bg-primary);
@@ -28,12 +28,13 @@ footer {
 }
 
 .page-title {
-  font-size: 30px;
+  font-size: 50px;
   font-weight: 700;
+  line-height: 0.9;
 }
 
 .section-title {
-  font-size: 20px;
+  font-size: 30px;
   font-weight: 600;
 }
 

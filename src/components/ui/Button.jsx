@@ -1,3 +1,5 @@
+'use client';
+
 import Link from 'next/link';
 import { motion } from 'motion/react';
 
@@ -20,7 +22,10 @@ export default function Button({
   const variantStyles = defaultStyles[variant] || defaultStyles.primary;
 
   return (
-    <motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.99 }}>
+    <motion.div
+      whileHover={{ scale: 1.02, rotate: 2 }}
+      whileTap={{ scale: 0.99, rotate: -1 }}
+    >
       <Link
         href={href.startsWith('/') ? href : `/${href}`}
         className={`${variantStyles} ${className} rounded-md px-5 py-2 duration-150`}
