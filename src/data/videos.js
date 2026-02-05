@@ -2,8 +2,7 @@ export const videos = [
   {
     id: 'video_1',
     title: 'Push Ups',
-    thumbnailUrl: '/default-thumbnail.png',
-    views: 1300,
+    thumbnailUrl: '/videoThumbnails/pushUps.jpg',
     userId: 'user_123',
     tags: [
       'calisthenics',
@@ -17,7 +16,7 @@ export const videos = [
   {
     id: 'video_2',
     title: 'Bodyweight Squats',
-    thumbnailUrl: '/default-thumbnail.png',
+    thumbnailUrl: '/videoThumbnails/bodyweightSquats.jpg',
     views: 2450,
     userId: 'user_456',
     tags: [
@@ -32,7 +31,7 @@ export const videos = [
   {
     id: 'video_3',
     title: 'Plank Hold',
-    thumbnailUrl: '/default-thumbnail.png',
+    thumbnailUrl: '/videoThumbnails/plankHold.jpg',
     views: 980,
     userId: 'user_789',
     tags: [
@@ -45,7 +44,7 @@ export const videos = [
   {
     id: 'video_4',
     title: 'Jumping Jacks',
-    thumbnailUrl: '/default-thumbnail.png',
+    thumbnailUrl: '/videoThumbnails/jumpingJacks.jpg',
     views: 3120,
     userId: 'user_123',
     tags: [
@@ -59,7 +58,7 @@ export const videos = [
   {
     id: 'video_5',
     title: 'Mountain Climbers',
-    thumbnailUrl: '/default-thumbnail.png',
+    thumbnailUrl: '/videoThumbnails/mountainClimbers.jpg',
     views: 1765,
     userId: 'user_456',
     tags: [
@@ -78,7 +77,7 @@ export const videos = [
   {
     id: 'video_6',
     title: 'Burpees',
-    thumbnailUrl: '/default-thumbnail.png',
+    thumbnailUrl: '/videoThumbnails/burpees.jpg',
     views: 4890,
     userId: 'user_789',
     tags: [
@@ -95,7 +94,7 @@ export const videos = [
   {
     id: 'video_7',
     title: 'Lunges',
-    thumbnailUrl: '/default-thumbnail.png',
+    thumbnailUrl: '/videoThumbnails/lunges.jpg',
     views: 2100,
     userId: 'user_123',
     tags: [
@@ -109,7 +108,7 @@ export const videos = [
   {
     id: 'video_8',
     title: 'High Knees',
-    thumbnailUrl: '/default-thumbnail.png',
+    thumbnailUrl: '/videoThumbnails/highKnees.jpg',
     views: 1580,
     userId: 'user_456',
     tags: [
@@ -124,7 +123,7 @@ export const videos = [
   {
     id: 'video_9',
     title: 'Sit Ups',
-    thumbnailUrl: '/default-thumbnail.png',
+    thumbnailUrl: '/videoThumbnails/sitUps.jpg',
     views: 1340,
     userId: 'user_789',
     tags: [
@@ -139,7 +138,7 @@ export const videos = [
   {
     id: 'video_10',
     title: 'Wall Sit',
-    thumbnailUrl: '/default-thumbnail.png',
+    thumbnailUrl: '/videoThumbnails/wallSit.jpg',
     views: 920,
     userId: 'user_123',
     tags: [
@@ -155,7 +154,7 @@ export const videos = [
   {
     id: 'video_11',
     title: 'Glute Bridges',
-    thumbnailUrl: '/default-thumbnail.png',
+    thumbnailUrl: '/videoThumbnails/gluteBridges.jpg',
     views: 1680,
     userId: 'user_456',
     tags: [
@@ -171,7 +170,7 @@ export const videos = [
   {
     id: 'video_12',
     title: 'Bicycle Crunches',
-    thumbnailUrl: '/default-thumbnail.png',
+    thumbnailUrl: '/videoThumbnails/bicycleCrunches.jpg',
     views: 2550,
     userId: 'user_789',
     tags: [
@@ -186,7 +185,7 @@ export const videos = [
   {
     id: 'video_13',
     title: 'Tricep Dips',
-    thumbnailUrl: '/default-thumbnail.png',
+    thumbnailUrl: '/videoThumbnails/tricepDips.jpg',
     views: 1420,
     userId: 'user_123',
     tags: [
@@ -204,7 +203,7 @@ export const videos = [
   {
     id: 'video_14',
     title: 'Superman Hold',
-    thumbnailUrl: '/default-thumbnail.png',
+    thumbnailUrl: '/videoThumbnails/supermanHold.jpg',
     views: 870,
     userId: 'user_456',
     tags: [
@@ -223,7 +222,7 @@ export const videos = [
   {
     id: 'video_15',
     title: 'Russian Twists',
-    thumbnailUrl: '/default-thumbnail.png',
+    thumbnailUrl: '/videoThumbnails/russianTwists.jpg',
     views: 1995,
     userId: 'user_789',
     tags: [

@@ -39,14 +39,6 @@ export default function VideoCard({ video }) {
             <Link className="text-sm text-gray-500" href={`/user/${user?.id}`}>
               {user.name.firstName + ' ' + user.name.lastName || 'Unknown User'}
             </Link>
-            <div className="flex flex-col">
-              {/* Text Information */}
-              <h2 className="font-semibold">{video.title}</h2>
-              <Link className="text-sm text-gray-500" href={`user/${user?.id}`}>
-                {user.name.firstName + ' ' + user.name.lastName ||
-                  'Unknown User'}
-              </Link>
-            </div>
           </div>
         </div>
       </Link>

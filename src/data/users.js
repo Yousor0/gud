@@ -234,10 +234,10 @@ export const users = [
       lastName: 'Queen',
     },
     specialty: [
-      'title',
-      'specialty1',
-      'specialty2',
-      'specialty3',
+      'Fitness Enthusiast',
+      'Cardio',
+      'Strength Training',
+      'Endurance Building',
     ],
     // fitness? or nutrition?
     type: 'Fitness',
@@ -246,7 +246,7 @@ export const users = [
       description:
         'Achieve your fitness goals with a custom workout plan tailored to your needs and goals',
       email: 'fitqueen@email.com',
-      avatarUrl: '',
+      avatarUrl: '/profileAvatars/fitQueen.jpg',
       bio: 'Fitness Enthusiast | Cardio & Strength Trainer',
       createdAt: '2025-11-15T09:30:00Z',
     },
@@ -259,19 +259,19 @@ export const users = [
       lastName: '',
     },
     specialty: [
-      'title',
-      'specialty1',
-      'specialty2',
-      'specialty3',
+      'Certified Personal Trainer',
+      'Home Workouts',
+      'Stamina Training',
+      'Pace Setting',
     ],
     // fitness? or nutrition?
-    type: 'Nutrition',
+    type: 'Fitness',
     about: {
       header: 'Get a personalized nutrition plan',
       description:
-        'Achieve your fitness goals with a custom nutrition plan tailored to your needs and goals',
+        'Achieve your fitness goals with a custom workout plan tailored to your needs and goals',
       email: 'workoutpro@email.com',
-      avatarUrl: '',
+      avatarUrl: '/profileAvatars/workoutPro.jpg',
       bio: 'Certified Personal Trainer | Home & Gym Workouts',
       createdAt: '2024-08-22T16:45:00Z',
     },

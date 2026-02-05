@@ -2,18 +2,35 @@
 @import 'tailwindcss';
 
 @theme {
-  --brand-primary: #9d4431; /* Primary Buttons, Active Nav states, Links */
+  --brand-primary: #9d4431;
+  /* Primary Buttons, Active Nav states, Links */
   --brand-primary-hover: #d07a64;
   --brand-secondary: #c3583e;
 
-  --bg-primary: #faf7f3; /* Main Page Bg */
-  --bg-secondary: #f5f0e7; /* Alternate section backgrounds , Cards, Suble Layout Seperation */
-  --bg-accent: #d0c5b6; /* Borders, Dividers, Inactive UI states, Background for non-text-heavy components */
+  --bg-primary: #faf7f3;
+  /* Main Page Bg */
+  --bg-secondary: #f5f0e7;
+  /* Alternate section backgrounds , Cards, Suble Layout Seperation */
+  --bg-accent: #d0c5b6;
+  /* Borders, Dividers, Inactive UI states, Background for non-text-heavy components */
 
-  --text-primary: #000000; /* Heading, Logos, Icons */
-  --text-secondary: #222222; /* Primary body text, Headlines, Navigation Labels */
-  --text-accent: #444444; /* Secondary text, Metadata, Footer text */
+  --text-primary: #000000;
+  /* Heading, Logos, Icons */
+  --text-secondary: #222222;
+  /* Primary body text, Headlines, Navigation Labels */
+  --text-accent: #444444;
+  /* Secondary text, Metadata, Footer text */
+
+  --color-blueOne: #78A0BA;
+  --color-blueTwo: #9AB9CB;
+
+  --color-greenOne: #556734;
+  --color-greenTwo: #8A9474;
+
+  --color-beige: #F5F0E7;
+
 }
+
 /* * {
   border: #000 1px solid;
 } */
@@ -65,4 +82,20 @@ footer {
 .label {
   font-size: 12px;
   font-weight: 500;
+}
+
+.fitnessButton {
+  background-color: #466273;
+  color: #F5F0E7;
+  border-radius: 4px;
+  padding: 6px;
+  padding-inline: 20px;
+}
+
+.nutritionButton {
+  background-color: #566835;
+  color: #F5F0E7;
+  border-radius: 4px;
+  padding: 6px;
+  padding-inline: 20px;
 }
