@@ -1,36 +1,41 @@
 import React from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 
 function LoginForm() {
   return (
-    <div>
+    <div className='flex flex-col justify-center max-w-md mx-auto w-full'>
       <h1 className='text-2xl font-bold mb-4'>
         Welcome back
       </h1>
       <p className='text-base mb-6'>
         Log back into your account
       </p>
-      <form>
+      <form className='space-y-4'>
         {/* email field */}
         <div>
-          <label htmlFor='email'>Email</label>
-          <input id='email' type='email' placeholder='capstone2026@dig4172C.com'/>
+          <label htmlFor='email' className='block mb-1'>Email</label>
+          <input id='email' type='email' className="w-full border border-gray-300 rounded-md px-3 py-2" placeholder='capstone2026@dig4172C.com'/>
         </div>
         {/* password field */}
         <div>
-          <label htmlFor='password'>Password</label>
-          <input id='password' type='password' placeholder='**********'/>
+          <label htmlFor='password' className='block mb-1'>Password</label>
+          <input id='password' className="w-full border border-gray-300 rounded-md px-3 py-2" type='password' placeholder='**********'/>
         </div>
-        {/* should I leave this as a BUTTON or should I change this to SUBMIT */}
-        <button type='button'>Log In</button>
+        {/* changed button to submit */}
+        <button type='submit' className='w-full mt-2 bg-[#9C4A2F] text-white py-2 rounded-md'>Log In</button>
       </form>
-      <div>
-        <span>or</span>
+      <div className="my-4 text-center text-sm text-gray-500">
+        or
       </div>
-      <button type='button'>Sign in with Google</button>
-      <p className='text-base mb-6'>
+      <button type='button'className='w-full border border-gray-300 py-2 rounded-md hover:bg-gray-50'>
+        Sign in with Google
+      </button>
+      <p className='text-base mt-6 text-center'>
         Don't have an account?{' '}
-        <Link href='/register'>Sign Up</Link>
+        <Link href='/register' className="underline font-medium">
+          Sign Up
+        </Link>
       </p>
     </div>
   )
@@ -39,7 +44,11 @@ function LoginForm() {
 function LoginGraphic() {
   return (
     <div>
-      {/* login graphic needs to be added here */}
+
+      <Image src="/login02.png"
+            alt="About GÜD welcome image of woman in yoga pose"
+            width={800}
+            height={400}/>
     </div>
   )
 }
@@ -47,7 +56,7 @@ function LoginGraphic() {
 function LoginSection() {
   return (
     <section className='px-6 py-16'>
-      <div className='grid grid-cols-1 md:grid-cols-2 gap-10 items-center'>
+      <div className='max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8 items-center'>
       <LoginForm/>
       <LoginGraphic/>
       </div>
