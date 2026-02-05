@@ -1,8 +1,8 @@
 import React from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-import noVideo from '../../../../../../public/default-thumbnail.png';
-import defaultAvatar from '../../../public/default-avatar.jpg';
+import noVideo from '../../../../public/default-thumbnail.png';
+import defaultAvatar from '../../../../public/default-avatar.jpg';
 
 export default function media({ params }) {
   return (
