@@ -1,6 +1,15 @@
+'use client';
 import React from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
+import Button from '../../../components/ui/Button';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import {
+  faDumbbell,
+  faAppleWhole,
+  faCertificate,
+} from '@fortawesome/free-solid-svg-icons';
+import { easeOut, motion } from 'motion/react';
 
 function LoginForm() {
   return (
@@ -32,21 +41,14 @@ function LoginForm() {
             placeholder="**********"
           />
         </div>
-        {/* changed button to submit */}
-        <button
-          type="submit"
-          className="mt-2 w-full rounded-md bg-[#9C4A2F] py-2 text-white"
-        >
-          Log In
-        </button>
+        <div className='w-full [&>div>a]:block [&>div>a]:w-full [&>div>a]:text-center'>
+          <Button href='/' text='Log In'/>
+          </div>
       </form>
       <div className="my-4 text-center text-sm text-gray-500">or</div>
-      <button
-        type="button"
-        className="w-full rounded-md border border-gray-300 py-2 hover:bg-gray-50"
-      >
-        Sign in with Google
-      </button>
+      <div className='w-full [&>div>a]:block [&>div>a]:w-full [&>div>a]:text-center'>
+        <Button href='/' text='Login with Google' variant='border'/>
+        </div>
       <p className="mt-6 text-center text-base">
         Don't have an account?{' '}
         <Link href="/register" className="font-medium underline">

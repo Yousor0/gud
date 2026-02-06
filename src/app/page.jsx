@@ -16,7 +16,7 @@ import { easeOut, motion } from 'motion/react';
 function LandingWelcome() {
   return (
     <section>
-      <div className="grid grid-cols-1 items-center gap-10 md:grid-cols-2">
+      <div className="grid grid-cols-1 items-center gap-10 py-10 md:grid-cols-2">
         <div className="flex justify-center">
           <Image
             src="/landing01.png"
@@ -34,7 +34,7 @@ function LandingWelcome() {
           </p>
           <div className="flex justify-center gap-5 sm:justify-start">
             <Button href="/register" text="Start you plan" />
-            <Button href="/learnmore" text="Learn more" variant="border" />
+            <Button href="/about" text="Learn more" variant="border" />
           </div>
         </div>
       </div>
@@ -103,7 +103,7 @@ function InfoCards() {
           />
           <div>
             <h3 className="mb-2 text-lg font-semibold">
-              Expert Advice From Certified Pros
+              Expert Advice From Certified Professionals
             </h3>
             <p className="text-sm">
               Learn from certified trainers and nutritionists with professional
