@@ -1,6 +1,6 @@
 import React from 'react';
 import Image from 'next/image';
-import PageHeader from '../../../components/PageHeader';
+import PageHeader from '../../../components/pageHeader';
 
 export default function AboutPage() {
   return (

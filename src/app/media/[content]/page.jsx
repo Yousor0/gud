@@ -19,6 +19,12 @@ export default async function media({ params }) {
   return (
     <div className="m-24 flex justify-center">
       <div style={{ width: '1280px', justifyContent: 'center' }}>
+        <div>
+          <h1 className="my-3 flex justify-start page-title">
+            {/* title of the video */}
+            {movie.title}
+          </h1>
+        </div>
         <div className="grid grid-cols-1">
           {/* the video thumbnail */}
           <Image
@@ -28,13 +34,7 @@ export default async function media({ params }) {
             alt={movie.title}
             className="rounded-sm"
           />
-          <div>
-            <h1 className="mt-5 flex justify-start text-2xl font-semibold">
-              {/* title of the video */}
-              {movie.title}
-            </h1>
-          </div>
-          <div className="grid grid-cols-2">
+          <div className="grid grid-cols-2 mt-5">
             <div className="flex">
               {/* Profile Picture */}
               <Link href={`/user/${movie.userId}`}>
@@ -46,12 +46,12 @@ export default async function media({ params }) {
                   }
                   // src={user?.avatarUrl || '/default-avatar.jpg'}
                   alt={user.username || 'User'}
-                  width={40}
-                  height={40}
+                  width={80}
+                  height={80}
                   className="rounded-full"
                 />
               </Link>
-              <div className="ml-3">
+              <div className="ml-3 mt-4">
                 <h1 className="flex justify-start font-normal">
                   {user.name.firstName} {user.name.lastName}
                 </h1>
@@ -60,8 +60,8 @@ export default async function media({ params }) {
                 </h2>
               </div>
             </div>
-            <div className="flex justify-end gap-4">
-              <Button href="#" text="Subsribe" />
+            <div className="flex justify-end gap-4 mt-4">
+              <Button href="#" text="Subsribe" className='flex item-center'/>
               <FontAwesomeIcon icon={faBell} size="2x" color="#9D4431" />
               <FontAwesomeIcon icon={faHeart} size="2x" color="#9D4431" />
             </div>

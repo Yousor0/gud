@@ -3,7 +3,7 @@ import Carasoul from '../../../components/VideoCarasoul';
 import ProfileCarasoul from '../../../components/ProfileCarasoul';
 import { videos } from '../../../data/videos';
 import { users } from '../../../data/users';
-import PageHeader from '../../../components/PageHeader';
+import PageHeader from '../../../components/pageHeader';
 import headerImage from '../../../../public/login02.png';
 
 export default function page() {
