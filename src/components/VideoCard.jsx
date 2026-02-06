@@ -18,7 +18,7 @@ export default function VideoCard({ video }) {
       } duration-150 hover:scale-103`}
     >
       <Link href={`/media/${video.id}`} className="block">
-        <div className="flex flex-col p-1">
+        <div className="flex flex-col gap-2 p-2">
           {/* Thumbnail Image */}
           <Image
             src={video.thumbnailUrl || '/default-thumbnail.png'}
@@ -29,7 +29,7 @@ export default function VideoCard({ video }) {
           />
 
           {/* Thumbnail Information Wrapper */}
-          <div className="flex items-center gap-3">
+          <div className="ml-3 flex items-center gap-3">
             {/* Profile Picture */}
 
             <Image
