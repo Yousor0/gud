@@ -6,9 +6,7 @@ import { users } from '../../../data/users.js';
 import Carasoul from '../../../components/VideoCarasoul';
 import { videos } from '../../../data/videos';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import {
-  faHeart,
-} from '@fortawesome/free-solid-svg-icons';
+import { faHeart } from '@fortawesome/free-solid-svg-icons';
 
 export default async function ProfessionalProfile({ params }) {
   const { userId } = await params;
@@ -21,18 +19,28 @@ export default async function ProfessionalProfile({ params }) {
 
   console.log(userId);
 
-  const profileVideos =  videos.filter(video => video.userId === profile.id);
+  const profileVideos = videos.filter((video) => video.userId === profile.id);
 
   return (
-    <div>
-      <div className={profile.type == 'Fitness' ? 'm-24 flex flex-col gap-24 bg-linear-to-t from-beige to-blueOne rounded-sm' : 'm-24 flex flex-col gap-24 bg-linear-to-t from-beige to-greenOne rounded-sm'}>
+    <div className="mx-auto flex w-auto max-w-7xl flex-col gap-10 px-5">
+      <div
+        className={
+          profile.type == 'Fitness'
+            ? 'from-beige to-blueOne mt-15 flex flex-col gap-24 rounded-sm bg-linear-to-t p-10'
+            : 'from-beige to-greenOne mt-15 flex flex-col gap-24 rounded-sm bg-linear-to-t p-10'
+        }
+      >
         {/* Profile Section */}
-        <div className="m-4 grid grid-cols-2 gap-20">
+        <div className="grid-row grid gap-20 md:grid-cols-2">
           {/* Left */}
           <div>
             <div className="flex justify-center">
               <Image
-                src={profile.about.avatarUrl == '' ? '/default-avatar.jpg' : profile.about.avatarUrl}
+                src={
+                  profile.about.avatarUrl == ''
+                    ? '/default-avatar.jpg'
+                    : profile.about.avatarUrl
+                }
                 width={220}
                 height={220}
                 alt="profile avatar"
@@ -48,22 +56,33 @@ export default async function ProfessionalProfile({ params }) {
             </div>
 
             <div className="mt-6 flex justify-center gap-5">
-              <button className={profile.type == 'Fitness' ? 'fitnessButton' : 'nutritionButton'}>
+              <button
+                className={
+                  profile.type == 'Fitness'
+                    ? 'fitnessButton'
+                    : 'nutritionButton'
+                }
+              >
                 {profile.type} Professional
               </button>
-              <FontAwesomeIcon
-                icon={faHeart}
-                size="2x"
-              />
+              <FontAwesomeIcon icon={faHeart} size="2x" color="#fff" />
             </div>
           </div>
 
           {/* Right */}
           <div className="flex flex-col gap-6">
-            <div className='bg-white rounded-sm p-4'>
+            <div className="rounded-sm bg-white p-4">
               <h2 className="text-lg font-semibold">{profile.about.header}</h2>
               <p className="text-base">{profile.about.description}</p>
-              <button className={profile.type == 'Fitness' ? 'mt-3 text-left fitnessButton' : 'mt-3 text-left nutritionButton'}>Message Professional</button>
+              <button
+                className={
+                  profile.type == 'Fitness'
+                    ? 'fitnessButton mt-3 text-left'
+                    : 'nutritionButton mt-3 text-left'
+                }
+              >
+                Manage Subscription
+              </button>
             </div>
 
             <div>
@@ -80,7 +99,7 @@ export default async function ProfessionalProfile({ params }) {
 
       {/* Content Below */}
 
-      <Carasoul videoAPI={profileVideos} sectionTitle={'Content'} />
+      <Carasoul videoAPI={profileVideos} sectionTitle={'Videos'} />
     </div>
   );
 }

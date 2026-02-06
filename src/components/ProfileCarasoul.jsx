@@ -60,7 +60,7 @@ function ProfileCarasoul({
         <div className="grid-row-2 grid">
           {/* Profile Pictures Grid */}
           <div
-            className={'grid'}
+            className={'grid gap-6'}
             style={{
               gridTemplateColumns:
                 orientation === 'horizontal'

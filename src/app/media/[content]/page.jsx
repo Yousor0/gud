@@ -34,7 +34,11 @@ export default async function media({ params }) {
               {/* Profile Picture */}
               <Link href={`/user/${movie.userId}`}>
                 <Image
-                  src={user.about.avatarUrl == '' ? '/default-avatar.jpg' : user.about.avatarUrl}
+                  src={
+                    user.about.avatarUrl == ''
+                      ? '/default-avatar.jpg'
+                      : user.about.avatarUrl
+                  }
                   // src={user?.avatarUrl || '/default-avatar.jpg'}
                   alt={user.username || 'User'}
                   width={40}

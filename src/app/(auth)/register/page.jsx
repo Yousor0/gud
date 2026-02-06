@@ -14,8 +14,10 @@ import { easeOut, motion } from 'motion/react';
 function RegisterForm() {
   return (
     <div className="mx-auto flex w-full max-w-md flex-col justify-center">
-      <h1 className="page-title">Begin to get GÜD!</h1>
-      <p className="mb-6 text-base">Join the GÜD Community</p>
+      <div className="flex flex-col gap-3">
+        <h1 className="page-title">Begin to get GÜD!</h1>
+        <p className="mb-6 text-base">Join the GÜD Community</p>
+      </div>
       <form className="space-y-4">
         {/* First name field */}
         <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
@@ -66,13 +68,13 @@ function RegisterForm() {
           />
         </div>
         {/* sign up button */}
-        <div className='w-full [&>div>a]:block [&>div>a]:w-full [&>div>a]:text-center'>
+        <div className="w-full [&>div>a]:block [&>div>a]:w-full [&>div>a]:text-center">
           <Button href="/" text="Sign Up" />
-          </div>
+        </div>
       </form>
       <div className="my-4 text-center text-sm text-gray-500">or</div>
-      <div className='w-full [&>div>a]:block [&>div>a]:w-full [&>div>a]:text-center'>
-        <Button text='Sign up with Google' variant='border'/>
+      <div className="w-full [&>div>a]:block [&>div>a]:w-full [&>div>a]:text-center">
+        <Button text="Sign up with Google" variant="border" />
       </div>
       <p className="mt-6 text-center text-base">
         Already have an account?{' '}

@@ -14,8 +14,10 @@ import { easeOut, motion } from 'motion/react';
 function LoginForm() {
   return (
     <div className="mx-auto flex w-full max-w-md flex-col justify-center">
-      <h1 className="page-title">Welcome back!</h1>
-      <p className="mb-6 text-base">Log back into your account</p>
+      <div className="flex flex-col gap-3">
+        <h1 className="page-title">Welcome back!</h1>
+        <p className="mb-6 text-base">Log back into your account</p>
+      </div>
       <form className="space-y-4">
         {/* email field */}
         <div>
@@ -41,14 +43,14 @@ function LoginForm() {
             placeholder="**********"
           />
         </div>
-        <div className='w-full [&>div>a]:block [&>div>a]:w-full [&>div>a]:text-center'>
-          <Button href='/' text='Log In'/>
-          </div>
+        <div className="w-full [&>div>a]:block [&>div>a]:w-full [&>div>a]:text-center">
+          <Button href="/" text="Log In" />
+        </div>
       </form>
       <div className="my-4 text-center text-sm text-gray-500">or</div>
-      <div className='w-full [&>div>a]:block [&>div>a]:w-full [&>div>a]:text-center'>
-        <Button href='/' text='Login with Google' variant='border'/>
-        </div>
+      <div className="w-full [&>div>a]:block [&>div>a]:w-full [&>div>a]:text-center">
+        <Button href="/" text="Login with Google" variant="border" />
+      </div>
       <p className="mt-6 text-center text-base">
         Don't have an account?{' '}
         <Link href="/register" className="font-medium underline">

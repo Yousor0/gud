@@ -29,47 +29,32 @@ export default function VideoCard({ video }) {
           />
 
           {/* Thumbnail Information Wrapper */}
-          <div className="flex gap-3 p-1 pl-1">
+          <div className="flex items-center gap-3">
             {/* Profile Picture */}
-            <button
-              onClick={(e) => {
-                e.preventDefault();
-                e.stopPropagation();
-                router.push(`/user/${user?.id}`);
-              }}
-            >
-              <Image
-                src={
-                  user.about.avatarUrl === ''
-                    ? '/default-avatar.jpg'
-                    : user.about.avatarUrl
-                }
-                alt={user.id || 'User'}
-                width={40}
-                height={40}
-                className="rounded-full"
-              />
-            </button>
 
-        {/* Thumbnail Information Wrapper */}
-        <div className="flex items-center gap-3">
-          {/* Profile Picture */}
-          <Link href={`/user/${user?.id}`}>
             <Image
-              src={user.about.avatarUrl == '' ? '/default-avatar.jpg' : user.about.avatarUrl}
-              // src={user?.avatarUrl || '/default-avatar.jpg'}
+              src={
+                user.about.avatarUrl == ''
+                  ? '/default-avatar.jpg'
+                  : user.about.avatarUrl
+              }
               alt={user.username || 'User'}
               width={40}
               height={40}
               className="rounded-full"
             />
-          </Link>
-          <div className="flex flex-col">
-            {/* Text Information */}
-            <h2 className="font-semibold">{video.title}</h2>
-            <Link className="text-sm text-gray-500" href={`/user/${user?.id}`}>
-              {user.name.firstName + ' ' + user.name.lastName || 'Unknown User'}
-            </Link>
+
+            <div className="flex flex-col">
+              {/* Text Information */}
+              <h2 className="font-semibold">{video.title}</h2>
+              <Link
+                className="text-sm text-gray-500"
+                href={`/user/${user?.id}`}
+              >
+                {user.name.firstName + ' ' + user.name.lastName ||
+                  'Unknown User'}
+              </Link>
+            </div>
           </div>
         </div>
       </Link>
