@@ -201,6 +201,81 @@ export const users = [
       createdAt: '',
     },
   },
+  {
+    id: 'user_123',
+    username: 'andrewjiang',
+    name: {
+      firstName: 'Andrew',
+      lastName: 'Jiang',
+    },
+    specialty: [
+      'Developer',
+      'Coding',
+      'UI',
+      'Design',
+    ],
+    // fitness? or nutrition?
+    type: 'Dev',
+    about: {
+      header: 'Front-end Head Developer',
+      description:
+        'UI Engineer | Web Dev @ UCF',
+      email: 'andrew@email.com',
+      avatarUrl: '',
+      bio: 'UI Engineer | Web Dev @ UCF',
+      createdAt: '2026-01-30T12:00:00Z',
+    },
+  },
+  {
+    id: 'user_456',
+    username: 'fitqueen',
+    name: {
+      firstName: 'Fit',
+      lastName: 'Queen',
+    },
+    specialty: [
+      'Fitness Enthusiast',
+      'Cardio',
+      'Strength Training',
+      'Endurance Building',
+    ],
+    // fitness? or nutrition?
+    type: 'Fitness',
+    about: {
+      header: 'Get a personalized fitness plan',
+      description:
+        'Achieve your fitness goals with a custom workout plan tailored to your needs and goals',
+      email: 'fitqueen@email.com',
+      avatarUrl: '/profileAvatars/fitQueen.jpg',
+      bio: 'Fitness Enthusiast | Cardio & Strength Trainer',
+      createdAt: '2025-11-15T09:30:00Z',
+    },
+  },
+  {
+    id: 'user_789',
+    username: 'workoutpro',
+    name: {
+      firstName: 'WorkoutPro',
+      lastName: '',
+    },
+    specialty: [
+      'Certified Personal Trainer',
+      'Home Workouts',
+      'Stamina Training',
+      'Pace Setting',
+    ],
+    // fitness? or nutrition?
+    type: 'Fitness',
+    about: {
+      header: 'Get a personalized nutrition plan',
+      description:
+        'Achieve your fitness goals with a custom workout plan tailored to your needs and goals',
+      email: 'workoutpro@email.com',
+      avatarUrl: '/profileAvatars/workoutPro.jpg',
+      bio: 'Certified Personal Trainer | Home & Gym Workouts',
+      createdAt: '2024-08-22T16:45:00Z',
+    },
+  },
 ];
 
 // Dynamic video Count based on Videos API
