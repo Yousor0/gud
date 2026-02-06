@@ -1,26 +1,109 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
 @import 'tailwindcss';
 
-:root {
-  --background: #f5f0e7;
-  --foreground: #171717;
+@theme {
+  --brand-primary: #9d4431;
+  /* Primary Buttons, Active Nav states, Links */
+  --brand-primary-hover: #d07a64;
+  --brand-secondary: #c3583e;
+
+  --bg-primary: #faf7f3;
+  /* Main Page Bg */
+  --bg-secondary: #f5f0e7;
+  /* Alternate section backgrounds , Cards, Suble Layout Seperation */
+  --bg-accent: #d0c5b6;
+  /* Borders, Dividers, Inactive UI states, Background for non-text-heavy components */
+
+  --text-primary: #000000;
+  /* Heading, Logos, Icons */
+  --text-secondary: #222222;
+  /* Primary body text, Headlines, Navigation Labels */
+  --text-accent: #444444;
+  /* Secondary text, Metadata, Footer text */
+
+  --color-blueOne: #78a0ba;
+  --color-blueTwo: #9ab9cb;
+
+  --color-greenOne: #556734;
+  --color-greenTwo: #8a9474;
+
+  --color-beige: #f5f0e7;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+* {
+  line-height: 1.5;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: var(--font-poppins), Arial, Helvetica, sans-serif;
+  background: var(--bg-primary);
+  font-family: 'Poppins', sans-serif;
+}
+
+footer {
+  background-color: var(--bg-secondary);
+}
+
+.page-title {
+  font-size: 50px;
+  font-weight: 700;
+  line-height: 0.9;
+}
+
+.section-title {
+  font-size: 30px;
+  font-weight: 600;
+}
+
+.sub-header {
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.body-primary {
+  font-size: 16px;
+  font-weight: 400;
+}
+
+.body-emphasis {
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.body-small {
+  font-size: 14px;
+  font-weight: 400;
+}
+
+.body-small-emphasis {
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.label {
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.fitnessButton {
+  background-color: #466273;
+  color: #F5F0E7;
+  border-radius: 4px;
+  padding: 6px;
+  padding-inline: 20px;
+}
+
+.nutritionButton {
+  background-color: #566835;
+  color: #F5F0E7;
+  border-radius: 4px;
+  padding: 6px;
+  padding-inline: 20px;
+}
+
+.redButton {
+  background-color: #9D4431;
+  color: #F5F0E7;
+  border-radius: 4px;
+  padding: 6px;
+  padding-inline: 20px;
 }
