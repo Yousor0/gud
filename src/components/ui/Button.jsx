@@ -25,8 +25,8 @@ export default function Button({
 
   return (
     <motion.div
-      whileHover={{ scale: 1.02, scale: 1.03 }}
-      whileTap={{ scale: 0.99, scale: 0.99 }}
+      whileHover={{ scale: 1.02, translateY: -1 }}
+      whileTap={{ scale: 0.99 }}
       style={{ originX: 0.5, originY: 0.5 }}
     >
       <Link

@@ -6,6 +6,7 @@ import { videos } from '../../../data/videos.js';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHeart } from '@fortawesome/free-solid-svg-icons';
 import { faBell } from '@fortawesome/free-solid-svg-icons';
+import Button from '../../../components/ui/Button.jsx';
 
 export default async function media({ params }) {
   const { content } = await params;
@@ -25,10 +26,10 @@ export default async function media({ params }) {
             width="1280"
             height="720"
             alt={movie.title}
-            className='rounded-sm'
+            className="rounded-sm"
           />
           <div>
-            <h1 className="flex justify-start text-2xl font-semibold mt-5">
+            <h1 className="mt-5 flex justify-start text-2xl font-semibold">
               {/* title of the video */}
               {movie.title}
             </h1>
@@ -50,7 +51,7 @@ export default async function media({ params }) {
                   className="rounded-full"
                 />
               </Link>
-              <div className='ml-3'>
+              <div className="ml-3">
                 <h1 className="flex justify-start font-normal">
                   {user.name.firstName} {user.name.lastName}
                 </h1>
@@ -60,8 +61,8 @@ export default async function media({ params }) {
               </div>
             </div>
             <div className="flex justify-end gap-4">
-              <button className='redButton'>Subscribe</button>
-              <FontAwesomeIcon icon={faBell} size="2x" color="#9D4431"/>
+              <Button href="#" text="Subsribe" />
+              <FontAwesomeIcon icon={faBell} size="2x" color="#9D4431" />
               <FontAwesomeIcon icon={faHeart} size="2x" color="#9D4431" />
             </div>
           </div>
