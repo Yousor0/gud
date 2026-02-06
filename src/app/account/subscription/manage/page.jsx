@@ -5,6 +5,7 @@ import { faCheck } from '@fortawesome/free-solid-svg-icons';
 function Manage() {
   const tiers = [
     {
+      tierId: 1,
       tierName: 'Free',
       cost: 0,
       description: [
@@ -15,6 +16,7 @@ function Manage() {
       ],
     },
     {
+      tierId: 2,
       tierName: 'Premium',
       cost: 30,
       description: [
@@ -51,7 +53,11 @@ function Manage() {
               ))}
             </ul>
 
-            <Button text="Select" className="block w-full text-center" />
+            <Button
+              text="Select"
+              className="block w-full text-center"
+              href={`account/subscription/payment/${tier.tierId}`}
+            />
           </div>
         ))}
       </div>
