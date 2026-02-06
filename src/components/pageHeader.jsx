@@ -8,6 +8,7 @@ export default function PageHeader({
   subtext,
   overlayColor = '#f5f0e7',
   image,
+  buttons = true,
 }) {
   return (
     <section
@@ -37,10 +38,12 @@ export default function PageHeader({
           <p className="body-primary max-w-xl">{subtext}</p>
         </div>
 
-        <div className="flex gap-5">
-          <Button href="/register" text="Start your plan" />
-          <Button href="/about" text="Learn more" variant="border" />
-        </div>
+        {buttons && (
+          <div className="flex gap-5">
+            <Button href="/register" text="Start your plan" />
+            <Button href="/about" text="Learn more" variant="border" />
+          </div>
+        )}
       </div>
     </section>
   );

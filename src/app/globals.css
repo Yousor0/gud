@@ -21,14 +21,13 @@
   --text-accent: #444444;
   /* Secondary text, Metadata, Footer text */
 
-  --color-blueOne: #78A0BA;
-  --color-blueTwo: #9AB9CB;
+  --color-blueOne: #78a0ba;
+  --color-blueTwo: #9ab9cb;
 
   --color-greenOne: #556734;
-  --color-greenTwo: #8A9474;
+  --color-greenTwo: #8a9474;
 
-  --color-beige: #F5F0E7;
-
+  --color-beige: #f5f0e7;
 }
 * {
   line-height: 1.5;
@@ -82,20 +81,4 @@ footer {
 .label {
   font-size: 12px;
   font-weight: 500;
-}
-
-.fitnessButton {
-  background-color: #466273;
-  color: #F5F0E7;
-  border-radius: 4px;
-  padding: 6px;
-  padding-inline: 20px;
-}
-
-.nutritionButton {
-  background-color: #566835;
-  color: #F5F0E7;
-  border-radius: 4px;
-  padding: 6px;
-  padding-inline: 20px;
 }
