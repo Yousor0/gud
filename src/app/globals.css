@@ -30,6 +30,7 @@
   --color-beige: #F5F0E7;
 
 }
+
 * {
   line-height: 1.5;
 }
@@ -94,6 +95,14 @@ footer {
 
 .nutritionButton {
   background-color: #566835;
+  color: #F5F0E7;
+  border-radius: 4px;
+  padding: 6px;
+  padding-inline: 20px;
+}
+
+.redButton {
+  background-color: #9D4431;
   color: #F5F0E7;
   border-radius: 4px;
   padding: 6px;
