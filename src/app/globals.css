@@ -29,6 +29,7 @@
 
   --color-beige: #f5f0e7;
 }
+
 * {
   line-height: 1.5;
 }
@@ -81,4 +82,28 @@ footer {
 .label {
   font-size: 12px;
   font-weight: 500;
+}
+
+.fitnessButton {
+  background-color: #466273;
+  color: #F5F0E7;
+  border-radius: 4px;
+  padding: 6px;
+  padding-inline: 20px;
+}
+
+.nutritionButton {
+  background-color: #566835;
+  color: #F5F0E7;
+  border-radius: 4px;
+  padding: 6px;
+  padding-inline: 20px;
+}
+
+.redButton {
+  background-color: #9D4431;
+  color: #F5F0E7;
+  border-radius: 4px;
+  padding: 6px;
+  padding-inline: 20px;
 }

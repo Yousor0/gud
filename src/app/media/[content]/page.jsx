@@ -3,6 +3,9 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { users } from '../../../data/users.js';
 import { videos } from '../../../data/videos.js';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faHeart } from '@fortawesome/free-solid-svg-icons';
+import { faBell } from '@fortawesome/free-solid-svg-icons';
 
 export default async function media({ params }) {
   const { content } = await params;
@@ -22,9 +25,10 @@ export default async function media({ params }) {
             width="1280"
             height="720"
             alt={movie.title}
+            className='rounded-sm'
           />
           <div>
-            <h1 className="flex justify-start text-2xl font-semibold">
+            <h1 className="flex justify-start text-2xl font-semibold mt-5">
               {/* title of the video */}
               {movie.title}
             </h1>
@@ -46,19 +50,19 @@ export default async function media({ params }) {
                   className="rounded-full"
                 />
               </Link>
-              <div>
-                <h2 className="flex justify-start text-xs font-normal">
+              <div className='ml-3'>
+                <h1 className="flex justify-start font-normal">
                   {user.name.firstName} {user.name.lastName}
-                </h2>
-                <h3 className="flex justify-start text-sm font-normal">
+                </h1>
+                <h2 className="flex justify-start text-sm text-gray-500">
                   {user.specialty[0]}
-                </h3>
+                </h2>
               </div>
             </div>
             <div className="flex justify-end gap-4">
-              <button>subscribe</button>
-              <button>bell-icon</button>
-              <button>heart-icon</button>
+              <button className='redButton'>Subscribe</button>
+              <FontAwesomeIcon icon={faBell} size="2x" color="#9D4431"/>
+              <FontAwesomeIcon icon={faHeart} size="2x" color="#9D4431" />
             </div>
           </div>
         </div>
