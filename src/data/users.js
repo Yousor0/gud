@@ -112,7 +112,7 @@ export const users = [
       'Nutritionist',
       'Meal Planning',
       'Therapeutic Nutrition Plans',
-      '',
+      'Health Guru',
     ],
     // fitness? or nutrition?
     type: 'Nutrition',
@@ -187,7 +187,7 @@ export const users = [
       'Nutritionist',
       'Meal Planning',
       'Therapeutic Nutrition Plans',
-      '',
+      'Food Hacker',
     ],
     // fitness? or nutrition?
     type: 'Nutrition',
