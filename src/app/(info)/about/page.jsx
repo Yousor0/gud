@@ -1,13 +1,13 @@
 import React from 'react';
-import Link from 'next/link';
 import Image from 'next/image';
+import PageHeader from '../../../components/PageHeader';
 
 export default function AboutPage() {
   return (
-    <section className="mx-auto flex w-auto max-w-7xl flex-col gap-10 px-5 py-16">
-      <div className="mx-auto max-w-4xl">
+    <section>
+      <div className="mx-auto flex w-auto max-w-7xl flex-col gap-10 px-5 py-16">
+        <h1 className="page-title self-center-safe text-center">Our Mission</h1>
         <div className="flex flex-col gap-5 text-center">
-          <h1 className="page-title">Our Mission</h1>
           <p className="body-primary">
             GÜD is a wellness platform built to help you develop healthy habits
             from home in a way that feels practical, structured, and

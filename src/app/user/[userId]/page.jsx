@@ -1,12 +1,11 @@
 import React from 'react';
 import Image from 'next/image';
 import { notFound } from 'next/navigation';
-import defaultAvatar from '../../../../public/default-avatar.jpg';
 import { users } from '../../../data/users.js';
 import Carasoul from '../../../components/VideoCarasoul';
 import { videos } from '../../../data/videos';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faHeart } from '@fortawesome/free-solid-svg-icons';
+import Button from '../../../components/ui/Button';
+import MailButton from '../../../components/ui/MailButton';
 
 export default async function ProfessionalProfile({ params }) {
   const { userId } = await params;
@@ -56,33 +55,25 @@ export default async function ProfessionalProfile({ params }) {
             </div>
 
             <div className="mt-6 flex justify-center gap-5">
-              <button
-                className={
-                  profile.type == 'Fitness'
-                    ? 'fitnessButton'
-                    : 'nutritionButton'
-                }
+              <div
+                className={`${profile.type == 'Fitness' ? 'bg-[#466273]' : 'bg-[#566835]'} rounded-md px-5 py-2 text-white`}
               >
                 {profile.type} Professional
-              </button>
-              <FontAwesomeIcon icon={faHeart} size="2x" color="#fff" />
+              </div>
+              <MailButton mail="example@gmail.com" profile={profile} />
             </div>
           </div>
 
           {/* Right */}
           <div className="flex flex-col gap-6">
-            <div className="rounded-sm bg-white p-4">
+            <div className="flex flex-col gap-6 rounded-sm bg-white p-5">
               <h2 className="text-lg font-semibold">{profile.about.header}</h2>
               <p className="text-base">{profile.about.description}</p>
-              <button
-                className={
-                  profile.type == 'Fitness'
-                    ? 'fitnessButton mt-3 text-left'
-                    : 'nutritionButton mt-3 text-left'
-                }
-              >
-                Manage Subscription
-              </button>
+              <Button
+                variant={profile.type == 'Fitness' ? 'fitness' : 'nutrition'}
+                text="Manage Subscription"
+                href="/account/subscription/manage"
+              />
             </div>
 
             <div>
@@ -99,7 +90,7 @@ export default async function ProfessionalProfile({ params }) {
 
       {/* Content Below */}
 
-      <Carasoul videoAPI={profileVideos} sectionTitle={'Videos'} />
+      <Carasoul videoAPI={profileVideos} />
     </div>
   );
 }

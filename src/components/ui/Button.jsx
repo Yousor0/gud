@@ -16,6 +16,8 @@ export default function Button({
       'bg-[#C3583E] text-[#FAF7F3] hover:bg-[#D07A64] font-semibold shadow-sm ',
     border:
       'text-[#9D4431] border border-[#9D4431] hover:bg-[#D07A64] hover:text-[#FAF7F3] hover:border-[#D07A64] font-medium',
+    fitness: 'bg-[#466273] text-[#F5F0E7]',
+    nutrition: 'bg-[#566835] text-[#F5F0E7]',
   };
 
   // Use the styles from defaultStyles based on the variant
@@ -23,8 +25,9 @@ export default function Button({
 
   return (
     <motion.div
-      whileHover={{ scale: 1.02, rotate: 2 }}
-      whileTap={{ scale: 0.99, rotate: -1 }}
+      whileHover={{ scale: 1.02, scale: 1.03 }}
+      whileTap={{ scale: 0.99, scale: 0.99 }}
+      style={{ originX: 0.5, originY: 0.5 }}
     >
       <Link
         href={href.startsWith('/') ? href : `/${href}`}
