@@ -275,7 +275,7 @@ export default function landingPage() {
       <LandingWelcome />
       <InfoCards />
       <AboutGud />
-      <FaqSection />
+      <FaqSection id="faq" />
     </main>
   );
 }

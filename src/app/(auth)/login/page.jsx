@@ -2,14 +2,9 @@
 import React from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-import Button from '../../../components/ui/Button';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import {
-  faDumbbell,
-  faAppleWhole,
-  faCertificate,
-} from '@fortawesome/free-solid-svg-icons';
-import { easeOut, motion } from 'motion/react';
+import { faGoogle } from '@fortawesome/free-brands-svg-icons';
+import { easeInOut, motion } from 'motion/react';
 
 function LoginForm() {
   return (
@@ -18,42 +13,72 @@ function LoginForm() {
         <h1 className="page-title">Welcome back!</h1>
         <p className="mb-6 text-base">Log back into your account</p>
       </div>
-      <form className="space-y-4">
+
+      {/* Login */}
+      <form className="flex flex-col">
         {/* email field */}
-        <div>
-          <label htmlFor="email" className="mb-1 block">
-            Email
-          </label>
-          <input
-            id="email"
-            type="email"
-            className="w-full rounded-md border border-gray-300 px-3 py-2"
-            placeholder="capstone2026@dig4172C.com"
-          />
+        <div className="mb-5 flex flex-col gap-2">
+          <div>
+            <label htmlFor="email">Email</label>
+            <input
+              id="email"
+              type="email"
+              className="w-full rounded-md border border-gray-300 px-3 py-2"
+              placeholder="capstone2026@dig4172C.com"
+            />
+          </div>
+          {/* password field */}
+          <div>
+            <label htmlFor="password" className="mb-1 block">
+              Password
+            </label>
+            <input
+              id="password"
+              className="w-full rounded-md border border-gray-300 px-3 py-2"
+              type="password"
+              placeholder="Password"
+            />
+          </div>
         </div>
-        {/* password field */}
-        <div>
-          <label htmlFor="password" className="mb-1 block">
-            Password
-          </label>
-          <input
-            id="password"
-            className="w-full rounded-md border border-gray-300 px-3 py-2"
-            type="password"
-            placeholder="**********"
-          />
-        </div>
-        <div className="w-full [&>div>a]:block [&>div>a]:w-full [&>div>a]:text-center">
-          <Button href="/" text="Log In" />
+
+        {/* Buttons */}
+        <div className="flex w-full flex-col items-center gap-2">
+          {/* LOGIN */}
+          <motion.button
+            whileHover={{ scale: 1.02, translateY: -1 }}
+            whileTap={{ scale: 0.99 }}
+            style={{ originX: 0.5, originY: 0.5 }}
+            transition={{ ease: easeInOut, duration: 0.2 }}
+            type="submit"
+            className="w-full rounded-md bg-[#9D4431] px-5 py-2 font-semibold text-[#FAF7F3] shadow-sm hover:bg-[#D07A64]"
+          >
+            Login
+          </motion.button>
+
+          {/* OR */}
+          <div className="text-gray-500">or</div>
+
+          {/* GOOGLE LOGIN */}
+
+          <motion.button
+            whileHover={{ scale: 1.02, translateY: -1 }}
+            whileTap={{ scale: 0.99 }}
+            style={{ originX: 0.5, originY: 0.5 }}
+            transition={{ ease: easeInOut, duration: 0.2 }}
+            type="submit"
+            className="w-full rounded-md border border-[#9D4431] px-5 py-2 font-medium text-[#9D4431] hover:border-[#D07A64] hover:bg-[#D07A64] hover:text-[#FAF7F3]"
+          >
+            <FontAwesomeIcon icon={faGoogle} /> Login with Google
+          </motion.button>
         </div>
       </form>
-      <div className="my-4 text-center text-sm text-gray-500">or</div>
-      <div className="w-full [&>div>a]:block [&>div>a]:w-full [&>div>a]:text-center">
-        <Button href="/" text="Login with Google" variant="border" />
-      </div>
-      <p className="mt-6 text-center text-base">
+
+      <p className="text-accent mt-6 text-center">
         Don't have an account?{' '}
-        <Link href="/register" className="font-medium underline">
+        <Link
+          href="/register"
+          className="font-medium underline hover:text-[#9d4431]"
+        >
           Sign Up
         </Link>
       </p>

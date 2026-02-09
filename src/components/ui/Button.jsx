@@ -24,7 +24,7 @@ export default function Button({
   const variantStyles = defaultStyles[variant] || defaultStyles.primary;
 
   return (
-    <motion.div
+    <motion.button
       whileHover={{ scale: 1.02, translateY: -1 }}
       whileTap={{ scale: 0.99 }}
       style={{ originX: 0.5, originY: 0.5 }}
@@ -35,6 +35,6 @@ export default function Button({
       >
         {text}
       </Link>
-    </motion.div>
+    </motion.button>
   );
 }

@@ -28,15 +28,19 @@ export default function Footer() {
             {/* GUD Section */}
             <h4 className="sub-header">GÜD</h4>
             <NavigationLink href="/about" text="About" variant="footerLink" />
-            <NavigationLink href="/faq" text="FAQ" variant="footerLink" />
-            <NavigationLink href="#" text="Contact" variant="footerLink" />
+            <NavigationLink href="/#faq" text="FAQ" variant="footerLink" />
             <NavigationLink
-              href="#"
+              href="javascript:void(0)"
+              text="Contact"
+              variant="footerLink"
+            />
+            <NavigationLink
+              href="javascript:void(0)"
               text="Term & Conditions"
               variant="footerLink"
             />
             <NavigationLink
-              href="#"
+              href="javascript:void(0)"
               text="Privacy Policy"
               variant="footerLink"
             />
