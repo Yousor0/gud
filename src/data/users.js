@@ -208,18 +208,12 @@ export const users = [
       firstName: 'Andrew',
       lastName: 'Jiang',
     },
-    specialty: [
-      'Developer',
-      'Coding',
-      'UI',
-      'Design',
-    ],
+    specialty: ['Developer', 'Coding', 'UI', 'Design'],
     // fitness? or nutrition?
     type: 'Dev',
     about: {
       header: 'Front-end Head Developer',
-      description:
-        'UI Engineer | Web Dev @ UCF',
+      description: 'UI Engineer | Web Dev @ UCF',
       email: 'andrew@email.com',
       avatarUrl: '',
       bio: 'UI Engineer | Web Dev @ UCF',

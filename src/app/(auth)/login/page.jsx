@@ -50,7 +50,7 @@ function LoginForm() {
             style={{ originX: 0.5, originY: 0.5 }}
             transition={{ ease: easeInOut, duration: 0.2 }}
             type="submit"
-            className="w-full rounded-md bg-[#9D4431] px-5 py-2 font-semibold text-[#FAF7F3] shadow-sm hover:bg-[#D07A64]"
+            className="w-full cursor-auto rounded-md bg-[#9D4431] px-5 py-2 font-semibold text-[#FAF7F3] shadow-sm hover:cursor-pointer hover:bg-[#D07A64]"
           >
             Login
           </motion.button>
@@ -66,7 +66,7 @@ function LoginForm() {
             style={{ originX: 0.5, originY: 0.5 }}
             transition={{ ease: easeInOut, duration: 0.2 }}
             type="submit"
-            className="w-full rounded-md border border-[#9D4431] px-5 py-2 font-medium text-[#9D4431] hover:border-[#D07A64] hover:bg-[#D07A64] hover:text-[#FAF7F3]"
+            className="w-full cursor-auto rounded-md border border-[#9D4431] px-5 py-2 font-medium text-[#9D4431] hover:cursor-pointer hover:border-[#D07A64] hover:bg-[#D07A64] hover:text-[#FAF7F3]"
           >
             <FontAwesomeIcon icon={faGoogle} /> Login with Google
           </motion.button>
