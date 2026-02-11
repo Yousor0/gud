@@ -4,12 +4,7 @@ export const videos = [
     title: 'Push Ups',
     thumbnailUrl: '/videoThumbnails/pushUps.jpg',
     userId: 'user_123',
-    tags: [
-      'calisthenics',
-      'arms',
-      'core',
-      'strength'
-    ],
+    tags: ['calisthenics', 'arms', 'core', 'strength'],
     type: 'Fitness',
     level: 'beginner',
   },
@@ -19,12 +14,7 @@ export const videos = [
     thumbnailUrl: '/videoThumbnails/bodyweightSquats.jpg',
     views: 2450,
     userId: 'user_456',
-    tags: [
-      'legs',
-      'strength',
-      'squats',
-      'bodyweight'
-    ],
+    tags: ['legs', 'strength', 'squats', 'bodyweight'],
     type: 'Fitness',
     level: 'intermediate',
   },
@@ -34,10 +24,7 @@ export const videos = [
     thumbnailUrl: '/videoThumbnails/plankHold.jpg',
     views: 980,
     userId: 'user_789',
-    tags: [
-      'endurance',
-      'core'
-    ],
+    tags: ['endurance', 'core'],
     type: 'Fitness',
     level: 'intermediate',
   },
@@ -47,11 +34,7 @@ export const videos = [
     thumbnailUrl: '/videoThumbnails/jumpingJacks.jpg',
     views: 3120,
     userId: 'user_123',
-    tags: [
-      'full body',
-      'legs',
-      'arms'
-    ],
+    tags: ['full body', 'legs', 'arms'],
     type: 'Fitness',
     level: 'beginner',
   },
@@ -80,14 +63,7 @@ export const videos = [
     thumbnailUrl: '/videoThumbnails/burpees.jpg',
     views: 4890,
     userId: 'user_789',
-    tags: [
-      'burpees',
-      'full body',
-      'legs',
-      'arms',
-      'abs',
-      'core'
-    ],
+    tags: ['burpees', 'full body', 'legs', 'arms', 'abs', 'core'],
     type: 'Fitness',
     level: 'intermediate',
   },
@@ -97,11 +73,7 @@ export const videos = [
     thumbnailUrl: '/videoThumbnails/lunges.jpg',
     views: 2100,
     userId: 'user_123',
-    tags: [
-      'legs',
-      'lunges',
-      'knees'
-    ],
+    tags: ['legs', 'lunges', 'knees'],
     type: 'Fitness',
     level: 'beginner',
   },
@@ -111,12 +83,7 @@ export const videos = [
     thumbnailUrl: '/videoThumbnails/highKnees.jpg',
     views: 1580,
     userId: 'user_456',
-    tags: [
-      'knees',
-      'legs',
-      'core',
-      'strength'
-    ],
+    tags: ['knees', 'legs', 'core', 'strength'],
     type: 'Fitness',
     level: 'intermediate',
   },
@@ -126,12 +93,7 @@ export const videos = [
     thumbnailUrl: '/videoThumbnails/sitUps.jpg',
     views: 1340,
     userId: 'user_789',
-    tags: [
-      'workout',
-      'endurance',
-      'core',
-      'abs'
-    ],
+    tags: ['workout', 'endurance', 'core', 'abs'],
     type: 'Fitness',
     level: 'beginner',
   },
@@ -141,13 +103,7 @@ export const videos = [
     thumbnailUrl: '/videoThumbnails/wallSit.jpg',
     views: 920,
     userId: 'user_123',
-    tags: [
-      'endurance',
-      'legs',
-      'isometric',
-      'strength',
-      'knees'
-    ],
+    tags: ['endurance', 'legs', 'isometric', 'strength', 'knees'],
     type: 'Fitness',
     level: 'beginner',
   },
@@ -157,13 +113,7 @@ export const videos = [
     thumbnailUrl: '/videoThumbnails/gluteBridges.jpg',
     views: 1680,
     userId: 'user_456',
-    tags: [
-      'glutes',
-      'bridges',
-      'core',
-      'strength',
-      'yoga'
-    ],
+    tags: ['glutes', 'bridges', 'core', 'strength', 'yoga'],
     type: 'Fitness',
     level: 'beginner',
   },
@@ -173,12 +123,7 @@ export const videos = [
     thumbnailUrl: '/videoThumbnails/bicycleCrunches.jpg',
     views: 2550,
     userId: 'user_789',
-    tags: [
-      'crunches',
-      'bodyweight',
-      'legs',
-      'core'
-    ],
+    tags: ['crunches', 'bodyweight', 'legs', 'core'],
     type: 'Fitness',
     level: 'intermediate',
   },
@@ -225,11 +170,7 @@ export const videos = [
     thumbnailUrl: '/videoThumbnails/russianTwists.jpg',
     views: 1995,
     userId: 'user_789',
-    tags: [
-      'twists',
-      'core',
-      'strength'
-    ],
+    tags: ['twists', 'core', 'strength'],
     type: 'Fitness',
     level: 'beginner',
   },

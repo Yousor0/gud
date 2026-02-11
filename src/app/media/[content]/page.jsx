@@ -20,7 +20,7 @@ export default async function media({ params }) {
     <div className="m-24 flex justify-center">
       <div style={{ width: '1280px', justifyContent: 'center' }}>
         <div>
-          <h1 className="my-3 flex justify-start page-title">
+          <h1 className="page-title my-3 flex justify-start">
             {/* title of the video */}
             {movie.title}
           </h1>
@@ -34,7 +34,7 @@ export default async function media({ params }) {
             alt={movie.title}
             className="rounded-sm"
           />
-          <div className="grid grid-cols-2 mt-5">
+          <div className="mt-5 grid grid-cols-2">
             <div className="flex">
               {/* Profile Picture */}
               <Link href={`/user/${movie.userId}`}>
@@ -51,7 +51,7 @@ export default async function media({ params }) {
                   className="rounded-full"
                 />
               </Link>
-              <div className="ml-3 mt-4">
+              <div className="mt-4 ml-3">
                 <h1 className="flex justify-start font-normal">
                   {user.name.firstName} {user.name.lastName}
                 </h1>
@@ -60,8 +60,8 @@ export default async function media({ params }) {
                 </h2>
               </div>
             </div>
-            <div className="flex justify-end gap-4 mt-4">
-              <Button href="#" text="Subsribe" className='flex item-center'/>
+            <div className="mt-4 flex justify-end gap-4">
+              <Button href="#" text="Subsribe" className="item-center flex" />
               <FontAwesomeIcon icon={faBell} size="2x" color="#9D4431" />
               <FontAwesomeIcon icon={faHeart} size="2x" color="#9D4431" />
             </div>
