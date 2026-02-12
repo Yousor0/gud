@@ -72,7 +72,7 @@ function RegisterForm() {
             whileTap={{ scale: 0.99 }}
             style={{ originX: 0.5, originY: 0.5 }}
             transition={{ ease: easeInOut, duration: 0.2 }}
-            type="submit"
+            type="button"
             className="w-full cursor-auto rounded-md bg-[#9D4431] px-5 py-2 font-semibold text-[#FAF7F3] shadow-sm hover:cursor-pointer hover:bg-[#D07A64]"
           >
             Signup
@@ -86,7 +86,7 @@ function RegisterForm() {
             whileTap={{ scale: 0.99 }}
             style={{ originX: 0.5, originY: 0.5 }}
             transition={{ ease: easeInOut, duration: 0.2 }}
-            type="submit"
+            type="button"
             className="w-full cursor-auto rounded-md border border-[#9D4431] px-5 py-2 font-medium text-[#9D4431] hover:cursor-pointer hover:border-[#D07A64] hover:bg-[#D07A64] hover:text-[#FAF7F3]"
           >
             <FontAwesomeIcon icon={faGoogle} /> Sign Up with Google

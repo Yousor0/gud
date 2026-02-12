@@ -9,8 +9,10 @@ import {
   faDumbbell,
   faAppleWhole,
   faCertificate,
+  faAngleDown,
+  faAngleUp,
 } from '@fortawesome/free-solid-svg-icons';
-import { easeOut, motion } from 'motion/react';
+import { easeOut, motion, AnimatePresence, easeIn } from 'motion/react';
 
 // first real section of landing page. the name of this can be changed as needed.
 function LandingWelcome() {
@@ -149,121 +151,78 @@ function AboutGud() {
 
 // FAQ section, six questions total
 function FaqSection() {
-  const [openIndex, setOpenIndex] = useState(null);
+  const faq = [
+    {
+      question: 'Do I need an account to use GÜD?',
+      answer:
+        'Yes. In order to browse workouts, nutritional content and engage with professionals you would need an account.',
+    },
+    {
+      question: 'Can I work out at home without equipment?',
+      answer:
+        'Yes. In order to browse workouts, nutritional content and engage with professionals you would need an account.',
+    },
+    {
+      question: 'Who creates the workouts and nutrition content?',
+      answer:
+        'All content is created and led by certified fitness trainers and nutrition professionals.',
+    },
+    {
+      question: 'Does GÜD track my workouts or health data?',
+      answer:
+        'No. GÜD focuses on guided content, education, and routine-building rather than real-time tracking or health data collection.',
+    },
+    {
+      question: 'Is GÜD suitable for beginners?',
+      answer:
+        'Yes. Workouts and nutrition content are labeled by level and designed to be approachable for all experience levels.',
+    },
+  ];
+
+  const [openIndexes, setOpenIndexes] = useState([]);
+
+  const toggleIndex = (index) => {
+    setOpenIndexes((prev) =>
+      prev.includes(index) ? prev.filter((i) => i != index) : [...prev, index]
+    );
+  };
 
   return (
     <section>
       <h2 className="mb-8 text-xl font-semibold">Frequently Asked Questions</h2>
-      {/* first faq question */}
-      <div className="border-b py-4">
-        <button
-          className="flex w-full items-center justify-between text-left"
-          onClick={() => setOpenIndex(openIndex === 0 ? null : 0)}
-          aria-expanded={openIndex === 0}
-        >
-          <span className="font-medium">Do I need an account to use GÜD?</span>
-          <span>{openIndex === 0 ? '-' : '+'}</span>
-        </button>
-        {openIndex === 0 && (
-          <p className="mt-4 text-sm">
-            Yes. In order to browse workouts, nutritional content and engage
-            with professionals you would need an account.
-          </p>
-        )}
-      </div>
-      {/* second faq question */}
-      <div className="border-b py-4">
-        <button
-          className="flex w-full items-center justify-between text-left"
-          onClick={() => setOpenIndex(openIndex === 1 ? null : 1)}
-          aria-expanded={openIndex === 1}
-        >
-          <span className="font-medium">
-            Can I work out at home without equipment?
-          </span>
-          <span>{openIndex === 1 ? '-' : '+'}</span>
-        </button>
-        {openIndex === 1 && (
-          <p className="mt-4 text-sm">
-            Yes. Many workouts are designed to be done at home with little to no
-            equipment.
-          </p>
-        )}
-      </div>
-      {/* third faq question */}
-      <div className="border-b py-4">
-        <button
-          className="flex w-full items-center justify-between text-left"
-          onClick={() => setOpenIndex(openIndex === 2 ? null : 2)}
-          aria-expanded={openIndex === 2}
-        >
-          <span className="font-medium">
-            Does GÜD track my workouts or health data?
-          </span>
-          <span>{openIndex === 2 ? '-' : '+'}</span>
-        </button>
-        {openIndex === 2 && (
-          <p className="mt-4 text-sm">
-            No. GÜD focuses on guided content, education, and routine-building
-            rather than real-time tracking or health data collection.
-          </p>
-        )}
-      </div>
-      {/* fourth faq question */}
-      <div className="border-b py-4">
-        <button
-          className="flex w-full items-center justify-between text-left"
-          onClick={() => setOpenIndex(openIndex === 3 ? null : 3)}
-          aria-expanded={openIndex === 3}
-        >
-          <span className="font-medium">
-            Who creates the workouts and nutrition content?
-          </span>
-          <span>{openIndex === 3 ? '-' : '+'}</span>
-        </button>
-        {openIndex === 3 && (
-          <p className="mt-4 text-sm">
-            All content is created and led by certified fitness trainers and
-            nutrition professionals.
-          </p>
-        )}
-      </div>
-      {/* fifth faq question */}
-      <div className="border-b py-4">
-        <button
-          className="flex w-full items-center justify-between text-left"
-          onClick={() => setOpenIndex(openIndex === 4 ? null : 4)}
-          aria-expanded={openIndex === 4}
-        >
-          <span className="font-medium">
-            Can I message professionals directly?
-          </span>
-          <span>{openIndex === 4 ? '-' : '+'}</span>
-        </button>
-        {openIndex === 4 && (
-          <p className="mt-4 text-sm">
-            Yes. With our premium plan, you can message professionals for
-            general guidance and educational support. For medical questions,
-            please contact your healthcare provider. For emergencies, call 911.
-          </p>
-        )}
-      </div>
-      {/* sixth faq question */}
-      <div className="border-b py-4">
-        <button
-          className="flex w-full items-center justify-between text-left"
-          onClick={() => setOpenIndex(openIndex === 5 ? null : 5)}
-          aria-expanded={openIndex === 5}
-        >
-          <span className="font-medium">Is GÜD suitable for beginners?</span>
-          <span>{openIndex === 5 ? '-' : '+'}</span>
-        </button>
-        {openIndex === 5 && (
-          <p className="mt-4 text-sm">
-            Yes. Workouts and nutrition content are labeled by level and
-            designed to be approachable for all experience levels.
-          </p>
-        )}
+      <div className="flex flex-col gap-2">
+        {faq.map((item, index) => (
+          <div
+            key={index}
+            className="flex cursor-auto flex-col rounded-md bg-[#f5f0e7] px-6 py-4 hover:cursor-pointer"
+            aria-expanded={openIndexes.includes(index)}
+            onClick={() => toggleIndex(index)}
+          >
+            <div className="flex justify-between">
+              <span className="font-medium">{item.question}</span>
+              <span>
+                {openIndexes.includes(index) ? (
+                  <FontAwesomeIcon icon={faAngleUp} />
+                ) : (
+                  <FontAwesomeIcon icon={faAngleDown} />
+                )}
+              </span>
+            </div>
+            <AnimatePresence initial={false}>
+              {openIndexes.includes(index) && (
+                <motion.p
+                  initial={{ opacity: 0, height: 0 }}
+                  animate={{ opacity: 1, height: 'auto' }}
+                  exit={{ opacity: 0, height: 0 }}
+                  transition={{ duration: 0.2 }}
+                  className="mt-4 text-sm"
+                >
+                  {item.answer}
+                </motion.p>
+              )}
+            </AnimatePresence>
+          </div>
+        ))}
       </div>
     </section>
   );
