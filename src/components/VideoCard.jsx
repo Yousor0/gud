@@ -32,29 +32,30 @@ export default function VideoCard({ video }) {
           <div className="ml-3 flex items-center gap-3">
             {/* Profile Picture */}
 
-            <Image
-              src={
-                user.about.avatarUrl == ''
-                  ? '/default-avatar.jpg'
-                  : user.about.avatarUrl
-              }
-              alt={user.username || 'User'}
-              width={40}
-              height={40}
-              className="rounded-full"
-            />
-
-            <div className="flex flex-col">
-              {/* Text Information */}
-              <h2 className="font-semibold">{video.title}</h2>
-              <Link
-                className="text-sm text-gray-500"
-                href={`/user/${user?.id}`}
-              >
-                {user.name.firstName + ' ' + user.name.lastName ||
-                  'Unknown User'}
-              </Link>
-            </div>
+            <Link
+              className="flex gap-3 text-sm hover:text-[#222222]"
+              href={`/user/${user?.id}`}
+            >
+              <Image
+                src={
+                  user.about.avatarUrl == ''
+                    ? '/default-avatar.jpg'
+                    : user.about.avatarUrl
+                }
+                alt={user.username || 'User'}
+                width={40}
+                height={40}
+                className="rounded-full"
+              />
+              <div className="flex flex-col">
+                {/* Text Information */}
+                <h2 className="font-semibold">{video.title}</h2>
+                <p>
+                  {user.name.firstName + ' ' + user.name.lastName ||
+                    'Unknown User'}
+                </p>
+              </div>
+            </Link>
           </div>
         </div>
       </Link>
