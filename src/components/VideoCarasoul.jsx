@@ -22,8 +22,8 @@ export default function carasoul({
     const updateCardsToShow = () => {
       const width = window.innerWidth;
       if (width < 640) setCardsToShow(1);
-      else if (width < 768) setCardsToShow(2);
-      else if (width < 1024) setCardsToShow(3);
+      else if (width < 768) setCardsToShow(1);
+      else if (width < 1024) setCardsToShow(2);
       else if (width < 1280) setCardsToShow(3);
       else setCardsToShow(4);
     };

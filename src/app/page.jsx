@@ -12,6 +12,7 @@ import {
   faAngleDown,
   faAngleUp,
 } from '@fortawesome/free-solid-svg-icons';
+import Script from 'next/script';
 import { easeOut, motion, AnimatePresence, easeIn } from 'motion/react';
 
 // first real section of landing page. the name of this can be changed as needed.
@@ -22,7 +23,7 @@ function LandingWelcome() {
         <div className="flex justify-center">
           <Image
             src="/landing01.png"
-            alt="Welcome illustration"
+            alt="Person following a GÜD at-home workout on their living room floor"
             width={800}
             height={400}
           />
@@ -118,22 +119,140 @@ function InfoCards() {
   );
 }
 
+// Stats / social proof bar
+function StatsBar() {
+  const stats = [
+    { value: '200+', label: 'Workouts Available' },
+    { value: '50+', label: 'Healthy Recipes' },
+    { value: '100%', label: 'Certified Professionals' },
+    { value: 'All Levels', label: 'Beginner to Advanced' },
+  ];
+
+  return (
+    <section>
+      <div className="grid grid-cols-2 gap-4 md:grid-cols-4">
+        {stats.map((stat, index) => (
+          <div
+            key={index}
+            className="flex flex-col items-center rounded-lg border border-[#d0c5b6] bg-[#f5f0e7] p-6 text-center shadow-sm"
+          >
+            <span className="text-2xl font-bold text-[#c3583e]">
+              {stat.value}
+            </span>
+            <span className="mt-1 text-sm">{stat.label}</span>
+          </div>
+        ))}
+      </div>
+    </section>
+  );
+}
+
+// How it works — 3 step overview (ClaudeCode / Mock Content)
+function HowItWorks() {
+  const steps = [
+    {
+      step: '1',
+      title: 'Create Your Account',
+      description:
+        'Sign up for free and tell us about your fitness goals and experience level.',
+    },
+    {
+      step: '2',
+      title: 'Choose Your Plan',
+      description:
+        'Browse workouts and nutrition plans curated by certified professionals for your level.',
+    },
+    {
+      step: '3',
+      title: 'Start Your Journey',
+      description:
+        'Follow along from home, build consistency, and develop lasting healthy habits.',
+    },
+  ];
+
+  return (
+    <section>
+      <h2 className="section-title mb-8 text-center">How It Works</h2>
+      <div className="grid grid-cols-1 gap-8 md:grid-cols-3">
+        {steps.map((step, index) => (
+          <div
+            key={index}
+            className="flex flex-col items-center gap-4 text-center"
+          >
+            <div className="flex h-12 w-12 items-center justify-center rounded-full bg-[#c3583e] text-xl font-bold text-white">
+              {step.step}
+            </div>
+            <h3 className="text-lg font-semibold">{step.title}</h3>
+            <p className="text-sm">{step.description}</p>
+          </div>
+        ))}
+      </div>
+    </section>
+  );
+}
+
+// Testimonials (ClaudeCode / Mock Content)
+function Testimonials() {
+  const testimonials = [
+    {
+      name: 'Sarah M.',
+      quote:
+        'GÜD helped me build a consistent workout routine from my apartment. The beginner plans are incredibly approachable.',
+      role: 'Member since 2024',
+    },
+    {
+      name: 'James T.',
+      quote:
+        'The nutrition guidance completely changed how I think about food. Simple, practical, and actually sustainable.',
+      role: 'Member since 2024',
+    },
+    {
+      name: 'Priya K.',
+      quote:
+        'I love that all the content is made by real certified professionals. It makes a huge difference in quality.',
+      role: 'Member since 2025',
+    },
+  ];
+
+  return (
+    <section>
+      <h2 className="section-title mb-8 text-center">What Our Members Say</h2>
+      <div className="grid grid-cols-1 gap-8 md:grid-cols-3">
+        {testimonials.map((t, index) => (
+          <div
+            key={index}
+            className="flex flex-col gap-4 rounded-lg border border-[#d0c5b6] bg-[#f5f0e7] p-6 shadow-sm"
+          >
+            <p className="text-sm italic">&ldquo;{t.quote}&rdquo;</p>
+            <div>
+              <p className="font-semibold">{t.name}</p>
+              <p className="text-sm text-gray-500">{t.role}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </section>
+  );
+}
+
 // About GUD section
 function AboutGud() {
   return (
     <section>
       <div className="grid grid-cols-1 items-center gap-10 md:grid-cols-2">
         <div className="flex flex-col gap-4 text-center sm:text-left">
-          <h2 className="text-xl font-semibold">About GÜD</h2>
+          <h2 className="section-title">GÜD's Mission</h2>
           <p className="text-base">
-            GÜD is a wellness platform designed to help you build healthy habits
-            from home. We offer effective at-home workouts, practical nutrition
-            guidance, and expert advice tailored to your needs.
+            GÜD exists to bring people together around a shared commitment to
+            living healthier. We believe wellness isn’t about perfection, but
+            instead about progress, support, and showing up for yourself every
+            day.
           </p>
           <p className="text-base">
-            All content is created by certified professionals, making it easy to
-            follow workouts, learn how to fuel your body, and stay consistent on
-            your own schedule.
+            Through expert-led workouts and practical nutrition guidance, we
+            want to empower our community to build habits that make them feel
+            good and have long lasting effects. Wherever you’re starting from,
+            you’re not doing it alone.
           </p>
         </div>
         <div className="flex justify-center">
@@ -160,7 +279,7 @@ function FaqSection() {
     {
       question: 'Can I work out at home without equipment?',
       answer:
-        'Yes. In order to browse workouts, nutritional content and engage with professionals you would need an account.',
+        'Yes. GÜD offers a wide range of bodyweight workouts that require no equipment at all. Whether you have a full gym or just a living room floor, there are options for you.',
     },
     {
       question: 'Who creates the workouts and nutrition content?',
@@ -228,12 +347,69 @@ function FaqSection() {
   );
 }
 
+const faqJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: [
+    {
+      '@type': 'Question',
+      name: 'Do I need an account to use GÜD?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Yes. In order to browse workouts, nutritional content and engage with professionals you would need an account.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'Can I work out at home without equipment?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Yes. GÜD offers a wide range of bodyweight workouts that require no equipment at all. Whether you have a full gym or just a living room floor, there are options for you.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'Who creates the workouts and nutrition content?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'All content is created and led by certified fitness trainers and nutrition professionals.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'Does GÜD track my workouts or health data?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'No. GÜD focuses on guided content, education, and routine-building rather than real-time tracking or health data collection.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'Is GÜD suitable for beginners?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Yes. Workouts and nutrition content are labeled by level and designed to be approachable for all experience levels.',
+      },
+    },
+  ],
+};
+
 export default function landingPage() {
   return (
-    <main className="mx-auto flex w-auto max-w-7xl flex-col gap-10 px-5">
+    <main className="mx-auto flex w-auto max-w-7xl flex-col gap-20 px-5">
+      <Script
+        id="faq-jsonld"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
+      />
       <LandingWelcome />
-      <InfoCards />
+      <div className="flex flex-col gap-6">
+        <InfoCards />
+        <StatsBar />
+      </div>
+      <HowItWorks />
       <AboutGud />
+      <Testimonials />
       <FaqSection id="faq" />
     </main>
   );

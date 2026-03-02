@@ -20,24 +20,35 @@ function RegisterForm() {
         <div className="mb-5 flex flex-col gap-2">
           <div className="flex flex-row gap-4">
             <div>
-              <label htmlFor="firstName">First Name</label>
+              <label htmlFor="first_name">First Name</label>
               <input
-                id="firstName"
-                className="w-full rounded-md border border-gray-300 px-3 py-2"
+                id="first_name"
+                name="first_name"
+                className="w-full rounded-md border border-gray-300 px-3 py-2 focus:border-[#9d4431] focus:ring-2 focus:ring-[#d07a64] focus:outline-none"
                 type="text"
-                placeholder="Capstone"
               />
             </div>
             {/* Last name field */}
             <div>
-              <label htmlFor="lastName">Last Name</label>
+              <label htmlFor="last_name">Last Name</label>
               <input
-                id="lastName"
-                className="w-full rounded-md border border-gray-300 px-3 py-2"
+                id="last_name"
+                name="last_name"
+                className="w-full rounded-md border border-gray-300 px-3 py-2 focus:border-[#9d4431] focus:ring-2 focus:ring-[#d07a64] focus:outline-none"
                 type="text"
-                placeholder="DIG4172C"
               />
             </div>
+          </div>
+
+          {/* Username field */}
+          <div>
+            <label htmlFor="username">Username</label>
+            <input
+              id="username"
+              name="username"
+              className="w-full rounded-md border border-gray-300 px-3 py-2 focus:border-[#9d4431] focus:ring-2 focus:ring-[#d07a64] focus:outline-none"
+              type="text"
+            />
           </div>
 
           {/* Email field */}
@@ -45,9 +56,9 @@ function RegisterForm() {
             <label htmlFor="email">Email</label>
             <input
               id="email"
-              className="w-full rounded-md border border-gray-300 px-3 py-2"
+              name="email"
+              className="w-full rounded-md border border-gray-300 px-3 py-2 focus:border-[#9d4431] focus:ring-2 focus:ring-[#d07a64] focus:outline-none"
               type="email"
-              placeholder="capstone2026@dig4172C.com"
             />
           </div>
           {/* Password field */}
@@ -57,9 +68,9 @@ function RegisterForm() {
             </label>
             <input
               id="password"
-              className="w-full rounded-md border border-gray-300 px-3 py-2"
+              name="password"
+              className="w-full rounded-md border border-gray-300 px-3 py-2 focus:border-[#9d4431] focus:ring-2 focus:ring-[#d07a64] focus:outline-none"
               type="password"
-              placeholder="**********"
             />
           </div>
         </div>
@@ -78,9 +89,9 @@ function RegisterForm() {
             Signup
           </motion.button>
 
-          <div className="text-gray-500">or</div>
+          {/* <div className="text-gray-500">or</div>
 
-          {/* GOOGLE LOGIN */}
+          GOOGLE LOGIN
           <motion.button
             whileHover={{ scale: 1.02, translateY: -1 }}
             whileTap={{ scale: 0.99 }}
@@ -90,7 +101,7 @@ function RegisterForm() {
             className="w-full cursor-auto rounded-md border border-[#9D4431] px-5 py-2 font-medium text-[#9D4431] hover:cursor-pointer hover:border-[#D07A64] hover:bg-[#D07A64] hover:text-[#FAF7F3]"
           >
             <FontAwesomeIcon icon={faGoogle} /> Sign Up with Google
-          </motion.button>
+          </motion.button> */}
         </div>
       </form>
 

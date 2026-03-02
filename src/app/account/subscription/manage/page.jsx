@@ -1,4 +1,4 @@
-import Button from './components/ui/Button';
+import Button from '../../../../components/ui/Button';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCheck } from '@fortawesome/free-solid-svg-icons';
 
@@ -24,7 +24,7 @@ function Manage() {
         'Beginner-friendly workout guides',
         'Follow-along home workout videos',
         'General nutrition guides and healthy recipe ideas',
-        'Educational content on fitness and wellness',
+        'Educational content on fitnezss and wellness',
       ],
     },
   ];

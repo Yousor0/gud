@@ -5,6 +5,7 @@ import { motion } from 'motion/react';
 
 export default function Button({
   text,
+  children,
   variant = 'primary',
   className = '',
   href = '#',
@@ -33,7 +34,7 @@ export default function Button({
         href={href.startsWith('/') ? href : `/${href}`}
         className={`${variantStyles} ${className} rounded-md px-5 py-2 duration-150`}
       >
-        {text}
+        {children ?? text}
       </Link>
     </motion.button>
   );

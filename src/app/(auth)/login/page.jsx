@@ -22,9 +22,9 @@ function LoginForm() {
             <label htmlFor="email">Email</label>
             <input
               id="email"
+              name="email"
               type="email"
-              className="w-full rounded-md border border-gray-300 px-3 py-2"
-              placeholder="capstone2026@dig4172C.com"
+              className="w-full rounded-md border border-gray-300 px-3 py-2 focus:border-[#9d4431] focus:ring-2 focus:ring-[#d07a64] focus:outline-none"
             />
           </div>
           {/* password field */}
@@ -34,9 +34,9 @@ function LoginForm() {
             </label>
             <input
               id="password"
-              className="w-full rounded-md border border-gray-300 px-3 py-2"
+              name="password"
+              className="w-full rounded-md border border-gray-300 px-3 py-2 focus:border-[#9d4431] focus:ring-2 focus:ring-[#d07a64] focus:outline-none"
               type="password"
-              placeholder="Password"
             />
           </div>
         </div>
@@ -55,10 +55,10 @@ function LoginForm() {
             Login
           </motion.button>
 
-          {/* OR */}
+          {/* OR
           <div className="text-gray-500">or</div>
 
-          {/* GOOGLE LOGIN */}
+          GOOGLE LOGIN
 
           <motion.button
             whileHover={{ scale: 1.02, translateY: -1 }}
@@ -69,7 +69,7 @@ function LoginForm() {
             className="w-full cursor-auto rounded-md border border-[#9D4431] px-5 py-2 font-medium text-[#9D4431] hover:cursor-pointer hover:border-[#D07A64] hover:bg-[#D07A64] hover:text-[#FAF7F3]"
           >
             <FontAwesomeIcon icon={faGoogle} /> Login with Google
-          </motion.button>
+          </motion.button> */}
         </div>
       </form>
 

@@ -10,6 +10,20 @@ import {
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import NavigationLink from './ui/NavigationLink';
 
+const developers = [
+  { name: 'Andrew Jiang', githubLink: 'https://github.com/Yousor0' },
+  { name: 'Jeremy Auguste', githubLink: 'https://github.com/jeremyauguste' },
+  {
+    name: 'Biana Lambis-Puryear',
+    githubLink: 'https://github.com/bianalambis',
+  },
+  {
+    name: 'Francesca Lorthe',
+    githubLink: 'https://github.com/FrancescaLorthe',
+  },
+  { name: 'Nikolai Cooperider', githubLink: '#' },
+];
+
 export default function Footer() {
   return (
     <footer
@@ -22,13 +36,14 @@ export default function Footer() {
       }}
     >
       <div className="mx-auto flex w-auto max-w-7xl flex-col gap-10 px-5 py-10">
-        <div className="grid grid-cols-1 gap-5 text-center text-[#444444] sm:grid-cols-3 sm:gap-20 sm:text-left md:grid-cols-4">
+        <div className="grid grid-cols-2 gap-5 text-[#444444] sm:grid-cols-3 sm:gap-20 sm:text-left md:grid-cols-3">
           {/* GUD */}
           <div className="flex flex-col">
             {/* GUD Section */}
             <h4 className="sub-header">GÜD</h4>
             <NavigationLink href="/about" text="About" variant="footerLink" />
             <NavigationLink href="/#faq" text="FAQ" variant="footerLink" />
+            {/* Non-traversalble Footer Links */}
             <NavigationLink
               href="javascript:void(0)"
               text="Contact"
@@ -49,48 +64,16 @@ export default function Footer() {
           {/* Developer */}
           <div className="flex flex-col">
             <h4 className="sub-header">Developers </h4>
-            <NavigationLink
-              href="https://github.com/Yousor0"
-              text="Andrew Jiang"
-              variant="footerLink"
-              target="_blank"
-              rel="noopener noreferrer"
-            />
-            <NavigationLink
-              href="https://github.com/jeremyauguste"
-              text="Jeremy Auguste"
-              variant="footerLink"
-              target="_blank"
-              rel="noopener noreferrer"
-            />
-            <NavigationLink
-              href="https://github.com/bianalambis"
-              text="Biana Lambis-Puryear"
-              variant="footerLink"
-              target="_blank"
-              rel="noopener noreferrer"
-            />
-            <NavigationLink
-              href="https://github.com/FrancescaLorthe"
-              text="Francesca Lorthe"
-              variant="footerLink"
-              target="_blank"
-              rel="noopener noreferrer"
-            />
-            <NavigationLink
-              href="#"
-              text="Nikolai Cooperider"
-              variant="footerLink"
-              target="_blank"
-              rel="noopener noreferrer"
-            />
-            <NavigationLink
-              href="#"
-              text="Jacob Gomez"
-              variant="footerLink"
-              target="_blank"
-              rel="noopener noreferrer"
-            />
+            {developers.map((person) => (
+              <NavigationLink
+                key={person.name}
+                href={person.githubLink}
+                text={person.name}
+                variant="footerLink"
+                target="_blank"
+                rel="noopener noreferrer"
+              />
+            ))}
           </div>
 
           {/* Menu */}

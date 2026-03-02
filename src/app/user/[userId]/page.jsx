@@ -40,10 +40,10 @@ export default async function ProfessionalProfile({ params }) {
                     ? '/default-avatar.jpg'
                     : profile.about.avatarUrl
                 }
-                width={220}
-                height={220}
+                width={250}
+                height={250}
                 alt="profile avatar"
-                className="rounded-full"
+                className="aspect-square rounded-full object-cover"
               />
             </div>
 
