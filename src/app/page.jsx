@@ -20,6 +20,18 @@ function LandingWelcome() {
   return (
     <section>
       <div className="grid grid-cols-1 items-center gap-10 py-10 md:grid-cols-2">
+        <svg
+          viewBox="0 0 350 300"
+          xmlns="http://www.w3.org/2000/svg"
+          className="absolute -z-40"
+        >
+          <path
+            fill="#F5F0E7"
+            d="M48.6,-52C63.1,-45.8,75,-30.6,77,-14.3C79.1,2,71.3,19.4,60.7,32.6C50.2,45.9,36.8,55,23.3,56.9C9.7,58.8,-3.9,53.4,-17.1,48.1C-30.4,42.9,-43.4,37.7,-54.6,27.2C-65.8,16.7,-75.2,0.9,-71.5,-11.2C-67.7,-23.4,-50.7,-31.8,-36.6,-38.1C-22.5,-44.4,-11.3,-48.5,2.9,-52C17.1,-55.4,34.1,-58.2,48.6,-52Z"
+            transform="translate(75 150)"
+          />
+        </svg>
+
         <div className="flex justify-center">
           <Image
             src="/landing01.png"
@@ -236,10 +248,22 @@ function Testimonials() {
 }
 
 // About GUD section
-function AboutGud() {
+function MissionGud() {
   return (
     <section>
       <div className="grid grid-cols-1 items-center gap-10 md:grid-cols-2">
+        <svg
+          viewBox="0 0 375 375"
+          xmlns="http://www.w3.org/2000/svg"
+          className="absolute -z-50"
+        >
+          <path
+            fill="#F5F0E7"
+            d="M43.2,-45.7C58,-39.1,73.3,-27.4,79.9,-11C86.5,5.4,84.3,26.4,73,38.6C61.8,50.9,41.4,54.4,23.7,57.6C5.9,60.8,-9.2,63.8,-25.3,61.4C-41.4,59,-58.5,51.3,-70.7,37.3C-83,23.3,-90.5,3,-86.9,-15C-83.3,-32.9,-68.6,-48.6,-52.3,-54.9C-35.9,-61.2,-18,-58.2,-1.9,-55.9C14.2,-53.7,28.4,-52.3,43.2,-45.7Z"
+            transform="translate(250 185)"
+          />
+        </svg>
+
         <div className="flex flex-col gap-4 text-center sm:text-left">
           <h2 className="section-title">GÜD's Mission</h2>
           <p className="text-base">
@@ -408,7 +432,7 @@ export default function landingPage() {
         <StatsBar />
       </div>
       <HowItWorks />
-      <AboutGud />
+      <MissionGud />
       <Testimonials />
       <FaqSection id="faq" />
     </main>

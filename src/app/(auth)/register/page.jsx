@@ -14,6 +14,18 @@ function RegisterForm() {
         <p className="mb-6 text-base">Join the GÜD Community</p>
       </div>
 
+      <svg
+        viewBox="0 0 400 200"
+        xmlns="http://www.w3.org/2000/svg"
+        className="absolute -z-50 rotate-180"
+      >
+        <path
+          fill="#F5F0E7"
+          d="M54.1,-59C69.1,-51.9,79.4,-33.9,83.4,-14.3C87.4,5.3,84.9,26.5,73.9,40C62.9,53.5,43.3,59.4,27.3,57.7C11.3,55.9,-1.1,46.6,-15.1,41.5C-29,36.4,-44.5,35.5,-54.6,27.1C-64.7,18.7,-69.5,2.8,-64.4,-8.8C-59.4,-20.4,-44.4,-27.7,-32,-35.3C-19.6,-42.8,-9.8,-50.6,4.9,-56.5C19.6,-62.3,39.1,-66.1,54.1,-59Z"
+          transform="translate(150 100) "
+        />
+      </svg>
+
       {/* SIGN UP FORM */}
       <form className="flex flex-col">
         {/* First name field */}
@@ -24,7 +36,7 @@ function RegisterForm() {
               <input
                 id="first_name"
                 name="first_name"
-                className="w-full rounded-md border border-gray-300 px-3 py-2 focus:border-[#9d4431] focus:ring-2 focus:ring-[#d07a64] focus:outline-none"
+                className="w-full rounded-md border border-gray-300 px-3 py-2 duration-100 hover:border-[#d07a64] focus:border-[#9d4431] focus:ring-2 focus:ring-[#d07a64] focus:outline-none"
                 type="text"
               />
             </div>
@@ -34,7 +46,7 @@ function RegisterForm() {
               <input
                 id="last_name"
                 name="last_name"
-                className="w-full rounded-md border border-gray-300 px-3 py-2 focus:border-[#9d4431] focus:ring-2 focus:ring-[#d07a64] focus:outline-none"
+                className="w-full rounded-md border border-gray-300 px-3 py-2 duration-100 hover:border-[#d07a64] focus:border-[#9d4431] focus:ring-2 focus:ring-[#d07a64] focus:outline-none"
                 type="text"
               />
             </div>
@@ -46,7 +58,7 @@ function RegisterForm() {
             <input
               id="username"
               name="username"
-              className="w-full rounded-md border border-gray-300 px-3 py-2 focus:border-[#9d4431] focus:ring-2 focus:ring-[#d07a64] focus:outline-none"
+              className="w-full rounded-md border border-gray-300 px-3 py-2 duration-100 hover:border-[#d07a64] focus:border-[#9d4431] focus:ring-2 focus:ring-[#d07a64] focus:outline-none"
               type="text"
             />
           </div>
@@ -57,7 +69,7 @@ function RegisterForm() {
             <input
               id="email"
               name="email"
-              className="w-full rounded-md border border-gray-300 px-3 py-2 focus:border-[#9d4431] focus:ring-2 focus:ring-[#d07a64] focus:outline-none"
+              className="w-full rounded-md border border-gray-300 px-3 py-2 duration-100 hover:border-[#d07a64] focus:border-[#9d4431] focus:ring-2 focus:ring-[#d07a64] focus:outline-none"
               type="email"
             />
           </div>
@@ -69,7 +81,7 @@ function RegisterForm() {
             <input
               id="password"
               name="password"
-              className="w-full rounded-md border border-gray-300 px-3 py-2 focus:border-[#9d4431] focus:ring-2 focus:ring-[#d07a64] focus:outline-none"
+              className="w-full rounded-md border border-gray-300 px-3 py-2 duration-100 hover:border-[#d07a64] focus:border-[#9d4431] focus:ring-2 focus:ring-[#d07a64] focus:outline-none"
               type="password"
             />
           </div>
@@ -86,7 +98,7 @@ function RegisterForm() {
             type="button"
             className="w-full cursor-auto rounded-md bg-[#9D4431] px-5 py-2 font-semibold text-[#FAF7F3] shadow-sm hover:cursor-pointer hover:bg-[#D07A64]"
           >
-            Signup
+            Sign up
           </motion.button>
 
           {/* <div className="text-gray-500">or</div>
@@ -107,7 +119,10 @@ function RegisterForm() {
 
       <p className="mt-6 text-center text-base">
         Already have an account?{' '}
-        <Link href="/login" className="font-medium underline">
+        <Link
+          href="/login"
+          className="font-medium underline duration-100 hover:text-[#9d4431]"
+        >
           Log In
         </Link>
       </p>

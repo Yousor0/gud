@@ -9,11 +9,21 @@ import { easeInOut, motion } from 'motion/react';
 function LoginForm() {
   return (
     <div className="mx-auto flex w-full max-w-md flex-col justify-center">
+      <svg
+        viewBox="0 0 400 250"
+        xmlns="http://www.w3.org/2000/svg"
+        className="absolute -z-50 rotate-180"
+      >
+        <path
+          fill="#F5F0E7"
+          d="M45.3,-51.9C58.7,-42.7,69.7,-28.5,75.7,-10.9C81.7,6.6,82.7,27.5,73.6,41.8C64.5,56,45.2,63.7,29.1,61.6C13,59.5,0,47.6,-16.9,43C-33.8,38.3,-54.7,41,-66.9,32.5C-79.2,24,-82.8,4.4,-76.3,-10.2C-69.9,-24.8,-53.4,-34.4,-39,-43.4C-24.6,-52.4,-12.3,-60.9,1.8,-63.1C15.9,-65.2,31.8,-61.1,45.3,-51.9Z"
+          transform="translate(160 125)"
+        />
+      </svg>
       <div className="flex flex-col gap-3">
         <h1 className="page-title">Welcome back!</h1>
         <p className="mb-6 text-base">Log back into your account</p>
       </div>
-
       {/* Login */}
       <form className="flex flex-col">
         {/* email field */}
@@ -24,7 +34,7 @@ function LoginForm() {
               id="email"
               name="email"
               type="email"
-              className="w-full rounded-md border border-gray-300 px-3 py-2 focus:border-[#9d4431] focus:ring-2 focus:ring-[#d07a64] focus:outline-none"
+              className="w-full rounded-md border border-gray-300 px-3 py-2 duration-100 hover:border-[#d07a64] focus:border-[#9d4431] focus:ring-2 focus:ring-[#d07a64] focus:outline-none"
             />
           </div>
           {/* password field */}
@@ -35,7 +45,7 @@ function LoginForm() {
             <input
               id="password"
               name="password"
-              className="w-full rounded-md border border-gray-300 px-3 py-2 focus:border-[#9d4431] focus:ring-2 focus:ring-[#d07a64] focus:outline-none"
+              className="w-full rounded-md border border-gray-300 px-3 py-2 duration-100 hover:border-[#d07a64] focus:border-[#9d4431] focus:ring-2 focus:ring-[#d07a64] focus:outline-none"
               type="password"
             />
           </div>
@@ -77,9 +87,9 @@ function LoginForm() {
         Don't have an account?{' '}
         <Link
           href="/register"
-          className="font-medium underline hover:text-[#9d4431]"
+          className="font-medium underline duration-100 hover:text-[#9d4431]"
         >
-          Sign Up
+          Sign up
         </Link>
       </p>
     </div>
