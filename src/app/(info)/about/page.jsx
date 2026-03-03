@@ -1,3 +1,5 @@
+'use client';
+
 import React from 'react';
 import Image from 'next/image';
 import Button from '../../../components/ui/Button';
@@ -10,6 +12,7 @@ import {
   faLeaf,
   faUsers,
 } from '@fortawesome/free-solid-svg-icons';
+import { CldImage } from 'next-cloudinary';
 
 const values = [
   {
@@ -32,24 +35,21 @@ const values = [
   },
 ];
 
+const team = [
+  // placeholder images hahahaha
+  { name: 'Andrew Jiang', imageUrl: 'sophiaAlvarez_ufb1ou' },
+  { name: 'Jeremy Auguste', imageUrl: 'sophiaAlvarez_ufb1ou' },
+  { name: 'Biana Lambis-Puryear', imageUrl: 'sophiaAlvarez_ufb1ou' },
+  { name: 'Francesca Lorthe', imageUrl: 'sophiaAlvarez_ufb1ou' },
+  { name: 'Nikolai Cooperider', imageUrl: 'sophiaAlvarez_ufb1ou' },
+];
+
 export default function AboutPage() {
   return (
     <main className="mx-auto flex w-auto max-w-7xl flex-col gap-20 px-5 py-16">
       {/* Mission Hero */}
       <section className="grid grid-cols-1 items-center gap-10 md:grid-cols-2">
-        <svg
-          viewBox="0 0 400 200"
-          xmlns="http://www.w3.org/2000/svg"
-          className="absolute -z-50 rotate-180"
-        >
-          <path
-            fill="#F5F0E7"
-            d="M54.1,-59C69.1,-51.9,79.4,-33.9,83.4,-14.3C87.4,5.3,84.9,26.5,73.9,40C62.9,53.5,43.3,59.4,27.3,57.7C11.3,55.9,-1.1,46.6,-15.1,41.5C-29,36.4,-44.5,35.5,-54.6,27.1C-64.7,18.7,-69.5,2.8,-64.4,-8.8C-59.4,-20.4,-44.4,-27.7,-32,-35.3C-19.6,-42.8,-9.8,-50.6,4.9,-56.5C19.6,-62.3,39.1,-66.1,54.1,-59Z"
-            transform="translate(125 100) "
-          />
-        </svg>
-
-        <div className="flex flex-col gap-5">
+        <div className="flex flex-col gap-5 text-center md:text-left">
           <h1 className="page-title">About Us</h1>
           <p className="body-primary">
             GÜD is a wellness platform built to help you develop healthy habits
@@ -64,11 +64,15 @@ export default function AboutPage() {
             day-to-day lifestyle. Everything is created to be clear,
             approachable, and adaptable so you can move at your own pace.
           </p>
-          <div className="flex gap-4 pt-2">
-            <Button href="/register" text="Get Started" />
+          <div className="flex justify-center gap-4 pt-2 md:justify-start">
+            <Button
+              href="/register"
+              text="Get Started"
+              className="w-full text-center"
+            />
           </div>
         </div>
-        <div className="flex justify-center">
+        <div className="relative flex justify-center">
           <Image
             src="/about01.png"
             alt="People being active"
@@ -76,49 +80,74 @@ export default function AboutPage() {
             height={500}
             className="rounded-lg"
           />
+          <svg
+            viewBox="0 0 100 100"
+            xmlns="http://www.w3.org/2000/svg"
+            className="absolute inset-0 -z-40 m-auto h-full w-full rotate-180 overflow-visible"
+          >
+            <path
+              fill="#F5F0E7"
+              d="M54.1,-59C69.1,-51.9,79.4,-33.9,83.4,-14.3C87.4,5.3,84.9,26.5,73.9,40C62.9,53.5,43.3,59.4,27.3,57.7C11.3,55.9,-1.1,46.6,-15.1,41.5C-29,36.4,-44.5,35.5,-54.6,27.1C-64.7,18.7,-69.5,2.8,-64.4,-8.8C-59.4,-20.4,-44.4,-27.7,-32,-35.3C-19.6,-42.8,-9.8,-50.6,4.9,-56.5C19.6,-62.3,39.1,-66.1,54.1,-59Z"
+              transform="translate(35 50) "
+            />
+          </svg>
         </div>
       </section>
 
-      {/* What We Offer */}
-      <section>
-        <h2 className="section-title mb-8 text-center">What We Offer</h2>
-        <div className="grid grid-cols-1 gap-8 md:grid-cols-3">
-          <div className="flex flex-col items-center gap-4 rounded-lg border border-[#d0c5b6] bg-[#f5f0e7] p-8 text-center shadow-sm">
-            <FontAwesomeIcon
-              icon={faDumbbell}
-              size="3x"
-              className="text-[#c3583e]"
-            />
-            <h3 className="sub-header">At-Home Workouts</h3>
-            <p className="body-primary">
-              Structured workout programs designed for your home environment. No
-              gym membership or equipment required.
-            </p>
-          </div>
-          <div className="flex flex-col items-center gap-4 rounded-lg border border-[#d0c5b6] bg-[#f5f0e7] p-8 text-center shadow-sm">
-            <FontAwesomeIcon
-              icon={faAppleWhole}
-              size="3x"
-              className="text-[#c3583e]"
-            />
-            <h3 className="sub-header">Nutrition Guidance</h3>
-            <p className="body-primary">
-              Realistic meal plans and nutritional advice that fit into your
-              everyday life without feeling restrictive.
-            </p>
-          </div>
-          <div className="flex flex-col items-center gap-4 rounded-lg border border-[#d0c5b6] bg-[#f5f0e7] p-8 text-center shadow-sm">
-            <FontAwesomeIcon
-              icon={faCertificate}
-              size="3x"
-              className="text-[#c3583e]"
-            />
-            <h3 className="sub-header">Expert-Backed Content</h3>
-            <p className="body-primary">
-              All programs and guides are developed by certified trainers and
-              nutritionists you can trust.
-            </p>
-          </div>
+      {/* Who we are */}
+      <section className="flex flex-col gap-20">
+        <div className="center flex flex-col">
+          <h2 className="section-title mb-8 text-center">Our Team</h2>
+          <p className="text-secondary px-5 text-center">
+            We are a team of five Digital Media students from the University of
+            Central Florida united by a shared passion for wellness, design, and
+            meaningful technology. As part of our capstone project, we created
+            GÜD to combine a thoughtful user experience, research-driven
+            strategy, and accessible design into a platform that encourages and
+            supports healthy living. With various backgrounds spanning
+            development, design, and digital storytelling, we collaborated to
+            build a solution that reflects both our technical skills and our
+            commitment to creating something practical, impactful, and built for
+            real life.
+          </p>
+        </div>
+
+        <svg
+          width="0"
+          height="0"
+          style={{ position: 'absolute', overflow: 'hidden' }}
+        >
+          <defs>
+            <clipPath id="blob-clip" clipPathUnits="objectBoundingBox">
+              <path
+                d="M0.838,0.4005 C0.8815,0.5255,0.8225,0.694,0.711,0.77 C0.5995,0.8465,0.436,0.83,0.3315,0.75 C0.2275,0.67,0.183,0.526,0.221,0.4095 C0.259,0.2925,0.3795,0.202,0.513,0.198 C0.647,0.1935,0.794,0.275,0.838,0.4005Z"
+                transform="translate(0.5 0.5) scale(1.3) translate(-0.5 -0.5)"
+              />
+            </clipPath>
+          </defs>
+        </svg>
+
+        <div className="flex flex-row flex-wrap justify-center gap-5">
+          {team.map((member) => (
+            <div
+              key={member.name}
+              className="flex w-50 flex-col items-center gap-5"
+            >
+              <div style={{ clipPath: 'url(#blob-clip)' }}>
+                <CldImage
+                  width="400"
+                  height="400"
+                  src={member.imageUrl}
+                  sizes=" (max-width: 768px) 100vw,
+                          (max-width: 1200px) 50vw,
+                          33vw"
+                  alt={member.name}
+                  className="object-cover"
+                />
+              </div>
+              <span className="sub-header">{member.name}</span>
+            </div>
+          ))}
         </div>
       </section>
 
@@ -147,7 +176,7 @@ export default function AboutPage() {
 
       {/* CTA */}
       <section className="grid grid-cols-1 items-center gap-10 md:grid-cols-2">
-        <div className="flex justify-center">
+        <div className="relative flex justify-center">
           <Image
             src="/about02.png"
             alt="Three people being active outside"
@@ -155,18 +184,19 @@ export default function AboutPage() {
             height={400}
             className="rounded-lg"
           />
+          <svg
+            viewBox="0 0 100 100"
+            xmlns="http://www.w3.org/2000/svg"
+            className="absolute inset-0 -z-40 m-auto h-full w-full overflow-visible"
+          >
+            <path
+              fill="#F5F0E7"
+              d="M54.1,-59C69.1,-51.9,79.4,-33.9,83.4,-14.3C87.4,5.3,84.9,26.5,73.9,40C62.9,53.5,43.3,59.4,27.3,57.7C11.3,55.9,-1.1,46.6,-15.1,41.5C-29,36.4,-44.5,35.5,-54.6,27.1C-64.7,18.7,-69.5,2.8,-64.4,-8.8C-59.4,-20.4,-44.4,-27.7,-32,-35.3C-19.6,-42.8,-9.8,-50.6,4.9,-56.5C19.6,-62.3,39.1,-66.1,54.1,-59Z"
+              transform="translate(40 50)"
+            />
+          </svg>
         </div>
-        <svg
-          viewBox="0 0 400 200"
-          xmlns="http://www.w3.org/2000/svg"
-          className="absolute -z-50 rotate-180"
-        >
-          <path
-            fill="#F5F0E7"
-            d="M54.1,-59C69.1,-51.9,79.4,-33.9,83.4,-14.3C87.4,5.3,84.9,26.5,73.9,40C62.9,53.5,43.3,59.4,27.3,57.7C11.3,55.9,-1.1,46.6,-15.1,41.5C-29,36.4,-44.5,35.5,-54.6,27.1C-64.7,18.7,-69.5,2.8,-64.4,-8.8C-59.4,-20.4,-44.4,-27.7,-32,-35.3C-19.6,-42.8,-9.8,-50.6,4.9,-56.5C19.6,-62.3,39.1,-66.1,54.1,-59Z"
-            transform="translate(300 100) "
-          />
-        </svg>
+
         <div className="flex flex-col gap-5 text-center md:text-left">
           <h2 className="section-title">
             Ready to build something that lasts?
@@ -181,13 +211,18 @@ export default function AboutPage() {
             results-focused. Whether you&apos;re just getting started or getting
             back on track, we&apos;ve got you.
           </p>
-          <div className="flex justify-center gap-4 pt-2 md:justify-start">
-            <Button href="/register" text="Create an Account" />
+          <div className="flex flex-col gap-4 pt-2 lg:flex-row">
+            <Button
+              href="/register"
+              text="Create an Account"
+              className="w-full text-center"
+            />
             <Button
               href="/explore"
               variant="border"
               text="Browse Content"
-            ></Button>
+              className="w-full text-center"
+            />
           </div>
         </div>
       </section>

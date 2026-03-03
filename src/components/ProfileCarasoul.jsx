@@ -36,6 +36,8 @@ function ProfileCarasoul({
   }, []);
 
   const maxStart = Math.max(usersAPI.length - profilesToShow, 0);
+  // Clamp startIndex so resizing to a larger screen never leaves startIndex past maxStart
+  const clampedStart = Math.min(startIndex, maxStart);
   //   Next Button
   const next = () => {
     setStartIndex((prev) => Math.min(prev + profilesToShow, maxStart));
@@ -47,8 +49,8 @@ function ProfileCarasoul({
   };
 
   const visibleProfiles = usersAPI.slice(
-    startIndex,
-    startIndex + profilesToShow
+    clampedStart,
+    clampedStart + profilesToShow
   );
 
   return (
@@ -60,7 +62,7 @@ function ProfileCarasoul({
         <div className="grid-row-2 grid">
           {/* Profile Pictures Grid */}
           <div
-            className={'grid gap-6'}
+            className={'grid gap-2 sm:gap-4 md:gap-6'}
             style={{
               gridTemplateColumns:
                 orientation === 'horizontal'
@@ -69,7 +71,10 @@ function ProfileCarasoul({
             }}
           >
             {visibleProfiles.map((user, index) => (
-              <div key={`${user.id}-${startIndex + index}`} className="w-full">
+              <div
+                key={`${user.id}-${clampedStart + index}`}
+                className="w-full"
+              >
                 <ProfilePicture user={user} />
               </div>
             ))}
@@ -78,7 +83,7 @@ function ProfileCarasoul({
           {/* Previous Button */}
           <button
             onClick={prev}
-            disabled={startIndex === 0}
+            disabled={clampedStart === 0}
             className="absolute top-1/2 -left-10 h-10 w-10 -translate-y-1/2 transform items-center justify-center rounded-full bg-[#D07A64] disabled:hidden sm:-left-12"
           >
             <FontAwesomeIcon
@@ -91,7 +96,7 @@ function ProfileCarasoul({
           {/* Next Button */}
           <button
             onClick={next}
-            disabled={startIndex + profilesToShow >= usersAPI.length}
+            disabled={clampedStart + profilesToShow >= usersAPI.length}
             className="absolute top-1/2 -right-10 h-10 w-10 -translate-y-1/2 transform items-center justify-center rounded-full bg-[#D07A64] disabled:hidden sm:-right-12"
           >
             <FontAwesomeIcon

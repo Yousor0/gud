@@ -20,25 +20,25 @@ function LandingWelcome() {
   return (
     <section>
       <div className="grid grid-cols-1 items-center gap-10 py-10 md:grid-cols-2">
-        <svg
-          viewBox="0 0 350 300"
-          xmlns="http://www.w3.org/2000/svg"
-          className="absolute -z-40"
-        >
-          <path
-            fill="#F5F0E7"
-            d="M48.6,-52C63.1,-45.8,75,-30.6,77,-14.3C79.1,2,71.3,19.4,60.7,32.6C50.2,45.9,36.8,55,23.3,56.9C9.7,58.8,-3.9,53.4,-17.1,48.1C-30.4,42.9,-43.4,37.7,-54.6,27.2C-65.8,16.7,-75.2,0.9,-71.5,-11.2C-67.7,-23.4,-50.7,-31.8,-36.6,-38.1C-22.5,-44.4,-11.3,-48.5,2.9,-52C17.1,-55.4,34.1,-58.2,48.6,-52Z"
-            transform="translate(75 150)"
-          />
-        </svg>
-
-        <div className="flex justify-center">
+        <div className="relative flex justify-center">
           <Image
             src="/landing01.png"
             alt="Person following a GÜD at-home workout on their living room floor"
             width={800}
             height={400}
           />
+
+          <svg
+            viewBox="0 0 125 125"
+            xmlns="http://www.w3.org/2000/svg"
+            className="absolute inset-0 -z-40 m-auto h-full w-full"
+          >
+            <path
+              fill="#F5F0E7"
+              d="M48.6,-52C63.1,-45.8,75,-30.6,77,-14.3C79.1,2,71.3,19.4,60.7,32.6C50.2,45.9,36.8,55,23.3,56.9C9.7,58.8,-3.9,53.4,-17.1,48.1C-30.4,42.9,-43.4,37.7,-54.6,27.2C-65.8,16.7,-75.2,0.9,-71.5,-11.2C-67.7,-23.4,-50.7,-31.8,-36.6,-38.1C-22.5,-44.4,-11.3,-48.5,2.9,-52C17.1,-55.4,34.1,-58.2,48.6,-52Z"
+              transform="translate(50 60)"
+            />
+          </svg>
         </div>
         <div className="flex flex-col gap-5">
           <h1 className="page-title text-center sm:text-left">
@@ -47,9 +47,18 @@ function LandingWelcome() {
           <p className="body-primary text-center sm:text-left">
             At home workouts and nutritional guidance tailored to you
           </p>
-          <div className="flex justify-center gap-5 sm:justify-start">
-            <Button href="/register" text="Start you plan" />
-            <Button href="/about" text="Learn more" variant="border" />
+          <div className="flex flex-col justify-center gap-4 sm:flex-row sm:justify-start">
+            <Button
+              href="/register"
+              text="Start you plan"
+              className="w-full sm:w-auto"
+            />
+            <Button
+              href="/about"
+              text="Learn more"
+              variant="border"
+              className="w-full sm:w-auto"
+            />
           </div>
         </div>
       </div>
@@ -251,77 +260,77 @@ function Testimonials() {
 function MissionGud() {
   return (
     <section>
+      <h2 className="section-title mb-4 text-center">GÜD’s Mission</h2>
       <div className="grid grid-cols-1 items-center gap-10 md:grid-cols-2">
-        <svg
-          viewBox="0 0 375 375"
-          xmlns="http://www.w3.org/2000/svg"
-          className="absolute -z-50"
-        >
-          <path
-            fill="#F5F0E7"
-            d="M43.2,-45.7C58,-39.1,73.3,-27.4,79.9,-11C86.5,5.4,84.3,26.4,73,38.6C61.8,50.9,41.4,54.4,23.7,57.6C5.9,60.8,-9.2,63.8,-25.3,61.4C-41.4,59,-58.5,51.3,-70.7,37.3C-83,23.3,-90.5,3,-86.9,-15C-83.3,-32.9,-68.6,-48.6,-52.3,-54.9C-35.9,-61.2,-18,-58.2,-1.9,-55.9C14.2,-53.7,28.4,-52.3,43.2,-45.7Z"
-            transform="translate(250 185)"
-          />
-        </svg>
+        <div className="relative flex items-center justify-center">
+          <div className="relative">
+            <p>
+              GÜD exists to bring people together around a shared commitment to
+              living healthier. We believe wellness isn’t about perfection, but
+              instead about progress, support, and showing up for yourself every
+              day.
+              <br />
+              <br />
+              Through expert-led workouts and practical nutrition guidance, we
+              want to empower our community to build habits that make them feel
+              good and have long lasting effects. Wherever you’re starting from,
+              you’re not doing it alone.
+            </p>
+            <svg
+              viewBox="0 0 150 175"
+              xmlns="http://www.w3.org/2000/svg"
+              className="absolute inset-0 -z-40 overflow-visible"
+            >
+              <path
+                fill="#F5F0E7"
+                d="M43.2,-45.7C58,-39.1,73.3,-27.4,79.9,-11C86.5,5.4,84.3,26.4,73,38.6C61.8,50.9,41.4,54.4,23.7,57.6C5.9,60.8,-9.2,63.8,-25.3,61.4C-41.4,59,-58.5,51.3,-70.7,37.3C-83,23.3,-90.5,3,-86.9,-15C-83.3,-32.9,-68.6,-48.6,-52.3,-54.9C-35.9,-61.2,-18,-58.2,-1.9,-55.9C14.2,-53.7,28.4,-52.3,43.2,-45.7Z"
+                transform="translate(75 25)"
+              />
+            </svg>
+          </div>
+        </div>
 
-        <div className="flex flex-col gap-4 text-center sm:text-left">
-          <h2 className="section-title">GÜD's Mission</h2>
-          <p className="text-base">
-            GÜD exists to bring people together around a shared commitment to
-            living healthier. We believe wellness isn’t about perfection, but
-            instead about progress, support, and showing up for yourself every
-            day.
-          </p>
-          <p className="text-base">
-            Through expert-led workouts and practical nutrition guidance, we
-            want to empower our community to build habits that make them feel
-            good and have long lasting effects. Wherever you’re starting from,
-            you’re not doing it alone.
-          </p>
-        </div>
-        <div className="flex justify-center">
-          <Image
-            src="/landing02.png"
-            alt="About GÜD welcome image of woman in yoga pose"
-            width={800}
-            height={400}
-          />
-        </div>
+        <Image
+          src="/landing02.png"
+          alt="About GÜD welcome image of woman in yoga pose"
+          width={800}
+          height={400}
+        />
       </div>
     </section>
   );
 }
 
+const faq = [
+  {
+    question: 'Do I need an account to use GÜD?',
+    answer:
+      'Yes. In order to browse workouts, nutritional content and engage with professionals you would need an account.',
+  },
+  {
+    question: 'Can I work out at home without equipment?',
+    answer:
+      'Yes. GÜD offers a wide range of bodyweight workouts that require no equipment at all. Whether you have a full gym or just a living room floor, there are options for you.',
+  },
+  {
+    question: 'Who creates the workouts and nutrition content?',
+    answer:
+      'All content is created and led by certified fitness trainers and nutrition professionals.',
+  },
+  {
+    question: 'Does GÜD track my workouts or health data?',
+    answer:
+      'No. GÜD focuses on guided content, education, and routine-building rather than real-time tracking or health data collection.',
+  },
+  {
+    question: 'Is GÜD suitable for beginners?',
+    answer:
+      'Yes. Workouts and nutrition content are labeled by level and designed to be approachable for all experience levels.',
+  },
+];
+
 // FAQ section, six questions total
 function FaqSection() {
-  const faq = [
-    {
-      question: 'Do I need an account to use GÜD?',
-      answer:
-        'Yes. In order to browse workouts, nutritional content and engage with professionals you would need an account.',
-    },
-    {
-      question: 'Can I work out at home without equipment?',
-      answer:
-        'Yes. GÜD offers a wide range of bodyweight workouts that require no equipment at all. Whether you have a full gym or just a living room floor, there are options for you.',
-    },
-    {
-      question: 'Who creates the workouts and nutrition content?',
-      answer:
-        'All content is created and led by certified fitness trainers and nutrition professionals.',
-    },
-    {
-      question: 'Does GÜD track my workouts or health data?',
-      answer:
-        'No. GÜD focuses on guided content, education, and routine-building rather than real-time tracking or health data collection.',
-    },
-    {
-      question: 'Is GÜD suitable for beginners?',
-      answer:
-        'Yes. Workouts and nutrition content are labeled by level and designed to be approachable for all experience levels.',
-    },
-  ];
-
   const [openIndexes, setOpenIndexes] = useState([]);
 
   const toggleIndex = (index) => {
@@ -332,7 +341,9 @@ function FaqSection() {
 
   return (
     <section>
-      <h2 className="mb-8 text-xl font-semibold">Frequently Asked Questions</h2>
+      <h2 className="section-title mb-4 text-center">
+        Frequently Asked Questions
+      </h2>
       <div className="flex flex-col gap-2">
         {faq.map((item, index) => (
           <div
@@ -374,53 +385,16 @@ function FaqSection() {
 const faqJsonLd = {
   '@context': 'https://schema.org',
   '@type': 'FAQPage',
-  mainEntity: [
-    {
-      '@type': 'Question',
-      name: 'Do I need an account to use GÜD?',
-      acceptedAnswer: {
-        '@type': 'Answer',
-        text: 'Yes. In order to browse workouts, nutritional content and engage with professionals you would need an account.',
-      },
-    },
-    {
-      '@type': 'Question',
-      name: 'Can I work out at home without equipment?',
-      acceptedAnswer: {
-        '@type': 'Answer',
-        text: 'Yes. GÜD offers a wide range of bodyweight workouts that require no equipment at all. Whether you have a full gym or just a living room floor, there are options for you.',
-      },
-    },
-    {
-      '@type': 'Question',
-      name: 'Who creates the workouts and nutrition content?',
-      acceptedAnswer: {
-        '@type': 'Answer',
-        text: 'All content is created and led by certified fitness trainers and nutrition professionals.',
-      },
-    },
-    {
-      '@type': 'Question',
-      name: 'Does GÜD track my workouts or health data?',
-      acceptedAnswer: {
-        '@type': 'Answer',
-        text: 'No. GÜD focuses on guided content, education, and routine-building rather than real-time tracking or health data collection.',
-      },
-    },
-    {
-      '@type': 'Question',
-      name: 'Is GÜD suitable for beginners?',
-      acceptedAnswer: {
-        '@type': 'Answer',
-        text: 'Yes. Workouts and nutrition content are labeled by level and designed to be approachable for all experience levels.',
-      },
-    },
-  ],
+  mainEntity: faq.map((item) => ({
+    '@type': 'Question',
+    name: item.question,
+    acceptedAnswer: { '@type': 'Answer', text: item.answer },
+  })),
 };
 
 export default function landingPage() {
   return (
-    <main className="mx-auto flex w-auto max-w-7xl flex-col gap-20 px-5">
+    <main className="mx-auto flex w-auto max-w-7xl flex-col gap-10 px-5 sm:gap-20">
       <Script
         id="faq-jsonld"
         type="application/ld+json"

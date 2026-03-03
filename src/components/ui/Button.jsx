@@ -29,10 +29,11 @@ export default function Button({
       whileHover={{ scale: 1.02, translateY: -1 }}
       whileTap={{ scale: 0.99 }}
       style={{ originX: 0.5, originY: 0.5 }}
+      className={className}
     >
       <Link
         href={href.startsWith('/') ? href : `/${href}`}
-        className={`${variantStyles} ${className} rounded-md px-5 py-2 duration-150`}
+        className={`${variantStyles} block w-full text-center rounded-md px-5 py-2 duration-150`}
       >
         {children ?? text}
       </Link>

@@ -14,18 +14,6 @@ function RegisterForm() {
         <p className="mb-6 text-base">Join the GÜD Community</p>
       </div>
 
-      <svg
-        viewBox="0 0 400 200"
-        xmlns="http://www.w3.org/2000/svg"
-        className="absolute -z-50 rotate-180"
-      >
-        <path
-          fill="#F5F0E7"
-          d="M54.1,-59C69.1,-51.9,79.4,-33.9,83.4,-14.3C87.4,5.3,84.9,26.5,73.9,40C62.9,53.5,43.3,59.4,27.3,57.7C11.3,55.9,-1.1,46.6,-15.1,41.5C-29,36.4,-44.5,35.5,-54.6,27.1C-64.7,18.7,-69.5,2.8,-64.4,-8.8C-59.4,-20.4,-44.4,-27.7,-32,-35.3C-19.6,-42.8,-9.8,-50.6,4.9,-56.5C19.6,-62.3,39.1,-66.1,54.1,-59Z"
-          transform="translate(150 100) "
-        />
-      </svg>
-
       {/* SIGN UP FORM */}
       <form className="flex flex-col">
         {/* First name field */}
@@ -131,13 +119,25 @@ function RegisterForm() {
 }
 function RegisterGraphic() {
   return (
-    <div>
+    <div className="relative flex justify-center">
       <Image
         src="/register01.png"
         alt="About GÜD welcome image of woman in yoga pose"
         width={650}
         height={400}
       />
+
+      <svg
+        viewBox="0 0 100 100"
+        xmlns="http://www.w3.org/2000/svg"
+        className="absolute inset-0 -z-40 m-auto h-full w-full rotate-180 overflow-visible"
+      >
+        <path
+          fill="#F5F0E7"
+          d="M54.1,-59C69.1,-51.9,79.4,-33.9,83.4,-14.3C87.4,5.3,84.9,26.5,73.9,40C62.9,53.5,43.3,59.4,27.3,57.7C11.3,55.9,-1.1,46.6,-15.1,41.5C-29,36.4,-44.5,35.5,-54.6,27.1C-64.7,18.7,-69.5,2.8,-64.4,-8.8C-59.4,-20.4,-44.4,-27.7,-32,-35.3C-19.6,-42.8,-9.8,-50.6,4.9,-56.5C19.6,-62.3,39.1,-66.1,54.1,-59Z"
+          transform="translate(35 50) "
+        />
+      </svg>
     </div>
   );
 }
