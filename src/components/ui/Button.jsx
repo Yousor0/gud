@@ -17,6 +17,8 @@ export default function Button({
       'bg-[#C3583E] text-[#FAF7F3] hover:bg-[#D07A64] font-semibold shadow-sm ',
     border:
       'text-[#9D4431] border border-[#9D4431] hover:bg-[#D07A64] hover:text-[#FAF7F3] hover:border-[#D07A64] font-medium',
+    delete:
+      'text-[#9D4431] border border-[#9D4431] hover:bg-[#8B0000] hover:text-[#FAF7F3] hover:border-[#8B0000] font-medium',
     fitness: 'bg-[#466273] text-[#F5F0E7]',
     nutrition: 'bg-[#566835] text-[#F5F0E7]',
   };
