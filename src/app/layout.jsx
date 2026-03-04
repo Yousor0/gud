@@ -12,7 +12,12 @@ export const metadata = {
       'Certified at-home workouts and personalized nutrition guidance for all fitness levels.',
     siteName: 'GÜD',
     images: [
-      { url: '/landing01.png', width: 800, height: 400, alt: 'GÜD wellness platform' },
+      {
+        url: '/landing01.png',
+        width: 800,
+        height: 400,
+        alt: 'GÜD wellness platform',
+      },
     ],
     type: 'website',
   },
