@@ -2,7 +2,7 @@ import React from 'react';
 import Image from 'next/image';
 import { notFound } from 'next/navigation';
 import { users } from '../../../data/users.js';
-import Carasoul from '../../../components/VideoCarasoul';
+import VideoCarousel from '../../../components/VideoCarousel';
 import { videos } from '../../../data/videos';
 import Button from '../../../components/ui/Button';
 import MailButton from '../../../components/ui/MailButton';
@@ -90,7 +90,7 @@ export default async function ProfessionalProfile({ params }) {
 
       {/* Content Below */}
 
-      <Carasoul videoAPI={profileVideos} />
+      <VideoCarousel videoAPI={profileVideos} />
     </div>
   );
 }

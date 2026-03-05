@@ -1,18 +1,20 @@
 'use client';
 
 import { useState } from 'react';
-import Image from 'next/image';
 import Link from 'next/link';
-import logo from '../../public/logo.svg';
-import Searchbar from './Searchbar';
-import Button from './ui/Button';
-import NavigationLink from './ui/NavigationLink';
+import Searchbar from '../Searchbar';
+import Button from '../ui/Button';
+import NavigationLink from '../ui/NavigationLink';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBars, faX } from '@fortawesome/free-solid-svg-icons';
 import { motion, AnimatePresence, easeOut } from 'motion/react';
+import { CldImage } from 'next-cloudinary';
+import { useAuth } from '../../context/AuthContext';
+import UserMenu from './UserMenu';
 
 export default function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const { user, loading } = useAuth();
 
   return (
     <header>
@@ -20,11 +22,11 @@ export default function Header() {
         <div className="mx-auto flex w-auto max-w-7xl items-center justify-between gap-4 px-4">
           {/* Logo */}
           <Link href="/">
-            <Image
-              src={logo}
+            <CldImage
+              src="logo_pkk35p"
               alt="Website Logo"
-              width={60}
-              height={20}
+              width="60"
+              height="20"
               className="min-w-20"
             />
           </Link>
@@ -35,12 +37,21 @@ export default function Header() {
           <nav className="hidden items-center justify-end gap-7 lg:flex">
             <NavigationLink href="/explore" text="Explore" />
             <NavigationLink href="/about" text="About" />
-            <NavigationLink href="/login" text="Login" />
-            <Button href="/register" text="Register" />
+            {!loading && (
+              <>
+                {user ? (
+                  <UserMenu />
+                ) : (
+                  <>
+                    <NavigationLink href="/login" text="Login" />
+                    <Button href="/register" text="Register" />
+                  </>
+                )}
+              </>
+            )}
           </nav>
 
           {/* Mobile Menu Button */}
-
           <button
             type="button"
             className="flex items-center justify-center p-2 text-[#9D4431] lg:hidden"
@@ -67,12 +78,22 @@ export default function Header() {
             >
               <NavigationLink href="/explore" text="Explore" />
               <NavigationLink href="/about" text="About" />
-              <NavigationLink href="/login" text="Login" />
-              <Button
-                href="/register"
-                text="Register"
-                className="w-full text-center"
-              />
+              {!loading && (
+                <>
+                  {user ? (
+                    <UserMenu />
+                  ) : (
+                    <>
+                      <NavigationLink href="/login" text="Login" />
+                      <Button
+                        href="/register"
+                        text="Register"
+                        className="w-full text-center"
+                      />
+                    </>
+                  )}
+                </>
+              )}
             </motion.nav>
           )}
         </AnimatePresence>

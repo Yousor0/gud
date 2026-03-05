@@ -9,7 +9,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 // Video API Link
 // Either horizontal or vertically stacked
 // LENGTH === NUM VIDEOS SHOWN
-export default function carasoul({
+export default function VideoCarousel({
   sectionTitle,
   videoAPI,
   orientation = 'horizontal',

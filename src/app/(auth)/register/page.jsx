@@ -4,7 +4,8 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { easeInOut, motion } from 'motion/react';
 import { useRouter } from 'next/navigation';
-import { signUp } from './signup';
+import { signUp } from '../register';
+import { CldImage } from 'next-cloudinary';
 
 function RegisterForm() {
   const router = useRouter();
@@ -59,7 +60,7 @@ function RegisterForm() {
               <input
                 id="first_name"
                 name="first_name"
-                className="w-full rounded-md border border-gray-300 px-3 py-2 duration-100 hover:border-[#d07a64] focus:border-[#9d4431] focus:ring-2 focus:ring-[#d07a64] focus:outline-none"
+                className="w-full rounded-md border border-gray-300 px-3 py-2 duration-100 hover:border-brand-primary-hover focus:border-brand-primary focus:ring-2 focus:ring-brand-primary-hover focus:outline-none"
                 type="text"
                 value={formData.first_name}
                 onChange={handleChange}
@@ -72,7 +73,7 @@ function RegisterForm() {
               <input
                 id="last_name"
                 name="last_name"
-                className="w-full rounded-md border border-gray-300 px-3 py-2 duration-100 hover:border-[#d07a64] focus:border-[#9d4431] focus:ring-2 focus:ring-[#d07a64] focus:outline-none"
+                className="w-full rounded-md border border-gray-300 px-3 py-2 duration-100 hover:border-brand-primary-hover focus:border-brand-primary focus:ring-2 focus:ring-brand-primary-hover focus:outline-none"
                 type="text"
                 value={formData.last_name}
                 onChange={handleChange}
@@ -87,7 +88,7 @@ function RegisterForm() {
             <input
               id="username"
               name="username"
-              className="w-full rounded-md border border-gray-300 px-3 py-2 duration-100 hover:border-[#d07a64] focus:border-[#9d4431] focus:ring-2 focus:ring-[#d07a64] focus:outline-none"
+              className="w-full rounded-md border border-gray-300 px-3 py-2 duration-100 hover:border-brand-primary-hover focus:border-brand-primary focus:ring-2 focus:ring-brand-primary-hover focus:outline-none"
               type="text"
               value={formData.username}
               onChange={handleChange}
@@ -101,7 +102,7 @@ function RegisterForm() {
             <input
               id="email"
               name="email"
-              className="w-full rounded-md border border-gray-300 px-3 py-2 duration-100 hover:border-[#d07a64] focus:border-[#9d4431] focus:ring-2 focus:ring-[#d07a64] focus:outline-none"
+              className="w-full rounded-md border border-gray-300 px-3 py-2 duration-100 hover:border-brand-primary-hover focus:border-brand-primary focus:ring-2 focus:ring-brand-primary-hover focus:outline-none"
               type="email"
               value={formData.email}
               onChange={handleChange}
@@ -117,7 +118,7 @@ function RegisterForm() {
             <input
               id="password"
               name="password"
-              className="w-full rounded-md border border-gray-300 px-3 py-2 duration-100 hover:border-[#d07a64] focus:border-[#9d4431] focus:ring-2 focus:ring-[#d07a64] focus:outline-none"
+              className="w-full rounded-md border border-gray-300 px-3 py-2 duration-100 hover:border-brand-primary-hover focus:border-brand-primary focus:ring-2 focus:ring-brand-primary-hover focus:outline-none"
               type="password"
               value={formData.password}
               onChange={handleChange}
@@ -137,7 +138,7 @@ function RegisterForm() {
             transition={{ ease: easeInOut, duration: 0.2 }}
             type="submit"
             disabled={loading}
-            className="w-full cursor-auto rounded-md bg-[#9D4431] px-5 py-2 font-semibold text-[#FAF7F3] shadow-sm hover:cursor-pointer hover:bg-[#D07A64] disabled:cursor-not-allowed disabled:opacity-60"
+            className="w-full cursor-auto rounded-md bg-brand-primary px-5 py-2 font-semibold text-bg-primary shadow-sm hover:cursor-pointer hover:bg-brand-primary-hover disabled:cursor-not-allowed disabled:opacity-60"
           >
             {loading ? 'Creating account...' : 'Sign up'}
           </motion.button>
@@ -148,7 +149,7 @@ function RegisterForm() {
         Already have an account?{' '}
         <Link
           href="/login"
-          className="font-medium underline duration-100 hover:text-[#9d4431]"
+          className="font-medium underline duration-100 hover:text-brand-primary"
         >
           Log In
         </Link>
@@ -160,11 +161,11 @@ function RegisterForm() {
 function RegisterGraphic() {
   return (
     <div className="relative flex justify-center">
-      <Image
-        src="/register01.png"
-        alt="About GÜD welcome image of woman in yoga pose"
-        width={650}
-        height={400}
+      <CldImage
+        src="login01_wwrjsf"
+        alt="Begin to Get GUD"
+        width="650"
+        height="400"
       />
 
       <svg
@@ -173,7 +174,7 @@ function RegisterGraphic() {
         className="absolute inset-0 -z-40 m-auto h-full w-full rotate-180 overflow-visible"
       >
         <path
-          fill="#F5F0E7"
+          fill="var(--color-bg-secondary)"
           d="M54.1,-59C69.1,-51.9,79.4,-33.9,83.4,-14.3C87.4,5.3,84.9,26.5,73.9,40C62.9,53.5,43.3,59.4,27.3,57.7C11.3,55.9,-1.1,46.6,-15.1,41.5C-29,36.4,-44.5,35.5,-54.6,27.1C-64.7,18.7,-69.5,2.8,-64.4,-8.8C-59.4,-20.4,-44.4,-27.7,-32,-35.3C-19.6,-42.8,-9.8,-50.6,4.9,-56.5C19.6,-62.3,39.1,-66.1,54.1,-59Z"
           transform="translate(35 50) "
         />
@@ -182,21 +183,13 @@ function RegisterGraphic() {
   );
 }
 
-function RegisterSection() {
-  return (
-    <section className="px-6 py-16">
-      <div className="mx-auto grid max-w-5xl grid-cols-1 items-center gap-8 md:grid-cols-2">
-        <RegisterForm />
-        <RegisterGraphic />
-      </div>
-    </section>
-  );
-}
-
 export default function Register() {
   return (
     <main>
-      <RegisterSection />
+      <div className="mx-auto my-20 grid max-w-5xl grid-cols-1 items-center gap-20 px-6 py-16 md:grid-cols-2">
+        <RegisterForm />
+        <RegisterGraphic />
+      </div>
     </main>
   );
 }

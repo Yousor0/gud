@@ -1,12 +1,12 @@
 'use client';
 
 import Button from './ui/Button';
-import Image from 'next/image';
+import { CldImage } from 'next-cloudinary';
 
 export default function PageHeader({
   title,
   subtext,
-  overlayColor = '#f5f0e7',
+  overlayColor = 'var(--color-bg-secondary)',
   image,
   buttons = true,
 }) {
@@ -17,9 +17,9 @@ export default function PageHeader({
     >
       {/* Background Image (right side) */}
       <div className="absolute inset-0">
-        <Image
-          src={image}
-          alt=""
+        <CldImage
+          src="login02_jrtpff"
+          alt="Explore Page Header"
           fill
           priority
           className="object-cover object-center"

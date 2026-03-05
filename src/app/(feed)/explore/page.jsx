@@ -1,11 +1,9 @@
 import React from 'react';
-import Carasoul from '../../../components/VideoCarasoul';
-import ProfileCarasoul from '../../../components/ProfileCarasoul';
-// import { videos } from '../../../data/videos'; // Mock Data
+import VideoCarousel from '../../../components/VideoCarousel';
+import ProfileCarousel from '../../../components/ProfileCarousel';
 import { users } from '../../../data/users'; // Mocks Data
-import { getAllVideos } from '../../../../utils/queries/videos'; // Supabase Data
-import PageHeader from '../../../components/pageHeader';
-import headerImage from '../../../../public/login02.png';
+import { getAllVideos } from '../../../context/videos'; // Supabase Data
+import PageHeader from '../../../components/PageHeader';
 
 export default async function page() {
   const videos = await getAllVideos();
@@ -27,17 +25,16 @@ export default async function page() {
       <PageHeader
         title="Get a GÜD workout from Home"
         subtext="At-home workouts and nutritional guidance tailored too you"
-        image={headerImage}
       />
 
       {/* Profiles */}
       <section className="mx-auto flex w-full max-w-md flex-col px-5 sm:max-w-xl md:max-w-3xl lg:max-w-5xl xl:max-w-7xl">
         <h1 className="section-title">Our Professionals</h1>
-        <ProfileCarasoul
+        <ProfileCarousel
           usersAPI={fitnessProfiles}
           sectionTitle={'Fitness Trainers'}
         />
-        <ProfileCarasoul
+        <ProfileCarousel
           usersAPI={nutritionProfiles}
           sectionTitle={'Nutritionists'}
         />
@@ -46,12 +43,12 @@ export default async function page() {
       {/* Videos */}
       <section className="mx-auto flex w-full max-w-md flex-col px-10 sm:max-w-2xl md:max-w-4xl lg:max-w-5xl xl:max-w-7xl">
         <h1 className="section-title">Explore our Library</h1>
-        <Carasoul
+        <VideoCarousel
           videoAPI={videos}
           sectionTitle={'Continue Where You Left Off'}
         />
-        <Carasoul videoAPI={fitnessVideos} sectionTitle={'Fitness'} />
-        <Carasoul videoAPI={nutritionVideos} sectionTitle={'Nutrition'} />
+        <VideoCarousel videoAPI={fitnessVideos} sectionTitle={'Fitness'} />
+        <VideoCarousel videoAPI={nutritionVideos} sectionTitle={'Nutrition'} />
       </section>
     </div>
   );

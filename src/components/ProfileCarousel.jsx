@@ -6,7 +6,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
 
-function ProfileCarasoul({
+function ProfileCarousel({
   sectionTitle,
   usersAPI,
   orientation = 'horizontal',
@@ -111,4 +111,4 @@ function ProfileCarasoul({
   );
 }
 
-export default ProfileCarasoul;
+export default ProfileCarousel;

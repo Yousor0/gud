@@ -1,10 +1,10 @@
 'use client';
 import { useState } from 'react';
 import Link from 'next/link';
-import Image from 'next/image';
 import { easeInOut, motion } from 'motion/react';
 import { useRouter } from 'next/navigation';
-import { logIn } from './login';
+import { logIn } from '../login';
+import { CldImage } from 'next-cloudinary';
 
 function LoginForm() {
   const router = useRouter();
@@ -49,7 +49,7 @@ function LoginForm() {
               id="email"
               name="email"
               type="email"
-              className="w-full rounded-md border border-gray-300 px-3 py-2 duration-100 hover:border-[#d07a64] focus:border-[#9d4431] focus:ring-2 focus:ring-[#d07a64] focus:outline-none"
+              className="w-full rounded-md border border-gray-300 px-3 py-2 duration-100 hover:border-brand-primary-hover focus:border-brand-primary focus:ring-2 focus:ring-brand-primary-hover focus:outline-none"
               value={formData.email}
               onChange={handleChange}
               required
@@ -63,7 +63,7 @@ function LoginForm() {
             <input
               id="password"
               name="password"
-              className="w-full rounded-md border border-gray-300 px-3 py-2 duration-100 hover:border-[#d07a64] focus:border-[#9d4431] focus:ring-2 focus:ring-[#d07a64] focus:outline-none"
+              className="w-full rounded-md border border-gray-300 px-3 py-2 duration-100 hover:border-brand-primary-hover focus:border-brand-primary focus:ring-2 focus:ring-brand-primary-hover focus:outline-none"
               type="password"
               value={formData.password}
               onChange={handleChange}
@@ -83,7 +83,7 @@ function LoginForm() {
             style={{ originX: 0.5, originY: 0.5 }}
             transition={{ ease: easeInOut, duration: 0.2 }}
             type="submit"
-            className="w-full cursor-auto rounded-md bg-[#9D4431] px-5 py-2 font-semibold text-[#FAF7F3] shadow-sm hover:cursor-pointer hover:bg-[#D07A64]"
+            className="w-full cursor-auto rounded-md bg-brand-primary px-5 py-2 font-semibold text-bg-primary shadow-sm hover:cursor-pointer hover:bg-brand-primary-hover"
           >
             Login
           </motion.button>
@@ -110,7 +110,7 @@ function LoginForm() {
         Don't have an account?{' '}
         <Link
           href="/register"
-          className="font-medium underline duration-100 hover:text-[#9d4431]"
+          className="font-medium underline duration-100 hover:text-brand-primary"
         >
           Sign up
         </Link>
@@ -122,11 +122,11 @@ function LoginForm() {
 function LoginGraphic() {
   return (
     <div className="relative flex justify-center">
-      <Image
-        src="/login02.png"
-        alt="About GÜD welcome image of woman in yoga pose"
-        width={800}
-        height={400}
+      <CldImage
+        src="login02_jrtpff"
+        alt="About GÜD Welcome Back"
+        width="800"
+        height="400"
       />
 
       <svg
@@ -135,7 +135,7 @@ function LoginGraphic() {
         className="absolute inset-0 -z-40 m-auto h-full w-full rotate-180 overflow-visible"
       >
         <path
-          fill="#F5F0E7"
+          fill="var(--color-bg-secondary)"
           d="M45.3,-51.9C58.7,-42.7,69.7,-28.5,75.7,-10.9C81.7,6.6,82.7,27.5,73.6,41.8C64.5,56,45.2,63.7,29.1,61.6C13,59.5,0,47.6,-16.9,43C-33.8,38.3,-54.7,41,-66.9,32.5C-79.2,24,-82.8,4.4,-76.3,-10.2C-69.9,-24.8,-53.4,-34.4,-39,-43.4C-24.6,-52.4,-12.3,-60.9,1.8,-63.1C15.9,-65.2,31.8,-61.1,45.3,-51.9Z"
           transform="translate(50 50)"
         />
@@ -144,21 +144,13 @@ function LoginGraphic() {
   );
 }
 
-function LoginSection() {
-  return (
-    <section className="px-6 py-16">
-      <div className="mx-auto grid max-w-5xl grid-cols-1 items-center gap-8 md:grid-cols-2">
-        <LoginForm />
-        <LoginGraphic />
-      </div>
-    </section>
-  );
-}
-
 export default function Login() {
   return (
     <main>
-      <LoginSection />
+      <div className="mx-auto my-20 grid max-w-5xl grid-cols-1 items-center gap-20 px-6 py-16 md:grid-cols-2">
+        <LoginForm />
+        <LoginGraphic />
+      </div>
     </main>
   );
 }

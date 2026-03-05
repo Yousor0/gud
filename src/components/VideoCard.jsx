@@ -33,7 +33,7 @@ export default function VideoCard({ video }) {
         <div className="ml-3 flex items-center gap-3">
           {/* Profile Picture */}
           <Link
-            className="flex gap-3 text-sm hover:text-[#222222]"
+            className="flex gap-3 text-sm hover:text-text-secondary"
             href={`/user/${user?.id}`}
           >
             <Image

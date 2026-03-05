@@ -1,17 +1,9 @@
 'use client';
 
 import React from 'react';
-import Image from 'next/image';
 import Button from '../../../components/ui/Button';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import {
-  faDumbbell,
-  faAppleWhole,
-  faCertificate,
-  faHeart,
-  faLeaf,
-  faUsers,
-} from '@fortawesome/free-solid-svg-icons';
+import { faHeart, faLeaf, faUsers } from '@fortawesome/free-solid-svg-icons';
 import { CldImage } from 'next-cloudinary';
 
 const values = [
@@ -73,11 +65,11 @@ export default function AboutPage() {
           </div>
         </div>
         <div className="relative flex justify-center">
-          <Image
-            src="/about01.png"
-            alt="People being active"
-            width={600}
-            height={500}
+          <CldImage
+            src="about01_or1tp4"
+            alt="About characters"
+            width="600"
+            height="500"
             className="rounded-lg"
           />
           <svg
@@ -86,7 +78,7 @@ export default function AboutPage() {
             className="absolute inset-0 -z-40 m-auto h-full w-full rotate-180 overflow-visible"
           >
             <path
-              fill="#F5F0E7"
+              fill="var(--color-bg-secondary)"
               d="M54.1,-59C69.1,-51.9,79.4,-33.9,83.4,-14.3C87.4,5.3,84.9,26.5,73.9,40C62.9,53.5,43.3,59.4,27.3,57.7C11.3,55.9,-1.1,46.6,-15.1,41.5C-29,36.4,-44.5,35.5,-54.6,27.1C-64.7,18.7,-69.5,2.8,-64.4,-8.8C-59.4,-20.4,-44.4,-27.7,-32,-35.3C-19.6,-42.8,-9.8,-50.6,4.9,-56.5C19.6,-62.3,39.1,-66.1,54.1,-59Z"
               transform="translate(35 50) "
             />
@@ -152,7 +144,7 @@ export default function AboutPage() {
       </section>
 
       {/* Our Values */}
-      <section className="rounded-xl bg-[#f5f0e7] p-10">
+      <section className="rounded-xl bg-bg-secondary p-10">
         <h2 className="section-title mb-10 text-center">Our Values</h2>
         <div className="grid grid-cols-1 gap-8 md:grid-cols-3">
           {values.map((value, index) => (
@@ -160,7 +152,7 @@ export default function AboutPage() {
               key={index}
               className="flex flex-col items-center gap-3 text-center"
             >
-              <div className="flex h-14 w-14 items-center justify-center rounded-full bg-[#9d4431]">
+              <div className="flex h-14 w-14 items-center justify-center rounded-full bg-brand-primary">
                 <FontAwesomeIcon
                   icon={value.icon}
                   size="lg"
@@ -177,11 +169,11 @@ export default function AboutPage() {
       {/* CTA */}
       <section className="grid grid-cols-1 items-center gap-10 md:grid-cols-2">
         <div className="relative flex justify-center">
-          <Image
-            src="/about02.png"
-            alt="Three people being active outside"
-            width={600}
-            height={400}
+          <CldImage
+            src="about02_ewumms"
+            alt="About_2_Start_Now"
+            width="600"
+            height="400"
             className="rounded-lg"
           />
           <svg
@@ -190,7 +182,7 @@ export default function AboutPage() {
             className="absolute inset-0 -z-40 m-auto h-full w-full overflow-visible"
           >
             <path
-              fill="#F5F0E7"
+              fill="var(--color-bg-secondary)"
               d="M54.1,-59C69.1,-51.9,79.4,-33.9,83.4,-14.3C87.4,5.3,84.9,26.5,73.9,40C62.9,53.5,43.3,59.4,27.3,57.7C11.3,55.9,-1.1,46.6,-15.1,41.5C-29,36.4,-44.5,35.5,-54.6,27.1C-64.7,18.7,-69.5,2.8,-64.4,-8.8C-59.4,-20.4,-44.4,-27.7,-32,-35.3C-19.6,-42.8,-9.8,-50.6,4.9,-56.5C19.6,-62.3,39.1,-66.1,54.1,-59Z"
               transform="translate(40 50)"
             />

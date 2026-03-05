@@ -13,8 +13,9 @@ export default function ProfilePicture({ user }) {
             <Image
               src={about.avatarUrl || '/default-avatar.jpg'}
               alt={`${name.firstName} ${name.lastName}`}
-              fill
-              className="aspect-square overflow-hidden rounded-full"
+              width={150}
+              height={150}
+              className="rounded-full object-cover"
             />
           </div>
           <span className="overflow-hidden text-sm text-ellipsis whitespace-nowrap">

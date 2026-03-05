@@ -2,30 +2,30 @@
 @import 'tailwindcss';
 
 @theme {
-  --brand-primary: #9d4431;
+  --color-brand-primary: #9d4431;
   /* Primary Buttons, Active Nav states, Links */
-  --brand-primary-hover: #d07a64;
-  --brand-secondary: #c3583e;
+  --color-brand-primary-hover: #d07a64;
+  --color-brand-secondary: #c3583e;
 
-  --bg-primary: #faf7f3;
+  --color-bg-primary: #faf7f3;
   /* Main Page Bg */
-  --bg-secondary: #f5f0e7;
-  /* Alternate section backgrounds , Cards, Suble Layout Seperation */
-  --bg-accent: #d0c5b6;
+  --color-bg-secondary: #f5f0e7;
+  /* Alternate section backgrounds, Cards, Subtle Layout Separation */
+  --color-bg-accent: #d0c5b6;
   /* Borders, Dividers, Inactive UI states, Background for non-text-heavy components */
 
-  --text-primary: #000000;
+  --color-text-primary: #000000;
   /* Heading, Logos, Icons */
-  --text-secondary: #222222;
+  --color-text-secondary: #222222;
   /* Primary body text, Headlines, Navigation Labels */
-  --text-accent: #444444;
+  --color-text-accent: #444444;
   /* Secondary text, Metadata, Footer text */
 
-  --color-blueOne: #78a0ba;
-  --color-blueTwo: #9ab9cb;
+  --color-blue-one: #78a0ba;
+  --color-blue-two: #9ab9cb;
 
-  --color-greenOne: #556734;
-  --color-greenTwo: #8a9474;
+  --color-green-one: #556734;
+  --color-green-two: #8a9474;
 
   --color-beige: #f5f0e7;
 }
@@ -35,12 +35,12 @@
 }
 
 body {
-  background: var(--bg-primary);
+  background: var(--color-bg-primary);
   font-family: 'Poppins', sans-serif;
 }
 
 footer {
-  background-color: var(--bg-secondary);
+  background-color: var(--color-bg-secondary);
 }
 
 .page-title {
@@ -86,7 +86,7 @@ footer {
 
 .fitnessButton {
   background-color: #466273;
-  color: #f5f0e7;
+  color: var(--color-bg-secondary);
   border-radius: 4px;
   padding: 6px;
   padding-inline: 20px;
@@ -94,15 +94,15 @@ footer {
 
 .nutritionButton {
   background-color: #566835;
-  color: #f5f0e7;
+  color: var(--color-bg-secondary);
   border-radius: 4px;
   padding: 6px;
   padding-inline: 20px;
 }
 
 .redButton {
-  background-color: #9d4431;
-  color: #f5f0e7;
+  background-color: var(--color-brand-primary);
+  color: var(--color-bg-secondary);
   border-radius: 4px;
   padding: 6px;
   padding-inline: 20px;

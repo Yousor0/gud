@@ -1,4 +1,4 @@
-import { createClient } from '../supabase/server';
+import { createClient } from '../utils/supabase/server';
 
 export async function getAllVideos() {
   const supabase = await createClient();

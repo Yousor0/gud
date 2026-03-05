@@ -1,8 +1,12 @@
 import './globals.css'; // Import global css for app
-import Header from '../components/Header';
+import Header from '../components/header/Header';
 import Footer from '../components/Footer';
+import { AuthProvider } from '../context/AuthContext';
 
 export const metadata = {
+  metadataBase: new URL(
+    process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000'
+  ),
   title: 'GÜD | At-Home Workouts & Nutrition Guidance',
   description:
     'GÜD offers certified at-home workout plans and personalized nutrition guidance for all fitness levels. Start your wellness journey today.',
@@ -34,9 +38,11 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body>
-        <Header />
-        {children}
-        <Footer />
+        <AuthProvider>
+          <Header />
+          {children}
+          <Footer />
+        </AuthProvider>
       </body>
     </html>
   );

@@ -35,7 +35,7 @@ function Manage() {
       <div className="flex flex-col items-center justify-center gap-8 md:flex-row md:items-stretch">
         {tiers.map((tier) => (
           <div
-            key={tier.tierNumber}
+            key={tier.tierId}
             className="flex flex-col rounded-lg border px-5 py-10 align-middle"
           >
             <div className="mt-5 mb-3 flex items-center justify-between">
