@@ -7,7 +7,7 @@ import {
   faGithub,
 } from '@fortawesome/free-brands-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import NavigationLink from './ui/NavigationLink';
+import NavigationLink from '../ui/NavigationLink';
 import { getCldImageUrl } from 'next-cloudinary';
 
 const developers = [
@@ -25,7 +25,6 @@ const developers = [
 ];
 
 export default function Footer() {
-  // Logo from Cloudinary
   const logoUrl = getCldImageUrl({
     src: 'logo2_nx6857',
     width: 800,
@@ -42,13 +41,10 @@ export default function Footer() {
     >
       <div className="mx-auto flex w-auto max-w-7xl flex-col gap-10 px-5 py-10">
         <div className="grid grid-cols-2 gap-5 text-text-accent sm:grid-cols-3 sm:gap-20 sm:text-left md:grid-cols-3">
-          {/* GUD */}
           <div className="flex flex-col">
-            {/* GUD Section */}
             <h4 className="sub-header">GÜD</h4>
             <NavigationLink href="/about" text="About" variant="footerLink" />
             <NavigationLink href="/#faq" text="FAQ" variant="footerLink" />
-            {/* Non-traversalble Footer Links */}
             <NavigationLink
               href="javascript:void(0)"
               text="Contact"
@@ -66,7 +62,6 @@ export default function Footer() {
             />
           </div>
 
-          {/* Developer */}
           <div className="flex flex-col">
             <h4 className="sub-header">Developers </h4>
             {developers.map((person) => (
@@ -81,7 +76,6 @@ export default function Footer() {
             ))}
           </div>
 
-          {/* Menu */}
           <div className="flex flex-col">
             <h4 className="sub-header">Menu</h4>
             <NavigationLink

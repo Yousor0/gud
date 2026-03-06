@@ -1,6 +1,6 @@
 import './globals.css'; // Import global css for app
 import Header from '../components/header/Header';
-import Footer from '../components/Footer';
+import Footer from '../components/layout/Footer';
 import { AuthProvider } from '../context/AuthContext';
 
 export const metadata = {

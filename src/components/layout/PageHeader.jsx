@@ -1,6 +1,6 @@
 'use client';
 
-import Button from './ui/Button';
+import Button from '../ui/Button';
 import { CldImage } from 'next-cloudinary';
 
 export default function PageHeader({
@@ -15,7 +15,6 @@ export default function PageHeader({
       className="relative flex min-h-[30vh] items-center justify-start overflow-hidden"
       style={{ backgroundImage: image }}
     >
-      {/* Background Image (right side) */}
       <div className="absolute inset-0">
         <CldImage
           src="login02_jrtpff"
@@ -25,12 +24,10 @@ export default function PageHeader({
           className="object-cover object-center"
         />
       </div>
-      {/* Color Overlay */}
       <div
         className="absolute inset-0"
         style={{ backgroundColor: overlayColor, opacity: 0.85 }}
-      />{' '}
-      ``
+      />
       {/* Content */}
       <div className="relative z-10 mx-auto flex w-full max-w-7xl flex-col items-start gap-6 px-4">
         <div>

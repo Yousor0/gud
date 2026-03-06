@@ -5,16 +5,11 @@ import VideoCard from './VideoCard';
 import { faAngleLeft, faAngleRight } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
-// Title of Carasoul if there is one
-// Video API Link
-// Either horizontal or vertically stacked
-// LENGTH === NUM VIDEOS SHOWN
 export default function VideoCarousel({
   sectionTitle,
   videoAPI,
   orientation = 'horizontal',
 }) {
-  // Prev & Next Functionality
   const [startIndex, setStartIndex] = useState(0);
   const [cardsToShow, setCardsToShow] = useState(1);
 
@@ -28,41 +23,29 @@ export default function VideoCarousel({
       else setCardsToShow(4);
     };
 
-    // Initial check
     updateCardsToShow();
-
-    // Listen for window resize
     window.addEventListener('resize', updateCardsToShow);
-
-    // Cleanup listener on unmount
     return () => window.removeEventListener('resize', updateCardsToShow);
   }, []);
 
-  //   Next Button
   const next = () => {
     setStartIndex((prev) =>
       Math.min(prev + cardsToShow, videoAPI.length - cardsToShow)
     );
   };
 
-  // Prev Button
   const prev = () => {
     setStartIndex((prev) => Math.max(prev - cardsToShow, 0));
   };
 
   const visibleVideos = videoAPI.slice(startIndex, startIndex + cardsToShow);
 
-  // Framer Motion Offset
-  const offset = -(startIndex * (100 / cardsToShow)) + '%';
-
   return (
     <div className="flex flex-col gap-2">
-      {/* Title of Carasoul */}
       <h1 className="sub-header col-span-full">{sectionTitle}</h1>
 
       <div className="relative">
         <div className="grid-row-2 grid">
-          {/* Video Cards Grid */}
           <div
             className={'grid'}
             style={{
@@ -79,7 +62,6 @@ export default function VideoCarousel({
             ))}
           </div>
 
-          {/* Previous Button */}
           <button
             onClick={prev}
             disabled={startIndex === 0}
@@ -92,7 +74,6 @@ export default function VideoCarousel({
             />
           </button>
 
-          {/* Next Button */}
           <button
             onClick={next}
             disabled={startIndex + cardsToShow >= videoAPI.length}

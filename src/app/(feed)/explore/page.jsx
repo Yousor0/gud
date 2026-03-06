@@ -1,9 +1,7 @@
 import React from 'react';
-import VideoCarousel from '../../../components/VideoCarousel';
+import VideoCarousel from '../../../features/videos/components/VideoCarousel';
 import ProfileCarousel from '../../../components/ProfileCarousel';
-import { users } from '../../../data/users'; // Mocks Data
-import { getAllVideos } from '../../../context/videos'; // Supabase Data
-import PageHeader from '../../../components/PageHeader';
+import PageHeader from '../../../components/layout/PageHeader';
 
 export default async function page() {
   const videos = await getAllVideos();

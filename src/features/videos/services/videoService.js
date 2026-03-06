@@ -1,4 +1,4 @@
-import { createClient } from '../utils/supabase/server';
+import { createClient } from '../../../lib/supabase/server';
 
 export async function getAllVideos() {
   const supabase = await createClient();
@@ -11,25 +11,13 @@ export async function getAllVideos() {
   return data;
 }
 
-export async function getAllVideosByUsers(userId: string) {
+export async function getAllVideosByUser(userId) {
   const supabase = await createClient();
   const { data, error } = await supabase
     .from('videos')
     .select('*')
     .eq('user_Id', userId)
     .order('created_at', { ascending: false });
-
-  if (error) throw new Error(error.message);
-  return data;
-}
-
-export async function getProfile(username: string) {
-  const supabase = await createClient();
-  const { data, error } = await supabase
-    .from('profiles')
-    .select('*, videos(*)')
-    .eq('username', username)
-    .single();
 
   if (error) throw new Error(error.message);
   return data;

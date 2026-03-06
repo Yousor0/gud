@@ -3,7 +3,6 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import { useRouter } from 'next/navigation';
-import { users } from '../data/users';
 
 export default function VideoCard({ video }) {
   const router = useRouter();
@@ -33,7 +32,7 @@ export default function VideoCard({ video }) {
         <div className="ml-3 flex items-center gap-3">
           {/* Profile Picture */}
           <Link
-            className="flex gap-3 text-sm hover:text-text-secondary"
+            className="hover:text-text-secondary flex gap-3 text-sm"
             href={`/user/${user?.id}`}
           >
             <Image

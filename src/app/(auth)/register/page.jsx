@@ -4,7 +4,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { easeInOut, motion } from 'motion/react';
 import { useRouter } from 'next/navigation';
-import { signUp } from '../register';
+import { signUp } from '../../../features/auth/services/authService';
 import { CldImage } from 'next-cloudinary';
 
 function RegisterForm() {

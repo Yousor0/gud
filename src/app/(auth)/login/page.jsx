@@ -3,7 +3,7 @@ import { useState } from 'react';
 import Link from 'next/link';
 import { easeInOut, motion } from 'motion/react';
 import { useRouter } from 'next/navigation';
-import { logIn } from '../login';
+import { logIn } from '../../../features/auth/services/authService';
 import { CldImage } from 'next-cloudinary';
 
 function LoginForm() {

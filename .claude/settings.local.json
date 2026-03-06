@@ -1,0 +1,14 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(rm -f \"src/utils/supabase/client.ts\" \"src/utils/supabase/server.ts\" \"src/utils/supabase/middleware.ts\")",
+      "Bash(rmdir \"src/utils/supabase\")",
+      "Bash(rmdir \"src/utils\")",
+      "Bash(rm -f \"src/app/\\(auth\\)/login.js\" \"src/app/\\(auth\\)/register.js\" \"src/context/videos.ts\" \"src/components/VideoCard.jsx\" \"src/components/VideoCarousel.jsx\" \"src/components/Footer.jsx\" \"src/components/PageHeader.jsx\" \"src/app/\\(auth\\)/account/[userId]/page.js\")",
+      "Bash(rm -rf \"src/app/account/personal profile\" \"src/app/account/usercontent page\")",
+      "Bash(rmdir \"src/app/account/subscription/payment/[paymentId]\")",
+      "Bash(rmdir \"src/app/account/subscription/payment\")",
+      "Bash(ls \"c:\\\\Users\\\\Andrew Jiang\\\\Documents\\\\gud-app\\\\src\\\\app\\\\\\(auth\\)\\\\account\"\")"
+    ]
+  }
+}
