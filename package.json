@@ -16,6 +16,7 @@
     "@fortawesome/react-fontawesome": "^3.1.1",
     "@supabase/ssr": "^0.8.0",
     "@supabase/supabase-js": "^2.97.0",
+    "cloudinary": "^2.9.0",
     "motion": "^12.29.2",
     "next": "16.1.5",
     "next-cloudinary": "^6.17.5",
