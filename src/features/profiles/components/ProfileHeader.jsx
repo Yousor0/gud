@@ -1,6 +1,9 @@
 'use client';
 
 import { CldImage } from 'next-cloudinary';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faPenToSquare } from '@fortawesome/free-solid-svg-icons';
+import { motion } from 'motion/react';
 
 export default function ProfileHeader({ profile, isOwner, onEditClick }) {
   const isProfessional = profile.role === 'professional';
@@ -65,13 +68,17 @@ export default function ProfileHeader({ profile, isOwner, onEditClick }) {
       </div>
 
       {isOwner && (
-        <button
+        <motion.button
           type="button"
           onClick={onEditClick}
-          className="border-bg-accent hover:bg-bg-accent shrink-0 rounded-md border px-4 py-2 text-sm duration-100"
+          whileHover={{ scale: 1.02 }}
+          whileTap={{ scale: 0.99 }}
+          style={{ originX: 0.5, originY: 0.5 }}
+          className="border-bg-accent hover:bg-bg-accent shrink-0 rounded-md border px-4 py-2 text-sm"
         >
+          <FontAwesomeIcon icon={faPenToSquare} className="mr-1" />
           Edit Profile
-        </button>
+        </motion.button>
       )}
     </div>
   );

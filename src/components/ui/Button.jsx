@@ -35,7 +35,7 @@ export default function Button({
     >
       <Link
         href={href.startsWith('/') ? href : `/${href}`}
-        className={`${variantStyles} block w-full text-center rounded-md px-5 py-2 duration-150`}
+        className={`${variantStyles} block w-full rounded-md px-5 py-2 text-center duration-150`}
       >
         {children ?? text}
       </Link>

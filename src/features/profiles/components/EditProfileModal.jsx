@@ -3,6 +3,8 @@
 import { useState } from 'react';
 import { CldImage, CldUploadWidget } from 'next-cloudinary';
 import { updateProfile, updateProfessional } from '../services/profileService';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faEdit, faPenToSquare } from '@fortawesome/free-solid-svg-icons';
 
 export default function EditProfileModal({ profile, onClose, onSaved }) {
   const isProfessional = profile.role === 'professional';
@@ -104,7 +106,10 @@ export default function EditProfileModal({ profile, onClose, onSaved }) {
       <div className="bg-bg-primary flex max-h-[90vh] w-full max-w-2xl flex-col overflow-y-auto rounded-lg shadow-xl">
         {/* Header */}
         <div className="flex items-center justify-between border-b border-gray-200 px-6 py-4">
-          <h2 className="text-lg font-semibold">Edit Profile</h2>
+          <h2 className="text-lg font-semibold">
+            <FontAwesomeIcon icon={faPenToSquare} className="mr-1" />
+            Edit Profile
+          </h2>
           <button
             type="button"
             onClick={onClose}
