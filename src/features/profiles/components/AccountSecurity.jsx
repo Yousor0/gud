@@ -1,6 +1,21 @@
+'use client';
+
+import { useState } from 'react';
 import Button from '../../../components/ui/Button';
 
 export default function AccountSecurity({ profile }) {
+  const [formData, setFormData] = useState({
+    email: profile.email || '',
+    password: profile.password || '',
+  });
+
+  const [saving, setSaving] = useState(false);
+  const [saveStatus, setSaveStatus] = useState(null);
+
+  function setField(key, value) {
+    setFormData((prev) => ({ ...prev, [key]: value }));
+  }
+
   return (
     <div className="flex flex-col gap-6">
       {/* Account Security */}
@@ -13,9 +28,9 @@ export default function AccountSecurity({ profile }) {
               <input
                 type="text"
                 placeholder={profile.email}
-                className="border-bg-accent min-w-60 rounded-md border px-3 py-2 text-sm focus:outline-none"
+                className="border-bg-accent hover:border-brand-primary-hover focus:border-brand-primary focus:ring-brand-primary-hover min-w-60 rounded-md border px-3 py-2 text-sm focus:ring-2 focus:outline-none"
               />
-              <Button text="Edit Email" />
+              <Button text="Edit Email" onSubmit />
             </div>
           </div>
           <div>
@@ -24,7 +39,7 @@ export default function AccountSecurity({ profile }) {
               <input
                 type="password"
                 placeholder="••••••••"
-                className="border-bg-accent min-w-60 rounded-md border px-3 py-2 text-sm focus:outline-none"
+                className="border-bg-accent hover:border-brand-primary-hover focus:border-brand-primary focus:ring-brand-primary-hover min-w-60 rounded-md border px-3 py-2 text-sm focus:ring-2 focus:outline-none"
               />
               <Button text="Edit Password" />
             </div>

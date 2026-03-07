@@ -49,7 +49,7 @@ function LoginForm() {
               id="email"
               name="email"
               type="email"
-              className="w-full rounded-md border border-gray-300 px-3 py-2 duration-100 hover:border-brand-primary-hover focus:border-brand-primary focus:ring-2 focus:ring-brand-primary-hover focus:outline-none"
+              className="text-input"
               value={formData.email}
               onChange={handleChange}
               required
@@ -63,7 +63,7 @@ function LoginForm() {
             <input
               id="password"
               name="password"
-              className="w-full rounded-md border border-gray-300 px-3 py-2 duration-100 hover:border-brand-primary-hover focus:border-brand-primary focus:ring-2 focus:ring-brand-primary-hover focus:outline-none"
+              className="text-input"
               type="password"
               value={formData.password}
               onChange={handleChange}
@@ -83,7 +83,7 @@ function LoginForm() {
             style={{ originX: 0.5, originY: 0.5 }}
             transition={{ ease: easeInOut, duration: 0.2 }}
             type="submit"
-            className="w-full cursor-auto rounded-md bg-brand-primary px-5 py-2 font-semibold text-bg-primary shadow-sm hover:cursor-pointer hover:bg-brand-primary-hover"
+            className="bg-brand-primary text-bg-primary hover:bg-brand-primary-hover w-full cursor-auto rounded-md px-5 py-2 font-semibold shadow-sm hover:cursor-pointer"
           >
             Login
           </motion.button>
@@ -110,7 +110,7 @@ function LoginForm() {
         Don't have an account?{' '}
         <Link
           href="/register"
-          className="font-medium underline duration-100 hover:text-brand-primary"
+          className="hover:text-brand-primary font-medium underline duration-100"
         >
           Sign up
         </Link>

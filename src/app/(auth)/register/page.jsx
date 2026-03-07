@@ -60,7 +60,7 @@ function RegisterForm() {
               <input
                 id="first_name"
                 name="first_name"
-                className="w-full rounded-md border border-gray-300 px-3 py-2 duration-100 hover:border-brand-primary-hover focus:border-brand-primary focus:ring-2 focus:ring-brand-primary-hover focus:outline-none"
+                className="text-input"
                 type="text"
                 value={formData.first_name}
                 onChange={handleChange}
@@ -73,7 +73,7 @@ function RegisterForm() {
               <input
                 id="last_name"
                 name="last_name"
-                className="w-full rounded-md border border-gray-300 px-3 py-2 duration-100 hover:border-brand-primary-hover focus:border-brand-primary focus:ring-2 focus:ring-brand-primary-hover focus:outline-none"
+                className="text-input"
                 type="text"
                 value={formData.last_name}
                 onChange={handleChange}
@@ -88,7 +88,7 @@ function RegisterForm() {
             <input
               id="username"
               name="username"
-              className="w-full rounded-md border border-gray-300 px-3 py-2 duration-100 hover:border-brand-primary-hover focus:border-brand-primary focus:ring-2 focus:ring-brand-primary-hover focus:outline-none"
+              className="text-input"
               type="text"
               value={formData.username}
               onChange={handleChange}
@@ -102,7 +102,7 @@ function RegisterForm() {
             <input
               id="email"
               name="email"
-              className="w-full rounded-md border border-gray-300 px-3 py-2 duration-100 hover:border-brand-primary-hover focus:border-brand-primary focus:ring-2 focus:ring-brand-primary-hover focus:outline-none"
+              className="text-input"
               type="email"
               value={formData.email}
               onChange={handleChange}
@@ -118,7 +118,7 @@ function RegisterForm() {
             <input
               id="password"
               name="password"
-              className="w-full rounded-md border border-gray-300 px-3 py-2 duration-100 hover:border-brand-primary-hover focus:border-brand-primary focus:ring-2 focus:ring-brand-primary-hover focus:outline-none"
+              className="text-input"
               type="password"
               value={formData.password}
               onChange={handleChange}
@@ -138,7 +138,7 @@ function RegisterForm() {
             transition={{ ease: easeInOut, duration: 0.2 }}
             type="submit"
             disabled={loading}
-            className="w-full cursor-auto rounded-md bg-brand-primary px-5 py-2 font-semibold text-bg-primary shadow-sm hover:cursor-pointer hover:bg-brand-primary-hover disabled:cursor-not-allowed disabled:opacity-60"
+            className="bg-brand-primary text-bg-primary hover:bg-brand-primary-hover w-full cursor-auto rounded-md px-5 py-2 font-semibold shadow-sm hover:cursor-pointer disabled:cursor-not-allowed disabled:opacity-60"
           >
             {loading ? 'Creating account...' : 'Sign up'}
           </motion.button>
@@ -149,7 +149,7 @@ function RegisterForm() {
         Already have an account?{' '}
         <Link
           href="/login"
-          className="font-medium underline duration-100 hover:text-brand-primary"
+          className="hover:text-brand-primary font-medium underline duration-100"
         >
           Log In
         </Link>

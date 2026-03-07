@@ -22,12 +22,21 @@ export async function fetchUserVideos(userId) {
   return data || [];
 }
 
-export async function updateProfile(id, data) {
+export async function updateProfile(userId, data) {
   const supabase = createClient();
   const { error } = await supabase
     .from('profiles')
     .update(data)
-    .eq('id', id);
+    .eq('id', userId);
+
+  if (error) throw error;
+}
+
+export async function updateProfessional(userId, data) {
+  const { error } = await supabase
+    .from('professionals')
+    .update(data)
+    .eq('uuid', userId);
 
   if (error) throw error;
 }

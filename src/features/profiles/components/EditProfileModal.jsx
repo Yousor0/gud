@@ -2,10 +2,7 @@
 
 import { useState } from 'react';
 import { CldImage, CldUploadWidget } from 'next-cloudinary';
-import { updateProfile } from '../services/profileService';
-
-const inputClass =
-  'w-full rounded-md border border-bg-accent px-3 py-2 text-sm duration-100 focus:border-brand-primary focus:outline-none';
+import { updateProfile, updateProfessional } from '../services/profileService';
 
 export default function EditProfileModal({ profile, onClose, onSaved }) {
   const isProfessional = profile.role === 'professional';
@@ -71,16 +68,21 @@ export default function EditProfileModal({ profile, onClose, onSaved }) {
       avatar_public_id: formData.avatar_public_id,
     };
 
-    if (isProfessional) {
-      updateData.specialties = formData.specialties;
-      updateData.certifications = formData.certifications;
-      updateData.website_url = formData.website_url;
-      updateData.youtube_url = formData.youtube_url;
-      updateData.instagram_url = formData.instagram_url;
-    }
+    const professionalData = {
+      specialties: formData.specialties,
+      certifications: formData.certifications,
+      website_url: formData.website_url,
+      youtube_url: formData.youtube_url,
+      instagram_url: formData.instagram_url,
+    };
 
     try {
       await updateProfile(profile.id, updateData);
+
+      if (isProfessional) {
+        await updateProfessional(profile.id, professionalData);
+      }
+
       setSaveStatus('success');
       setTimeout(() => {
         onSaved(updateData);
@@ -125,12 +127,17 @@ export default function EditProfileModal({ profile, onClose, onSaved }) {
                 alt="avatar preview"
                 className="aspect-square rounded-full object-cover"
               />
+
+              {/* Edit Profile Picture */}
               <CldUploadWidget
-                uploadPreset="gud_avatars"
+                signatureEndpoint="/api/sign-cloudinary"
                 options={{
                   cropping: true,
                   croppingAspectRatio: 1,
-                  folder: 'avatars',
+                  maxFileSize: 5 * 1024 * 1024,
+                  resourceType: 'image',
+                  clientAllowedFormats: ['jpg', 'jpeg', 'png', 'webp'],
+                  folder: `users/${profile.id}`,
                 }}
                 onSuccess={(result) =>
                   setField('avatar_public_id', result.info.public_id)
@@ -157,7 +164,7 @@ export default function EditProfileModal({ profile, onClose, onSaved }) {
                 type="text"
                 value={formData.first_name}
                 onChange={(e) => setField('first_name', e.target.value)}
-                className={inputClass}
+                className="text-input"
               />
             </div>
             <div>
@@ -166,7 +173,7 @@ export default function EditProfileModal({ profile, onClose, onSaved }) {
                 type="text"
                 value={formData.last_name}
                 onChange={(e) => setField('last_name', e.target.value)}
-                className={inputClass}
+                className="text-input"
               />
             </div>
           </div>
@@ -286,7 +293,7 @@ export default function EditProfileModal({ profile, onClose, onSaved }) {
                     value={formData.website_url}
                     onChange={(e) => setField('website_url', e.target.value)}
                     placeholder="https://..."
-                    className={inputClass}
+                    className="text-input"
                   />
                 </div>
                 <div>
@@ -296,7 +303,7 @@ export default function EditProfileModal({ profile, onClose, onSaved }) {
                     value={formData.youtube_url}
                     onChange={(e) => setField('youtube_url', e.target.value)}
                     placeholder="https://youtube.com/..."
-                    className={inputClass}
+                    className="text-input"
                   />
                 </div>
                 <div>
@@ -306,7 +313,7 @@ export default function EditProfileModal({ profile, onClose, onSaved }) {
                     value={formData.instagram_url}
                     onChange={(e) => setField('instagram_url', e.target.value)}
                     placeholder="https://instagram.com/..."
-                    className={inputClass}
+                    className="text-input"
                   />
                 </div>
               </div>
