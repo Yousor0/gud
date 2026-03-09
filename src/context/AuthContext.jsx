@@ -10,6 +10,17 @@ export function AuthProvider({ children }) {
   const [profile, setProfile] = useState(null);
   const [loading, setLoading] = useState(true);
 
+  async function fetchProfile(userId) {
+    const supabase = createClient();
+    const { data } = await supabase
+      .from('profiles')
+      .select('*')
+      .eq('user_id', userId)
+      .single();
+
+    setProfile(data);
+  }
+
   useEffect(() => {
     const supabase = createClient();
 
@@ -29,17 +40,6 @@ export function AuthProvider({ children }) {
 
     return () => subscription.unsubscribe();
   }, []);
-
-  async function fetchProfile(userId) {
-    const supabase = createClient();
-    const { data } = await supabase
-      .from('profiles')
-      .select('*')
-      .eq('id', userId)
-      .single();
-
-    setProfile(data);
-  }
 
   return (
     <AuthContext.Provider value={{ user, profile, loading }}>

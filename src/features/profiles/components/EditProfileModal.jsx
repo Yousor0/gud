@@ -1,10 +1,14 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { CldImage, CldUploadWidget } from 'next-cloudinary';
-import { updateProfile, updateProfessional } from '../services/profileService';
+import {
+  updateProfile,
+  updateProfessional,
+  fetchProfessionalByUserId,
+} from '../services/profileService';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faEdit, faPenToSquare } from '@fortawesome/free-solid-svg-icons';
+import { faPenToSquare } from '@fortawesome/free-solid-svg-icons';
 
 export default function EditProfileModal({ profile, onClose, onSaved }) {
   const isProfessional = profile.role === 'professional';
@@ -14,13 +18,33 @@ export default function EditProfileModal({ profile, onClose, onSaved }) {
     last_name: profile.last_name || '',
     bio: profile.bio || '',
     avatar_public_id: profile.avatar_public_id || '',
-    specialties: profile.specialties || [],
-    certifications: profile.certifications || [],
-    website_url: profile.website_url || '',
-    youtube_url: profile.youtube_url || '',
-    instagram_url: profile.instagram_url || '',
+    content_type: null,
+    specialties: [],
+    certifications: [],
+    website_url: '',
+    twitter_url: '',
+    youtube_url: '',
+    instagram_url: '',
   });
   const [saving, setSaving] = useState(false);
+
+  useEffect(() => {
+    if (!isProfessional) return;
+    fetchProfessionalByUserId(profile.user_id)
+      .then((pro) => {
+        setFormData((prev) => ({
+          ...prev,
+          content_type: pro.content_type || null,
+          specialties: pro.specialties || [],
+          certifications: pro.certifications || [],
+          website_url: pro.website_url || '',
+          twitter_url: pro.twitter_url || '',
+          youtube_url: pro.youtube_url || '',
+          instagram_url: pro.instagram_url || '',
+        }));
+      })
+      .catch(() => {});
+  }, [isProfessional, profile.user_id]);
   const [saveStatus, setSaveStatus] = useState(null);
   const [newSpecialty, setNewSpecialty] = useState('');
   const [newCertification, setNewCertification] = useState('');
@@ -71,23 +95,25 @@ export default function EditProfileModal({ profile, onClose, onSaved }) {
     };
 
     const professionalData = {
+      content_type: formData.content_type || null,
       specialties: formData.specialties,
       certifications: formData.certifications,
       website_url: formData.website_url,
       youtube_url: formData.youtube_url,
       instagram_url: formData.instagram_url,
+      twitter_url: formData.twitter_url,
     };
 
     try {
-      await updateProfile(profile.id, updateData);
+      await updateProfile(profile.user_id, updateData);
 
       if (isProfessional) {
-        await updateProfessional(profile.id, professionalData);
+        await updateProfessional(profile.user_id, professionalData);
       }
 
       setSaveStatus('success');
       setTimeout(() => {
-        onSaved(updateData);
+        onSaved({ ...updateData, ...professionalData });
       }, 1500);
     } catch {
       setSaveStatus('error');
@@ -142,7 +168,7 @@ export default function EditProfileModal({ profile, onClose, onSaved }) {
                   maxFileSize: 5 * 1024 * 1024,
                   resourceType: 'image',
                   clientAllowedFormats: ['jpg', 'jpeg', 'png', 'webp'],
-                  folder: `users/${profile.id}`,
+                  folder: `users/${profile.user_id}`,
                 }}
                 onSuccess={(result) =>
                   setField('avatar_public_id', result.info.public_id)
@@ -197,6 +223,25 @@ export default function EditProfileModal({ profile, onClose, onSaved }) {
 
           {isProfessional && (
             <>
+              {/* Content Type */}
+              <div>
+                <h4 className="mb-2 text-sm font-medium">Content Type</h4>
+                <select
+                  value={formData.content_type || ''}
+                  onChange={(e) =>
+                    setField('content_type', e.target.value || null)
+                  }
+                  className="border-bg-accent focus:border-brand-primary rounded-sm border px-3 py-2 text-sm duration-100 focus:outline-none"
+                >
+                  <option value="" disabled>
+                    Select a content type...
+                  </option>
+                  <option value="fitness">Fitness</option>
+                  <option value="nutrition">Nutrition</option>
+                  <option value="mental_health">Mental Health</option>
+                </select>
+              </div>
+
               {/* Specialties */}
               <div>
                 <h4 className="mb-2 text-sm font-medium">Specialties</h4>
@@ -211,7 +256,7 @@ export default function EditProfileModal({ profile, onClose, onSaved }) {
                         <button
                           type="button"
                           onClick={() => removeSpecialty(i)}
-                          className="text-text-accent hover:text-text-primary ml-1 duration-100"
+                          className="text-text-accent ml-1 duration-100 hover:text-red-600"
                         >
                           ×
                         </button>
@@ -257,7 +302,7 @@ export default function EditProfileModal({ profile, onClose, onSaved }) {
                         <button
                           type="button"
                           onClick={() => removeCertification(i)}
-                          className="text-text-accent hover:text-text-primary ml-1 duration-100"
+                          className="text-text-accent ml-1 duration-100 hover:text-red-600"
                         >
                           ×
                         </button>
@@ -318,6 +363,16 @@ export default function EditProfileModal({ profile, onClose, onSaved }) {
                     value={formData.instagram_url}
                     onChange={(e) => setField('instagram_url', e.target.value)}
                     placeholder="https://instagram.com/..."
+                    className="text-input"
+                  />
+                </div>
+                <div>
+                  <h4 className="mb-1 text-sm font-medium">X</h4>
+                  <input
+                    type="url"
+                    value={formData.twitter_url}
+                    onChange={(e) => setField('twitter_url', e.target.value)}
+                    placeholder="https://x.com/..."
                     className="text-input"
                   />
                 </div>
