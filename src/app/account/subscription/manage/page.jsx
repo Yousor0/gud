@@ -36,19 +36,23 @@ function Manage() {
         {tiers.map((tier) => (
           <div
             key={tier.tierId}
-            className="flex flex-col rounded-lg border px-5 py-10 align-middle"
+            className="bg-bg-secondary border-bg-accent flex flex-col rounded-lg px-5 py-10 align-middle shadow-md"
           >
             <div className="mt-5 mb-3 flex items-center justify-between">
               <h2 className="section-title">{tier.tierName}</h2>
               <p className="text-2xl text-gray-600">${tier.cost}/month</p>
             </div>
 
-            <div className="border border-gray-600/30"></div>
+            <div className="border-b border-gray-600/30"></div>
 
             <ul className="mt-2 mb-5 flex-1 list-inside list-none">
               {tier.description.map((item, index) => (
-                <li key={index} className="n my-5">
-                  <FontAwesomeIcon icon={faCheck} /> {item}
+                <li key={index} className="my-5">
+                  <FontAwesomeIcon
+                    icon={faCheck}
+                    className="text-brand-primary"
+                  />{' '}
+                  {item}
                 </li>
               ))}
             </ul>

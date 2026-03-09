@@ -7,6 +7,7 @@ export default function NavLink({
   text,
   target,
   rel,
+  className = '',
 }) {
   const pathname = usePathname();
   const isActive = pathname === href;
@@ -22,7 +23,12 @@ export default function NavLink({
   const variantStyles = defaultStyles[variant] || defaultStyles.primaryLink;
 
   return (
-    <Link href={href} className={`${variantStyles}`} rel={rel} target={target}>
+    <Link
+      href={href}
+      className={`${className} ${variantStyles}`}
+      rel={rel}
+      target={target}
+    >
       {text}
     </Link>
   );

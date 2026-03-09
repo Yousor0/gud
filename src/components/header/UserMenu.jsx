@@ -11,9 +11,10 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
   faUser,
   faArrowRightFromBracket,
+  faChevronDown,
 } from '@fortawesome/free-solid-svg-icons';
 
-export default function UserMenu() {
+export default function UserMenu({ mobile = false }) {
   const { profile } = useAuth();
   const [open, setOpen] = useState(false);
   const router = useRouter();
@@ -22,6 +23,68 @@ export default function UserMenu() {
     await logout();
     router.push('/');
     router.refresh();
+  }
+
+  if (mobile) {
+    return (
+      <div className="w-full">
+        <button
+          onClick={() => setOpen(!open)}
+          className="flex w-full cursor-pointer items-center gap-3 rounded-md px-3 py-2 hover:bg-black/5"
+        >
+          <CldImage
+            src={profile?.avatar_public_id || 'default-avatar_m0m2pe'}
+            crop="fill"
+            width={36}
+            height={36}
+            alt="avatar"
+            className="h-9 w-9 rounded-full object-cover"
+          />
+          <div className="flex flex-1 flex-col items-start leading-tight">
+            <span className="text-sm font-semibold">
+              {profile?.first_name} {profile?.last_name}
+            </span>
+            <span className="text-xs text-black/60">{profile?.username}</span>
+          </div>
+          <FontAwesomeIcon
+            icon={faChevronDown}
+            className={`text-xs text-black/60 transition-transform duration-200 ${open ? 'rotate-180' : ''}`}
+          />
+        </button>
+
+        <AnimatePresence>
+          {open && (
+            <motion.div
+              initial={{ opacity: 0, height: 0 }}
+              animate={{ opacity: 1, height: 'auto' }}
+              exit={{ opacity: 0, height: 0 }}
+              transition={{ duration: 0.2 }}
+              className="overflow-hidden"
+            >
+              <div className="mx-1 mt-1 pt-1">
+                <Link
+                  href={`/account/${profile?.username}`}
+                  className="block w-full rounded-md px-3 py-1.5 text-sm hover:bg-black/5"
+                >
+                  <FontAwesomeIcon icon={faUser} className="mr-2" />
+                  My Profile
+                </Link>
+                <button
+                  onClick={handleLogout}
+                  className="block w-full cursor-pointer rounded-md px-3 py-1.5 text-left text-sm hover:bg-black/5"
+                >
+                  <FontAwesomeIcon
+                    icon={faArrowRightFromBracket}
+                    className="mr-2"
+                  />
+                  Logout
+                </button>
+              </div>
+            </motion.div>
+          )}
+        </AnimatePresence>
+      </div>
+    );
   }
 
   return (
@@ -67,7 +130,6 @@ export default function UserMenu() {
                   </span>
                 </div>
               </div>
-              {/* User Information */}
 
               <div className="m-1 border-t border-black/20"></div>
 

@@ -3,11 +3,11 @@ import VideoCarousel from '../../../features/videos/components/VideoCarousel';
 import ProfileCarousel from '../../../components/ProfileCarousel';
 import PageHeader from '../../../components/layout/PageHeader';
 import { getAllVideos } from '../../../features/videos/services/videoService';
-import { fetchAllProfesionals } from '../../../features/profiles/services/profileService';
+import { fetchAllProfessionals } from '../../../features/profiles/services/profileService';
 
 export default async function page() {
   const videos = await getAllVideos();
-  const users = await fetchAllProfesionals();
+  const users = await fetchAllProfessionals();
 
   // Random Videos Filters by Type
   const fitnessVideos = videos
