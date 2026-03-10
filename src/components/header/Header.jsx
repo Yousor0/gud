@@ -27,7 +27,7 @@ export default function Header() {
   return (
     <header>
       <div className="sticky top-0 z-50 border-b border-black/20 bg-[#F5F0E7] shadow-sm">
-        <div className="mx-auto flex w-auto max-w-7xl items-center justify-between gap-4 p-4">
+        <div className="mx-auto flex w-auto max-w-7xl items-center justify-between gap-4 p-2">
           {/* Logo */}
           <Link href="/">
             <CldImage
@@ -91,6 +91,7 @@ export default function Header() {
               )}
               <Link
                 href="/explore"
+                onClick={() => setMobileMenuOpen(false)}
                 className={`block w-full rounded-md px-3 py-1.5 text-left text-sm duration-100 hover:bg-black/5 ${pathname === '/explore' ? 'font-semibold text-[#9D4431]' : ''}`}
               >
                 <FontAwesomeIcon icon={faCompass} className="mx-1" />
@@ -98,6 +99,7 @@ export default function Header() {
               </Link>
               <Link
                 href="/about"
+                onClick={() => setMobileMenuOpen(false)}
                 className={`block w-full rounded-md px-3 py-1.5 text-left text-sm duration-100 hover:bg-black/5 ${pathname === '/about' ? 'font-semibold text-[#9D4431]' : ''}`}
               >
                 <FontAwesomeIcon icon={faInfoCircle} className="mx-1" />
@@ -107,6 +109,7 @@ export default function Header() {
                 <>
                   <Link
                     href="/login"
+                    onClick={() => setMobileMenuOpen(false)}
                     className={`block w-full rounded-md px-3 py-1.5 text-left text-sm duration-100 hover:bg-black/5 ${pathname === '/login' ? 'font-semibold text-[#9D4431]' : ''}`}
                   >
                     <FontAwesomeIcon
@@ -118,6 +121,7 @@ export default function Header() {
                   <Button
                     href="/register"
                     text="Register"
+                    onClick={() => setMobileMenuOpen(false)}
                     className="w-full text-center"
                   />
                 </>
