@@ -31,7 +31,7 @@ GÜD is a community-driven fitness and wellness web app connecting certified tra
 ## Vercel Site
 
 Live Application  
-https://gud-fitness.vercel.app
+[https://gud-fitness.vercel.app](https://gud-smoky.vercel.app/)
 
 ## Screenshots
 
