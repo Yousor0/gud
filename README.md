@@ -28,6 +28,13 @@ GÜD is a community-driven fitness and wellness web app connecting certified tra
 
 ---
 
+## Vercel Site
+
+Live Application  
+https://gud-fitness.vercel.app
+
+## Screenshots
+
 ## Getting Started
 
 ### Prerequisites
@@ -39,7 +46,7 @@ GÜD is a community-driven fitness and wellness web app connecting certified tra
 ### Installation
 
 ```bash
-git clone https://github.com/your-username/gud-app.git
+git clone https://github.com/Yousor0/gud-app.git
 cd gud-app
 npm install
 ```
