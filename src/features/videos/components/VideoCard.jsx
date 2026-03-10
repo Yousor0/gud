@@ -1,62 +1,61 @@
 'use client';
 
+import { CldImage } from 'next-cloudinary';
 import Link from 'next/link';
-import Image from 'next/image';
-import { useRouter } from 'next/navigation';
+import { motion } from 'motion/react';
 
-export default function VideoCard({ video }) {
-  const router = useRouter();
-  const user = users.find((u) => u.id === video.userId);
-
+export function SearchVideoCard({ video }) {
   return (
-    <section
-      className={`mx-1 rounded-md ${
-        user.type === 'Fitness'
-          ? 'hover:bg-cyan-800/40'
-          : 'hover:bg-emerald-800/40'
-      } duration-150 hover:scale-103`}
+    <Link
+      href={`/media/${video.id}`}
+      className="group flex flex-col gap-2 rounded-md p-2 duration-150 hover:bg-black/5"
     >
-      <div className="flex flex-col gap-2 p-2">
-        {/* Thumbnail Image */}
-        <Link href={`/media/${video.id}`} className="block">
-          <Image
-            src={video.thumbnailUrl || '/default-thumbnail.png'}
-            alt={video.title}
-            width={640}
-            height={360}
-            className="rounded-md"
+      <div className="aspect-video overflow-hidden rounded-sm bg-gray-200">
+        <CldImage
+          src={video.thumbnail_public_id || 'default_thumbnail'}
+          width={640}
+          height={360}
+          alt={`${video.title} thumbnail`}
+          className="h-full w-full object-cover"
+        />
+      </div>
+      <div className="flex items-center gap-3">
+        {video.profiles?.avatar_public_id && (
+          <CldImage
+            src={video.profiles.avatar_public_id}
+            width={36}
+            height={36}
+            alt={video.profiles.username}
+            className="h-9 w-9 rounded-full object-cover"
           />
-        </Link>
-
-        {/* Thumbnail Information Wrapper */}
-        <div className="ml-3 flex items-center gap-3">
-          {/* Profile Picture */}
-          <Link
-            className="hover:text-text-secondary flex gap-3 text-sm"
-            href={`/user/${user?.id}`}
-          >
-            <Image
-              src={
-                user.about.avatarUrl == ''
-                  ? '/default-avatar.jpg'
-                  : user.about.avatarUrl
-              }
-              alt={user.username || 'User'}
-              width={45}
-              height={45}
-              className="rounded-full object-cover"
-            />
-            <div className="flex flex-col">
-              {/* Text Information */}
-              <h2 className="font-semibold">{video.title}</h2>
-              <p>
-                {user.name.firstName + ' ' + user.name.lastName ||
-                  'Unknown User'}
-              </p>
-            </div>
-          </Link>
+        )}
+        <div className="flex flex-col">
+          <p className="leading-tight font-semibold">{video.title}</p>
+          {(video.profiles?.first_name ||
+            video.profiles?.last_name ||
+            video.profiles?.username) && (
+            <p className="text-sm text-gray-500">
+              {video.profiles?.first_name} {video.profiles?.last_name}
+            </p>
+          )}
         </div>
       </div>
-    </section>
+    </Link>
+  );
+}
+
+export function ProfileVideoCard({ video }) {
+  return (
+    <motion.div className="bg-bg-secondary aspect-video rounded-sm p-2">
+      <CldImage
+        src={video.thumbnail_public_id || 'default_thumbnail'}
+        width={1280}
+        height={720}
+        alt={`${video.title} thumbnail`}
+        loading="eager"
+        className="h-full w-full rounded-sm object-cover"
+      />
+      <p className="font-medium">{video.title}</p>
+    </motion.div>
   );
 }

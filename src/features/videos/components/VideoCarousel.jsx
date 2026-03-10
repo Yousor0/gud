@@ -1,7 +1,6 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import VideoCard from './VideoCard';
 import { faAngleLeft, faAngleRight } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 

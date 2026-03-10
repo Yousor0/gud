@@ -1,6 +1,3 @@
-import React from 'react';
-import VideoCarousel from '../../../features/videos/components/VideoCarousel';
-import ProfileCarousel from '../../../components/ProfileCarousel';
 import PageHeader from '../../../components/layout/PageHeader';
 import { getAllVideos } from '../../../features/videos/services/videoService';
 import { fetchAllProfessionals } from '../../../features/profiles/services/profileService';
