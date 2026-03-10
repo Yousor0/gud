@@ -86,7 +86,7 @@ export default function Header() {
             >
               {!loading && user && (
                 <div className="mb-1 w-full border-b border-black/20 pb-2">
-                  <UserMenu mobile />
+                  <UserMenu mobile onClose={() => setMobileMenuOpen(false)} />
                 </div>
               )}
               <Link

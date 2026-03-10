@@ -14,7 +14,7 @@ import {
   faChevronDown,
 } from '@fortawesome/free-solid-svg-icons';
 
-export default function UserMenu({ mobile = false }) {
+export default function UserMenu({ mobile = false, onClose }) {
   const { profile } = useAuth();
   const [open, setOpen] = useState(false);
   const router = useRouter();
@@ -64,6 +64,7 @@ export default function UserMenu({ mobile = false }) {
               <div className="mx-1 mt-1 pt-1">
                 <Link
                   href={`/account/${profile?.username}`}
+                  onClick={onClose}
                   className="block w-full rounded-md px-3 py-1.5 text-sm hover:bg-black/5"
                 >
                   <FontAwesomeIcon icon={faUser} className="mr-2" />
@@ -144,7 +145,7 @@ export default function UserMenu({ mobile = false }) {
 
                 <button
                   onClick={handleLogout}
-                  className="block w-full rounded-md px-3 py-1.5 text-left text-sm hover:bg-black/5"
+                  className="block w-full cursor-pointer rounded-md px-3 py-1.5 text-left text-sm hover:bg-black/5"
                 >
                   <FontAwesomeIcon
                     icon={faArrowRightFromBracket}
