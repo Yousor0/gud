@@ -39,15 +39,18 @@ export default function FaqSection() {
             </div>
             <AnimatePresence initial={false}>
               {openIndexes.includes(index) && (
-                <motion.p
+                <motion.div
                   initial={{ opacity: 0, height: 0 }}
                   animate={{ opacity: 1, height: 'auto' }}
                   exit={{ opacity: 0, height: 0 }}
-                  transition={{ duration: 0.2 }}
-                  className="mt-4 text-sm"
+                  transition={{
+                    height: { duration: 0.25, ease: 'easeInOut' },
+                    opacity: { duration: 0.15, ease: 'easeInOut' },
+                  }}
+                  style={{ overflow: 'hidden' }}
                 >
-                  {item.answer}
-                </motion.p>
+                  <p className="mt-4 text-sm">{item.answer}</p>
+                </motion.div>
               )}
             </AnimatePresence>
           </div>

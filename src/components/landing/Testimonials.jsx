@@ -1,3 +1,7 @@
+'use client';
+
+import { motion, easeOut } from 'motion/react';
+
 const testimonials = [
   {
     name: 'Sarah M.',
@@ -25,7 +29,9 @@ export default function Testimonials() {
       <h2 className="section-title mb-8 text-center">What Our Members Say</h2>
       <div className="grid grid-cols-1 gap-8 md:grid-cols-3">
         {testimonials.map((t, index) => (
-          <div
+          <motion.div
+            whileHover={{ scale: 1.03 }}
+            transition={{ duration: 0.2, ease: easeOut }}
             key={index}
             className="border-bg-accent bg-bg-secondary flex flex-col gap-4 rounded-lg border p-6 shadow-sm"
           >
@@ -34,7 +40,7 @@ export default function Testimonials() {
               <p className="font-semibold">{t.name}</p>
               <p className="text-sm text-gray-500">{t.role}</p>
             </div>
-          </div>
+          </motion.div>
         ))}
       </div>
     </section>

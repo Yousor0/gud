@@ -83,10 +83,12 @@ export async function updateProfessional(userId, data) {
 // FetchVideosBy UserId
 export async function fetchUserVideos(userId) {
   const supabase = createClient();
-  const { data } = await supabase
+  const { data, error } = await supabase
     .from('videos')
     .select('*')
-    .eq('user_id', userId);
+    .eq('user_id', userId)
+    .order('created_at', { ascending: false });
 
+  if (error) throw new Error(error.message);
   return data || [];
 }

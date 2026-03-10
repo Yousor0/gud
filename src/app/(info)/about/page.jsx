@@ -29,10 +29,10 @@ const values = [
 
 const team = [
   // placeholder images hahahaha
-  { name: 'Andrew Jiang', imageUrl: 'sophiaAlvarez_ufb1ou' },
-  { name: 'Jeremy Auguste', imageUrl: 'sophiaAlvarez_ufb1ou' },
+  { name: 'Andrew Jiang', imageUrl: 'DSC02049_qkehga' },
+  { name: 'Jeremy Auguste', imageUrl: 'DSC02043_rvwc4h' },
   { name: 'Biana Lambis-Puryear', imageUrl: 'sophiaAlvarez_ufb1ou' },
-  { name: 'Francesca Lorthe', imageUrl: 'sophiaAlvarez_ufb1ou' },
+  { name: 'Francesca Lorthe', imageUrl: 'DSC02042_idyob7' },
   { name: 'Nikolai Cooperider', imageUrl: 'sophiaAlvarez_ufb1ou' },
 ];
 
@@ -90,7 +90,7 @@ export default function AboutPage() {
       <section className="flex flex-col gap-20">
         <div className="center flex flex-col">
           <h2 className="section-title mb-8 text-center">Our Team</h2>
-          <p className="text-secondary px-5 text-center">
+          <p className="text-secondary px-5 text-center md:text-left">
             We are a team of five Digital Media students from the University of
             Central Florida united by a shared passion for wellness, design, and
             meaningful technology. As part of our capstone project, we created
@@ -125,7 +125,7 @@ export default function AboutPage() {
               key={member.name}
               className="flex w-50 flex-col items-center gap-5"
             >
-              <div style={{ clipPath: 'url(#blob-clip)' }}>
+              <div>
                 <CldImage
                   width="400"
                   height="400"
@@ -134,17 +134,18 @@ export default function AboutPage() {
                           (max-width: 1200px) 50vw,
                           33vw"
                   alt={member.name}
-                  className="object-cover"
+                  className="rounded-full object-cover"
+                  crop={{ type: 'fill', gravity: 'faces' }}
                 />
               </div>
-              <span className="sub-header">{member.name}</span>
+              <span className="sub-header text-center">{member.name}</span>
             </div>
           ))}
         </div>
       </section>
 
       {/* Our Values */}
-      <section className="rounded-xl bg-bg-secondary p-10">
+      <section className="bg-bg-secondary rounded-xl p-10">
         <h2 className="section-title mb-10 text-center">Our Values</h2>
         <div className="grid grid-cols-1 gap-8 md:grid-cols-3">
           {values.map((value, index) => (
@@ -152,7 +153,7 @@ export default function AboutPage() {
               key={index}
               className="flex flex-col items-center gap-3 text-center"
             >
-              <div className="flex h-14 w-14 items-center justify-center rounded-full bg-brand-primary">
+              <div className="bg-brand-primary flex h-14 w-14 items-center justify-center rounded-full">
                 <FontAwesomeIcon
                   icon={value.icon}
                   size="lg"

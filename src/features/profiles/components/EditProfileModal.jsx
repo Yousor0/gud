@@ -115,7 +115,8 @@ export default function EditProfileModal({ profile, onClose, onSaved }) {
       setTimeout(() => {
         onSaved({ ...updateData, ...professionalData });
       }, 1500);
-    } catch {
+    } catch (err) {
+      console.error('Save failed:', err);
       setSaveStatus('error');
     } finally {
       setSaving(false);

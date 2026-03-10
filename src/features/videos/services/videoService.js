@@ -11,6 +11,18 @@ export async function getAllVideos() {
   return data;
 }
 
+export async function searchVideosByTitle(query) {
+  const supabase = await createClient();
+  const { data, error } = await supabase
+    .from('videos')
+    .select(`*, profiles(username, avatar_public_id)`)
+    .ilike('title', `%${query}%`)
+    .order('created_at', { ascending: false });
+
+  if (error) throw new Error(error.message);
+  return data;
+}
+
 export async function getAllVideosByUser(userId) {
   const supabase = await createClient();
   const { data, error } = await supabase

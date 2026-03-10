@@ -23,7 +23,7 @@ export function useProfile(username) {
       try {
         const profileData = await fetchProfileByUsername(username);
         const [videos, professional] = await Promise.all([
-          fetchUserVideos(profileData.id),
+          fetchUserVideos(profileData.user_id),
           profileData.role === 'professional'
             ? fetchProfessionalByUserId(profileData.user_id).catch(() => null)
             : Promise.resolve(null),

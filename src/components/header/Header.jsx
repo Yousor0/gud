@@ -27,7 +27,7 @@ export default function Header() {
   return (
     <header>
       <div className="sticky top-0 z-50 border-b border-black/20 bg-[#F5F0E7] shadow-sm">
-        <div className="mx-auto flex w-auto max-w-7xl items-center justify-between gap-4 p-2">
+        <div className="mx-auto flex w-auto max-w-7xl items-center justify-between gap-4 px-4 py-2">
           {/* Logo */}
           <Link href="/">
             <CldImage

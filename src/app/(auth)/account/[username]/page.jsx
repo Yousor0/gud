@@ -9,7 +9,7 @@ import ProfileHeader from '../../../../features/profiles/components/ProfileHeade
 import ProfessionalInfo from '../../../../features/profiles/components/ProfessionalInfo';
 import EditProfileModal from '../../../../features/profiles/components/EditProfileModal';
 import AccountSecurity from '../../../../features/profiles/components/AccountSecurity';
-import VideoCarousel from '../../../../features/videos/components/VideoCarousel';
+import AccountVideos from '../../../../features/profiles/components/AccountVideos';
 
 export default function AccountPage() {
   const { username } = useParams();
@@ -30,19 +30,18 @@ export default function AccountPage() {
 
   return (
     <main className="mx-auto flex w-auto max-w-7xl flex-col gap-10 px-5 py-10">
-      <div className="bg-bg-secondary flex flex-col justify-center gap-4 rounded-sm px-5 py-5">
-        <ProfileHeader
-          profile={profile}
-          isOwner={isOwner}
-          onEditClick={() => setEditOpen(true)}
-        />
+      <div className="flex flex-col gap-5">
+        <div className="bg-bg-secondary flex flex-col justify-center gap-4 rounded-sm px-5 py-5">
+          <ProfileHeader
+            profile={profile}
+            isOwner={isOwner}
+            onEditClick={() => setEditOpen(true)}
+          />
 
-        <ProfessionalInfo profile={profile} />
+          <ProfessionalInfo profile={profile} />
+        </div>
+        <AccountVideos profile={profile} />
       </div>
-
-      {profile.videos?.length > 0 && (
-        <VideoCarousel sectionTitle="Videos" videoAPI={profile.videos} />
-      )}
 
       {isOwner && <AccountSecurity profile={profile} />}
 
