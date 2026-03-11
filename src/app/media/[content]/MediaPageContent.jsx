@@ -60,6 +60,20 @@ export default function MediaPageContent({ video, relatedVideos, comments, profe
 
           <h1 className="mt-4 text-xl font-bold">{video.title}</h1>
 
+          {video.tags?.length > 0 && (
+            <div className="mt-2 flex flex-wrap gap-2">
+              {video.tags.map((tag, i) => (
+                <Link
+                  key={i}
+                  href={`/search?q=${encodeURIComponent(tag)}`}
+                  className="rounded-full bg-gray-200 px-3 py-1 text-xs font-medium text-gray-600 hover:bg-gray-300 duration-150"
+                >
+                  #{tag}
+                </Link>
+              ))}
+            </div>
+          )}
+
           <div className="mt-3 flex items-center justify-between">
             <Link
               href={`/account/${profile?.username}`}
