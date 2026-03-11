@@ -15,41 +15,45 @@ export function SearchVideoCard({ video }) {
       prefetch={false}
       className="group border-bg-accent hover:bg-bg-accent/30 flex h-full flex-col gap-1 rounded-sm border p-3 shadow-2xs duration-150 hover:scale-102"
     >
-      <div className="aspect-video overflow-hidden rounded-sm bg-gray-200">
-        <CldImage
-          src={video.thumbnail_public_id || 'default_thumbnail'}
-          width={640}
-          height={360}
-          alt={`${video.title} thumbnail`}
-          loading="lazy"
-          className="h-full w-full object-cover"
-        />
-      </div>
-
       <div className="flex flex-col gap-1">
-        <p className="text-sm leading-tight font-semibold">{video.title}</p>
-        {video.description && (
-          <p className="line-clamp-2 text-sm text-gray-500">
-            {video.description}
-          </p>
-        )}
-      </div>
+        <div className="aspect-video overflow-hidden rounded-sm bg-gray-200">
+          <CldImage
+            src={video.thumbnail_public_id || 'default_thumbnail'}
+            width={640}
+            height={360}
+            alt={`${video.title} thumbnail`}
+            loading="lazy"
+            className="h-full w-full object-cover"
+          />
+        </div>
 
-      <div className="mt-auto mb-3 flex items-center gap-2">
-        <CldImage
-          src={video.profiles?.avatar_public_id || 'default-avatar_m0m2pe'}
-          width={32}
-          height={32}
-          alt={displayName || 'User'}
-          className="h-8 w-8 rounded-full object-cover"
-        />
-        <div className="flex flex-col">
-          {displayName && (
-            <p className="text-text-primary text-sm">{displayName}</p>
+        <div className="flex flex-col gap-1">
+          <p className="text-sm leading-tight font-semibold">{video.title}</p>
+          {video.description && (
+            <p className="line-clamp-2 text-sm text-gray-500">
+              {video.description}
+            </p>
           )}
-          {video.profiles?.username && (
-            <p className="text-sm text-gray-500">{video.profiles?.username}</p>
-          )}
+        </div>
+
+        <div className="mt-auto mb-3 flex items-center gap-2">
+          <CldImage
+            src={video.profiles?.avatar_public_id || 'default-avatar_m0m2pe'}
+            width={32}
+            height={32}
+            alt={displayName || 'User'}
+            className="h-8 w-8 rounded-full object-cover"
+          />
+          <div className="flex flex-col">
+            {displayName && (
+              <p className="text-text-primary text-sm">{displayName}</p>
+            )}
+            {video.profiles?.username && (
+              <p className="text-sm text-gray-500">
+                {video.profiles?.username}
+              </p>
+            )}
+          </div>
         </div>
       </div>
 

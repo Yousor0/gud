@@ -1,4 +1,4 @@
-import { searchVideosByTitle } from '../../../features/videos/services/videoService';
+import { searchVideos } from '../../../features/videos/services/videoService';
 import PageHeader from '../../../components/layout/PageHeader';
 import SearchResults from './SearchResults';
 
@@ -6,7 +6,7 @@ export default async function SearchPage({ searchParams }) {
   const { q } = await searchParams;
   const query = q?.trim() ?? '';
 
-  const videos = query ? await searchVideosByTitle(query) : [];
+  const videos = query ? await searchVideos(query) : [];
 
   return (
     <div className="mx-auto flex w-full max-w-7xl flex-col gap-6 px-4 py-8">
