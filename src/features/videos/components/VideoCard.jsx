@@ -2,7 +2,6 @@
 
 import { CldImage } from 'next-cloudinary';
 import Link from 'next/link';
-import { motion } from 'motion/react';
 
 export function SearchVideoCard({ video }) {
   const displayName = video.profiles?.first_name
@@ -15,7 +14,7 @@ export function SearchVideoCard({ video }) {
       prefetch={false}
       className="group border-bg-accent hover:bg-bg-accent/30 flex h-full flex-col gap-1 rounded-sm border p-3 shadow-2xs duration-150 hover:scale-102"
     >
-      <div className="flex flex-col gap-1">
+      <div className="flex flex-1 flex-col gap-1">
         <div className="aspect-video overflow-hidden rounded-sm bg-gray-200">
           <CldImage
             src={video.thumbnail_public_id || 'default_thumbnail'}
@@ -36,7 +35,7 @@ export function SearchVideoCard({ video }) {
           )}
         </div>
 
-        <div className="mt-auto mb-3 flex items-center gap-2">
+        <div className="mt-2 flex items-center gap-2">
           <CldImage
             src={video.profiles?.avatar_public_id || 'default-avatar_m0m2pe'}
             width={32}
@@ -58,7 +57,7 @@ export function SearchVideoCard({ video }) {
       </div>
 
       {video.tags?.length > 0 && (
-        <div className="flex flex-wrap gap-1">
+        <div className="mt-auto flex flex-wrap gap-1 pt-2">
           {video.tags.map((tag) => (
             <span
               key={tag}
