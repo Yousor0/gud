@@ -1,71 +1,9 @@
-// import React from 'react';
-// import Link from 'next/link';
-// import Image from 'next/image';
-// import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-// import { faHeart } from '@fortawesome/free-solid-svg-icons';
-// import { faBell } from '@fortawesome/free-solid-svg-icons';
-// import Button from '../../../components/ui/Button.jsx';
+export default async function MediaPage({ params }) {
+  const { content } = await params;
 
-// export default async function media({ params }) {
-//   const { content } = await params;
-
-//   const movie = videos.find((video) => String(video.id) === content);
-//   const user = users.find((u) => String(u.id) === movie.userId);
-
-//   console.log('user is ', user);
-
-//   return (
-//     <div className="m-24 flex justify-center">
-//       <div style={{ width: '1280px', justifyContent: 'center' }}>
-//         <div>
-//           <h1 className="page-title my-3 flex justify-start">
-//             {/* title of the video */}
-//             {movie.title}
-//           </h1>
-//         </div>
-//         <div className="grid grid-cols-1">
-//           {/* the video thumbnail */}
-//           <Image
-//             src={movie.thumbnailUrl || '/default-thumbnail.png'}
-//             width="1280"
-//             height="720"
-//             alt={movie.title}
-//             className="rounded-sm"
-//           />
-//           <div className="mt-5 grid grid-cols-2">
-//             <div className="flex">
-//               {/* Profile Picture */}
-//               <Link href={`/user/${movie.userId}`}>
-//                 <Image
-//                   src={
-//                     user.about.avatarUrl == ''
-//                       ? '/default-avatar.jpg'
-//                       : user.about.avatarUrl
-//                   }
-//                   // src={user?.avatarUrl || '/default-avatar.jpg'}
-//                   alt={user.username || 'User'}
-//                   width={80}
-//                   height={80}
-//                   className="rounded-full"
-//                 />
-//               </Link>
-//               <div className="mt-4 ml-3">
-//                 <h1 className="flex justify-start font-normal">
-//                   {user.name.firstName} {user.name.lastName}
-//                 </h1>
-//                 <h2 className="flex justify-start text-sm text-gray-500">
-//                   {user.specialty[0]}
-//                 </h2>
-//               </div>
-//             </div>
-//             <div className="mt-4 flex justify-end gap-4">
-//               <Button href="#" text="Subsribe" className="item-center flex" />
-//               <FontAwesomeIcon icon={faBell} size="2x" color="#9D4431" />
-//               <FontAwesomeIcon icon={faHeart} size="2x" color="#9D4431" />
-//             </div>
-//           </div>
-//         </div>
-//       </div>
-//     </div>
-//   );
-// }
+  return (
+    <div className="mx-auto flex w-full max-w-7xl flex-col gap-6 px-4 py-8">
+      <p className="text-gray-500">Media page coming soon. (ID: {content})</p>
+    </div>
+  );
+}
