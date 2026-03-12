@@ -182,13 +182,15 @@ export default function ProfileHeader({ profile, isOwner, onEditClick }) {
         {socials}
 
         <div>
-          <h2 className="mb-2 text-center text-sm font-semibold tracking-wide text-gray-500 uppercase md:text-left">
-            Biography
-          </h2>
           {profile.bio && (
-            <p className="leading-relax text-md text-secondary min-h-30 w-full rounded-md bg-[#E3DBCF] p-2">
-              {profile.bio}
-            </p>
+            <>
+              <h2 className="mb-2 text-center text-sm font-semibold tracking-wide text-gray-500 uppercase md:text-left">
+                Biography
+              </h2>
+              <p className="leading-relax text-md text-secondary min-h-30 w-full rounded-md bg-[#E3DBCF] p-2">
+                {profile.bio}
+              </p>
+            </>
           )}
         </div>
       </div>

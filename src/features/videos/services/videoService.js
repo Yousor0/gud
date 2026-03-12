@@ -1,7 +1,7 @@
-import { createClient } from '../../../lib/supabase/server';
+import { createClient } from '../../../lib/supabase/client';
 
 export async function getAllVideos() {
-  const supabase = await createClient();
+  const supabase = createClient();
   const { data, error } = await supabase
     .from('videos')
     .select(`*, profiles(username, avatar_public_id)`)
@@ -11,12 +11,12 @@ export async function getAllVideos() {
   return data;
 }
 
-export async function searchVideosByTitle(query) {
-  const supabase = await createClient();
+export async function getAllVideosByUser(userId) {
+  const supabase = createClient();
   const { data, error } = await supabase
     .from('videos')
-    .select(`*, profiles(username, avatar_public_id)`)
-    .ilike('title', `%${query}%`)
+    .select('*')
+    .eq('user_Id', userId)
     .order('created_at', { ascending: false });
 
   if (error) throw new Error(error.message);
@@ -51,12 +51,16 @@ export async function getVideosByType(type, excludeId) {
 
 export async function getAllVideosByUser(userId) {
   const supabase = await createClient();
+export async function getVideoRating(videoId) {
+  const supabase = createClient();
   const { data, error } = await supabase
-    .from('videos')
-    .select('*')
-    .eq('user_Id', userId)
-    .order('created_at', { ascending: false });
+    .from('video_ratings')
+    .select('rating')
+    .eq('video_id', videoId);
 
   if (error) throw new Error(error.message);
-  return data;
+  if (!data || data.length === 0) return null;
+
+  const avg = data.reduce((sum, row) => sum + row.rating, 0) / data.length;
+  return avg / 5;
 }
