@@ -82,7 +82,9 @@ export function SearchVideoCard({ video }) {
         </div>
 
         <div className="flex flex-col gap-1">
-          <p className="text-sm leading-tight font-semibold">{video.title}</p>
+          <p className="line-clamp-2 text-sm leading-tight font-semibold">
+            {video.title}
+          </p>
           {video.description && (
             <p className="line-clamp-2 text-sm text-gray-500">
               {video.description}
@@ -184,7 +186,7 @@ export function ProfileVideoCard({ video }) {
       </div>
 
       <div className="mb-3 flex flex-col gap-1">
-        <p className="text-sm leading-tight font-semibold">{video.title}</p>
+        <p className="2 text-sm leading-tight font-semibold">{video.title}</p>
         {video.description && (
           <p className="line-clamp-2 text-sm text-gray-500">
             {video.description}
