@@ -1,22 +1,29 @@
 import PageHeader from '../../../components/layout/PageHeader';
-import { getAllVideos } from '../../../features/videos/services/videoService';
-import { fetchAllProfessionals } from '../../../features/profiles/services/profileService';
+import { createClient } from '../../../lib/supabase/server';
+import ExploreContent from './ExploreContent';
+
+const OMITTED_TAGS = ['fitness', 'nutrition'];
+
+function groupByFirstTag(videos) {
+  const groups = {};
+  for (const video of videos) {
+    const tag = video.tags?.find((t) => !OMITTED_TAGS.includes(t)) ?? 'Other';
+    if (!groups[tag]) groups[tag] = [];
+    groups[tag].push(video);
+  }
+  return Object.entries(groups).sort(([a], [b]) => a.localeCompare(b));
+}
 
 export default async function page() {
-  const videos = await getAllVideos();
-  const users = await fetchAllProfessionals();
+  const supabase = await createClient();
 
-  // Random Videos Filters by Type
-  const fitnessVideos = videos
-    .filter((video) => video.type === 'Fitness')
-    .sort(() => Math.random() - 0.5);
-  const nutritionVideos = videos
-    .filter((video) => video.type === 'Nutrition')
-    .sort(() => Math.random() - 0.5);
+  const [{ data: videos }, { data: professionals }] = await Promise.all([
+    supabase.from('videos').select('*, profiles(username, avatar_public_id)').order('created_at', { ascending: false }),
+    supabase.from('full_professional_profiles').select('*'),
+  ]);
 
-  // Profile Filters by Type
-  const fitnessProfiles = users.filter((user) => user.type === 'Fitness');
-  const nutritionProfiles = users.filter((user) => user.type === 'Nutrition');
+  const fitnessVideos = (videos ?? []).filter((v) => v.type === 'fitness');
+  const nutritionVideos = (videos ?? []).filter((v) => v.type === 'nutrition');
 
   return (
     <div className="flex flex-col gap-10">
@@ -25,29 +32,13 @@ export default async function page() {
         subtext="At-home workouts and nutritional guidance tailored too you"
       />
 
-      {/* Profiles */}
-      <section className="mx-auto flex w-full max-w-md flex-col px-5 sm:max-w-xl md:max-w-3xl lg:max-w-5xl xl:max-w-7xl">
-        <h1 className="section-title">Our Professionals</h1>
-
-        {/* <ProfileCarousel
-          usersAPI={fitnessProfiles}
-          sectionTitle={'Fitness Trainers'}
+      <section className="mx-auto flex w-full max-w-md flex-col gap-4 px-10 sm:max-w-2xl md:max-w-4xl lg:max-w-5xl xl:max-w-7xl">
+        <h2 className="section-title">Explore our Library</h2>
+        <ExploreContent
+          professionals={professionals ?? []}
+          fitnessTagGroups={groupByFirstTag(fitnessVideos).filter(([, videos]) => videos.length >= 5)}
+          nutritionTagGroups={groupByFirstTag(nutritionVideos).filter(([, videos]) => videos.length >= 3)}
         />
-        <ProfileCarousel
-          usersAPI={nutritionProfiles}
-          sectionTitle={'Nutritionists'}
-        /> */}
-      </section>
-
-      {/* Videos */}
-      <section className="mx-auto flex w-full max-w-md flex-col px-10 sm:max-w-2xl md:max-w-4xl lg:max-w-5xl xl:max-w-7xl">
-        <h1 className="section-title">Explore our Library</h1>
-        {/* <VideoCarousel
-          videoAPI={videos}
-          sectionTitle={'Continue Where You Left Off'}
-        />
-        <VideoCarousel videoAPI={fitnessVideos} sectionTitle={'Fitness'} />
-        <VideoCarousel videoAPI={nutritionVideos} sectionTitle={'Nutrition'} /> */}
       </section>
     </div>
   );
