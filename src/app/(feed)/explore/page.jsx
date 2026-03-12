@@ -18,7 +18,10 @@ export default async function page() {
   const supabase = await createClient();
 
   const [{ data: videos }, { data: professionals }] = await Promise.all([
-    supabase.from('videos').select('*, profiles(username, avatar_public_id)').order('created_at', { ascending: false }),
+    supabase
+      .from('videos')
+      .select('*, profiles(username, avatar_public_id)')
+      .order('created_at', { ascending: false }),
     supabase.from('full_professional_profiles').select('*'),
   ]);
 
@@ -36,8 +39,12 @@ export default async function page() {
         <h2 className="section-title">Explore our Library</h2>
         <ExploreContent
           professionals={professionals ?? []}
-          fitnessTagGroups={groupByFirstTag(fitnessVideos).filter(([, videos]) => videos.length >= 5)}
-          nutritionTagGroups={groupByFirstTag(nutritionVideos).filter(([, videos]) => videos.length >= 3)}
+          fitnessTagGroups={groupByFirstTag(fitnessVideos).filter(
+            ([, videos]) => videos.length >= 5
+          )}
+          nutritionTagGroups={groupByFirstTag(nutritionVideos).filter(
+            ([, videos]) => videos.length >= 3
+          )}
         />
       </section>
     </div>

@@ -47,7 +47,7 @@ export default function VideoCarousel({
       <div className="relative">
         <div className="grid-row-2 grid">
           <div
-            className={'grid'}
+            className="grid gap-3"
             style={{
               gridTemplateColumns:
                 orientation === 'horizontal'
@@ -65,7 +65,7 @@ export default function VideoCarousel({
           <button
             onClick={prev}
             disabled={startIndex === 0}
-            className="absolute top-1/2 -left-10 h-10 w-10 -translate-y-1/2 transform items-center justify-center rounded-full bg-[#D07A64] disabled:hidden sm:-left-12"
+            className="absolute top-1/2 -left-10 h-10 w-10 -translate-y-1/2 transform items-center justify-center rounded-full bg-[#D07A64] duration-125 hover:scale-105 disabled:hidden sm:-left-12"
           >
             <FontAwesomeIcon
               className="text-white"
@@ -77,7 +77,7 @@ export default function VideoCarousel({
           <button
             onClick={next}
             disabled={startIndex + cardsToShow >= videoAPI.length}
-            className="absolute top-1/2 -right-10 h-10 w-10 -translate-y-1/2 transform items-center justify-center rounded-full bg-[#D07A64] disabled:hidden sm:-right-12"
+            className="absolute top-1/2 -right-10 h-10 w-10 -translate-y-1/2 transform items-center justify-center rounded-full bg-[#D07A64] duration-125 hover:scale-105 disabled:hidden sm:-right-12"
           >
             <FontAwesomeIcon
               icon={faAngleRight}

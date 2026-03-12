@@ -71,6 +71,10 @@
   .tag-primary {
     @apply bg-brand-primary text-white/90;
   }
+
+  .dropdown {
+    @apply border-bg-accent bg-bg-primary focus:border-brand-primary w-fit rounded-sm border px-3 py-2 text-sm duration-100 focus:outline-none;
+  }
 }
 
 * {

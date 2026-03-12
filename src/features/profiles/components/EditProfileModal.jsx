@@ -232,7 +232,7 @@ export default function EditProfileModal({ profile, onClose, onSaved }) {
                   onChange={(e) =>
                     setField('content_type', e.target.value || null)
                   }
-                  className="border-bg-accent focus:border-brand-primary rounded-sm border px-3 py-2 text-sm duration-100 focus:outline-none"
+                  className="dropdown"
                 >
                   <option value="" disabled>
                     Select a content type...
