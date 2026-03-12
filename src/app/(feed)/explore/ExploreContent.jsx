@@ -4,40 +4,33 @@ import { useState } from 'react';
 import VideoCarousel from '../../../features/videos/components/VideoCarousel';
 import ExploreProCard from './ExploreProCard';
 
+const TYPE_ORDER = ['fitness', 'nutrition'];
+
 export default function ExploreContent({ professionals, fitnessTagGroups, nutritionTagGroups }) {
   const [tab, setTab] = useState('videos');
   const [videoType, setVideoType] = useState('fitness');
 
+  const sortedProfessionals = [...professionals].sort(
+    (a, b) => TYPE_ORDER.indexOf(a.content_type) - TYPE_ORDER.indexOf(b.content_type)
+  );
+
   return (
     <div className="flex flex-col gap-8">
-      {/* Switcher */}
-      <div className="flex justify-center gap-3">
-        <button
-          onClick={() => setTab('videos')}
-          className={`rounded-full px-6 py-2 text-base font-medium duration-150 ${
-            tab === 'videos'
-              ? 'bg-brand-primary text-white'
-              : 'border-bg-accent border text-black/70 hover:bg-gray-100'
-          }`}
+      {/* Main dropdown */}
+      <div className="flex justify-center">
+        <select
+          value={tab}
+          onChange={(e) => setTab(e.target.value)}
         >
-          Videos
-        </button>
-        <button
-          onClick={() => setTab('professionals')}
-          className={`rounded-full px-6 py-2 text-base font-medium duration-150 ${
-            tab === 'professionals'
-              ? 'bg-brand-primary text-white'
-              : 'border-bg-accent border text-black/70 hover:bg-gray-100'
-          }`}
-        >
-          Professionals
-        </button>
+          <option value="videos">Videos</option>
+          <option value="professionals">Professionals</option>
+        </select>
       </div>
 
       {/* Professionals grid */}
       {tab === 'professionals' && (
         <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-          {professionals.map((pro) => (
+          {sortedProfessionals.map((pro) => (
             <ExploreProCard key={pro.user_id} pro={pro} />
           ))}
         </div>
@@ -46,28 +39,15 @@ export default function ExploreContent({ professionals, fitnessTagGroups, nutrit
       {/* Videos by type + tag */}
       {tab === 'videos' && (
         <div className="flex flex-col gap-6">
-          {/* Video type sub-switcher */}
-          <div className="flex justify-center gap-3">
-            <button
-              onClick={() => setVideoType('fitness')}
-              className={`rounded-full px-6 py-2 text-base font-medium duration-150 ${
-                videoType === 'fitness'
-                  ? 'bg-blue-two text-white'
-                  : 'border-bg-accent border text-black/70 hover:bg-gray-100'
-              }`}
+          {/* Video type dropdown */}
+          <div className="flex justify-center">
+            <select
+              value={videoType}
+              onChange={(e) => setVideoType(e.target.value)}
             >
-              Fitness
-            </button>
-            <button
-              onClick={() => setVideoType('nutrition')}
-              className={`rounded-full px-6 py-2 text-base font-medium duration-150 ${
-                videoType === 'nutrition'
-                  ? 'bg-green-two text-white'
-                  : 'border-bg-accent border text-black/70 hover:bg-gray-100'
-              }`}
-            >
-              Nutrition
-            </button>
+              <option value="fitness">Fitness</option>
+              <option value="nutrition">Nutrition</option>
+            </select>
           </div>
 
           {videoType === 'fitness' && fitnessTagGroups.map(([tag, tagVideos]) => (
