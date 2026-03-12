@@ -7,12 +7,14 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faStar } from '@fortawesome/free-solid-svg-icons';
 import { useState, useEffect } from 'react';
 
-const tagStyles = {
-  // Fitness & Nutrition
+// Fitness & Nutrition
+const videoTypeStyles = {
   fitness: 'bg-blue-two text-white/90',
   nutrition: 'bg-green-two text-white/90',
+};
 
-  // Difficulty
+// Difficulty
+const tagStyles = {
   beginner: 'bg-emerald-700 text-white/90',
   intermediate: 'bg-yellow-600 text-white/90',
   advanced: 'bg-red-700 text-white/90',
@@ -57,7 +59,9 @@ export function SearchVideoCard({ video }) {
     getVideoRating(video.id).then(setVideoRating);
   }, [video.id]);
 
-  const videoTags = [video.level, ...video.tags];
+  const videoTags = video.tags.slice(0, 10);
+
+  const combinedVideoTags = [video.level, ...videoTags];
 
   return (
     <Link
@@ -87,13 +91,15 @@ export function SearchVideoCard({ video }) {
         </div>
 
         <div className="mt-2 flex items-center gap-2">
-          <CldImage
-            src={video.profiles?.avatar_public_id || 'default-avatar_m0m2pe'}
-            width={32}
-            height={32}
-            alt={displayName || 'User'}
-            className="h-8 w-8 rounded-full object-cover"
-          />
+          <Link href={`/account/${video.profiles?.username}`}>
+            <CldImage
+              src={video.profiles?.avatar_public_id || 'default-avatar_m0m2pe'}
+              width={32}
+              height={32}
+              alt={displayName || 'User'}
+              className="h-8 w-8 rounded-full object-cover"
+            />
+          </Link>
           <div className="flex flex-col">
             {(displayName && (
               <p className="text-text-primary text-sm">{displayName}</p>
@@ -101,9 +107,11 @@ export function SearchVideoCard({ video }) {
               <p className="text-text-primary text-sm">displayName not found</p>
             )}
             {(video.profiles?.username && (
-              <p className="-mt-1 text-sm text-gray-500">
-                {video.profiles?.username}
-              </p>
+              <Link href={`/account/${video.profiles?.username}`}>
+                <p className="hover:text-brand-primary-hover -mt-1 text-sm text-gray-500">
+                  {video.profiles?.username}
+                </p>
+              </Link>
             )) || (
               <p className="-mt-1 text-sm text-gray-500"> username not found</p>
             )}
@@ -119,8 +127,16 @@ export function SearchVideoCard({ video }) {
             {(videoRating * 5).toFixed(1)}
           </span>
         )}
+
+        {/* Video Type */}
+        <span
+          className={`${videoTypeStyles[video.type] ?? defaultStyle} rounded-full px-2 py-0.5 text-xs`}
+        >
+          {video.type.charAt(0).toUpperCase() + video.type.slice(1)}
+        </span>
+
         {/* Video Tags */}
-        {videoTags.map((tag) => (
+        {combinedVideoTags.map((tag) => (
           <span
             key={tag}
             className={`${tagStyles[tag] ?? defaultStyle} rounded-full px-2 py-0.5 text-xs`}
@@ -138,7 +154,9 @@ export function SearchVideoCard({ video }) {
 }
 
 export function ProfileVideoCard({ video }) {
-  const videoTags = [video.level, ...video.tags];
+  const videoTags = video.tags.slice(0, 10);
+
+  const combinedVideoTags = [video.level, ...videoTags];
 
   const [videoRating, setVideoRating] = useState(null);
 
@@ -181,8 +199,16 @@ export function ProfileVideoCard({ video }) {
               {(videoRating * 5).toFixed(1)}
             </span>
           )}
+
+          {/* Video Type */}
+          <span
+            className={`${videoTypeStyles[video.type] ?? defaultStyle} rounded-full px-2 py-0.5 text-xs`}
+          >
+            {video.type.charAt(0).toUpperCase() + video.type.slice(1)}
+          </span>
+
           {/* Video Tags */}
-          {videoTags.map((tag) => (
+          {combinedVideoTags.map((tag) => (
             <span
               key={tag}
               className={`${tagStyles[tag] ?? defaultStyle} rounded-full px-2 py-0.5 text-xs`}
