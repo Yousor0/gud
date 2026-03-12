@@ -1,12 +1,48 @@
 'use client';
 
 import { CldImage } from 'next-cloudinary';
+import { getVideoRating } from '../services/videoService';
 import Link from 'next/link';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faStar } from '@fortawesome/free-solid-svg-icons';
+import { useState, useEffect } from 'react';
+
+const tagStyles = {
+  // Fitness & Nutrition
+  fitness: 'bg-blue-two text-white/90',
+  nutrition: 'bg-green-two text-white/90',
+
+  // Difficulty
+  beginner: 'bg-emerald-700 text-white/90',
+  intermediate: 'bg-yellow-600 text-white/90',
+  advanced: 'bg-red-700 text-white/90',
+};
+
+const defaultStyle = 'text-black/80 border-bg-accent border';
+
+function viewCount(views) {
+  if (views >= 1_000_000_000) {
+    return (views / 1_000_000_000).toFixed(1).replace(/\.0$/, '') + 'B';
+  } else if (views >= 1_000_000) {
+    return (views / 1_000_000).toFixed(1).replace(/\.0$/, '') + 'M';
+  } else if (views >= 1_000) {
+    return (views / 1_000).toFixed(1).replace(/\.0$/, '') + 'K';
+  }
+  return views.toString();
+}
 
 export function SearchVideoCard({ video }) {
   const displayName = video.profiles?.first_name
     ? `${video.profiles.first_name} ${video.profiles.last_name ?? ''}`.trim()
     : (video.profiles?.username ?? '');
+
+  const [videoRating, setVideoRating] = useState(null);
+
+  useEffect(() => {
+    getVideoRating(video.id).then(setVideoRating);
+  }, [video.id]);
+
+  const videoTags = [video.level, ...video.tags];
 
   return (
     <Link
@@ -44,35 +80,57 @@ export function SearchVideoCard({ video }) {
             className="h-8 w-8 rounded-full object-cover"
           />
           <div className="flex flex-col">
-            {displayName && (
+            {(displayName && (
               <p className="text-text-primary text-sm">{displayName}</p>
+            )) || (
+              <p className="text-text-primary text-sm">displayName not found</p>
             )}
-            {video.profiles?.username && (
-              <p className="text-sm text-gray-500">
+            {(video.profiles?.username && (
+              <p className="-mt-1 text-sm text-gray-500">
                 {video.profiles?.username}
               </p>
+            )) || (
+              <p className="-mt-1 text-sm text-gray-500"> username not found</p>
             )}
           </div>
         </div>
       </div>
 
-      {video.tags?.length > 0 && (
-        <div className="mt-auto flex flex-wrap gap-1 pt-2">
-          {video.tags.map((tag) => (
-            <span
-              key={tag}
-              className="bg-brand-primary rounded-full px-2 py-0.5 text-xs text-white/90"
-            >
-              {tag.charAt(0).toUpperCase() + tag.slice(1).replace(/-/g, ' ')}
-            </span>
-          ))}
-        </div>
-      )}
+      <div className="mt-auto flex flex-wrap gap-1 pt-2">
+        {/* Video Ratings */}
+        {videoRating !== null && (
+          <span className="flex items-center gap-1 rounded-full bg-yellow-500 px-2 py-0.5 text-xs text-white">
+            <FontAwesomeIcon icon={faStar} className="h-3 w-3" />
+            {(videoRating * 5).toFixed(1)}
+          </span>
+        )}
+        {/* Video Tags */}
+        {videoTags.map((tag) => (
+          <span
+            key={tag}
+            className={`${tagStyles[tag] ?? defaultStyle} rounded-full px-2 py-0.5 text-xs`}
+          >
+            {tag.charAt(0).toUpperCase() + tag.slice(1).replace(/-/g, ' ')}
+          </span>
+        ))}
+      </div>
+
+      <span className="text-text-accent mt-auto pt-4 text-xs">
+        {viewCount(video.views)} views
+      </span>
     </Link>
   );
 }
 
 export function ProfileVideoCard({ video }) {
+  const videoTags = [video.level, ...video.tags];
+
+  const [videoRating, setVideoRating] = useState(null);
+
+  useEffect(() => {
+    getVideoRating(video.id).then(setVideoRating);
+  }, [video.id]);
+
   return (
     <Link
       href={`/media/${video.id}`}
@@ -101,16 +159,28 @@ export function ProfileVideoCard({ video }) {
 
       {video.tags?.length > 0 && (
         <div className="flex flex-wrap gap-1">
-          {video.tags.map((tag) => (
+          {/* Video Ratings */}
+          {videoRating !== null && (
+            <span className="flex items-center gap-1 rounded-full bg-yellow-500 px-2 py-0.5 text-xs text-white">
+              <FontAwesomeIcon icon={faStar} className="h-3 w-3" />
+              {(videoRating * 5).toFixed(1)}
+            </span>
+          )}
+          {/* Video Tags */}
+          {videoTags.map((tag) => (
             <span
               key={tag}
-              className="bg-brand-primary rounded-full px-2 py-0.5 text-xs text-white/90"
+              className={`${tagStyles[tag] ?? defaultStyle} rounded-full px-2 py-0.5 text-xs`}
             >
               {tag.charAt(0).toUpperCase() + tag.slice(1).replace(/-/g, ' ')}
             </span>
           ))}
         </div>
       )}
+
+      <span className="text-text-accent mt-auto pt-4 text-xs">
+        {viewCount(video.views)} views
+      </span>
     </Link>
   );
 }
