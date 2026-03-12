@@ -129,11 +129,13 @@ export function SearchVideoCard({ video }) {
         )}
 
         {/* Video Type */}
-        <span
-          className={`${videoTypeStyles[video.type] ?? defaultStyle} rounded-full px-2 py-0.5 text-xs`}
-        >
-          {video.type.charAt(0).toUpperCase() + video.type.slice(1)}
-        </span>
+        {video.type && (
+          <span
+            className={`${videoTypeStyles[video.type] ?? defaultStyle} rounded-full px-2 py-0.5 text-xs`}
+          >
+            {video.type.charAt(0).toUpperCase() + video.type.slice(1)}
+          </span>
+        )}
 
         {/* Video Tags */}
         {combinedVideoTags.map((tag) => (
@@ -201,11 +203,13 @@ export function ProfileVideoCard({ video }) {
           )}
 
           {/* Video Type */}
-          <span
-            className={`${videoTypeStyles[video.type] ?? defaultStyle} rounded-full px-2 py-0.5 text-xs`}
-          >
-            {video.type.charAt(0).toUpperCase() + video.type.slice(1)}
-          </span>
+          {video.type && (
+            <span
+              className={`${videoTypeStyles[video.type] ?? defaultStyle} rounded-full px-2 py-0.5 text-xs`}
+            >
+              {video.type.charAt(0).toUpperCase() + video.type.slice(1)}
+            </span>
+          )}
 
           {/* Video Tags */}
           {combinedVideoTags.map((tag) => (
