@@ -2,7 +2,7 @@
 const nextConfig = {
   /* config options here */
   output: 'standalone',
-  reactCompiler: true,
+  // reactCompiler: true,
 };
 
 export default nextConfig;

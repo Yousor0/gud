@@ -43,7 +43,9 @@ function buildCommentTree(comments) {
 // Recursively collects the IDs of all descendants of a given comment.
 // Used so that deleting a comment also removes all its replies from state.
 function getAllDescendantIds(comments, parentId) {
-  const children = comments.filter((c) => c.parent_id === parentId).map((c) => c.id);
+  const children = comments
+    .filter((c) => c.parent_id === parentId)
+    .map((c) => c.id);
   const deeper = children.flatMap((id) => getAllDescendantIds(comments, id));
   return [...children, ...deeper];
 }
@@ -56,7 +58,16 @@ const btnBorder =
 
 // Renders a single comment and its nested replies recursively.
 // depth controls the left indentation so replies are visually nested.
-function CommentThread({ comment, depth, videoId, currentUser, currentProfile, onAdd, onEdit, onDelete }) {
+function CommentThread({
+  comment,
+  depth,
+  videoId,
+  currentUser,
+  currentProfile,
+  onAdd,
+  onEdit,
+  onDelete,
+}) {
   const [replyOpen, setReplyOpen] = useState(false);
   const [replyBody, setReplyBody] = useState('');
   const [replySubmitting, setReplySubmitting] = useState(false);
@@ -84,7 +95,9 @@ function CommentThread({ comment, depth, videoId, currentUser, currentProfile, o
           body: replyBody.trim(),
           parent_id: comment.id,
         })
-        .select(`*, profiles(username, avatar_public_id, first_name, last_name)`)
+        .select(
+          `*, profiles(username, avatar_public_id, first_name, last_name)`
+        )
         .single();
 
       if (error) throw error;
@@ -121,7 +134,8 @@ function CommentThread({ comment, depth, videoId, currentUser, currentProfile, o
   }
 
   async function handleDelete() {
-    if (!window.confirm('Are you sure you want to delete this comment?')) return;
+    if (!window.confirm('Are you sure you want to delete this comment?'))
+      return;
     try {
       const supabase = createClient();
       const { error } = await supabase
@@ -138,8 +152,13 @@ function CommentThread({ comment, depth, videoId, currentUser, currentProfile, o
 
   return (
     <div className={depth > 0 ? 'ml-8 border-l border-gray-200 pl-4' : ''}>
+      {/* Comment Header Information */}
       <div className="flex gap-3">
-        <Link href={`/account/${comment.profiles?.username}`} className="flex-shrink-0 hover:opacity-80 duration-150">
+        {/* Profile Picture */}
+        <Link
+          href={`/account/${comment.profiles?.username}`}
+          className="flex-shrink-0 duration-150 hover:opacity-80"
+        >
           {comment.profiles?.avatar_public_id ? (
             <CldImage
               src={comment.profiles.avatar_public_id}
@@ -153,11 +172,12 @@ function CommentThread({ comment, depth, videoId, currentUser, currentProfile, o
           )}
         </Link>
 
+        {/* Profile Name, username, time */}
         <div className="flex-1">
           <div className="flex flex-wrap items-center gap-2">
             <Link
               href={`/account/${comment.profiles?.username}`}
-              className="text-sm font-semibold hover:opacity-80 duration-150"
+              className="text-sm font-semibold duration-150 hover:opacity-80"
             >
               {comment.profiles?.first_name} {comment.profiles?.last_name}
               <span className="ml-1 font-normal text-gray-500">
@@ -181,7 +201,10 @@ function CommentThread({ comment, depth, videoId, currentUser, currentProfile, o
               <div className="mt-1 flex justify-end gap-2">
                 <button
                   type="button"
-                  onClick={() => { setEditOpen(false); setEditBody(comment.body); }}
+                  onClick={() => {
+                    setEditOpen(false);
+                    setEditBody(comment.body);
+                  }}
                   disabled={editSubmitting}
                   className={btnBorder}
                 >
@@ -204,7 +227,7 @@ function CommentThread({ comment, depth, videoId, currentUser, currentProfile, o
             {currentUser && (
               <button
                 onClick={() => setReplyOpen((prev) => !prev)}
-                className="text-xs text-gray-500 hover:text-gray-700 duration-150"
+                className="text-xs text-gray-500 duration-150 hover:text-gray-700"
               >
                 Reply
               </button>
@@ -213,13 +236,13 @@ function CommentThread({ comment, depth, videoId, currentUser, currentProfile, o
               <>
                 <button
                   onClick={() => setEditOpen((prev) => !prev)}
-                  className="text-xs text-gray-500 hover:text-gray-700 duration-150"
+                  className="text-xs text-gray-500 duration-150 hover:text-gray-700"
                 >
                   Edit
                 </button>
                 <button
                   onClick={handleDelete}
-                  className="text-xs text-gray-500 hover:text-red-500 duration-150"
+                  className="text-xs text-gray-500 duration-150 hover:text-red-500"
                 >
                   Delete
                 </button>
@@ -246,11 +269,16 @@ function CommentThread({ comment, depth, videoId, currentUser, currentProfile, o
                   rows={1}
                   className="w-full resize-none border-b border-gray-300 pb-1 text-sm outline-none focus:border-gray-600"
                 />
-                {replyError && <p className="text-sm text-red-500">{replyError}</p>}
+                {replyError && (
+                  <p className="text-sm text-red-500">{replyError}</p>
+                )}
                 <div className="flex justify-end gap-2">
                   <button
                     type="button"
-                    onClick={() => { setReplyOpen(false); setReplyBody(''); }}
+                    onClick={() => {
+                      setReplyOpen(false);
+                      setReplyBody('');
+                    }}
                     disabled={replySubmitting}
                     className={btnBorder}
                   >
@@ -325,7 +353,9 @@ export default function CommentSection({ videoId, initialComments }) {
       const { data, error } = await supabase
         .from('comments')
         .insert({ video_id: videoId, user_id: user.id, body: body.trim() })
-        .select(`*, profiles(username, avatar_public_id, first_name, last_name)`)
+        .select(
+          `*, profiles(username, avatar_public_id, first_name, last_name)`
+        )
         .single();
 
       if (error) throw error;
@@ -347,7 +377,10 @@ export default function CommentSection({ videoId, initialComments }) {
 
       {!user && (
         <p className="mb-6 text-sm text-gray-500">
-          <Link href="/login" className="font-semibold text-[#9D4431] hover:text-[#D07A64] duration-150">
+          <Link
+            href="/login"
+            className="font-semibold text-[#9D4431] duration-150 hover:text-[#D07A64]"
+          >
             Log in
           </Link>{' '}
           to comment.
@@ -356,15 +389,14 @@ export default function CommentSection({ videoId, initialComments }) {
 
       {user && (
         <form onSubmit={handleSubmit} className="mb-6 flex gap-3">
-          {profile?.avatar_public_id && (
-            <CldImage
-              src={profile.avatar_public_id}
-              width={36}
-              height={36}
-              alt="Your avatar"
-              className="h-9 w-9 flex-shrink-0 rounded-full object-cover"
-            />
-          )}
+          <CldImage
+            src={profile?.avatar_public_id || 'default-avatar_m0m2pe'}
+            width={36}
+            height={36}
+            alt="Your avatar"
+            className="h-9 w-9 rounded-full object-cover"
+          />
+
           <div className="flex flex-1 flex-col gap-2">
             <textarea
               value={body}
@@ -379,14 +411,14 @@ export default function CommentSection({ videoId, initialComments }) {
                 type="button"
                 onClick={() => setBody('')}
                 disabled={!body.trim()}
-                className={btnBorder}
+                className={`${btnBorder} px-4 py-2`}
               >
                 Cancel
               </button>
               <button
                 type="submit"
                 disabled={!body.trim() || submitting}
-                className={btnPrimary}
+                className={`${btnPrimary} px-4 py-2`}
               >
                 Comment
               </button>
@@ -395,7 +427,7 @@ export default function CommentSection({ videoId, initialComments }) {
         </form>
       )}
 
-      <div className="flex flex-col gap-6">
+      <div className="flex flex-col gap-5">
         {tree.map((comment) => (
           <CommentThread
             key={comment.id}

@@ -44,7 +44,7 @@ export default function UserMenu({ mobile = false, onClose }) {
             <span className="text-sm font-semibold">
               {profile?.first_name} {profile?.last_name}
             </span>
-            <span className="text-xs text-black/60">{profile?.username}</span>
+            <span className="text-xs text-black/60">@{profile?.username}</span>
           </div>
           <FontAwesomeIcon
             icon={faChevronDown}
@@ -127,7 +127,7 @@ export default function UserMenu({ mobile = false, onClose }) {
                     {profile?.first_name} {profile?.last_name}
                   </span>
                   <span className="text-sm text-black/60">
-                    {profile?.username}
+                    @{profile?.username}
                   </span>
                 </div>
               </div>

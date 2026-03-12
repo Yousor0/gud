@@ -12,9 +12,8 @@ import {
 } from '@fortawesome/free-brands-svg-icons';
 
 const CONTENT_TYPE_COLORS = {
-  fitness: 'bg-blue-two',
-  nutrition: 'bg-green-two',
-  mental_health: 'bg-[#9d6cb2]',
+  fitness: 'tag-fitness',
+  nutrition: 'tag-nutrition',
 };
 
 export default function ProfileHeader({ profile, isOwner, onEditClick }) {
@@ -169,7 +168,7 @@ export default function ProfileHeader({ profile, isOwner, onEditClick }) {
               )}
               {profile.content_type && (
                 <span
-                  className={`${CONTENT_TYPE_COLORS[profile.content_type] ?? 'bg-bg-accent'} rounded-full px-3 py-1 text-xs font-medium text-white`}
+                  className={`${CONTENT_TYPE_COLORS[profile.content_type] ?? 'bg-bg-accent'} tag`}
                 >
                   {profile.content_type
                     .replace(/_/g, ' ')

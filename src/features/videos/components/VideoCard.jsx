@@ -6,21 +6,20 @@ import Link from 'next/link';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faStar } from '@fortawesome/free-solid-svg-icons';
 import { useState, useEffect } from 'react';
+import { useRouter } from 'next/navigation';
 
 // Fitness & Nutrition
 const videoTypeStyles = {
-  fitness: 'bg-blue-two text-white/90',
-  nutrition: 'bg-green-two text-white/90',
+  fitness: 'tag-fitness',
+  nutrition: 'tag-nutrition',
 };
 
 // Difficulty
 const tagStyles = {
-  beginner: 'bg-emerald-700 text-white/90',
-  intermediate: 'bg-yellow-600 text-white/90',
-  advanced: 'bg-red-700 text-white/90',
+  beginner: 'tag-beginner',
+  intermediate: 'tag-intermediate',
+  advanced: 'tag-advanced',
 };
-
-const defaultStyle = 'text-black/80 border-bg-accent border';
 
 function viewCount(views) {
   if (views >= 1_000_000_000) {
@@ -49,6 +48,7 @@ function formatDuration(seconds) {
 }
 
 export function SearchVideoCard({ video }) {
+  const router = useRouter();
   const displayName = video.profiles?.first_name
     ? `${video.profiles.first_name} ${video.profiles.last_name ?? ''}`.trim()
     : (video.profiles?.username ?? '');
@@ -93,7 +93,13 @@ export function SearchVideoCard({ video }) {
         </div>
 
         <div className="mt-2 flex items-center gap-2">
-          <Link href={`/account/${video.profiles?.username}`}>
+          <div
+            className="cursor-pointer"
+            onClick={(e) => {
+              e.preventDefault();
+              router.push(`/account/${video.profiles?.username}`);
+            }}
+          >
             <CldImage
               src={video.profiles?.avatar_public_id || 'default-avatar_m0m2pe'}
               width={32}
@@ -101,7 +107,7 @@ export function SearchVideoCard({ video }) {
               alt={displayName || 'User'}
               className="h-8 w-8 rounded-full object-cover"
             />
-          </Link>
+          </div>
           <div className="flex flex-col">
             {(displayName && (
               <p className="text-text-primary text-sm">{displayName}</p>
@@ -109,11 +115,15 @@ export function SearchVideoCard({ video }) {
               <p className="text-text-primary text-sm">displayName not found</p>
             )}
             {(video.profiles?.username && (
-              <Link href={`/account/${video.profiles?.username}`}>
-                <p className="hover:text-brand-primary-hover -mt-1 text-sm text-gray-500">
-                  {video.profiles?.username}
-                </p>
-              </Link>
+              <p
+                className="hover:text-brand-primary-hover -mt-1 cursor-pointer text-sm text-gray-500"
+                onClick={(e) => {
+                  e.preventDefault();
+                  router.push(`/account/${video.profiles?.username}`);
+                }}
+              >
+                {video.profiles?.username}
+              </p>
             )) || (
               <p className="-mt-1 text-sm text-gray-500"> username not found</p>
             )}
@@ -124,7 +134,7 @@ export function SearchVideoCard({ video }) {
       <div className="mt-auto flex flex-wrap gap-1 pt-2">
         {/* Video Ratings */}
         {videoRating !== null && (
-          <span className="flex items-center gap-1 rounded-full bg-yellow-500 px-2 py-0.5 text-xs text-white">
+          <span className="tag gap-1 bg-yellow-500 text-white">
             <FontAwesomeIcon icon={faStar} className="h-3 w-3" />
             {(videoRating * 5).toFixed(1)}
           </span>
@@ -133,7 +143,7 @@ export function SearchVideoCard({ video }) {
         {/* Video Type */}
         {video.type && (
           <span
-            className={`${videoTypeStyles[video.type] ?? defaultStyle} rounded-full px-2 py-0.5 text-xs`}
+            className={`tag ${videoTypeStyles[video.type] ?? 'tag-border'}`}
           >
             {video.type.charAt(0).toUpperCase() + video.type.slice(1)}
           </span>
@@ -141,10 +151,7 @@ export function SearchVideoCard({ video }) {
 
         {/* Video Tags */}
         {combinedVideoTags.map((tag) => (
-          <span
-            key={tag}
-            className={`${tagStyles[tag] ?? defaultStyle} rounded-full px-2 py-0.5 text-xs`}
-          >
+          <span key={tag} className={`tag ${tagStyles[tag] ?? 'tag-border'}`}>
             {tag.charAt(0).toUpperCase() + tag.slice(1).replace(/-/g, ' ')}
           </span>
         ))}
@@ -198,7 +205,7 @@ export function ProfileVideoCard({ video }) {
         <div className="flex flex-wrap gap-1">
           {/* Video Ratings */}
           {videoRating !== null && (
-            <span className="flex items-center gap-1 rounded-full bg-yellow-500 px-2 py-0.5 text-xs text-white">
+            <span className="tag tag-rating">
               <FontAwesomeIcon icon={faStar} className="h-3 w-3" />
               {(videoRating * 5).toFixed(1)}
             </span>
@@ -207,7 +214,7 @@ export function ProfileVideoCard({ video }) {
           {/* Video Type */}
           {video.type && (
             <span
-              className={`${videoTypeStyles[video.type] ?? defaultStyle} rounded-full px-2 py-0.5 text-xs`}
+              className={`tag ${videoTypeStyles[video.type] ?? 'tag-border'}`}
             >
               {video.type.charAt(0).toUpperCase() + video.type.slice(1)}
             </span>
@@ -215,10 +222,7 @@ export function ProfileVideoCard({ video }) {
 
           {/* Video Tags */}
           {combinedVideoTags.map((tag) => (
-            <span
-              key={tag}
-              className={`${tagStyles[tag] ?? defaultStyle} rounded-full px-2 py-0.5 text-xs`}
-            >
+            <span key={tag} className={`tag ${tagStyles[tag] ?? 'tag-border'}`}>
               {tag.charAt(0).toUpperCase() + tag.slice(1).replace(/-/g, ' ')}
             </span>
           ))}
@@ -236,7 +240,7 @@ export function SidebarVideoCard({ video }) {
   return (
     <a
       href={`/watch/${video.id}`}
-      className="group flex gap-3 rounded-md p-2 duration-150 hover:bg-black/5"
+      className="group hover:bg-bg-accent/30 -ml-1 flex gap-2 rounded-md p-2 duration-150"
     >
       <div className="relative aspect-video w-40 flex-shrink-0 overflow-hidden rounded-sm bg-gray-200">
         <CldImage
@@ -257,11 +261,11 @@ export function SidebarVideoCard({ video }) {
           {video.title}
         </p>
         {(video.profiles?.first_name || video.profiles?.last_name) && (
-          <p className="text-xs text-gray-500">
+          <p className="text-text-primary text-xs">
             {video.profiles.first_name} {video.profiles.last_name}
           </p>
         )}
-        <p className="text-xs text-gray-500">
+        <p className="text-text-secondary text-xs">
           {formatViews(video.views)} views
         </p>
       </div>

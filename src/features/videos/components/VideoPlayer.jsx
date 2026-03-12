@@ -51,9 +51,11 @@ export default function VideoPlayer({ src, poster, knownDuration }) {
   // exited (including when the user presses Escape). We listen for it so our
   // fullscreen icon stays in sync.
   useEffect(() => {
-    const onFullscreenChange = () => setFullscreen(!!document.fullscreenElement);
+    const onFullscreenChange = () =>
+      setFullscreen(!!document.fullscreenElement);
     document.addEventListener('fullscreenchange', onFullscreenChange);
-    return () => document.removeEventListener('fullscreenchange', onFullscreenChange);
+    return () =>
+      document.removeEventListener('fullscreenchange', onFullscreenChange);
   }, []);
 
   // Keyboard controls. We read directly from videoRef.current rather than React
@@ -67,7 +69,8 @@ export default function VideoPlayer({ src, poster, knownDuration }) {
 
       if (e.code === 'Space') {
         e.preventDefault(); // prevents the page from scrolling on spacebar
-        if (videoRef.current.paused) videoRef.current.play().catch(() => setPlaying(false));
+        if (videoRef.current.paused)
+          videoRef.current.play().catch(() => setPlaying(false));
         else videoRef.current.pause();
       } else if (e.code === 'ArrowRight') {
         e.preventDefault();
@@ -101,14 +104,19 @@ export default function VideoPlayer({ src, poster, knownDuration }) {
   // could cause the wrong action to fire.
   function togglePlay() {
     if (!videoRef.current) return;
-    if (videoRef.current.paused) videoRef.current.play().catch(() => setPlaying(false));
+    if (videoRef.current.paused)
+      videoRef.current.play().catch(() => setPlaying(false));
     else videoRef.current.pause();
   }
 
   // If the database didn't have a duration, use what the browser reports once the
   // video's metadata (dimensions, duration, etc.) has been read.
   function handleLoadedMetadata() {
-    if (!knownDuration && videoRef.current?.duration && isFinite(videoRef.current.duration)) {
+    if (
+      !knownDuration &&
+      videoRef.current?.duration &&
+      isFinite(videoRef.current.duration)
+    ) {
       setDuration(videoRef.current.duration);
     }
   }
@@ -119,7 +127,10 @@ export default function VideoPlayer({ src, poster, knownDuration }) {
     e.stopPropagation();
     if (!videoRef.current || !duration) return;
     const rect = e.currentTarget.getBoundingClientRect();
-    const ratio = Math.max(0, Math.min(1, (e.clientX - rect.left) / rect.width));
+    const ratio = Math.max(
+      0,
+      Math.min(1, (e.clientX - rect.left) / rect.width)
+    );
     videoRef.current.currentTime = ratio * duration;
   }
 
@@ -156,8 +167,7 @@ export default function VideoPlayer({ src, poster, knownDuration }) {
       />
 
       {/* Controls bar — hidden until the user hovers over the player */}
-      <div className="absolute right-0 bottom-0 left-0 bg-gradient-to-t from-black/80 to-transparent px-3 pb-2 pt-8 opacity-0 transition-opacity duration-200 group-hover:opacity-100">
-
+      <div className="absolute right-0 bottom-0 left-0 bg-gradient-to-t from-black/80 to-transparent px-3 pt-8 pb-2 opacity-0 transition-opacity duration-200 group-hover:opacity-100">
         {/* Progress bar */}
         <div
           className="mb-2 flex cursor-pointer items-center py-2"
@@ -174,13 +184,19 @@ export default function VideoPlayer({ src, poster, knownDuration }) {
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-4">
             <button
-              onClick={(e) => { e.stopPropagation(); togglePlay(); }}
+              onClick={(e) => {
+                e.stopPropagation();
+                togglePlay();
+              }}
               className="text-white"
             >
               <FontAwesomeIcon icon={playing ? faPause : faPlay} />
             </button>
             <button
-              onClick={(e) => { e.stopPropagation(); toggleMute(); }}
+              onClick={(e) => {
+                e.stopPropagation();
+                toggleMute();
+              }}
               className="text-white"
             >
               <FontAwesomeIcon icon={muted ? faVolumeXmark : faVolumeHigh} />
@@ -191,7 +207,10 @@ export default function VideoPlayer({ src, poster, knownDuration }) {
           </div>
 
           <button
-            onClick={(e) => { e.stopPropagation(); toggleFullscreen(); }}
+            onClick={(e) => {
+              e.stopPropagation();
+              toggleFullscreen();
+            }}
             className="text-white"
           >
             <FontAwesomeIcon icon={fullscreen ? faCompress : faExpand} />
