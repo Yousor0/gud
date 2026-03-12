@@ -193,6 +193,13 @@ export function ProfileVideoCard({ video }) {
         </div>
       )}
 
+      <span className="text-text-accent mt-auto pt-4 text-xs">
+        {viewCount(video.views)} views
+      </span>
+    </Link>
+  );
+}
+
 export function SidebarVideoCard({ video }) {
   return (
     <a
@@ -214,34 +221,18 @@ export function SidebarVideoCard({ video }) {
         )}
       </div>
       <div className="flex min-w-0 flex-col gap-1">
-        <p className="line-clamp-2 text-sm font-semibold leading-tight">{video.title}</p>
+        <p className="line-clamp-2 text-sm leading-tight font-semibold">
+          {video.title}
+        </p>
         {(video.profiles?.first_name || video.profiles?.last_name) && (
           <p className="text-xs text-gray-500">
             {video.profiles.first_name} {video.profiles.last_name}
           </p>
         )}
-        <p className="text-xs text-gray-500">{formatViews(video.views)} views</p>
+        <p className="text-xs text-gray-500">
+          {formatViews(video.views)} views
+        </p>
       </div>
     </a>
-  );
-}
-
-export function ProfileVideoCard({ video }) {
-  return (
-    <motion.div className="bg-bg-secondary aspect-video rounded-sm p-2">
-      <CldImage
-        src={video.thumbnail_public_id || 'default_thumbnail'}
-        width={1280}
-        height={720}
-        alt={`${video.title} thumbnail`}
-        loading="eager"
-        className="h-full w-full rounded-sm object-cover"
-      />
-      <p className="font-medium">{video.title}</p>
-    </motion.div>
-      <span className="text-text-accent mt-auto pt-4 text-xs">
-        {viewCount(video.views)} views
-      </span>
-    </Link>
   );
 }

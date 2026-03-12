@@ -23,12 +23,14 @@ export async function getAllVideosByUser(userId) {
   return data;
 }
 
-export async function getVideoById(id) {
+export async function getVideoById(video_id) {
   const supabase = await createClient();
   const { data, error } = await supabase
     .from('videos')
-    .select(`*, profiles(username, avatar_public_id, first_name, last_name, role)`)
-    .eq('id', id)
+    .select(
+      `*, profiles(username, avatar_public_id, first_name, last_name, role)`
+    )
+    .eq('id', video_id)
     .single();
 
   if (error) throw new Error(error.message);
@@ -49,8 +51,6 @@ export async function getVideosByType(type, excludeId) {
   return data;
 }
 
-export async function getAllVideosByUser(userId) {
-  const supabase = await createClient();
 export async function getVideoRating(videoId) {
   const supabase = createClient();
   const { data, error } = await supabase
