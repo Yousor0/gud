@@ -18,7 +18,8 @@ function formatViews(n) {
 }
 
 function formatLikes(n) {
-  if (n >= 1_000_000) return `${(n / 1_000_000).toFixed(1).replace(/\.0$/, '')}M`;
+  if (n >= 1_000_000)
+    return `${(n / 1_000_000).toFixed(1).replace(/\.0$/, '')}M`;
   if (n >= 1_000) return `${(n / 1_000).toFixed(1).replace(/\.0$/, '')}K`;
   return (n ?? 0).toString();
 }
@@ -29,7 +30,12 @@ const CONTENT_TYPE_COLORS = {
   mental_health: 'bg-[#9d6cb2]',
 };
 
-export default function MediaPageContent({ video, relatedVideos, comments, professional }) {
+export default function MediaPageContent({
+  video,
+  relatedVideos,
+  comments,
+  professional,
+}) {
   const profile = video.profiles;
   const [descriptionExpanded, setDescriptionExpanded] = useState(false);
   const [isClamped, setIsClamped] = useState(false);
@@ -44,7 +50,6 @@ export default function MediaPageContent({ video, relatedVideos, comments, profe
   return (
     <div className="mx-auto max-w-7xl px-4 py-8">
       <div className="grid grid-cols-1 gap-6 lg:grid-cols-3">
-
         {/* Left column: player + info + comments */}
         <div className="lg:col-span-2">
           <VideoPlayer
@@ -66,9 +71,10 @@ export default function MediaPageContent({ video, relatedVideos, comments, profe
                 <Link
                   key={i}
                   href={`/search?q=${encodeURIComponent(tag)}`}
-                  className="rounded-full bg-gray-200 px-3 py-1 text-xs font-medium text-gray-600 hover:bg-gray-300 duration-150"
+                  className="hover:bg-brand-primary-hover border-bg-accent rounded-full px-3 py-1 text-xs font-medium text-gray-600 duration-150"
                 >
-                  #{tag}
+                  {tag.charAt(0).toUpperCase() +
+                    tag.slice(1).replace(/-/g, ' ')}
                 </Link>
               ))}
             </div>
@@ -109,13 +115,16 @@ export default function MediaPageContent({ video, relatedVideos, comments, profe
 
           {video.description && (
             <div className="mt-4 rounded-md bg-gray-100 p-3 text-gray-700">
-              <p ref={descRef} className={descriptionExpanded ? '' : 'line-clamp-3'}>
+              <p
+                ref={descRef}
+                className={descriptionExpanded ? '' : 'line-clamp-3'}
+              >
                 {video.description}
               </p>
               {(isClamped || descriptionExpanded) && (
                 <button
                   onClick={() => setDescriptionExpanded((prev) => !prev)}
-                  className="mt-1 w-full text-left text-sm font-semibold text-[#9D4431] hover:text-[#D07A64] duration-150"
+                  className="mt-1 w-full text-left text-sm font-semibold text-[#9D4431] duration-150 hover:text-[#D07A64]"
                 >
                   {descriptionExpanded ? 'Show less' : 'Read more'}
                 </button>
@@ -180,7 +189,7 @@ export default function MediaPageContent({ video, relatedVideos, comments, profe
                   {professional.specialties.map((s, i) => (
                     <span
                       key={i}
-                      className="bg-brand-primary text-beige rounded-full px-3 py-1 text-xs shadow-sm"
+                      className="hover:bg-brand-primary-hover text-black/80; border-accent hover:bg-brand-primary-hover rounded-full border px-2 py-0.5 text-xs hover:text-white"
                     >
                       {s}
                     </span>
@@ -216,7 +225,6 @@ export default function MediaPageContent({ video, relatedVideos, comments, profe
             </div>
           )}
         </div>
-
       </div>
     </div>
   );

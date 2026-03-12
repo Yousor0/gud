@@ -65,7 +65,7 @@ export function SearchVideoCard({ video }) {
 
   return (
     <Link
-      href={`/media/${video.id}`}
+      href={`watch/${video.id}`}
       prefetch={false}
       className="group border-bg-accent hover:bg-bg-accent/30 flex h-full flex-col gap-1 rounded-sm border p-3 shadow-2xs duration-150 hover:scale-102"
     >
@@ -170,7 +170,7 @@ export function ProfileVideoCard({ video }) {
 
   return (
     <Link
-      href={`/media/${video.id}`}
+      href={`/watch/${video.id}`}
       prefetch={false}
       className="group border-bg-accent hover:bg-bg-accent/30 flex h-full flex-col gap-1 rounded-sm border p-3 shadow-2xs duration-150 hover:scale-102"
     >
@@ -235,7 +235,7 @@ export function ProfileVideoCard({ video }) {
 export function SidebarVideoCard({ video }) {
   return (
     <a
-      href={`/media/${video.id}`}
+      href={`/watch/${video.id}`}
       className="group flex gap-3 rounded-md p-2 duration-150 hover:bg-black/5"
     >
       <div className="relative aspect-video w-40 flex-shrink-0 overflow-hidden rounded-sm bg-gray-200">
