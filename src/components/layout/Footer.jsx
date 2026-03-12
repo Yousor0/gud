@@ -46,17 +46,17 @@ export default function Footer() {
             <NavigationLink href="/about" text="About" variant="footerLink" />
             <NavigationLink href="/#faq" text="FAQ" variant="footerLink" />
             <NavigationLink
-              href="javascript:void(0)"
+              href="#"
               text="Contact"
               variant="footerLink"
             />
             <NavigationLink
-              href="javascript:void(0)"
+              href="#"
               text="Term & Conditions"
               variant="footerLink"
             />
             <NavigationLink
-              href="javascript:void(0)"
+              href="#"
               text="Privacy Policy"
               variant="footerLink"
             />

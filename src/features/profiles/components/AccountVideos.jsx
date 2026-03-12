@@ -26,7 +26,6 @@ export default function AccountVideos({ profile }) {
   return (
     <>
       <div className="flex flex-col gap-4">
-        <h2 className="text-lg font-semibold">Videos</h2>
         <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
           {videos.map((video) => (
             <ProfileVideoCard key={video.id} video={video} />
