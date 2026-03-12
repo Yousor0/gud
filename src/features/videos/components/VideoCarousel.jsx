@@ -3,6 +3,7 @@
 import { useState, useEffect } from 'react';
 import { faAngleLeft, faAngleRight } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { ProfileVideoCard } from './VideoCard';
 
 export default function VideoCarousel({
   sectionTitle,
@@ -56,7 +57,7 @@ export default function VideoCarousel({
           >
             {visibleVideos.map((video) => (
               <div key={video.id} className="w-full">
-                <VideoCard video={video} />
+                <ProfileVideoCard video={video} />
               </div>
             ))}
           </div>
