@@ -2,10 +2,12 @@ import PageHeader from '../../../components/layout/PageHeader';
 import { createClient } from '../../../lib/supabase/server';
 import ExploreContent from './ExploreContent';
 
+const OMITTED_TAGS = ['fitness', 'nutrition'];
+
 function groupByFirstTag(videos) {
   const groups = {};
   for (const video of videos) {
-    const tag = video.tags?.[0] ?? 'Other';
+    const tag = video.tags?.find((t) => !OMITTED_TAGS.includes(t)) ?? 'Other';
     if (!groups[tag]) groups[tag] = [];
     groups[tag].push(video);
   }
@@ -34,8 +36,8 @@ export default async function page() {
         <h2 className="section-title">Explore our Library</h2>
         <ExploreContent
           professionals={professionals ?? []}
-          fitnessTagGroups={groupByFirstTag(fitnessVideos)}
-          nutritionTagGroups={groupByFirstTag(nutritionVideos)}
+          fitnessTagGroups={groupByFirstTag(fitnessVideos).filter(([, videos]) => videos.length >= 5)}
+          nutritionTagGroups={groupByFirstTag(nutritionVideos).filter(([, videos]) => videos.length >= 3)}
         />
       </section>
     </div>

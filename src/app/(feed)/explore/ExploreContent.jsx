@@ -10,9 +10,10 @@ export default function ExploreContent({ professionals, fitnessTagGroups, nutrit
   const [tab, setTab] = useState('videos');
   const [videoType, setVideoType] = useState('fitness');
 
-  const sortedProfessionals = [...professionals].sort(
-    (a, b) => TYPE_ORDER.indexOf(a.content_type) - TYPE_ORDER.indexOf(b.content_type)
-  );
+  const groupedProfessionals = TYPE_ORDER.map((type) => ({
+    type,
+    pros: professionals.filter((p) => p.content_type === type),
+  })).filter(({ pros }) => pros.length > 0);
 
   return (
     <div className="flex flex-col gap-8">
@@ -29,9 +30,18 @@ export default function ExploreContent({ professionals, fitnessTagGroups, nutrit
 
       {/* Professionals grid */}
       {tab === 'professionals' && (
-        <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-          {sortedProfessionals.map((pro) => (
-            <ExploreProCard key={pro.user_id} pro={pro} />
+        <div className="flex flex-col gap-6">
+          {groupedProfessionals.map(({ type, pros }) => (
+            <div key={type} className="flex flex-col gap-3">
+              <h3 className="sub-header">
+                {type.replace(/_/g, ' ').replace(/\b\w/g, (c) => c.toUpperCase())}
+              </h3>
+              <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+                {pros.map((pro) => (
+                  <ExploreProCard key={pro.user_id} pro={pro} />
+                ))}
+              </div>
+            </div>
           ))}
         </div>
       )}

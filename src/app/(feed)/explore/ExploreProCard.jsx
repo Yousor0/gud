@@ -6,7 +6,6 @@ import { CldImage } from 'next-cloudinary';
 const CONTENT_TYPE_COLORS = {
   fitness: 'bg-blue-two',
   nutrition: 'bg-green-two',
-  mental_health: 'bg-[#9d6cb2]',
 };
 
 export default function ExploreProCard({ pro }) {
