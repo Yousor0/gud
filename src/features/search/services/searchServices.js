@@ -5,7 +5,7 @@ export async function searchVideos(query, limit = 24) {
   const { data, error } = await supabase
     .from('videos')
     .select(
-      `id, title, description, tags, level, views, thumbnail_public_id, created_at, profiles!user_id(username, first_name, last_name, avatar_public_id)`
+      `id, title, description, tags, type, level, views, thumbnail_public_id, created_at, profiles!user_id(username, first_name, last_name, avatar_public_id)`
     )
     .ilike('title', `%${query}%`)
     .order('created_at', { ascending: false })
