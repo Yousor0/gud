@@ -86,7 +86,7 @@ export default function ProfileHeader({ profile, isOwner, onEditClick }) {
           </div>
         )}
         <Image
-          src={avatarUrl(profile.avatar_public_id)}
+          src={avatarUrl(profile.avatar_s3_key)}
           width={120}
           height={120}
           alt={`${profile.username} avatar`}
@@ -133,7 +133,7 @@ export default function ProfileHeader({ profile, isOwner, onEditClick }) {
       <div className="hidden md:flex md:flex-col md:gap-3">
         <div className="flex items-start gap-6">
           <Image
-            src={avatarUrl(profile.avatar_public_id)}
+            src={avatarUrl(profile.avatar_s3_key)}
             width={120}
             height={120}
             alt={`${profile.username} avatar`}

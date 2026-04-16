@@ -45,7 +45,7 @@ function VideoTagsRow({ level, tags, type }) {
       {tags.map((tag, i) => (
         <Link
           key={i}
-          href={`/search?q=${encodeURIComponent(tag)}`}
+          href={`/search?q=${encodeURIComponent(tag.charAt(0).toUpperCase() + tag.slice(1).replace(/-/g, ' '))}`}
           className="hover:bg-bg-accent border-bg-accent text-text-secondary rounded-full border px-2 py-1 text-xs font-medium duration-150"
         >
           {tag.charAt(0).toUpperCase() + tag.slice(1).replace(/-/g, ' ')}
@@ -63,7 +63,7 @@ function VideoMeta({ profile, views }) {
         className="flex items-center gap-2 hover:opacity-80"
       >
         <Image
-          src={avatarUrl(profile?.avatar_public_id)}
+          src={avatarUrl(profile?.avatar_s3_key)}
           width={40}
           height={40}
           alt={profile?.username ?? ''}
@@ -154,7 +154,9 @@ export default function MediaPageContent({ video, relatedVideos, comments }) {
 
         {/* Right column: author card + related videos */}
         <div className="flex flex-col gap-4">
-          <AuthorSidebarCard userId={video.user_id} />
+          <div className="hidden lg:flex">
+            <AuthorSidebarCard userId={video.user_id} />
+          </div>
 
           {relatedVideos.length > 0 && (
             <div className="flex flex-col">

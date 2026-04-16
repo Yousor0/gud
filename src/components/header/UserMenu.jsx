@@ -26,9 +26,6 @@ export default function UserMenu({ mobile = false, onClose }) {
     router.refresh();
   }
 
-  const defaultAvatar =
-    'https://d2d8wkqybl2mij.cloudfront.net/public/default-avatar.jpg';
-
   if (mobile) {
     return (
       <div className="w-full">
@@ -37,7 +34,7 @@ export default function UserMenu({ mobile = false, onClose }) {
           className="flex w-full cursor-pointer items-center gap-3 rounded-md px-3 py-2 hover:bg-black/5"
         >
           <Image
-            src={avatarUrl(profile?.avatar_public_id || defaultAvatar)}
+            src={avatarUrl(profile?.avatar_s3_key)}
             width={36}
             height={36}
             alt="avatar"
@@ -99,7 +96,7 @@ export default function UserMenu({ mobile = false, onClose }) {
     >
       <button className="flex items-center gap-2">
         <Image
-          src={avatarUrl(profile?.avatar_public_id) || defaultAvatar}
+          src={avatarUrl(profile?.avatar_s3_key)}
           width={36}
           height={36}
           alt="avatar"
@@ -118,7 +115,7 @@ export default function UserMenu({ mobile = false, onClose }) {
             <div className="absolute top-full right-0 z-50 mt-2 w-64 rounded-md border border-black/10 bg-[#F5F0E7] py-1.5 shadow-lg">
               <div className="flex items-center gap-2 px-3 py-2">
                 <Image
-                  src={profile?.avatar_public_id || defaultAvatar}
+                  src={avatarUrl(profile?.avatar_s3_key)}
                   crop="fill"
                   width={32}
                   height={32}

@@ -96,9 +96,7 @@ function CommentThread({
           body: replyBody.trim(),
           parent_id: comment.id,
         })
-        .select(
-          `*, profiles(username, avatar_public_id, first_name, last_name)`
-        )
+        .select(`*, profiles(username, avatar_s3_key, first_name, last_name)`)
         .single();
 
       if (error) throw error;
@@ -161,7 +159,7 @@ function CommentThread({
           className="flex-shrink-0 duration-150 hover:opacity-80"
         >
           <Image
-            src={avatarUrl(comment.profiles?.avatar_public_id)}
+            src={avatarUrl(comment.profiles?.avatar_s3_key)}
             width={36}
             height={36}
             alt={comment.profiles?.username ?? ''}
@@ -348,9 +346,7 @@ export default function CommentSection({ videoId, initialComments }) {
       const { data, error } = await supabase
         .from('comments')
         .insert({ video_id: videoId, user_id: user.id, body: body.trim() })
-        .select(
-          `*, profiles(username, avatar_public_id, first_name, last_name)`
-        )
+        .select(`*, profiles(username, avatar_s3_key, first_name, last_name)`)
         .single();
 
       if (error) throw error;
@@ -385,7 +381,7 @@ export default function CommentSection({ videoId, initialComments }) {
       {user && (
         <form onSubmit={handleSubmit} className="mb-6 flex gap-3">
           <Image
-            src={avatarUrl(profile?.avatar_public_id)}
+            src={avatarUrl(profile?.avatar_s3_key)}
             width={36}
             height={36}
             alt="Your avatar"

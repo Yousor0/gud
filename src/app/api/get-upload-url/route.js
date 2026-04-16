@@ -32,19 +32,16 @@ export async function POST(req) {
     return NextResponse.json({ error: 'File too large' }, { status: 413 });
   }
 
-  // Avatars use a fixed key per user so each upload overwrites the previous file.
-  // Videos and thumbnails use a UUID to support multiple files per user.
   const ext = fileType.split('/')[1];
   const key =
     mediaType === 'avatar'
-      ? `avatars/${userId}.${ext}`
+      ? `avatars/${userId}-${Date.now()}.${ext}`
       : `${mediaType}s/${userId}/${crypto.randomUUID()}.${ext}`;
 
   const command = new PutObjectCommand({
     Bucket: process.env.AWS_S3_BUCKET,
     Key: key,
     ContentType: fileType,
-    ContentLength: fileSize,
   });
 
   const url = await getSignedUrl(s3, command, { expiresIn: 300 });
