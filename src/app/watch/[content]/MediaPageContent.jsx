@@ -7,6 +7,7 @@ import VideoPlayer from '../../../features/videos/components/VideoPlayer';
 import { SidebarVideoCard } from '../../../features/videos/components/VideoCard';
 import CommentSection from '../../../features/comments/components/CommentSection';
 import AuthorSidebarCard from '../../../features/profiles/components/AuthorSidebarCard';
+import { createClient } from '../../../lib/supabase/client';
 
 const CLOUD_NAME = process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME;
 
@@ -126,9 +127,24 @@ function VideoDescription({ description }) {
 }
 
 // --- Main layout ---
+const supabase = createClient();
 
 export default function MediaPageContent({ video, relatedVideos, comments }) {
   const profile = video.profiles;
+  const [views, setViews] = useState(video.views);
+
+
+  useEffect(() => {
+    if (!video?.id) return;
+
+    const key = `viewed_${video.id}`;
+    if (localStorage.getItem(key)) return;
+
+    supabase.rpc('increment_video_views', { video_id: video.id }).then(() => {
+      setViews((prev) => prev + 1);
+      localStorage.setItem(key, '1');
+    });
+  }, [video.id]);
 
   return (
     <div className="mx-auto max-w-7xl px-4 py-8">
