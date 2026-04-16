@@ -43,4 +43,6 @@ next-env.d.ts
 
 #claude
 .claude/
-.angents/
+.agents/
+skills-lock.json
+.mcp.json

@@ -23,7 +23,7 @@ GÜD is a community-driven fitness and wellness web app connecting certified tra
 | Framework       | [Next.js](https://nextjs.org/) (App Router)                                                                      |
 | UI              | [Tailwind CSS](https://tailwindcss.com/), [FontAwesome](https://fontawesome.com/), [Motion](https://motion.dev/) |
 | Auth & Database | [Supabase](https://supabase.com/) (PostgreSQL + Auth)                                                            |
-| Media           | [Cloudinary](https://cloudinary.com/) via `next-cloudinary`                                                      |
+| Media           | [AWS S3](https://aws.amazon.com/s3/) (file storage) + [AWS CloudFront](https://aws.amazon.com/cloudfront/) (CDN) |
 | Deployment      | Docker / standalone Next.js output                                                                               |
 
 ---
@@ -41,7 +41,7 @@ Live Application
 
 - Node.js 18+
 - A [Supabase](https://supabase.com/) project
-- A [Cloudinary](https://cloudinary.com/) account
+- An [AWS](https://aws.amazon.com/) account with S3 and CloudFront configured
 
 ### Installation
 
@@ -59,9 +59,11 @@ Create a `.env.local` file in the root:
 NEXT_PUBLIC_SUPABASE_URL=your_supabase_project_url
 NEXT_PUBLIC_SUPABASE_ANON_KEY=your_supabase_anon_key
 
-NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME=your_cloudinary_cloud_name
-CLOUDINARY_API_KEY=your_cloudinary_api_key
-CLOUDINARY_API_SECRET=your_cloudinary_api_secret
+AWS_ACCESS_KEY_ID=your_aws_access_key_id
+AWS_SECRET_ACCESS_KEY=your_aws_secret_access_key
+AWS_REGION=your_aws_region
+AWS_S3_BUCKET_NAME=your_s3_bucket_name
+NEXT_PUBLIC_CLOUDFRONT_URL=your_cloudfront_distribution_url
 ```
 
 ### Run Locally
@@ -82,7 +84,7 @@ src/
 │   ├── (auth)/             # Login, register, user profiles
 │   ├── (feed)/             # Explore and search pages
 │   ├── media/[content]/    # Video detail page
-│   └── api/                # API routes (Cloudinary signing, account deletion)
+│   └── api/                # API routes (AWS S3 uploads, account deletion)
 ├── components/             # Shared UI components
 ├── context/                # Auth context provider
 ├── features/               # Domain modules (auth, profiles, videos)
