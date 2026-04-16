@@ -183,8 +183,8 @@ export function ProfileVideoCard({ video }) {
       className="group border-bg-accent hover:bg-bg-accent/30 flex h-full flex-col gap-1 rounded-sm border p-3 shadow-2xs duration-150 hover:scale-102"
     >
       <div className="aspect-video overflow-hidden rounded-sm bg-gray-200">
-        <CldImage
-          src={video.thumbnail_public_id || 'default_thumbnail'}
+        <Image
+          src={thumbnailUrl(video.thumbnail_public_id)}
           width={640}
           height={360}
           alt={`${video.title} thumbnail`}
@@ -244,8 +244,8 @@ export function SidebarVideoCard({ video }) {
       className="group hover:bg-bg-accent/30 -ml-1 flex gap-2 rounded-md p-2 duration-150"
     >
       <div className="relative aspect-video w-40 flex-shrink-0 overflow-hidden rounded-sm bg-gray-200">
-        <CldImage
-          src={video.thumbnail_public_id || 'default_thumbnail'}
+        <Image
+          src={thumbnailUrl(video.thumbnail_public_id)}
           width={320}
           height={180}
           alt={`${video.title} thumbnail`}

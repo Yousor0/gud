@@ -9,7 +9,6 @@ import { SidebarVideoCard } from '../../../features/videos/components/VideoCard'
 import CommentSection from '../../../features/comments/components/CommentSection';
 import AuthorSidebarCard from '../../../features/profiles/components/AuthorSidebarCard';
 
-
 function formatViews(n) {
   return (n ?? 0).toLocaleString('en-US');
 }
@@ -132,8 +131,8 @@ export default function MediaPageContent({ video, relatedVideos, comments }) {
           <div className="flex flex-col gap-4">
             <VideoPlayer
               key={video.id}
-              src={videoUrl(video.cloudinary_public_id)}
-              poster={thumbnailUrl(video.thumbnail_public_id)}
+              src={videoUrl(video.video_s3_key)}
+              poster={thumbnailUrl(video.thumbnail_s3_key)}
               knownDuration={video.duration_seconds}
             />
 

@@ -20,7 +20,7 @@ export default async function page() {
   const [{ data: videos }, { data: professionals }] = await Promise.all([
     supabase
       .from('videos')
-      .select('*, profiles(username, avatar_public_id)')
+      .select('*, profiles(username, avatar_s3_key)')
       .order('created_at', { ascending: false }),
     supabase.from('full_professional_profiles').select('*'),
   ]);

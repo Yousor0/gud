@@ -26,12 +26,12 @@ export default function AuthorSidebarCard({ userId }) {
   return (
     <Link
       href={`/account/${data.username}`}
-      className="border-bg-accent hover:bg-bg-accent/10 flex flex-col gap-3 rounded-md border p-4 shadow-sm duration-100"
+      className="border-bg-accent hover:bg-bg-accent/10 flex flex-col gap-3 rounded-md border p-4 duration-100"
     >
       <div className="gap border-bg-accent flex flex-col gap-2 border-b pb-3">
         <div className="flex flex-row items-center gap-3">
           <Image
-            src={avatarUrl(data.avatar_public_id)}
+            src={avatarUrl(data.avatar_s3_key)}
             width={56}
             height={56}
             alt={data.username}

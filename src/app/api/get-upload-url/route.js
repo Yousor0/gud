@@ -1,6 +1,7 @@
 import { S3Client, PutObjectCommand } from '@aws-sdk/client-s3';
 import { getSignedUrl } from '@aws-sdk/s3-request-presigner';
 import { NextResponse } from 'next/server';
+import { createClient } from '../../../lib/supabase/server';
 
 const s3 = new S3Client({ region: process.env.AWS_REGION });
 
@@ -11,7 +12,17 @@ const MAX_FILE_SIZE = {
 };
 
 export async function POST(req) {
-  const { userId, fileType, fileSize, mediaType } = await req.json();
+  const supabase = await createClient();
+  const {
+    data: { user },
+  } = await supabase.auth.getUser();
+
+  if (!user) {
+    return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
+  }
+
+  const { fileType, fileSize, mediaType } = await req.json();
+  const userId = user.id;
 
   const maxSize = MAX_FILE_SIZE[mediaType];
   if (!maxSize) {
@@ -21,8 +32,13 @@ export async function POST(req) {
     return NextResponse.json({ error: 'File too large' }, { status: 413 });
   }
 
+  // Avatars use a fixed key per user so each upload overwrites the previous file.
+  // Videos and thumbnails use a UUID to support multiple files per user.
   const ext = fileType.split('/')[1];
-  const key = `${mediaType}s/${userId}/${crypto.randomUUID()}.${ext}`;
+  const key =
+    mediaType === 'avatar'
+      ? `avatars/${userId}.${ext}`
+      : `${mediaType}s/${userId}/${crypto.randomUUID()}.${ext}`;
 
   const command = new PutObjectCommand({
     Bucket: process.env.AWS_S3_BUCKET,

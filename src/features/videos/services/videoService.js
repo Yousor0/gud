@@ -4,7 +4,7 @@ export async function getAllVideos() {
   const supabase = createClient();
   const { data, error } = await supabase
     .from('videos')
-    .select(`*, profiles(username, avatar_public_id)`)
+    .select(`*, profiles(username, avatar_s3_key)`)
     .order('created_at', { ascending: false });
 
   if (error) throw new Error(error.message);
@@ -27,9 +27,7 @@ export async function getVideoById(video_id) {
   const supabase = await createClient();
   const { data, error } = await supabase
     .from('videos')
-    .select(
-      `*, profiles(username, avatar_public_id, first_name, last_name, role)`
-    )
+    .select(`*, profiles(username, avatar_s3_key, first_name, last_name, role)`)
     .eq('id', video_id)
     .single();
 
@@ -41,7 +39,7 @@ export async function getVideosByType(type, excludeId) {
   const supabase = await createClient();
   const { data, error } = await supabase
     .from('videos')
-    .select(`*, profiles(username, avatar_public_id, first_name, last_name)`)
+    .select(`*, profiles(username, avatar_s3_key, first_name, last_name)`)
     .eq('type', type)
     .neq('id', excludeId)
     .order('created_at', { ascending: false })

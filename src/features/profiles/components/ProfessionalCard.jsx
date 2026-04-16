@@ -26,7 +26,7 @@ export default function ProfessionalCard({ pro }) {
       <div className="flex justify-between">
         <div className="flex items-center gap-3">
           <Image
-            src={avatarUrl(pro.avatar_public_id)}
+            src={avatarUrl(pro.avatar_s3_key)}
             width={40}
             height={40}
             alt={`${pro.username} avatar`}

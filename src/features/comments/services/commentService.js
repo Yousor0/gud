@@ -4,7 +4,7 @@ export async function getCommentsByVideoId(videoId) {
   const supabase = await createClient();
   const { data, error } = await supabase
     .from('comments')
-    .select(`*, profiles(username, avatar_public_id, first_name, last_name)`)
+    .select(`*, profiles(username, avatar_s3_key, first_name, last_name)`)
     .eq('video_id', videoId)
     .order('created_at', { ascending: true });
 

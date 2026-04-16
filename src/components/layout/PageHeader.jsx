@@ -11,19 +11,8 @@ export default function PageHeader({
   buttons = true,
 }) {
   return (
-    <section
-      className="relative flex min-h-[30vh] items-center justify-start overflow-hidden"
-      style={{ backgroundImage: image }}
-    >
-      <div className="absolute inset-0">
-        <Image
-          src="/images/page-header.jpg"
-          alt="Explore Page Header"
-          fill
-          priority
-          className="object-cover object-center"
-        />
-      </div>
+    <section className="relative flex min-h-[30vh] items-center justify-start overflow-hidden">
+      <div className="absolute inset-0"></div>
       <div
         className="absolute inset-0"
         style={{ backgroundColor: overlayColor, opacity: 0.85 }}

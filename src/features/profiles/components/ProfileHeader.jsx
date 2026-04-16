@@ -85,7 +85,7 @@ export default function ProfileHeader({ profile, isOwner, onEditClick }) {
             )}
           </div>
         )}
-        <CldImage
+        <Image
           src={avatarUrl(profile.avatar_public_id)}
           width={120}
           height={120}
