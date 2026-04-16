@@ -138,10 +138,9 @@ function CommentThread({
       return;
     try {
       const supabase = createClient();
-      const { error } = await supabase
-        .from('comments')
-        .delete()
-        .eq('id', comment.id);
+      const { error } = await supabase.rpc('soft_delete_comment', {
+        comment_id: comment.id
+      });
 
       if (error) throw error;
       onDelete(comment.id);
