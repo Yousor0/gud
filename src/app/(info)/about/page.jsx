@@ -4,7 +4,7 @@ import React from 'react';
 import Button from '../../../components/ui/Button';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHeart, faLeaf, faUsers } from '@fortawesome/free-solid-svg-icons';
-import { CldImage } from 'next-cloudinary';
+import Image from 'next/image';
 
 const values = [
   {
@@ -28,12 +28,14 @@ const values = [
 ];
 
 const team = [
-  // placeholder images hahahaha
-  { name: 'Andrew Jiang', imageUrl: 'DSC02049_qkehga' },
-  { name: 'Jeremy Auguste', imageUrl: 'DSC02043_rvwc4h' },
-  { name: 'Biana Lambis-Puryear', imageUrl: 'sophiaAlvarez_ufb1ou' },
-  { name: 'Francesca Lorthe', imageUrl: 'DSC02042_idyob7' },
-  { name: 'Nikolai Cooperider', imageUrl: 'sophiaAlvarez_ufb1ou' },
+  {
+    name: 'Andrew Jiang',
+    imageUrl: '/https://d2d8wkqybl2mij.cloudfront.net/public/team/andrew.jpg',
+  },
+  { name: 'Jeremy Auguste', imageUrl: '/images/team/jeremy.jpg' },
+  { name: 'Biana Lambis-Puryear', imageUrl: '/images/team/biana.jpg' },
+  { name: 'Francesca Lorthe', imageUrl: '/images/team/francesca.jpg' },
+  { name: 'Nikolai Cooperider', imageUrl: '/images/team/nikolai.jpg' },
 ];
 
 export default function AboutPage() {
@@ -65,11 +67,11 @@ export default function AboutPage() {
           </div>
         </div>
         <div className="relative flex justify-center">
-          <CldImage
-            src="about01_or1tp4"
+          <Image
+            src="https://d2d8wkqybl2mij.cloudfront.net/public/about01.png"
             alt="About characters"
-            width="600"
-            height="500"
+            width={600}
+            height={500}
             className="rounded-lg"
           />
           <svg
@@ -126,16 +128,12 @@ export default function AboutPage() {
               className="flex w-50 flex-col items-center gap-5"
             >
               <div>
-                <CldImage
-                  width="400"
-                  height="400"
+                <Image
+                  width={400}
+                  height={400}
                   src={member.imageUrl}
-                  sizes=" (max-width: 768px) 100vw,
-                          (max-width: 1200px) 50vw,
-                          33vw"
                   alt={member.name}
                   className="rounded-full object-cover"
-                  crop={{ type: 'fill', gravity: 'faces' }}
                 />
               </div>
               <span className="sub-header text-center">{member.name}</span>
@@ -170,11 +168,11 @@ export default function AboutPage() {
       {/* CTA */}
       <section className="grid grid-cols-1 items-center gap-10 md:grid-cols-2">
         <div className="relative flex justify-center">
-          <CldImage
-            src="about02_ewumms"
+          <Image
+            src="https://d2d8wkqybl2mij.cloudfront.net/public/about02.png"
             alt="About_2_Start_Now"
-            width="600"
-            height="400"
+            width={600}
+            height={400}
             className="rounded-lg"
           />
           <svg

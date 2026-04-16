@@ -1,7 +1,9 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { CldImage, CldUploadWidget } from 'next-cloudinary';
+import Image from 'next/image';
+import { avatarUrl } from '@/lib/mediaUrl';
+import { CldUploadWidget } from 'next-cloudinary';
 import {
   updateProfile,
   updateProfessional,
@@ -152,8 +154,8 @@ export default function EditProfileModal({ profile, onClose, onSaved }) {
           <div>
             <h4 className="mb-2 text-sm font-medium">Avatar</h4>
             <div className="flex items-center gap-4">
-              <CldImage
-                src={formData.avatar_public_id || 'default-avatar_m0m2pe'}
+              <Image
+                src={avatarUrl(formData.avatar_public_id)}
                 width={72}
                 height={72}
                 alt="avatar preview"

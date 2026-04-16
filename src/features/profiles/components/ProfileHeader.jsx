@@ -1,6 +1,7 @@
 'use client';
 
-import { CldImage } from 'next-cloudinary';
+import Image from 'next/image';
+import { avatarUrl } from '@/lib/mediaUrl';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPenToSquare } from '@fortawesome/free-solid-svg-icons';
 import { motion } from 'motion/react';
@@ -85,7 +86,7 @@ export default function ProfileHeader({ profile, isOwner, onEditClick }) {
           </div>
         )}
         <CldImage
-          src={profile.avatar_public_id || 'default-avatar_m0m2pe'}
+          src={avatarUrl(profile.avatar_public_id)}
           width={120}
           height={120}
           alt={`${profile.username} avatar`}
@@ -131,8 +132,8 @@ export default function ProfileHeader({ profile, isOwner, onEditClick }) {
       {/* Desktop: avatar left, info center, edit button top-right */}
       <div className="hidden md:flex md:flex-col md:gap-3">
         <div className="flex items-start gap-6">
-          <CldImage
-            src={profile.avatar_public_id || 'default-avatar_m0m2pe'}
+          <Image
+            src={avatarUrl(profile.avatar_public_id)}
             width={120}
             height={120}
             alt={`${profile.username} avatar`}

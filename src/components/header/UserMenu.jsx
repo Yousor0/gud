@@ -3,9 +3,10 @@
 import { useState } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
-import { CldImage } from 'next-cloudinary';
-import { useAuth } from '../../context/AuthContext';
-import { logout } from '../../features/auth/services/authService';
+import Image from 'next/image';
+import { avatarUrl } from '@/lib/mediaUrl';
+import { useAuth } from '@/context/AuthContext';
+import { logout } from '@/features/auth/services/authService';
 import { motion, AnimatePresence } from 'motion/react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
@@ -32,9 +33,8 @@ export default function UserMenu({ mobile = false, onClose }) {
           onClick={() => setOpen(!open)}
           className="flex w-full cursor-pointer items-center gap-3 rounded-md px-3 py-2 hover:bg-black/5"
         >
-          <CldImage
-            src={profile?.avatar_public_id || 'default-avatar_m0m2pe'}
-            crop="fill"
+          <Image
+            src={avatarUrl(profile?.avatar_public_id)}
             width={36}
             height={36}
             alt="avatar"
@@ -95,8 +95,8 @@ export default function UserMenu({ mobile = false, onClose }) {
       onMouseLeave={() => setOpen(false)}
     >
       <button className="flex items-center gap-2">
-        <CldImage
-          src={profile?.avatar_public_id || 'default-avatar_m0m2pe'}
+        <Image
+          src={avatarUrl(profile?.avatar_public_id)}
           width={36}
           height={36}
           alt="avatar"

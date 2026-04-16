@@ -1,7 +1,7 @@
 'use client';
 
 import Button from '../ui/Button';
-import { CldImage } from 'next-cloudinary';
+import Image from 'next/image';
 
 export default function PageHeader({
   title,
@@ -16,8 +16,8 @@ export default function PageHeader({
       style={{ backgroundImage: image }}
     >
       <div className="absolute inset-0">
-        <CldImage
-          src="login02_jrtpff"
+        <Image
+          src="/images/page-header.jpg"
           alt="Explore Page Header"
           fill
           priority

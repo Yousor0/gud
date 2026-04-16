@@ -5,7 +5,6 @@ import Image from 'next/image';
 import { easeInOut, motion } from 'motion/react';
 import { useRouter } from 'next/navigation';
 import { signUp } from '../../../features/auth/services/authService';
-import { CldImage } from 'next-cloudinary';
 
 function RegisterForm() {
   const router = useRouter();
@@ -160,16 +159,17 @@ function RegisterForm() {
 
 function RegisterGraphic() {
   return (
-    <div className="relative flex justify-center">
-      <CldImage
-        src="login01_wwrjsf"
+    <div className="relative hidden h-100 w-full items-center justify-center md:flex">
+      <Image
+        src="https://d2d8wkqybl2mij.cloudfront.net/public/register.png"
         alt="Begin to Get GUD"
-        width="650"
-        height="400"
+        width={650}
+        height={400}
+        className="h-full w-full object-contain"
       />
 
       <svg
-        viewBox="0 0 100 100"
+        viewBox="0 0 110 100"
         xmlns="http://www.w3.org/2000/svg"
         className="absolute inset-0 -z-40 m-auto h-full w-full rotate-180 overflow-visible"
       >
@@ -186,7 +186,7 @@ function RegisterGraphic() {
 export default function Register() {
   return (
     <main>
-      <div className="mx-auto my-20 grid max-w-5xl grid-cols-1 items-center gap-20 px-6 py-16 md:grid-cols-2">
+      <div className="mx-auto my-20 mr-0 ml-0 grid grid-cols-1 items-center gap-20 px-6 py-16 md:grid-cols-2 lg:mr-40 lg:ml-20">
         <RegisterForm />
         <RegisterGraphic />
       </div>

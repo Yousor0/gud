@@ -1,5 +1,5 @@
 'use client';
-import { CldImage } from 'next-cloudinary';
+import Image from 'next/image';
 
 export default function MissionGud() {
   return (
@@ -34,11 +34,11 @@ export default function MissionGud() {
           </div>
         </div>
 
-        <CldImage
-          src="landing02_x5vjsx"
+        <Image
+          src="https://d2d8wkqybl2mij.cloudfront.net/public/landing02.png"
           alt="About GÜD welcome image of woman in yoga pose"
-          width="800"
-          height="400"
+          width={800}
+          height={400}
         />
       </div>
     </section>

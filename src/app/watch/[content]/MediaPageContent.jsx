@@ -2,17 +2,13 @@
 
 import { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
-import { CldImage, getCldImageUrl } from 'next-cloudinary';
+import Image from 'next/image';
+import { avatarUrl, thumbnailUrl, videoUrl } from '@/lib/mediaUrl';
 import VideoPlayer from '../../../features/videos/components/VideoPlayer';
 import { SidebarVideoCard } from '../../../features/videos/components/VideoCard';
 import CommentSection from '../../../features/comments/components/CommentSection';
 import AuthorSidebarCard from '../../../features/profiles/components/AuthorSidebarCard';
 
-const CLOUD_NAME = process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME;
-
-function getVideoUrl(publicId) {
-  return `https://res.cloudinary.com/${CLOUD_NAME}/video/upload/${publicId}`;
-}
 
 function formatViews(n) {
   return (n ?? 0).toLocaleString('en-US');
@@ -67,15 +63,13 @@ function VideoMeta({ profile, views }) {
         href={`/account/${profile?.username}`}
         className="flex items-center gap-2 hover:opacity-80"
       >
-        {profile?.avatar_public_id && (
-          <CldImage
-            src={profile.avatar_public_id}
-            width={40}
-            height={40}
-            alt={profile.username}
-            className="h-10 w-10 rounded-full object-cover"
-          />
-        )}
+        <Image
+          src={avatarUrl(profile?.avatar_public_id)}
+          width={40}
+          height={40}
+          alt={profile?.username ?? ''}
+          className="h-10 w-10 rounded-full object-cover"
+        />
         <div>
           {(profile?.first_name || profile?.last_name) && (
             <p className="font-semibold">
@@ -138,12 +132,8 @@ export default function MediaPageContent({ video, relatedVideos, comments }) {
           <div className="flex flex-col gap-4">
             <VideoPlayer
               key={video.id}
-              src={getVideoUrl(video.cloudinary_public_id)}
-              poster={
-                video.thumbnail_public_id
-                  ? getCldImageUrl({ src: video.thumbnail_public_id })
-                  : undefined
-              }
+              src={videoUrl(video.cloudinary_public_id)}
+              poster={thumbnailUrl(video.thumbnail_public_id)}
               knownDuration={video.duration_seconds}
             />
 

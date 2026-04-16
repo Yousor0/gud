@@ -1,7 +1,8 @@
 'use client';
 
 import Link from 'next/link';
-import { CldImage } from 'next-cloudinary';
+import Image from 'next/image';
+import { avatarUrl } from '@/lib/mediaUrl';
 
 const CONTENT_TYPE_COLORS = {
   fitness: 'tag-fitness',
@@ -24,8 +25,8 @@ export default function ProfessionalCard({ pro }) {
     >
       <div className="flex justify-between">
         <div className="flex items-center gap-3">
-          <CldImage
-            src={pro.avatar_public_id || 'default-avatar_m0m2pe'}
+          <Image
+            src={avatarUrl(pro.avatar_public_id)}
             width={40}
             height={40}
             alt={`${pro.username} avatar`}

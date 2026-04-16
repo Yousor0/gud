@@ -1,17 +1,17 @@
 'use client';
 import Button from '../ui/Button';
-import { CldImage } from 'next-cloudinary';
+import Image from 'next/image';
 
 export default function LandingWelcome() {
   return (
     <section>
       <div className="grid grid-cols-1 items-center gap-10 py-10 md:grid-cols-2">
         <div className="relative flex justify-center">
-          <CldImage
-            src="landing01_pdgxid"
+          <Image
+            src="https://d2d8wkqybl2mij.cloudfront.net/public/landing01.png"
             alt="GUD Landing page Character"
-            width="800"
-            height="400"
+            width={800}
+            height={400}
           />
 
           <svg
@@ -31,7 +31,7 @@ export default function LandingWelcome() {
             Get a GÜD start on your wellness journey!
           </h1>
           <p className="body-primary text-center sm:text-left">
-            At home workouts and nutritional guidance tailored to you
+            At home workouts and nutritional guidance tailored to you!
           </p>
           <div className="flex flex-col justify-center gap-4 sm:flex-row sm:justify-start">
             <Button

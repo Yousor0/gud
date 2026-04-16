@@ -1,6 +1,7 @@
 'use client';
 
-import { CldImage } from 'next-cloudinary';
+import Image from 'next/image';
+import { avatarUrl, thumbnailUrl } from '@/lib/mediaUrl';
 import { getVideoRating } from '../services/videoService';
 import Link from 'next/link';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -71,8 +72,8 @@ export function SearchVideoCard({ video }) {
     >
       <div className="flex flex-1 flex-col gap-1">
         <div className="aspect-video overflow-hidden rounded-sm bg-gray-200">
-          <CldImage
-            src={video.thumbnail_public_id || 'default_thumbnail'}
+          <Image
+            src={thumbnailUrl(video.thumbnail_public_id)}
             width={640}
             height={360}
             alt={`${video.title} thumbnail`}
@@ -100,8 +101,8 @@ export function SearchVideoCard({ video }) {
               router.push(`/account/${video.profiles?.username}`);
             }}
           >
-            <CldImage
-              src={video.profiles?.avatar_public_id || 'default-avatar_m0m2pe'}
+            <Image
+              src={avatarUrl(video.profiles?.avatar_public_id)}
               width={32}
               height={32}
               alt={displayName || 'User'}
