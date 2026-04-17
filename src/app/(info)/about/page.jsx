@@ -5,6 +5,7 @@ import Button from '../../../components/ui/Button';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHeart, faLeaf, faUsers } from '@fortawesome/free-solid-svg-icons';
 import Image from 'next/image';
+import { avatarUrl } from '@/lib/mediaUrl';
 
 const values = [
   {
@@ -30,12 +31,13 @@ const values = [
 const team = [
   {
     name: 'Andrew Jiang',
-    imageUrl: '/https://d2d8wkqybl2mij.cloudfront.net/public/team/andrew.jpg',
+    imageUrl:
+      '/https://d2d8wkqybl2mij.cloudfront.net/public/default-avatar.jpg',
   },
-  { name: 'Jeremy Auguste', imageUrl: '/images/team/jeremy.jpg' },
-  { name: 'Biana Lambis-Puryear', imageUrl: '/images/team/biana.jpg' },
-  { name: 'Francesca Lorthe', imageUrl: '/images/team/francesca.jpg' },
-  { name: 'Nikolai Cooperider', imageUrl: '/images/team/nikolai.jpg' },
+  { name: 'Jeremy Auguste', imageUrl: 'public/default-avatar.jpg' },
+  { name: 'Biana Lambis-Puryear', imageUrl: 'public/default-avatar.jpg' },
+  { name: 'Francesca Lorthe', imageUrl: 'public/default-avatar.jpg' },
+  { name: 'Nikolai Cooperider', imageUrl: 'public/default-avatar.jpg' },
 ];
 
 export default function AboutPage() {
@@ -131,7 +133,7 @@ export default function AboutPage() {
                 <Image
                   width={400}
                   height={400}
-                  src={member.imageUrl}
+                  src="https://d2d8wkqybl2mij.cloudfront.net/public/default-avatar.jpg"
                   alt={member.name}
                   className="rounded-full object-cover"
                 />
