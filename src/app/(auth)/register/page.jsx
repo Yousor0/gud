@@ -186,7 +186,7 @@ function RegisterGraphic() {
 export default function Register() {
   return (
     <main>
-      <div className="mx-auto my-20 mr-0 ml-0 grid grid-cols-1 items-center gap-20 px-6 py-16 md:grid-cols-2 lg:mr-40 lg:ml-20">
+      <div className="mx-auto my-8 grid w-full max-w-7xl grid-cols-1 items-center gap-8 px-4 py-8 sm:my-12 sm:gap-12 sm:py-12 md:my-16 md:grid-cols-2 md:gap-16 md:py-16 lg:my-20 lg:gap-20">
         <RegisterForm />
         <RegisterGraphic />
       </div>
