@@ -73,7 +73,7 @@ export function SearchVideoCard({ video }) {
       <div className="flex flex-1 flex-col gap-1">
         <div className="aspect-video overflow-hidden rounded-sm bg-gray-200">
           <Image
-            src={thumbnailUrl(video.thumbnail_public_id)}
+            src={thumbnailUrl(video.video_s3_key)}
             width={640}
             height={360}
             alt={`${video.title} thumbnail`}
@@ -184,7 +184,7 @@ export function ProfileVideoCard({ video }) {
     >
       <div className="aspect-video overflow-hidden rounded-sm bg-gray-200">
         <Image
-          src={thumbnailUrl(video.thumbnail_public_id)}
+          src={thumbnailUrl(video.video_s3_key)}
           width={640}
           height={360}
           alt={`${video.title} thumbnail`}
@@ -245,7 +245,7 @@ export function SidebarVideoCard({ video }) {
     >
       <div className="relative aspect-video w-40 flex-shrink-0 overflow-hidden rounded-sm bg-gray-200">
         <Image
-          src={thumbnailUrl(video.thumbnail_public_id)}
+          src={thumbnailUrl(video.video_s3_key)}
           width={320}
           height={180}
           alt={`${video.title} thumbnail`}

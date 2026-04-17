@@ -132,7 +132,7 @@ export default function MediaPageContent({ video, relatedVideos, comments }) {
             <VideoPlayer
               key={video.id}
               src={videoUrl(video.video_s3_key)}
-              poster={thumbnailUrl(video.thumbnail_s3_key)}
+              poster={thumbnailUrl(video.video_s3_key)}
               knownDuration={video.duration_seconds}
             />
 

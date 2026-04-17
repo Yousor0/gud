@@ -33,10 +33,13 @@ export async function POST(req) {
   }
 
   const ext = fileType.split('/')[1];
+  const uuid = crypto.randomUUID();
   const key =
     mediaType === 'avatar'
       ? `avatars/${userId}-${Date.now()}.${ext}`
-      : `${mediaType}s/${userId}/${crypto.randomUUID()}.${ext}`;
+      : mediaType === 'video'
+      ? `videos/${userId}/${uuid}/${uuid}.${ext}`
+      : `thumbnails/${userId}/${uuid}/${uuid}.${ext}`;
 
   const command = new PutObjectCommand({
     Bucket: process.env.AWS_S3_BUCKET,

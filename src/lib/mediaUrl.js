@@ -12,9 +12,10 @@ export function avatarUrl(s3Key) {
 
 export function thumbnailUrl(s3Key) {
   if (!s3Key) return defaultThumbnail;
-  return `${CDN}/${s3Key}`;
+  return `${CDN}/${s3Key}.jpg`;
 }
 
 export function videoUrl(s3Key) {
-  return `${CDN}/${s3Key}`;
+  if (!s3Key) return null;
+  return `${CDN}/${s3Key}.mp4`;
 }
