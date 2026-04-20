@@ -174,6 +174,7 @@ export default function MediaPageContent({ video, relatedVideos, comments }) {
             <VideoMeta profile={profile} views={video.views} />
 
             <VideoDescription description={video.description} />
+
           </div>
 
           <CommentSection videoId={video.id} initialComments={comments} />
