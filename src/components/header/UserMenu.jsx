@@ -26,6 +26,9 @@ export default function UserMenu({ mobile = false, onClose }) {
     router.refresh();
   }
 
+  const isProfessional = profile?.role === 'professional';
+  const isPremium = profile?.role === 'user_premium';
+
   if (mobile) {
     return (
       <div className="w-full">
@@ -33,13 +36,24 @@ export default function UserMenu({ mobile = false, onClose }) {
           onClick={() => setOpen(!open)}
           className="flex w-full cursor-pointer items-center gap-3 rounded-md px-3 py-2 hover:bg-black/5"
         >
-          <Image
-            src={avatarUrl(profile?.avatar_s3_key)}
-            width={36}
-            height={36}
-            alt="avatar"
-            className="h-9 w-9 rounded-full object-cover"
-          />
+          <div
+            className={
+              isPremium
+                ? 'bg-bg-accent rounded-full ring-2 ring-amber-400 ring-offset-2'
+                : isProfessional
+                  ? 'ring-brand-primary rounded-full ring-2 ring-offset-2'
+                  : 'ring-bg-accent rounded-full ring-2 ring-offset-2'
+            }
+          >
+            <Image
+              src={avatarUrl(profile?.avatar_s3_key)}
+              width={36}
+              height={36}
+              alt="avatar"
+              className="h-9 w-9 rounded-full object-cover"
+            />
+          </div>
+
           <div className="flex flex-1 flex-col items-start leading-tight">
             <span className="text-sm font-semibold">
               {profile?.first_name} {profile?.last_name}
@@ -95,13 +109,23 @@ export default function UserMenu({ mobile = false, onClose }) {
       onMouseLeave={() => setOpen(false)}
     >
       <button className="flex items-center gap-2">
-        <Image
-          src={avatarUrl(profile?.avatar_s3_key)}
-          width={36}
-          height={36}
-          alt="avatar"
-          className="aspect-square rounded-full object-cover"
-        />
+        <div
+          className={
+            isPremium
+              ? 'bg-bg-accent rounded-full ring-2 ring-amber-400 ring-offset-2'
+              : isProfessional
+                ? 'ring-brand-primary rounded-full ring-2 ring-offset-2'
+                : 'ring-bg-accent rounded-full ring-2 ring-offset-2'
+          }
+        >
+          <Image
+            src={avatarUrl(profile?.avatar_s3_key)}
+            width={36}
+            height={36}
+            alt="avatar"
+            className="aspect-square rounded-full object-cover"
+          />{' '}
+        </div>
       </button>
 
       <AnimatePresence>
@@ -114,14 +138,24 @@ export default function UserMenu({ mobile = false, onClose }) {
           >
             <div className="absolute top-full right-0 z-50 mt-2 w-64 rounded-md border border-black/10 bg-[#F5F0E7] py-1.5 shadow-lg">
               <div className="flex items-center gap-2 px-3 py-2">
-                <Image
-                  src={avatarUrl(profile?.avatar_s3_key)}
-                  crop="fill"
-                  width={32}
-                  height={32}
-                  alt="avatar"
-                  className="h-10 w-10 rounded-full object-cover"
-                />
+                <div
+                  className={
+                    isPremium
+                      ? 'bg-bg-accent rounded-full ring-2 ring-amber-400 ring-offset-2'
+                      : isProfessional
+                        ? 'ring-brand-primary rounded-full ring-2 ring-offset-2'
+                        : 'ring-bg-accent rounded-full ring-2 ring-offset-2'
+                  }
+                >
+                  <Image
+                    src={avatarUrl(profile?.avatar_s3_key)}
+                    crop="fill"
+                    width={32}
+                    height={32}
+                    alt="avatar"
+                    className="h-10 w-10 rounded-full object-cover"
+                  />
+                </div>
                 <div className="flex flex-col leading-tight">
                   <span className="text-md font-semibold">
                     {profile?.first_name} {profile?.last_name}

@@ -8,6 +8,7 @@ import {
   faLock,
 } from '@fortawesome/free-solid-svg-icons';
 import { useState } from 'react';
+import { useAuth } from '../../../../../context/AuthContext';
 
 const tiers = [
   {
@@ -38,6 +39,7 @@ const tiers = [
 export default function PaymentPage() {
   const { paymentId } = useParams();
   const router = useRouter();
+  const { user, refreshProfile } = useAuth();
   const tier = tiers.find((t) => t.tierId === Number(paymentId));
 
   const [form, setForm] = useState({
@@ -46,6 +48,7 @@ export default function PaymentPage() {
     expiry: '',
     cvc: '',
   });
+  const [submitting, setSubmitting] = useState(false);
 
   if (!tier) {
     return (
@@ -85,9 +88,20 @@ export default function PaymentPage() {
     setForm((prev) => ({ ...prev, [name]: value }));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // TODO: integrate with payment provider
+    if (!user || tier.tierId !== 2) return;
+    setSubmitting(true);
+    const res = await fetch('/api/update-role', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ role: 'user_premium' }),
+    });
+    if (!res.ok) {
+      setSubmitting(false);
+      return;
+    }
+    await refreshProfile();
     router.push('/account/subscription/manage');
   };
 
@@ -212,9 +226,14 @@ export default function PaymentPage() {
 
           <button
             type="submit"
-            className="mt-2 w-full rounded-md bg-[#9D4431] px-5 py-3 font-semibold text-[#FAF7F3] shadow-sm duration-150 hover:bg-[#D07A64]"
+            disabled={submitting}
+            className="mt-2 w-full rounded-md bg-[#9D4431] px-5 py-3 font-semibold text-[#FAF7F3] shadow-sm duration-150 hover:bg-[#D07A64] disabled:cursor-not-allowed disabled:opacity-60"
           >
-            {tier.cost === 0 ? 'Confirm Free Plan' : `Pay $${tier.cost}/month`}
+            {submitting
+              ? 'Processing…'
+              : tier.cost === 0
+                ? 'Confirm Free Plan'
+                : `Pay $${tier.cost}/month`}
           </button>
 
           <p className="flex items-center justify-center gap-1 text-xs text-gray-500">

@@ -11,6 +11,7 @@ import {
   faYoutube,
   faXTwitter,
 } from '@fortawesome/free-brands-svg-icons';
+import { div } from 'motion/react-client';
 
 const CONTENT_TYPE_COLORS = {
   fitness: 'tag-fitness',
@@ -88,14 +89,23 @@ export default function ProfileHeader({ profile, isOwner, onEditClick }) {
             )}
           </div>
         )}
-
-        <Image
-          src={avatarUrl(profile.avatar_s3_key)}
-          width={120}
-          height={120}
-          alt={`${profile.username} avatar`}
-          className="mt-5 aspect-square rounded-full object-cover"
-        />
+        <div
+          className={
+            isPremium
+              ? 'mt-5 rounded-full ring-4 ring-amber-400 ring-offset-2'
+              : isProfessional
+                ? 'ring-brand-primary mt-5 rounded-full ring-4 ring-offset-2'
+                : 'ring-bg-accent mt-5 rounded-full ring-4 ring-offset-2'
+          }
+        >
+          <Image
+            src={avatarUrl(profile.avatar_s3_key)}
+            width={120}
+            height={120}
+            alt={`${profile.username} avatar`}
+            className="aspect-square rounded-full object-cover"
+          />
+        </div>
 
         <div className="flex flex-col items-center gap-4">
           <div className="flex flex-col items-center gap-1">
@@ -131,13 +141,15 @@ export default function ProfileHeader({ profile, isOwner, onEditClick }) {
           </div>
           {socials}
           <div>
-            <h2 className="mb-2 text-center text-sm font-semibold tracking-wide text-gray-500 uppercase md:text-left">
-              Biography
-            </h2>
             {profile.bio && (
-              <p className="min-h-40 w-full rounded-md bg-[#E3DBCF] p-2 text-center text-sm leading-relaxed">
-                {profile.bio}
-              </p>
+              <div>
+                <h2 className="mb-2 text-center text-sm font-semibold tracking-wide text-gray-500 uppercase md:text-left">
+                  Biography
+                </h2>
+                <p className="min-h-40 w-full rounded-md bg-[#E3DBCF] p-2 text-center text-sm leading-relaxed">
+                  {profile.bio}
+                </p>
+              </div>
             )}
           </div>
         </div>
@@ -146,7 +158,15 @@ export default function ProfileHeader({ profile, isOwner, onEditClick }) {
       {/* Desktop: avatar left, info center, edit button top-right */}
       <div className="hidden md:flex md:flex-col md:gap-3">
         <div className="flex items-start gap-6">
-          <div>
+          <div
+            className={
+              isPremium
+                ? 'rounded-full ring-4 ring-amber-400 ring-offset-2'
+                : isProfessional
+                  ? 'ring-brand-primary rounded-full ring-4 ring-offset-2'
+                  : 'ring-bg-accent rounded-full ring-4 ring-offset-2'
+            }
+          >
             <Image
               src={avatarUrl(profile.avatar_s3_key)}
               width={120}
