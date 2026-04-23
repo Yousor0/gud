@@ -125,9 +125,24 @@ function VideoDescription({ description }) {
 }
 
 // --- Main layout ---
+const supabase = createClient();
 
 export default function MediaPageContent({ video, relatedVideos, comments }) {
   const profile = video.profiles;
+  const [views, setViews] = useState(video.views);
+
+
+  useEffect(() => {
+    if (!video?.id) return;
+
+    const key = `viewed_${video.id}`;
+    if (localStorage.getItem(key)) return;
+
+    supabase.rpc('increment_video_views', { video_id: video.id }).then(() => {
+      setViews((prev) => prev + 1);
+      localStorage.setItem(key, '1');
+    });
+  }, [video.id]);
   const { profile: currentUserProfile } = useAuth();
   const router = useRouter();
   const [editOpen, setEditOpen] = useState(false);
