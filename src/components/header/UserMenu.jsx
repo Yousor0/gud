@@ -13,6 +13,7 @@ import {
   faUser,
   faArrowRightFromBracket,
   faChevronDown,
+  faCloudArrowUp,
 } from '@fortawesome/free-solid-svg-icons';
 
 export default function UserMenu({ mobile = false, onClose }) {
@@ -70,6 +71,16 @@ export default function UserMenu({ mobile = false, onClose }) {
                   <FontAwesomeIcon icon={faUser} className="mr-2" />
                   My Profile
                 </Link>
+                {profile?.role === 'professional' && (
+                  <Link
+                    href="/upload"
+                    onClick={onClose}
+                    className="block w-full rounded-md px-3 py-1.5 text-sm hover:bg-black/5"
+                  >
+                    <FontAwesomeIcon icon={faCloudArrowUp} className="mr-2" />
+                    Upload Video
+                  </Link>
+                )}
                 <button
                   onClick={handleLogout}
                   className="block w-full cursor-pointer rounded-md px-3 py-1.5 text-left text-sm hover:bg-black/5"
@@ -142,6 +153,16 @@ export default function UserMenu({ mobile = false, onClose }) {
                   <FontAwesomeIcon icon={faUser} className="mr-1" />
                   My Profile
                 </Link>
+
+                {profile?.role === 'professional' && (
+                  <Link
+                    href="/upload"
+                    className="block w-full rounded-md px-3 py-1.5 text-sm hover:bg-black/5"
+                  >
+                    <FontAwesomeIcon icon={faCloudArrowUp} className="mr-1" />
+                    Upload Video
+                  </Link>
+                )}
 
                 <button
                   onClick={handleLogout}
