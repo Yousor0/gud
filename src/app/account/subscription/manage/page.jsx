@@ -24,7 +24,7 @@ function Manage() {
         'Beginner-friendly workout guides',
         'Follow-along home workout videos',
         'General nutrition guides and healthy recipe ideas',
-        'Educational content on fitnezss and wellness',
+        'Educational content on fitness and wellness',
       ],
     },
   ];

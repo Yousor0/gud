@@ -38,8 +38,8 @@ export async function POST(req) {
     mediaType === 'avatar'
       ? `avatars/${userId}-${Date.now()}.${ext}`
       : mediaType === 'video'
-      ? `videos/${userId}/${uuid}/${uuid}.${ext}`
-      : `thumbnails/${userId}/${uuid}/${uuid}.${ext}`;
+        ? `videos/${userId}/${uuid}/${uuid}.${ext}`
+        : `thumbnails/${userId}/${uuid}/${uuid}.${ext}`;
 
   const command = new PutObjectCommand({
     Bucket: process.env.AWS_S3_BUCKET,
