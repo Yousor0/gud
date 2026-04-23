@@ -3,15 +3,17 @@
 import { useState } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
-import { CldImage } from 'next-cloudinary';
-import { useAuth } from '../../context/AuthContext';
-import { logout } from '../../features/auth/services/authService';
+import Image from 'next/image';
+import { avatarUrl } from '@/lib/mediaUrl';
+import { useAuth } from '@/context/AuthContext';
+import { logout } from '@/features/auth/services/authService';
 import { motion, AnimatePresence } from 'motion/react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
   faUser,
   faArrowRightFromBracket,
   faChevronDown,
+  faCloudArrowUp,
 } from '@fortawesome/free-solid-svg-icons';
 
 export default function UserMenu({ mobile = false, onClose }) {
@@ -25,6 +27,9 @@ export default function UserMenu({ mobile = false, onClose }) {
     router.refresh();
   }
 
+  const isProfessional = profile?.role === 'professional';
+  const isPremium = profile?.role === 'user_premium';
+
   if (mobile) {
     return (
       <div className="w-full">
@@ -32,14 +37,24 @@ export default function UserMenu({ mobile = false, onClose }) {
           onClick={() => setOpen(!open)}
           className="flex w-full cursor-pointer items-center gap-3 rounded-md px-3 py-2 hover:bg-black/5"
         >
-          <CldImage
-            src={profile?.avatar_public_id || 'default-avatar_m0m2pe'}
-            crop="fill"
-            width={36}
-            height={36}
-            alt="avatar"
-            className="h-9 w-9 rounded-full object-cover"
-          />
+          <div
+            className={
+              isPremium
+                ? 'bg-bg-accent rounded-full ring-2 ring-amber-400 ring-offset-2'
+                : isProfessional
+                  ? 'ring-brand-primary rounded-full ring-2 ring-offset-2'
+                  : 'ring-bg-accent rounded-full ring-2 ring-offset-2'
+            }
+          >
+            <Image
+              src={avatarUrl(profile?.avatar_s3_key)}
+              width={36}
+              height={36}
+              alt="avatar"
+              className="h-9 w-9 rounded-full object-cover"
+            />
+          </div>
+
           <div className="flex flex-1 flex-col items-start leading-tight">
             <span className="text-sm font-semibold">
               {profile?.first_name} {profile?.last_name}
@@ -70,6 +85,16 @@ export default function UserMenu({ mobile = false, onClose }) {
                   <FontAwesomeIcon icon={faUser} className="mr-2" />
                   My Profile
                 </Link>
+                {profile?.role === 'professional' && (
+                  <Link
+                    href="/upload"
+                    onClick={onClose}
+                    className="block w-full rounded-md px-3 py-1.5 text-sm hover:bg-black/5"
+                  >
+                    <FontAwesomeIcon icon={faCloudArrowUp} className="mr-2" />
+                    Upload Video
+                  </Link>
+                )}
                 <button
                   onClick={handleLogout}
                   className="block w-full cursor-pointer rounded-md px-3 py-1.5 text-left text-sm hover:bg-black/5"
@@ -95,13 +120,23 @@ export default function UserMenu({ mobile = false, onClose }) {
       onMouseLeave={() => setOpen(false)}
     >
       <button className="flex items-center gap-2">
-        <CldImage
-          src={profile?.avatar_public_id || 'default-avatar_m0m2pe'}
-          width={36}
-          height={36}
-          alt="avatar"
-          className="aspect-square rounded-full object-cover"
-        />
+        <div
+          className={
+            isPremium
+              ? 'bg-bg-accent rounded-full ring-2 ring-amber-400 ring-offset-2'
+              : isProfessional
+                ? 'ring-brand-primary rounded-full ring-2 ring-offset-2'
+                : 'ring-bg-accent rounded-full ring-2 ring-offset-2'
+          }
+        >
+          <Image
+            src={avatarUrl(profile?.avatar_s3_key)}
+            width={36}
+            height={36}
+            alt="avatar"
+            className="aspect-square rounded-full object-cover"
+          />{' '}
+        </div>
       </button>
 
       <AnimatePresence>
@@ -114,14 +149,24 @@ export default function UserMenu({ mobile = false, onClose }) {
           >
             <div className="absolute top-full right-0 z-50 mt-2 w-64 rounded-md border border-black/10 bg-[#F5F0E7] py-1.5 shadow-lg">
               <div className="flex items-center gap-2 px-3 py-2">
-                <CldImage
-                  src={profile?.avatar_public_id || 'default-avatar_m0m2pe'}
-                  crop="fill"
-                  width={32}
-                  height={32}
-                  alt="avatar"
-                  className="h-10 w-10 rounded-full object-cover"
-                />
+                <div
+                  className={
+                    isPremium
+                      ? 'bg-bg-accent rounded-full ring-2 ring-amber-400 ring-offset-2'
+                      : isProfessional
+                        ? 'ring-brand-primary rounded-full ring-2 ring-offset-2'
+                        : 'ring-bg-accent rounded-full ring-2 ring-offset-2'
+                  }
+                >
+                  <Image
+                    src={avatarUrl(profile?.avatar_s3_key)}
+                    crop="fill"
+                    width={32}
+                    height={32}
+                    alt="avatar"
+                    className="h-10 w-10 rounded-full object-cover"
+                  />
+                </div>
                 <div className="flex flex-col leading-tight">
                   <span className="text-md font-semibold">
                     {profile?.first_name} {profile?.last_name}
@@ -142,6 +187,16 @@ export default function UserMenu({ mobile = false, onClose }) {
                   <FontAwesomeIcon icon={faUser} className="mr-1" />
                   My Profile
                 </Link>
+
+                {profile?.role === 'professional' && (
+                  <Link
+                    href="/upload"
+                    className="block w-full rounded-md px-3 py-1.5 text-sm hover:bg-black/5"
+                  >
+                    <FontAwesomeIcon icon={faCloudArrowUp} className="mr-1" />
+                    Upload Video
+                  </Link>
+                )}
 
                 <button
                   onClick={handleLogout}

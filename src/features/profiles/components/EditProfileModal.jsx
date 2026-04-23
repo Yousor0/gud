@@ -1,7 +1,8 @@
 'use client';
 
-import { useState, useEffect } from 'react';
-import { CldImage, CldUploadWidget } from 'next-cloudinary';
+import { useState, useEffect, useCallback, useRef } from 'react';
+import Cropper from 'react-easy-crop';
+import { avatarUrl } from '@/lib/mediaUrl';
 import {
   updateProfile,
   updateProfessional,
@@ -10,6 +11,39 @@ import {
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPenToSquare } from '@fortawesome/free-solid-svg-icons';
 
+// Render the cropped area onto a canvas and return a Blob
+async function getCroppedBlob(imageSrc, pixelCrop) {
+  const image = await new Promise((resolve, reject) => {
+    const img = new window.Image();
+    img.addEventListener('load', () => resolve(img));
+    img.addEventListener('error', reject);
+    img.src = imageSrc;
+  });
+
+  const x = Math.round(pixelCrop.x);
+  const y = Math.round(pixelCrop.y);
+  const width = Math.round(pixelCrop.width);
+  const height = Math.round(pixelCrop.height);
+
+  const canvas = document.createElement('canvas');
+  canvas.width = width;
+  canvas.height = height;
+  const ctx = canvas.getContext('2d');
+
+  ctx.drawImage(image, x, y, width, height, 0, 0, width, height);
+
+  return new Promise((resolve, reject) => {
+    canvas.toBlob(
+      (blob) => {
+        if (blob) resolve(blob);
+        else reject(new Error('Canvas toBlob failed'));
+      },
+      'image/webp',
+      0.85
+    );
+  });
+}
+
 export default function EditProfileModal({ profile, onClose, onSaved }) {
   const isProfessional = profile.role === 'professional';
 
@@ -17,7 +51,7 @@ export default function EditProfileModal({ profile, onClose, onSaved }) {
     first_name: profile.first_name || '',
     last_name: profile.last_name || '',
     bio: profile.bio || '',
-    avatar_public_id: profile.avatar_public_id || '',
+    avatar_s3_key: profile.avatar_s3_key || '',
     content_type: null,
     specialties: [],
     certifications: [],
@@ -27,6 +61,25 @@ export default function EditProfileModal({ profile, onClose, onSaved }) {
     instagram_url: '',
   });
   const [saving, setSaving] = useState(false);
+  const [saveStatus, setSaveStatus] = useState(null);
+  const [newSpecialty, setNewSpecialty] = useState('');
+  const [newCertification, setNewCertification] = useState('');
+
+  // Crop state
+  const [imageSrc, setImageSrc] = useState(null);
+  const [crop, setCrop] = useState({ x: 0, y: 0 });
+  const [zoom, setZoom] = useState(1);
+  const [croppedAreaPixels, setCroppedAreaPixels] = useState(null);
+  const [uploadingAvatar, setUploadingAvatar] = useState(false);
+  const [avatarUploadError, setAvatarUploadError] = useState(null);
+  const [avatarPreviewUrl, setAvatarPreviewUrl] = useState(null);
+  const fileInputRef = useRef(null);
+
+  useEffect(() => {
+    return () => {
+      if (avatarPreviewUrl) URL.revokeObjectURL(avatarPreviewUrl);
+    };
+  }, [avatarPreviewUrl]);
 
   useEffect(() => {
     if (!isProfessional) return;
@@ -45,9 +98,6 @@ export default function EditProfileModal({ profile, onClose, onSaved }) {
       })
       .catch(() => {});
   }, [isProfessional, profile.user_id]);
-  const [saveStatus, setSaveStatus] = useState(null);
-  const [newSpecialty, setNewSpecialty] = useState('');
-  const [newCertification, setNewCertification] = useState('');
 
   function setField(key, value) {
     setFormData((prev) => ({ ...prev, [key]: value }));
@@ -83,6 +133,67 @@ export default function EditProfileModal({ profile, onClose, onSaved }) {
     );
   }
 
+  // ── Avatar upload flow ──────────────────────────────────────────────────────
+
+  function handleFileChange(e) {
+    const file = e.target.files?.[0];
+    if (!file) return;
+    const reader = new FileReader();
+    reader.addEventListener('load', () => setImageSrc(reader.result));
+    reader.readAsDataURL(file);
+    // Reset file input so the same file can be re-selected if needed
+    e.target.value = '';
+  }
+
+  const onCropComplete = useCallback((_croppedArea, pixels) => {
+    setCroppedAreaPixels(pixels);
+  }, []);
+
+  async function handleCropConfirm() {
+    if (!imageSrc || !croppedAreaPixels) return;
+    setUploadingAvatar(true);
+    setAvatarUploadError(null);
+    try {
+      const blob = await getCroppedBlob(imageSrc, croppedAreaPixels);
+
+      // Get pre-signed URL (userId comes from the auth session server-side)
+      const res = await fetch('/api/get-upload-url', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          fileType: 'image/webp',
+          fileSize: blob.size,
+          mediaType: 'avatar',
+        }),
+      });
+      if (!res.ok) throw new Error('Failed to get upload URL');
+      const { url, key } = await res.json();
+
+      // PUT directly to S3 — fixed key overwrites previous avatar in place
+      const putRes = await fetch(url, {
+        method: 'PUT',
+        headers: { 'Content-Type': 'image/webp' },
+        body: blob,
+      });
+      if (!putRes.ok) throw new Error('S3 upload failed');
+
+      setField('avatar_s3_key', key);
+      setAvatarPreviewUrl(URL.createObjectURL(blob));
+      setImageSrc(null);
+    } catch (err) {
+      console.error('Avatar upload failed:', err);
+      setAvatarUploadError('Upload failed. Please try again.');
+    } finally {
+      setUploadingAvatar(false);
+    }
+  }
+
+  function handleCropCancel() {
+    setImageSrc(null);
+  }
+
+  // ── Profile save ─────────────────────────────────────────────────────────────
+
   async function handleSave() {
     setSaving(true);
     setSaveStatus(null);
@@ -91,7 +202,7 @@ export default function EditProfileModal({ profile, onClose, onSaved }) {
       first_name: formData.first_name,
       last_name: formData.last_name,
       bio: formData.bio,
-      avatar_public_id: formData.avatar_public_id,
+      avatar_s3_key: formData.avatar_s3_key,
     };
 
     const professionalData = {
@@ -123,6 +234,8 @@ export default function EditProfileModal({ profile, onClose, onSaved }) {
     }
   }
 
+  // ── Render ────────────────────────────────────────────────────────────────────
+
   return (
     <div
       className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 p-4"
@@ -151,41 +264,82 @@ export default function EditProfileModal({ profile, onClose, onSaved }) {
           {/* Avatar */}
           <div>
             <h4 className="mb-2 text-sm font-medium">Avatar</h4>
-            <div className="flex items-center gap-4">
-              <CldImage
-                src={formData.avatar_public_id || 'default-avatar_m0m2pe'}
-                width={72}
-                height={72}
-                alt="avatar preview"
-                className="aspect-square rounded-full object-cover"
-              />
 
-              {/* Edit Profile Picture */}
-              <CldUploadWidget
-                signatureEndpoint="/api/sign-cloudinary"
-                options={{
-                  cropping: true,
-                  croppingAspectRatio: 1,
-                  maxFileSize: 5 * 1024 * 1024,
-                  resourceType: 'image',
-                  clientAllowedFormats: ['jpg', 'jpeg', 'png', 'webp'],
-                  folder: `users/${profile.user_id}`,
-                }}
-                onSuccess={(result) =>
-                  setField('avatar_public_id', result.info.public_id)
-                }
-              >
-                {({ open }) => (
-                  <button
-                    type="button"
-                    onClick={() => open()}
-                    className="border-bg-accent hover:bg-bg-accent rounded-md border px-4 py-2 text-sm duration-100"
-                  >
-                    Change Avatar
-                  </button>
-                )}
-              </CldUploadWidget>
-            </div>
+            {/* Crop UI */}
+            {imageSrc ? (
+              <div key="crop" className="flex flex-col gap-3">
+                <div className="relative h-64 w-full overflow-hidden rounded-md bg-gray-900">
+                  <Cropper
+                    image={imageSrc}
+                    crop={crop}
+                    zoom={zoom}
+                    aspect={1}
+                    cropShape="round"
+                    showGrid={false}
+                    onCropChange={setCrop}
+                    onZoomChange={setZoom}
+                    onCropComplete={onCropComplete}
+                  />
+                </div>
+                <input
+                  type="range"
+                  min={1}
+                  max={3}
+                  step={0.05}
+                  value={zoom}
+                  onChange={(e) => setZoom(Number(e.target.value))}
+                  className="w-full"
+                />
+                <div className="flex flex-col gap-2">
+                  <div className="flex gap-2">
+                    <button
+                      type="button"
+                      onClick={handleCropConfirm}
+                      disabled={uploadingAvatar}
+                      className="bg-brand-primary text-bg-primary hover:bg-brand-primary-hover rounded-md px-4 py-2 text-sm font-semibold duration-100 disabled:opacity-60"
+                    >
+                      {uploadingAvatar ? 'Uploading…' : 'Confirm Crop'}
+                    </button>
+                    <button
+                      type="button"
+                      onClick={handleCropCancel}
+                      disabled={uploadingAvatar}
+                      className="border-bg-accent hover:bg-bg-accent rounded-md border px-4 py-2 text-sm duration-100"
+                    >
+                      Cancel
+                    </button>
+                  </div>
+                  {avatarUploadError && (
+                    <p className="text-sm text-red-600">{avatarUploadError}</p>
+                  )}
+                </div>
+              </div>
+            ) : (
+              <div key="file" className="flex items-center gap-4">
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img
+                  src={avatarPreviewUrl ?? avatarUrl(formData.avatar_s3_key)}
+                  width={72}
+                  height={72}
+                  alt="avatar preview"
+                  className="aspect-square rounded-full object-cover"
+                />
+                <input
+                  ref={fileInputRef}
+                  type="file"
+                  accept="image/jpeg,image/png,image/webp"
+                  className="hidden"
+                  onChange={handleFileChange}
+                />
+                <button
+                  type="button"
+                  onClick={() => fileInputRef.current?.click()}
+                  className="border-bg-accent hover:bg-bg-accent rounded-md border px-4 py-2 text-sm duration-100"
+                >
+                  Change Avatar
+                </button>
+              </div>
+            )}
           </div>
 
           {/* Name */}
@@ -387,7 +541,7 @@ export default function EditProfileModal({ profile, onClose, onSaved }) {
           <button
             type="button"
             onClick={handleSave}
-            disabled={saving}
+            disabled={saving || !!imageSrc}
             className="bg-brand-primary text-bg-primary hover:bg-brand-primary-hover rounded-md px-5 py-2 text-sm font-semibold shadow-sm duration-100 disabled:cursor-not-allowed disabled:opacity-60"
           >
             {saving ? 'Saving...' : 'Save Changes'}

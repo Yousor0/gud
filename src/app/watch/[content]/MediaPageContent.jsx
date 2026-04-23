@@ -2,18 +2,18 @@
 
 import { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
-import { CldImage, getCldImageUrl } from 'next-cloudinary';
+import Image from 'next/image';
+import { useRouter } from 'next/navigation';
+import { avatarUrl, thumbnailUrl, videoUrl } from '@/lib/mediaUrl';
 import VideoPlayer from '../../../features/videos/components/VideoPlayer';
 import { SidebarVideoCard } from '../../../features/videos/components/VideoCard';
 import CommentSection from '../../../features/comments/components/CommentSection';
 import AuthorSidebarCard from '../../../features/profiles/components/AuthorSidebarCard';
-import { createClient } from '../../../lib/supabase/client';
-
-const CLOUD_NAME = process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME;
-
-function getVideoUrl(publicId) {
-  return `https://res.cloudinary.com/${CLOUD_NAME}/video/upload/${publicId}`;
-}
+import EditVideoModal from '../../../features/videos/components/EditVideoModal';
+import { useAuth } from '../../../context/AuthContext';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faPenToSquare } from '@fortawesome/free-solid-svg-icons';
+import { motion } from 'motion/react';
 
 function formatViews(n) {
   return (n ?? 0).toLocaleString('en-US');
@@ -51,7 +51,7 @@ function VideoTagsRow({ level, tags, type }) {
       {tags.map((tag, i) => (
         <Link
           key={i}
-          href={`/search?q=${encodeURIComponent(tag)}`}
+          href={`/search?q=${encodeURIComponent(tag.charAt(0).toUpperCase() + tag.slice(1).replace(/-/g, ' '))}`}
           className="hover:bg-bg-accent border-bg-accent text-text-secondary rounded-full border px-2 py-1 text-xs font-medium duration-150"
         >
           {tag.charAt(0).toUpperCase() + tag.slice(1).replace(/-/g, ' ')}
@@ -68,15 +68,13 @@ function VideoMeta({ profile, views }) {
         href={`/account/${profile?.username}`}
         className="flex items-center gap-2 hover:opacity-80"
       >
-        {profile?.avatar_public_id && (
-          <CldImage
-            src={profile.avatar_public_id}
-            width={40}
-            height={40}
-            alt={profile.username}
-            className="h-10 w-10 rounded-full object-cover"
-          />
-        )}
+        <Image
+          src={avatarUrl(profile?.avatar_s3_key)}
+          width={40}
+          height={40}
+          alt={profile?.username ?? ''}
+          className="h-10 w-10 rounded-full object-cover"
+        />
         <div>
           {(profile?.first_name || profile?.last_name) && (
             <p className="font-semibold">
@@ -145,6 +143,12 @@ export default function MediaPageContent({ video, relatedVideos, comments }) {
       localStorage.setItem(key, '1');
     });
   }, [video.id]);
+  const { profile: currentUserProfile } = useAuth();
+  const router = useRouter();
+  const [editOpen, setEditOpen] = useState(false);
+  const [videoData, setVideoData] = useState(video);
+
+  const isOwner = currentUserProfile?.user_id === video.user_id;
 
   return (
     <div className="mx-auto max-w-7xl px-4 py-8">
@@ -154,27 +158,39 @@ export default function MediaPageContent({ video, relatedVideos, comments }) {
           <div className="flex flex-col gap-4">
             <VideoPlayer
               key={video.id}
-              src={getVideoUrl(video.cloudinary_public_id)}
-              poster={
-                video.thumbnail_public_id
-                  ? getCldImageUrl({ src: video.thumbnail_public_id })
-                  : undefined
-              }
+              src={videoUrl(video.video_s3_key)}
+              poster={thumbnailUrl(video.video_s3_key)}
               knownDuration={video.duration_seconds}
             />
 
-            <h1 className="text-xl leading-none font-bold">{video.title}</h1>
+            <div className="flex items-start justify-between gap-2">
+              <h1 className="text-xl leading-none font-bold">
+                {videoData.title}
+              </h1>
+              {isOwner && (
+                <motion.button
+                  type="button"
+                  onClick={() => setEditOpen(true)}
+                  whileHover={{ scale: 1.02 }}
+                  whileTap={{ scale: 0.99 }}
+                  style={{ originX: 0.5, originY: 0.5 }}
+                  className="border-bg-accent hover:bg-bg-accent shrink-0 rounded-md border px-4 py-2 text-sm"
+                >
+                  <FontAwesomeIcon icon={faPenToSquare} className="mr-1" />
+                  Edit Video
+                </motion.button>
+              )}
+            </div>
 
             <VideoTagsRow
-              level={video.level}
-              tags={video.tags}
-              type={video.type}
+              level={videoData.level}
+              tags={videoData.tags}
+              type={videoData.type}
             />
 
-            <VideoMeta profile={profile} views={video.views} />
+            <VideoMeta profile={profile} views={videoData.views} />
 
-            <VideoDescription description={video.description} />
-
+            <VideoDescription description={videoData.description} />
           </div>
 
           <CommentSection videoId={video.id} initialComments={comments} />
@@ -182,7 +198,9 @@ export default function MediaPageContent({ video, relatedVideos, comments }) {
 
         {/* Right column: author card + related videos */}
         <div className="flex flex-col gap-4">
-          <AuthorSidebarCard userId={video.user_id} />
+          <div className="hidden lg:flex">
+            <AuthorSidebarCard userId={video.user_id} />
+          </div>
 
           {relatedVideos.length > 0 && (
             <div className="flex flex-col">
@@ -193,6 +211,20 @@ export default function MediaPageContent({ video, relatedVideos, comments }) {
           )}
         </div>
       </div>
+
+      {editOpen && (
+        <EditVideoModal
+          video={videoData}
+          onClose={() => setEditOpen(false)}
+          onSaved={(updated) => {
+            setVideoData((prev) => ({ ...prev, ...updated }));
+            setEditOpen(false);
+          }}
+          onDeleted={() => {
+            router.push(`/account/${profile?.username}`);
+          }}
+        />
+      )}
     </div>
   );
 }

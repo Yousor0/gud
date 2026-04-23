@@ -1,5 +1,5 @@
 'use client';
-import { CldImage } from 'next-cloudinary';
+import Image from 'next/image';
 
 export default function MissionGud() {
   return (
@@ -7,18 +7,16 @@ export default function MissionGud() {
       <h2 className="section-title mb-4 text-center">GÜD's Mission</h2>
       <div className="grid grid-cols-1 items-center gap-10 md:grid-cols-2">
         <div className="relative flex items-center justify-center">
-          <div className="relative">
-            <p>
+          <div className="relative flex flex-col gap-4">
+            <p className="body-primary">
               GÜD exists to bring people together around a shared commitment to
-              living healthier. We believe wellness isn't about perfection, but
-              instead about progress, support, and showing up for yourself every
-              day.
-              <br />
-              <br />
+              living healthier. Wellness isn&apos;t about perfection — it&apos;s
+              about progress, support, and showing up for yourself every day.
+            </p>
+            <p className="body-primary">
               Through expert-led workouts and practical nutrition guidance, we
-              want to empower our community to build habits that make them feel
-              good and have long lasting effects. Wherever you're starting from,
-              you're not doing it alone.
+              empower our community to build habits that stick. Wherever
+              you&apos;re starting from, you&apos;re not doing it alone.
             </p>
             <svg
               viewBox="0 0 150 175"
@@ -34,11 +32,11 @@ export default function MissionGud() {
           </div>
         </div>
 
-        <CldImage
-          src="landing02_x5vjsx"
+        <Image
+          src="https://d2d8wkqybl2mij.cloudfront.net/public/landing02.png"
           alt="About GÜD welcome image of woman in yoga pose"
-          width="800"
-          height="400"
+          width={800}
+          height={400}
         />
       </div>
     </section>

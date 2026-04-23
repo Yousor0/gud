@@ -15,7 +15,7 @@ import {
   faX,
 } from '@fortawesome/free-solid-svg-icons';
 import { motion, AnimatePresence, easeOut } from 'motion/react';
-import { CldImage } from 'next-cloudinary';
+import Image from 'next/image';
 import { useAuth } from '../../context/AuthContext';
 import UserMenu from './UserMenu';
 
@@ -30,11 +30,11 @@ export default function Header() {
         <div className="mx-auto flex w-auto max-w-7xl items-center justify-between gap-4 px-4 py-2">
           {/* Logo */}
           <Link href="/">
-            <CldImage
-              src="logo_pkk35p"
+            <Image
+              src="https://d2d8wkqybl2mij.cloudfront.net/public/logo.svg"
               alt="Website Logo"
-              width="60"
-              height="20"
+              width={60}
+              height={20}
               className="min-w-20"
             />
           </Link>

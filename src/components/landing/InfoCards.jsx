@@ -54,8 +54,8 @@ export default function InfoCards() {
               Expert Nutrition Just For You
             </h3>
             <p className="text-sm">
-              Personalized meal plans healthy and easy recipes to fuel your
-              workouts
+              Personalized meal plans and easy recipes to fuel your
+              body and support your goals
             </p>
           </div>
         </motion.div>
@@ -72,11 +72,11 @@ export default function InfoCards() {
           />
           <div>
             <h3 className="mb-2 text-lg font-semibold">
-              Expert Advice From Certified Professionals
+              Guidance From Certified Professionals
             </h3>
             <p className="text-sm">
-              Learn from certified trainers and nutritionists with professional
-              advices
+              Learn from certified trainers and nutritionists with real,
+              professional advice
             </p>
           </div>
         </motion.div>

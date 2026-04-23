@@ -2,7 +2,8 @@
 
 import { useState } from 'react';
 import Link from 'next/link';
-import { CldImage } from 'next-cloudinary';
+import Image from 'next/image';
+import { avatarUrl } from '@/lib/mediaUrl';
 import { createClient } from '../../../lib/supabase/client';
 import { useAuth } from '../../../context/AuthContext';
 
@@ -95,9 +96,7 @@ function CommentThread({
           body: replyBody.trim(),
           parent_id: comment.id,
         })
-        .select(
-          `*, profiles(username, avatar_public_id, first_name, last_name)`
-        )
+        .select(`*, profiles(username, avatar_s3_key, first_name, last_name)`)
         .single();
 
       if (error) throw error;
@@ -158,17 +157,13 @@ function CommentThread({
           href={`/account/${comment.profiles?.username}`}
           className="flex-shrink-0 duration-150 hover:opacity-80"
         >
-          {comment.profiles?.avatar_public_id ? (
-            <CldImage
-              src={comment.profiles.avatar_public_id}
-              width={36}
-              height={36}
-              alt={comment.profiles.username}
-              className="h-9 w-9 rounded-full object-cover"
-            />
-          ) : (
-            <div className="h-9 w-9 rounded-full bg-gray-200" />
-          )}
+          <Image
+            src={avatarUrl(comment.profiles?.avatar_s3_key)}
+            width={36}
+            height={36}
+            alt={comment.profiles?.username ?? ''}
+            className="h-9 w-9 rounded-full object-cover"
+          />
         </Link>
 
         {/* Profile Name, username, time */}
@@ -251,15 +246,13 @@ function CommentThread({
 
           {replyOpen && (
             <form onSubmit={handleReply} className="mt-3 flex gap-2">
-              {currentProfile?.avatar_public_id && (
-                <CldImage
-                  src={currentProfile.avatar_public_id}
-                  width={28}
-                  height={28}
-                  alt="Your avatar"
-                  className="h-7 w-7 flex-shrink-0 rounded-full object-cover"
-                />
-              )}
+              <Image
+                src={avatarUrl(currentProfile?.avatar_public_id)}
+                width={28}
+                height={28}
+                alt="Your avatar"
+                className="h-7 w-7 shrink-0 rounded-full object-cover"
+              />
               <div className="flex flex-1 flex-col gap-1">
                 <textarea
                   value={replyBody}
@@ -352,9 +345,7 @@ export default function CommentSection({ videoId, initialComments }) {
       const { data, error } = await supabase
         .from('comments')
         .insert({ video_id: videoId, user_id: user.id, body: body.trim() })
-        .select(
-          `*, profiles(username, avatar_public_id, first_name, last_name)`
-        )
+        .select(`*, profiles(username, avatar_s3_key, first_name, last_name)`)
         .single();
 
       if (error) throw error;
@@ -388,8 +379,8 @@ export default function CommentSection({ videoId, initialComments }) {
 
       {user && (
         <form onSubmit={handleSubmit} className="mb-6 flex gap-3">
-          <CldImage
-            src={profile?.avatar_public_id || 'default-avatar_m0m2pe'}
+          <Image
+            src={avatarUrl(profile?.avatar_s3_key)}
             width={36}
             height={36}
             alt="Your avatar"

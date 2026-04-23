@@ -3,9 +3,16 @@
 import React from 'react';
 import Button from '../../../components/ui/Button';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faHeart, faLeaf, faUsers } from '@fortawesome/free-solid-svg-icons';
-import { CldImage } from 'next-cloudinary';
+import {
+  faCheck,
+  faHeart,
+  faLeaf,
+  faUsers,
+} from '@fortawesome/free-solid-svg-icons';
+import Image from 'next/image';
+import { motion } from 'motion/react';
 
+const NEXT_PUBLIC_CDN_BASE_URL = process.env.NEXT_PUBLIC_CDN_BASE_URL;
 const values = [
   {
     icon: faHeart,
@@ -28,12 +35,36 @@ const values = [
 ];
 
 const team = [
-  // placeholder images hahahaha
-  { name: 'Andrew Jiang', imageUrl: 'DSC02049_qkehga' },
-  { name: 'Jeremy Auguste', imageUrl: 'DSC02043_rvwc4h' },
-  { name: 'Biana Lambis-Puryear', imageUrl: 'sophiaAlvarez_ufb1ou' },
-  { name: 'Francesca Lorthe', imageUrl: 'DSC02042_idyob7' },
-  { name: 'Nikolai Cooperider', imageUrl: 'sophiaAlvarez_ufb1ou' },
+  {
+    name: 'Andrew Jiang',
+    imageUrl: 'public/team/andrew.jpg',
+    role: 'Lead Developer',
+  },
+  {
+    name: 'Jeremy Auguste',
+    imageUrl: 'public/team/jeremy.jpg',
+    role: 'Developer',
+  },
+  {
+    name: 'Biana Lambis-Puryear',
+    imageUrl: 'public/team/IMG_5008_3.jpg',
+    role: 'Product Designer',
+  },
+  {
+    name: 'Francesca Lorthe',
+    imageUrl: 'public/team/image0.jpg',
+    role: 'UI/UX Designer',
+  },
+  {
+    name: 'Nikolai Cooperider',
+    imageUrl: 'public/team/IMG_3416.jpg',
+    role: 'Physical Artifact Engineer',
+  },
+  {
+    name: 'Jacob Gomez',
+    imageUrl: 'public/team/07e130f08be86f0de7f5d647650997e0.webp',
+    role: 'Testing & Debugging',
+  },
 ];
 
 export default function AboutPage() {
@@ -44,18 +75,27 @@ export default function AboutPage() {
         <div className="flex flex-col gap-5 text-center md:text-left">
           <h1 className="page-title">About Us</h1>
           <p className="body-primary">
-            GÜD is a wellness platform built to help you develop healthy habits
-            from home in a way that feels practical, structured, and
-            sustainable. Our goal is to make it easier for you to take care of
-            your body and build routines you can actually maintain, no matter
-            your starting point.
+            GÜD is a wellness platform built to make healthy habits feel
+            practical — no gym required, no extreme commitments.
           </p>
-          <p className="body-primary">
-            We strive to provide effective at-home workouts, realistic nutrition
-            guidance, and expert-backed education designed to support your
-            day-to-day lifestyle. Everything is created to be clear,
-            approachable, and adaptable so you can move at your own pace.
-          </p>
+          <ul className="flex flex-col gap-3">
+            {[
+              'Expert-led workouts for every level',
+              'Realistic nutrition guidance you can actually follow',
+              'Content designed to fit your life, not disrupt it',
+            ].map((item) => (
+              <li
+                key={item}
+                className="body-primary flex items-center gap-3 text-center md:text-left"
+              >
+                <FontAwesomeIcon
+                  icon={faCheck}
+                  className="text-brand-primary shrink-0"
+                />
+                {item}
+              </li>
+            ))}
+          </ul>
           <div className="flex justify-center gap-4 pt-2 md:justify-start">
             <Button
               href="/register"
@@ -65,11 +105,11 @@ export default function AboutPage() {
           </div>
         </div>
         <div className="relative flex justify-center">
-          <CldImage
-            src="about01_or1tp4"
+          <Image
+            src="https://d2d8wkqybl2mij.cloudfront.net/public/about01.png"
             alt="About characters"
-            width="600"
-            height="500"
+            width={600}
+            height={500}
             className="rounded-lg"
           />
           <svg
@@ -87,59 +127,29 @@ export default function AboutPage() {
       </section>
 
       {/* Who we are */}
-      <section className="flex flex-col gap-20">
-        <div className="center flex flex-col">
-          <h2 className="section-title mb-8 text-center">Our Team</h2>
-          <p className="text-secondary px-5 text-center md:text-left">
-            We are a team of five Digital Media students from the University of
-            Central Florida united by a shared passion for wellness, design, and
-            meaningful technology. As part of our capstone project, we created
-            GÜD to combine a thoughtful user experience, research-driven
-            strategy, and accessible design into a platform that encourages and
-            supports healthy living. With various backgrounds spanning
-            development, design, and digital storytelling, we collaborated to
-            build a solution that reflects both our technical skills and our
-            commitment to creating something practical, impactful, and built for
-            real life.
-          </p>
-        </div>
+      <section className="flex flex-col gap-4">
+        <h2 className="section-title text-center">Our Team</h2>
 
-        <svg
-          width="0"
-          height="0"
-          style={{ position: 'absolute', overflow: 'hidden' }}
-        >
-          <defs>
-            <clipPath id="blob-clip" clipPathUnits="objectBoundingBox">
-              <path
-                d="M0.838,0.4005 C0.8815,0.5255,0.8225,0.694,0.711,0.77 C0.5995,0.8465,0.436,0.83,0.3315,0.75 C0.2275,0.67,0.183,0.526,0.221,0.4095 C0.259,0.2925,0.3795,0.202,0.513,0.198 C0.647,0.1935,0.794,0.275,0.838,0.4005Z"
-                transform="translate(0.5 0.5) scale(1.3) translate(-0.5 -0.5)"
-              />
-            </clipPath>
-          </defs>
-        </svg>
-
-        <div className="flex flex-row flex-wrap justify-center gap-5">
+        <div className="grid grid-cols-1 gap-2 sm:grid-cols-2 lg:grid-cols-3">
           {team.map((member) => (
-            <div
+            <motion.div
               key={member.name}
-              className="flex w-50 flex-col items-center gap-5"
+              className="bg-bg-secondary flex items-center gap-8 rounded-md p-2 shadow-sm lg:p-4"
+              whileHover={{ scale: 1.05 }}
+              transition={{ duration: 0.3, ease: 'easeOut' }}
             >
-              <div>
-                <CldImage
-                  width="400"
-                  height="400"
-                  src={member.imageUrl}
-                  sizes=" (max-width: 768px) 100vw,
-                          (max-width: 1200px) 50vw,
-                          33vw"
-                  alt={member.name}
-                  className="rounded-full object-cover"
-                  crop={{ type: 'fill', gravity: 'faces' }}
-                />
+              <Image
+                width={200}
+                height={200}
+                src={`${NEXT_PUBLIC_CDN_BASE_URL}/${member.imageUrl}`}
+                alt={member.name}
+                className="h-24 w-24 rounded-full object-cover lg:h-32 lg:w-32"
+              />
+              <div className="flex flex-col">
+                <span className="sub-header text-left">{member.name}</span>
+                <span className="body text-left">{member.role}</span>
               </div>
-              <span className="sub-header text-center">{member.name}</span>
-            </div>
+            </motion.div>
           ))}
         </div>
       </section>
@@ -170,11 +180,11 @@ export default function AboutPage() {
       {/* CTA */}
       <section className="grid grid-cols-1 items-center gap-10 md:grid-cols-2">
         <div className="relative flex justify-center">
-          <CldImage
-            src="about02_ewumms"
+          <Image
+            src="https://d2d8wkqybl2mij.cloudfront.net/public/about02.png"
             alt="About_2_Start_Now"
-            width="600"
-            height="400"
+            width={600}
+            height={400}
             className="rounded-lg"
           />
           <svg
@@ -196,13 +206,9 @@ export default function AboutPage() {
           </h2>
           <p className="body-primary">
             Join GÜD and get access to workouts, nutrition content, and expert
-            guidance — all designed to fit your life at home.
-          </p>
-          <p className="body-primary">
-            All content is developed by certified professionals, so you can
-            trust that what you&apos;re following is safe, informed, and
-            results-focused. Whether you&apos;re just getting started or getting
-            back on track, we&apos;ve got you.
+            guidance — all created by certified professionals and designed to
+            fit your life at home. Whether you&apos;re just starting out or
+            getting back on track, we&apos;ve got you.
           </p>
           <div className="flex flex-col gap-4 pt-2 lg:flex-row">
             <Button

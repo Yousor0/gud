@@ -16,6 +16,8 @@ export default function AccountSecurity({ profile }) {
     setFormData((prev) => ({ ...prev, [key]: value }));
   }
 
+  const isProfessional = profile.role === 'professional';
+
   return (
     <div className="flex flex-col gap-6">
       {/* Account Security */}
@@ -46,13 +48,20 @@ export default function AccountSecurity({ profile }) {
           </div>
         </div>
       </div>
-
       {/* Membership */}
-      <div className="bg-bg-secondary rounded-sm p-5">
-        <h2 className="mb-2 text-lg font-semibold">My Membership</h2>
-        <p className="mb-4 text-sm">Premium Plan</p>
-        <Button text="Manage Membership" href="/account/subscription/manage" />
-      </div>
+      {!isProfessional && (
+        <div className="bg-bg-secondary rounded-sm p-5">
+          <h2 className="mb-2 text-lg font-semibold">My Membership</h2>
+          <p className="mb-4 text-sm">
+            {' '}
+            {profile.role === 'user_premium' ? 'Premium Tier' : 'Free Tier'}
+          </p>
+          <Button
+            text="Manage Membership"
+            href="/account/subscription/manage"
+          />
+        </div>
+      )}
 
       {/* Devices */}
       <div className="bg-bg-secondary col-span-full rounded-sm p-5">

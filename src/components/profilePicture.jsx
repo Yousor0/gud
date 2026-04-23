@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import { motion } from 'motion/react';
+import { avatarUrl } from '@/lib/mediaUrl';
 
 export default function ProfilePicture({ user }) {
   const { id, name, about } = user;
@@ -11,7 +12,7 @@ export default function ProfilePicture({ user }) {
         <div className="flex flex-col items-center gap-2">
           <div className="relative h-30 w-30">
             <Image
-              src={about.avatarUrl || '/default-avatar.jpg'}
+              src={avatarUrl(about.avatarUrl)}
               alt={`${name.firstName} ${name.lastName}`}
               width={150}
               height={150}

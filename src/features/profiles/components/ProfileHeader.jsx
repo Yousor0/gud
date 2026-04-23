@@ -1,6 +1,7 @@
 'use client';
 
-import { CldImage } from 'next-cloudinary';
+import Image from 'next/image';
+import { avatarUrl } from '@/lib/mediaUrl';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPenToSquare } from '@fortawesome/free-solid-svg-icons';
 import { motion } from 'motion/react';
@@ -10,6 +11,7 @@ import {
   faYoutube,
   faXTwitter,
 } from '@fortawesome/free-brands-svg-icons';
+import { div } from 'motion/react-client';
 
 const CONTENT_TYPE_COLORS = {
   fitness: 'tag-fitness',
@@ -18,6 +20,9 @@ const CONTENT_TYPE_COLORS = {
 
 export default function ProfileHeader({ profile, isOwner, onEditClick }) {
   const isProfessional = profile.role === 'professional';
+  const isPremium = profile.role === 'user_premium';
+
+  console.log(isPremium);
 
   const socials = isProfessional && (
     <div className="bg-sec flex flex-wrap items-center gap-1">
@@ -84,13 +89,24 @@ export default function ProfileHeader({ profile, isOwner, onEditClick }) {
             )}
           </div>
         )}
-        <CldImage
-          src={profile.avatar_public_id || 'default-avatar_m0m2pe'}
-          width={120}
-          height={120}
-          alt={`${profile.username} avatar`}
-          className="mt-5 aspect-square rounded-full object-cover"
-        />
+        <div
+          className={
+            isPremium
+              ? 'mt-5 rounded-full ring-4 ring-amber-400 ring-offset-2'
+              : isProfessional
+                ? 'ring-brand-primary mt-5 rounded-full ring-4 ring-offset-2'
+                : 'ring-bg-accent mt-5 rounded-full ring-4 ring-offset-2'
+          }
+        >
+          <Image
+            src={avatarUrl(profile.avatar_s3_key)}
+            width={120}
+            height={120}
+            alt={`${profile.username} avatar`}
+            className="aspect-square rounded-full object-cover"
+          />
+        </div>
+
         <div className="flex flex-col items-center gap-4">
           <div className="flex flex-col items-center gap-1">
             <h1 className="section-title">
@@ -99,11 +115,20 @@ export default function ProfileHeader({ profile, isOwner, onEditClick }) {
             <p className="text-text-accent text-sm">@{profile.username}</p>
           </div>
           <div className="flex flex-row gap-2">
+            {/* Profesional Tag */}
             {isProfessional && (
               <span className="bg-brand-primary text-bg-primary rounded-full px-3 py-1 text-xs font-medium">
                 Professional
               </span>
             )}
+
+            {/* Premium User Tag */}
+            {isPremium && (
+              <span className="text-bg-primary rounded-full bg-amber-400 px-3 py-1 text-xs font-medium">
+                Premium
+              </span>
+            )}
+
             {profile.content_type && (
               <span
                 className={`${CONTENT_TYPE_COLORS[profile.content_type] ?? 'bg-bg-accent'} items-center rounded-full px-3 py-1 text-xs font-medium text-white`}
@@ -116,13 +141,15 @@ export default function ProfileHeader({ profile, isOwner, onEditClick }) {
           </div>
           {socials}
           <div>
-            <h2 className="mb-2 text-center text-sm font-semibold tracking-wide text-gray-500 uppercase md:text-left">
-              Biography
-            </h2>
             {profile.bio && (
-              <p className="min-h-40 w-full rounded-md bg-[#E3DBCF] p-2 text-center text-sm leading-relaxed">
-                {profile.bio}
-              </p>
+              <div>
+                <h2 className="mb-2 text-center text-sm font-semibold tracking-wide text-gray-500 uppercase md:text-left">
+                  Biography
+                </h2>
+                <p className="min-h-40 w-full rounded-md bg-[#E3DBCF] p-2 text-center text-sm leading-relaxed">
+                  {profile.bio}
+                </p>
+              </div>
             )}
           </div>
         </div>
@@ -131,13 +158,24 @@ export default function ProfileHeader({ profile, isOwner, onEditClick }) {
       {/* Desktop: avatar left, info center, edit button top-right */}
       <div className="hidden md:flex md:flex-col md:gap-3">
         <div className="flex items-start gap-6">
-          <CldImage
-            src={profile.avatar_public_id || 'default-avatar_m0m2pe'}
-            width={120}
-            height={120}
-            alt={`${profile.username} avatar`}
-            className="aspect-square shrink-0 rounded-full object-cover"
-          />
+          <div
+            className={
+              isPremium
+                ? 'rounded-full ring-4 ring-amber-400 ring-offset-2'
+                : isProfessional
+                  ? 'ring-brand-primary rounded-full ring-4 ring-offset-2'
+                  : 'ring-bg-accent rounded-full ring-4 ring-offset-2'
+            }
+          >
+            <Image
+              src={avatarUrl(profile.avatar_s3_key)}
+              width={120}
+              height={120}
+              alt={`${profile.username} avatar`}
+              className="aspect-square shrink-0 rounded-full object-cover"
+            />
+          </div>
+
           <div className="flex flex-1 flex-col gap-3">
             <div className="flex items-start justify-between">
               <div className="flex flex-col">
@@ -164,6 +202,11 @@ export default function ProfileHeader({ profile, isOwner, onEditClick }) {
               {isProfessional && (
                 <span className="bg-brand-primary text-bg-primary rounded-full px-3 py-1 text-xs font-medium">
                   Professional
+                </span>
+              )}
+              {isPremium && (
+                <span className="rounded-full bg-yellow-600 px-3 py-1 text-xs font-medium text-white">
+                  Premium
                 </span>
               )}
               {profile.content_type && (
