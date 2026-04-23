@@ -29,7 +29,7 @@ export default async function page() {
   const nutritionVideos = (videos ?? []).filter((v) => v.type === 'nutrition');
 
   return (
-    <div className="flex flex-col gap-10">
+    <div className="mx-auto flex w-full max-w-7xl flex-col gap-6 px-4 py-8">
       <PageHeader
         title="Get a GÜD workout from Home"
         subtext="At-home workouts and nutritional guidance tailored too you"

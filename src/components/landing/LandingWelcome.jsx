@@ -36,7 +36,7 @@ export default function LandingWelcome() {
           <div className="flex flex-col justify-center gap-4 sm:flex-row sm:justify-start">
             <Button
               href="/register"
-              text="Start you plan"
+              text="Start your plan"
               className="w-full sm:w-auto"
             />
             <Button

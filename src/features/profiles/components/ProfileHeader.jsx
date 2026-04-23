@@ -19,6 +19,9 @@ const CONTENT_TYPE_COLORS = {
 
 export default function ProfileHeader({ profile, isOwner, onEditClick }) {
   const isProfessional = profile.role === 'professional';
+  const isPremium = profile.role === 'user_premium';
+
+  console.log(isPremium);
 
   const socials = isProfessional && (
     <div className="bg-sec flex flex-wrap items-center gap-1">
@@ -85,6 +88,7 @@ export default function ProfileHeader({ profile, isOwner, onEditClick }) {
             )}
           </div>
         )}
+
         <Image
           src={avatarUrl(profile.avatar_s3_key)}
           width={120}
@@ -92,6 +96,7 @@ export default function ProfileHeader({ profile, isOwner, onEditClick }) {
           alt={`${profile.username} avatar`}
           className="mt-5 aspect-square rounded-full object-cover"
         />
+
         <div className="flex flex-col items-center gap-4">
           <div className="flex flex-col items-center gap-1">
             <h1 className="section-title">
@@ -100,11 +105,20 @@ export default function ProfileHeader({ profile, isOwner, onEditClick }) {
             <p className="text-text-accent text-sm">@{profile.username}</p>
           </div>
           <div className="flex flex-row gap-2">
+            {/* Profesional Tag */}
             {isProfessional && (
               <span className="bg-brand-primary text-bg-primary rounded-full px-3 py-1 text-xs font-medium">
                 Professional
               </span>
             )}
+
+            {/* Premium User Tag */}
+            {isPremium && (
+              <span className="text-bg-primary rounded-full bg-amber-400 px-3 py-1 text-xs font-medium">
+                Premium
+              </span>
+            )}
+
             {profile.content_type && (
               <span
                 className={`${CONTENT_TYPE_COLORS[profile.content_type] ?? 'bg-bg-accent'} items-center rounded-full px-3 py-1 text-xs font-medium text-white`}
@@ -132,13 +146,16 @@ export default function ProfileHeader({ profile, isOwner, onEditClick }) {
       {/* Desktop: avatar left, info center, edit button top-right */}
       <div className="hidden md:flex md:flex-col md:gap-3">
         <div className="flex items-start gap-6">
-          <Image
-            src={avatarUrl(profile.avatar_s3_key)}
-            width={120}
-            height={120}
-            alt={`${profile.username} avatar`}
-            className="aspect-square shrink-0 rounded-full object-cover"
-          />
+          <div>
+            <Image
+              src={avatarUrl(profile.avatar_s3_key)}
+              width={120}
+              height={120}
+              alt={`${profile.username} avatar`}
+              className="aspect-square shrink-0 rounded-full object-cover"
+            />
+          </div>
+
           <div className="flex flex-1 flex-col gap-3">
             <div className="flex items-start justify-between">
               <div className="flex flex-col">
@@ -165,6 +182,11 @@ export default function ProfileHeader({ profile, isOwner, onEditClick }) {
               {isProfessional && (
                 <span className="bg-brand-primary text-bg-primary rounded-full px-3 py-1 text-xs font-medium">
                   Professional
+                </span>
+              )}
+              {isPremium && (
+                <span className="rounded-full bg-yellow-600 px-3 py-1 text-xs font-medium text-white">
+                  Premium
                 </span>
               )}
               {profile.content_type && (

@@ -78,7 +78,7 @@ export default function Footer() {
 
         <div>
           <div className="text-text-accent flex flex-col items-center gap-2 sm:items-start">
-            <div className="flex gap-5">
+            <div className="flex gap-2">
               <span>
                 <Link
                   href="https://github.com/Yousor0/gud"
