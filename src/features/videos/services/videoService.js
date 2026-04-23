@@ -49,6 +49,31 @@ export async function getVideosByType(type, excludeId) {
   return data;
 }
 
+export async function createVideo(data) {
+  const supabase = createClient();
+  const { data: video, error } = await supabase
+    .from('videos')
+    .insert(data)
+    .select()
+    .single();
+
+  if (error) throw new Error(error.message);
+  return video;
+}
+
+export async function updateVideo(videoId, updates) {
+  const supabase = createClient();
+  const { data, error } = await supabase
+    .from('videos')
+    .update(updates)
+    .eq('id', videoId)
+    .select()
+    .single();
+
+  if (error) throw new Error(error.message);
+  return data;
+}
+
 export async function getVideoRating(videoId) {
   const supabase = createClient();
   const { data, error } = await supabase

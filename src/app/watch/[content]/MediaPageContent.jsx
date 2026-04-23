@@ -3,11 +3,17 @@
 import { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
+import { useRouter } from 'next/navigation';
 import { avatarUrl, thumbnailUrl, videoUrl } from '@/lib/mediaUrl';
 import VideoPlayer from '../../../features/videos/components/VideoPlayer';
 import { SidebarVideoCard } from '../../../features/videos/components/VideoCard';
 import CommentSection from '../../../features/comments/components/CommentSection';
 import AuthorSidebarCard from '../../../features/profiles/components/AuthorSidebarCard';
+import EditVideoModal from '../../../features/videos/components/EditVideoModal';
+import { useAuth } from '../../../context/AuthContext';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faPenToSquare } from '@fortawesome/free-solid-svg-icons';
+import { motion } from 'motion/react';
 
 function formatViews(n) {
   return (n ?? 0).toLocaleString('en-US');
@@ -122,6 +128,12 @@ function VideoDescription({ description }) {
 
 export default function MediaPageContent({ video, relatedVideos, comments }) {
   const profile = video.profiles;
+  const { profile: currentUserProfile } = useAuth();
+  const router = useRouter();
+  const [editOpen, setEditOpen] = useState(false);
+  const [videoData, setVideoData] = useState(video);
+
+  const isOwner = currentUserProfile?.user_id === video.user_id;
 
   return (
     <div className="mx-auto max-w-7xl px-4 py-8">
@@ -136,17 +148,34 @@ export default function MediaPageContent({ video, relatedVideos, comments }) {
               knownDuration={video.duration_seconds}
             />
 
-            <h1 className="text-xl leading-none font-bold">{video.title}</h1>
+            <div className="flex items-start justify-between gap-2">
+              <h1 className="text-xl leading-none font-bold">
+                {videoData.title}
+              </h1>
+              {isOwner && (
+                <motion.button
+                  type="button"
+                  onClick={() => setEditOpen(true)}
+                  whileHover={{ scale: 1.02 }}
+                  whileTap={{ scale: 0.99 }}
+                  style={{ originX: 0.5, originY: 0.5 }}
+                  className="border-bg-accent hover:bg-bg-accent shrink-0 rounded-md border px-4 py-2 text-sm"
+                >
+                  <FontAwesomeIcon icon={faPenToSquare} className="mr-1" />
+                  Edit Video
+                </motion.button>
+              )}
+            </div>
 
             <VideoTagsRow
-              level={video.level}
-              tags={video.tags}
-              type={video.type}
+              level={videoData.level}
+              tags={videoData.tags}
+              type={videoData.type}
             />
 
-            <VideoMeta profile={profile} views={video.views} />
+            <VideoMeta profile={profile} views={videoData.views} />
 
-            <VideoDescription description={video.description} />
+            <VideoDescription description={videoData.description} />
           </div>
 
           <CommentSection videoId={video.id} initialComments={comments} />
@@ -167,6 +196,20 @@ export default function MediaPageContent({ video, relatedVideos, comments }) {
           )}
         </div>
       </div>
+
+      {editOpen && (
+        <EditVideoModal
+          video={videoData}
+          onClose={() => setEditOpen(false)}
+          onSaved={(updated) => {
+            setVideoData((prev) => ({ ...prev, ...updated }));
+            setEditOpen(false);
+          }}
+          onDeleted={() => {
+            router.push(`/account/${profile?.username}`);
+          }}
+        />
+      )}
     </div>
   );
 }
