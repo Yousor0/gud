@@ -11,6 +11,7 @@ import {
 } from '@fortawesome/free-solid-svg-icons';
 import Image from 'next/image';
 import { motion } from 'motion/react';
+import { useAuth } from '@/context/AuthContext';
 
 const NEXT_PUBLIC_CDN_BASE_URL = process.env.NEXT_PUBLIC_CDN_BASE_URL;
 const values = [
@@ -68,6 +69,8 @@ const team = [
 ];
 
 export default function AboutPage() {
+  const { user } = useAuth();
+
   return (
     <main className="mx-auto flex w-auto max-w-7xl flex-col gap-20 px-5 py-16">
       {/* Mission Hero */}
@@ -96,13 +99,16 @@ export default function AboutPage() {
               </li>
             ))}
           </ul>
-          <div className="flex justify-center gap-4 pt-2 md:justify-start">
-            <Button
-              href="/register"
-              text="Get Started"
-              className="w-full text-center"
-            />
-          </div>
+
+          {!user && (
+            <div className="flex justify-center gap-4 pt-2 md:justify-start">
+              <Button
+                href="/register"
+                text="Get Started"
+                className="w-full text-center"
+              />
+            </div>
+          )}
         </div>
         <div className="relative flex justify-center">
           <Image
@@ -211,11 +217,14 @@ export default function AboutPage() {
             getting back on track, we&apos;ve got you.
           </p>
           <div className="flex flex-col gap-4 pt-2 lg:flex-row">
-            <Button
-              href="/register"
-              text="Create an Account"
-              className="w-full text-center"
-            />
+            {!user && (
+              <Button
+                href="/register"
+                text="Create an Account"
+                className="w-full text-center"
+              />
+            )}
+
             <Button
               href="/explore"
               variant="border"

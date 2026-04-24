@@ -2,7 +2,7 @@ import { notFound } from 'next/navigation';
 import {
   getVideoById,
   getVideosByType,
-} from '../../../features/videos/services/videoService';
+} from '../../../features/videos/services/videoServerService';
 import { getCommentsByVideoId } from '../../../features/comments/services/commentService';
 import MediaPageContent from './MediaPageContent';
 

@@ -14,6 +14,7 @@ import { useAuth } from '../../../context/AuthContext';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPenToSquare } from '@fortawesome/free-solid-svg-icons';
 import { motion } from 'motion/react';
+import { createClient } from '../../../lib/supabase/client';
 
 function formatViews(n) {
   return (n ?? 0).toLocaleString('en-US');
@@ -130,7 +131,6 @@ const supabase = createClient();
 export default function MediaPageContent({ video, relatedVideos, comments }) {
   const profile = video.profiles;
   const [views, setViews] = useState(video.views);
-
 
   useEffect(() => {
     if (!video?.id) return;
