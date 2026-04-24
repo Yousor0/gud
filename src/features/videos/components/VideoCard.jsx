@@ -101,20 +101,21 @@ export function SearchVideoCard({ video }) {
               router.push(`/account/${video.profiles?.username}`);
             }}
           >
-            <Image
+            {/* <Image
               src={avatarUrl(video.profiles?.avatar_public_id)}
               width={32}
               height={32}
               alt={displayName || 'User'}
               className="h-8 w-8 rounded-full object-cover"
-            />
+            /> */}
           </div>
           <div className="flex flex-col">
             {(displayName && (
               <p className="text-text-primary text-sm">{displayName}</p>
-            )) || (
-              <p className="text-text-primary text-sm">displayName not found</p>
-            )}
+            ))//|| (
+            //   <p className="text-text-primary text-sm">displayName not found</p>
+            // )
+            }
             {(video.profiles?.username && (
               <p
                 className="hover:text-brand-primary-hover -mt-1 cursor-pointer text-sm text-gray-500"
@@ -125,9 +126,10 @@ export function SearchVideoCard({ video }) {
               >
                 {video.profiles?.username}
               </p>
-            )) || (
-              <p className="-mt-1 text-sm text-gray-500"> username not found</p>
-            )}
+            ))// || (
+            //   <p className="-mt-1 text-sm text-gray-500"> username not found</p>
+            // )
+            }
           </div>
         </div>
       </div>
