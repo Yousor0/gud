@@ -19,4 +19,3 @@ export function videoUrl(s3Key) {
   if (!s3Key) return null;
   return `${CDN}/${s3Key}.mp4`;
 }
-

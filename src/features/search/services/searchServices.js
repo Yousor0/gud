@@ -4,7 +4,7 @@ export async function searchVideos(query, limit = 24) {
   const supabase = await createClient();
   const { data, error } = await supabase
     .from('videos')
-    .select('*')
+    .select('*, profiles(username, avatar_s3_key, first_name, last_name)')
     .ilike('title', `%${query}%`)
     .order('created_at', { ascending: false })
     .limit(limit);
