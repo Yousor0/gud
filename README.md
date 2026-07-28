@@ -2,6 +2,9 @@
 
 GÜD is a community-driven fitness and wellness web app connecting certified trainers and nutritionists with users seeking guided at-home workouts and personalized nutrition content.
 
+![Vercel](https://img.shields.io/badge/deployed%20on-vercel-black?logo=vercel)
+![License](https://img.shields.io/badge/license-MIT-blue)
+
 ![GÜD demo](showcase.gif)
 
 ---
@@ -33,15 +36,15 @@ GÜD is a community-driven fitness and wellness web app connecting certified tra
 ## Vercel Site
 
 Live Application  
-[https://gud-fitness.vercel.app](https://gud-smoky.vercel.app/)
+[https://gud-smoky.vercel.app](https://gud-smoky.vercel.app/)
 
 ## Screenshots
-<img width="2467" height="1273" alt="Homepage" src="https://github.com/user-attachments/assets/e64f36a2-9728-4397-a9b9-e001580ee9ca" />
-<img width="2467" height="1270" alt="Explore Videos" src="https://github.com/user-attachments/assets/2e2d4f54-28b4-48ec-bcd3-9fc9343f5600" />
-<img width="2468" height="1266" alt="Explore Professionals" src="https://github.com/user-attachments/assets/8ec623d0-68b0-40fa-b9d0-f46b9acd28a7" />
-<img width="2466" height="1266" alt="Video" src="https://github.com/user-attachments/assets/3c1bb6d2-1131-470d-b7b7-1ee99924eace" />
-<img width="2461" height="1270" alt="Profile" src="https://github.com/user-attachments/assets/2fd0ef2b-ee48-4b9a-b73e-018d6377bc29" />
-<img width="2466" height="1267" alt="Profile Edit" src="https://github.com/user-attachments/assets/fe99d5b1-ed04-4c7e-a941-77ec5ffbd577" />
+<img width="1920" height="1080" alt="Homepage" src="https://github.com/user-attachments/assets/e64f36a2-9728-4397-a9b9-e001580ee9ca" />
+<img width="1920" height="1080" alt="Explore Videos" src="https://github.com/user-attachments/assets/2e2d4f54-28b4-48ec-bcd3-9fc9343f5600" />
+<img width="1920" height="1080" alt="Explore Professionals" src="https://github.com/user-attachments/assets/8ec623d0-68b0-40fa-b9d0-f46b9acd28a7" />
+<img width="1920" height="1080" alt="Video" src="https://github.com/user-attachments/assets/3c1bb6d2-1131-470d-b7b7-1ee99924eace" />
+<img width="1920" height="1080" alt="Profile" src="https://github.com/user-attachments/assets/2fd0ef2b-ee48-4b9a-b73e-018d6377bc29" />
+<img width="1920" height="1080" alt="Profile Edit" src="https://github.com/user-attachments/assets/fe99d5b1-ed04-4c7e-a941-77ec5ffbd577" />
 
 ## Getting Started
 
@@ -130,6 +133,6 @@ vercel deploy
 
 ---
 
-## License
+## Contact
 
-MIT
+[LinkedIn](https://www.linkedin.com/in/jkeshao/)
